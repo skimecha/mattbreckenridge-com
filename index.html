@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
 <style>
   :root {
     --bg: #080A10;
@@ -30,9 +31,29 @@
     --green: #2D9966;
     --green-dim: rgba(45,153,102,0.11);
     --green-rim: rgba(45,153,102,0.30);
+    --cta-bg: #C49A0C;
+    --cta-bg-hover: #E8B620;
+    --cta-text: #0A0800;
     --r: 10px;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'DM Sans', sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --surface-2: #EFEDE6;
+    --border: #E0DDD2;
+    --border-2: #CCC8B8;
+    --text: #1C1F2E;
+    --text-2: #5B5F77;
+    --text-3: #8F92A6;
+    --gold: #9C7A08;
+    --gold-lt: #7E6206;
+    --gold-dim: rgba(156,122,8,0.10);
+    --gold-rim: rgba(156,122,8,0.38);
+    --green: #1E7A4E;
+    --green-dim: rgba(30,122,78,0.10);
+    --green-rim: rgba(30,122,78,0.35);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -173,8 +194,8 @@
     font-family: var(--sans);
     font-size: 13px;
     font-weight: 600;
-    color: #0A0800;
-    background: var(--gold);
+    color: var(--cta-text);
+    background: var(--cta-bg);
     border: none;
     border-radius: 7px;
     padding: 11px 20px;
@@ -183,7 +204,8 @@
     align-self: center;
     transition: background 0.15s;
   }
-  .cta-btn:hover { background: var(--gold-lt); }
+  .cta-btn:hover { background: var(--cta-bg-hover); }
+  .theme-toggle { cursor: pointer; }
 
   /* ---- About ---- */
   .about { padding-bottom: 72px; }
@@ -235,6 +257,7 @@
       <a class="hero-link" href="https://www.linkedin.com/in/mattbreckenridge/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="hero-link" href="https://github.com/skimecha" target="_blank" rel="noopener">GitHub</a>
       <a class="hero-link" href="mailto:matt.breckenridge@gmail.com">Email</a>
+      <button class="hero-link theme-toggle" id="theme-toggle" type="button"></button>
     </nav>
   </header>
 
@@ -311,5 +334,20 @@
   </footer>
 
 </div>
+<script>
+  const themeBtn = document.getElementById('theme-toggle');
+  function syncThemeBtn(){
+    const light = document.documentElement.dataset.theme === 'light';
+    themeBtn.textContent = light ? '☾ Dark' : '☀ Light';
+    themeBtn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+  }
+  themeBtn.addEventListener('click', () => {
+    const root = document.documentElement;
+    if (root.dataset.theme === 'light') { delete root.dataset.theme; localStorage.removeItem('mb-theme'); }
+    else { root.dataset.theme = 'light'; localStorage.setItem('mb-theme', 'light'); }
+    syncThemeBtn();
+  });
+  syncThemeBtn();
+</script>
 </body>
 </html>
