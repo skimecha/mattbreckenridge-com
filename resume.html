@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
 <style>
   :root {
     --bg: #080A10;
@@ -22,9 +23,25 @@
     --gold: #C49A0C;
     --gold-lt: #E8B620;
     --gold-rim: rgba(196,154,12,0.28);
+    --cta-bg: #C49A0C;
+    --cta-bg-hover: #E8B620;
+    --cta-text: #0A0800;
     --r: 10px;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'DM Sans', sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --surface-2: #EFEDE6;
+    --border: #E0DDD2;
+    --border-2: #CCC8B8;
+    --text: #1C1F2E;
+    --text-2: #5B5F77;
+    --text-3: #8F92A6;
+    --gold: #9C7A08;
+    --gold-lt: #7E6206;
+    --gold-rim: rgba(156,122,8,0.38);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -56,8 +73,8 @@
     font-family: var(--sans);
     font-size: 13px;
     font-weight: 600;
-    color: #0A0800;
-    background: var(--gold);
+    color: var(--cta-text);
+    background: var(--cta-bg);
     border: none;
     border-radius: 7px;
     padding: 11px 20px;
@@ -65,7 +82,9 @@
     white-space: nowrap;
     transition: background 0.15s;
   }
-  .cta-btn:hover { background: var(--gold-lt); }
+  .cta-btn:hover { background: var(--cta-bg-hover); }
+  .theme-toggle { cursor: pointer; }
+  .top-bar-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
   .resume-header { margin-bottom: 48px; }
   .kicker {
@@ -171,7 +190,10 @@
 
   <div class="top-bar">
     <a class="home-link" href="/">&larr; mattbreckenridge.com</a>
-    <a class="cta-btn" href="Breckenridge-Resume.pdf" download="Breckenridge-Resume.pdf">Download PDF</a>
+    <div class="top-bar-right">
+      <button class="home-link theme-toggle" id="theme-toggle" type="button"></button>
+      <a class="cta-btn" href="Breckenridge-Resume.pdf" download="Breckenridge-Resume.pdf">Download PDF</a>
+    </div>
   </div>
 
   <header class="resume-header">
@@ -322,5 +344,20 @@
   </footer>
 
 </div>
+<script>
+  const themeBtn = document.getElementById('theme-toggle');
+  function syncThemeBtn(){
+    const light = document.documentElement.dataset.theme === 'light';
+    themeBtn.textContent = light ? '☾ Dark' : '☀ Light';
+    themeBtn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+  }
+  themeBtn.addEventListener('click', () => {
+    const root = document.documentElement;
+    if (root.dataset.theme === 'light') { delete root.dataset.theme; localStorage.removeItem('mb-theme'); }
+    else { root.dataset.theme = 'light'; localStorage.setItem('mb-theme', 'light'); }
+    syncThemeBtn();
+  });
+  syncThemeBtn();
+</script>
 </body>
 </html>
