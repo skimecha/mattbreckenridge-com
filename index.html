@@ -34,6 +34,7 @@
     --cta-bg: #C49A0C;
     --cta-bg-hover: #E8B620;
     --cta-text: #0A0800;
+    --glint: #FFFFFF;
     --r: 10px;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'DM Sans', sans-serif;
@@ -54,6 +55,7 @@
     --green: #1E7A4E;
     --green-dim: rgba(30,122,78,0.10);
     --green-rim: rgba(30,122,78,0.35);
+    --glint: #C49A0C;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -88,7 +90,27 @@
   }
 
   /* ---- Hero ---- */
-  .hero { padding: 64px 0 72px; }
+  .hero { padding: 64px 0 72px; position: relative; }
+  .hero > * { position: relative; z-index: 2; }
+  .hero-portrait {
+    position: absolute;
+    top: -72px;
+    right: calc((100vw - 900px) / -2 - 4px);
+    height: 560px;
+    width: auto;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.55s ease;
+    filter: drop-shadow(0 14px 40px rgba(0,0,0,0.5));
+  }
+  .hero-portrait.is-hidden { opacity: 0; }
+  @media (max-width: 900px) {
+    .hero-portrait { height: 430px; right: -16px; top: -40px; }
+  }
+  @media (max-width: 640px) {
+    .hero-portrait { height: 300px; top: -24px; right: -22px; opacity: 0.4; }
+  }
   .hero-kicker {
     font-family: var(--mono);
     font-size: 11px;
@@ -104,6 +126,28 @@
     line-height: 1.12;
     letter-spacing: -0.01em;
     margin-bottom: 18px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    width: fit-content;
+    background-color: var(--text);
+    background-image: linear-gradient(100deg, transparent 42%, var(--glint) 50%, transparent 58%);
+    background-size: 200% 100%;
+    background-position: 150% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hero-glint 6s ease-in-out infinite;
+  }
+  .hero h1:focus-visible { outline: 2px solid var(--gold-rim); outline-offset: 4px; border-radius: 4px; }
+  @keyframes hero-glint {
+    0% { background-position: 150% 0; }
+    16% { background-position: -50% 0; }
+    100% { background-position: -50% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 { animation: none; background-position: -50% 0; }
   }
   .hero-sub {
     font-size: 17px;
@@ -249,8 +293,9 @@
 <div class="page">
 
   <header class="hero">
+    <img class="hero-portrait is-hidden" id="hero-portrait" src="matt-portrait.webp" alt="Matt Breckenridge" loading="lazy">
     <div class="hero-kicker">Senior Product Owner</div>
-    <h1>Matt Breckenridge</h1>
+    <h1 id="hero-name" tabindex="0">Matt Breckenridge</h1>
     <p class="hero-sub">10 years building digital products. Currently exploring what's possible when a product owner can prototype and validate independently using AI.</p>
     <nav class="hero-links">
       <a class="hero-link" href="resume.html">Resume</a>
@@ -348,6 +393,14 @@
     syncThemeBtn();
   });
   syncThemeBtn();
+
+  const portrait = document.getElementById('hero-portrait');
+  const nameEl = document.getElementById('hero-name');
+  function togglePortrait(){ if (portrait) portrait.classList.toggle('is-hidden'); }
+  if (nameEl) {
+    nameEl.addEventListener('click', togglePortrait);
+    nameEl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePortrait(); } });
+  }
 </script>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
