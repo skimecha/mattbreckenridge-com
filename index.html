@@ -34,7 +34,7 @@
     --cta-bg: #C49A0C;
     --cta-bg-hover: #E8B620;
     --cta-text: #0A0800;
-    --glint: #FFFFFF;
+    --glint: #E8B620;
     --r: 10px;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'DM Sans', sans-serif;
@@ -131,19 +131,19 @@
     -webkit-user-select: none;
     width: fit-content;
     background-color: var(--text);
-    background-image: linear-gradient(100deg, transparent 42%, var(--glint) 50%, transparent 58%);
+    background-image: linear-gradient(105deg, transparent 38%, var(--glint) 50%, transparent 62%);
     background-size: 200% 100%;
     background-position: 150% 0;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: hero-glint 6s ease-in-out infinite;
+    animation: hero-glint 5s ease-in-out infinite;
   }
   .hero h1:focus-visible { outline: 2px solid var(--gold-rim); outline-offset: 4px; border-radius: 4px; }
   @keyframes hero-glint {
     0% { background-position: 150% 0; }
-    16% { background-position: -50% 0; }
+    22% { background-position: -50% 0; }
     100% { background-position: -50% 0; }
   }
   @media (prefers-reduced-motion: reduce) {
