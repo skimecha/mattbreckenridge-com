@@ -396,7 +396,19 @@
 
   const portrait = document.getElementById('hero-portrait');
   const nameEl = document.getElementById('hero-name');
-  function togglePortrait(){ if (portrait) portrait.classList.toggle('is-hidden'); }
+  const PORTRAITS = ['matt-portrait.webp', 'matt-portrait-2.webp'];
+  PORTRAITS.forEach(src => { const im = new Image(); im.src = src; });
+  let showCount = 0;
+  function togglePortrait(){
+    if (!portrait) return;
+    if (portrait.classList.contains('is-hidden')) {
+      portrait.src = PORTRAITS[showCount % PORTRAITS.length];
+      showCount++;
+      portrait.classList.remove('is-hidden');
+    } else {
+      portrait.classList.add('is-hidden');
+    }
+  }
   if (nameEl) {
     nameEl.addEventListener('click', togglePortrait);
     nameEl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePortrait(); } });
