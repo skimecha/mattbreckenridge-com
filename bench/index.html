@@ -42,9 +42,11 @@
   <a href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
   <span class="cb-spacer"></span>
   <span class="cb-note">Data lives in this browser</span>
+  <button id="cb-import-lib" type="button">Import library</button>
   <button id="cb-export" type="button">Export backup</button>
   <button id="cb-import" type="button">Import backup</button>
   <input type="file" id="cb-file" accept="application/json" hidden>
+  <input type="file" id="cb-lib-file" accept="application/json" hidden>
 </footer>
 
 <!-- React, ReactDOM, Recharts as UMD globals -->
@@ -70,10 +72,25 @@
     $("cb-file").onchange = function (e) {
       var f = e.target.files[0];
       if (!f) return;
+      if (!confirm("Import backup REPLACES all current data with the backup's contents. Continue?")) { e.target.value = ""; return; }
       var r = new FileReader();
       r.onload = function () {
         try { window.importBackup(r.result); location.reload(); }
         catch (err) { alert("Import failed: " + err.message); }
+      };
+      r.readAsText(f);
+    };
+    $("cb-import-lib").onclick = function () { $("cb-lib-file").click(); };
+    $("cb-lib-file").onchange = function (e) {
+      var f = e.target.files[0];
+      if (!f) return;
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var res = window.importLibrary(r.result);
+          alert("Library import: " + res.added + " added, " + res.duplicates + " duplicates skipped, " + res.invalid + " invalid skipped (of " + res.total + ").");
+          location.reload();
+        } catch (err) { alert("Library import failed: " + err.message); }
       };
       r.readAsText(f);
     };

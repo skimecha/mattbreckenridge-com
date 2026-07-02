@@ -65,8 +65,12 @@ async function loadData() {
     const r = await window.storage.get(STORAGE_KEY);
     if (r && r.value) {
       const d = JSON.parse(r.value);
-      // migrate v1 items (no type field) → procedure
-      d.skills = (d.skills || []).map((s) => ({ type: "procedure", tag: "", ...s }));
+      // migrate v1 items (no type field) → procedure; legacy tag becomes subject
+      d.skills = (d.skills || []).map((s) => {
+        const m = { type: "procedure", tag: "", discipline: "", subject: "", ...s };
+        if (!m.subject && m.tag) m.subject = m.tag;
+        return m;
+      });
       return d;
     }
   } catch (e) { /* first run */ }
@@ -180,11 +184,12 @@ const TypeBadge = ({ type }) => {
 };
 
 /* ════════════════ ADD / EDIT ITEM ════════════════ */
-function SkillForm({ initial, onSave, onCancel }) {
+function SkillForm({ initial, onSave, onCancel, skills }) {
   const [type, setType] = useState(initial?.type || "concept");
   const [name, setName] = useState(initial?.name || "");
   const [cue, setCue] = useState(initial?.cue || "");
-  const [tag, setTag] = useState(initial?.tag || "");
+  const [discipline, setDiscipline] = useState(initial?.discipline || "");
+  const [subject, setSubject] = useState(initial?.subject || initial?.tag || "");
   const [stepsText, setStepsText] = useState(initial ? initial.steps.join("\n") : "");
   const steps = type === "fact"
     ? (stepsText.trim() ? [stepsText.trim()] : [])
@@ -243,10 +248,25 @@ function SkillForm({ initial, onSave, onCancel }) {
           <label style={{ fontSize: 12, color: T.muted, fontFamily: T.mono }}>{hints.nameLabel}</label>
           <input style={input} value={name} onChange={(e) => setName(e.target.value)} placeholder={hints.namePh} />
         </div>
-        <div>
-          <label style={{ fontSize: 12, color: T.muted, fontFamily: T.mono }}>CATEGORY (optional — groups items in the library)</label>
-          <input style={input} value={tag} onChange={(e) => setTag(e.target.value)}
-            placeholder="e.g., Ground Lesson 3: Airspace" />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div>
+            <label style={{ fontSize: 12, color: T.muted, fontFamily: T.mono }}>DISCIPLINE</label>
+            <input style={input} value={discipline} onChange={(e) => setDiscipline(e.target.value)}
+              list="cb-disciplines" placeholder="e.g., Aviation" />
+            <datalist id="cb-disciplines">
+              {[...new Set((skills || []).map((s) => s.discipline).filter(Boolean))].sort().map((d) => <option key={d} value={d} />)}
+            </datalist>
+          </div>
+          <div>
+            <label style={{ fontSize: 12, color: T.muted, fontFamily: T.mono }}>SUBJECT</label>
+            <input style={input} value={subject} onChange={(e) => setSubject(e.target.value)}
+              list="cb-subjects" placeholder="e.g., FAA Regulations" />
+            <datalist id="cb-subjects">
+              {[...new Set((skills || [])
+                .filter((s) => !discipline.trim() || (s.discipline || "") === discipline.trim())
+                .map((s) => s.subject).filter(Boolean))].sort().map((s) => <option key={s} value={s} />)}
+            </datalist>
+          </div>
         </div>
         <div>
           <label style={{ fontSize: 12, color: T.muted, fontFamily: T.mono }}>CONTEXT CUE (optional)</label>
@@ -264,7 +284,7 @@ function SkillForm({ initial, onSave, onCancel }) {
           </div>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
-          <Btn primary disabled={!valid} onClick={() => onSave({ type, name: name.trim(), cue: cue.trim(), tag: tag.trim(), steps })}>
+          <Btn primary disabled={!valid} onClick={() => onSave({ type, name: name.trim(), cue: cue.trim(), discipline: discipline.trim(), subject: subject.trim(), tag: subject.trim(), steps })}>
             Save item
           </Btn>
           <Btn onClick={onCancel}>Cancel</Btn>
@@ -560,6 +580,7 @@ function CalibrationBench() {
   const [view, setView] = useState("bench");
   const [activeSkill, setActiveSkill] = useState(null);
   const [editing, setEditing] = useState(null);
+  const [filter, setFilter] = useState({ discipline: "", subject: "" });
 
   useEffect(() => { loadData().then(setData); }, []);
   const persist = useCallback((next) => { setData(next); saveData(next); }, []);
@@ -574,7 +595,10 @@ function CalibrationBench() {
 
   const skills = data.skills;
   const attempts = allAttempts(skills).sort((a, b) => a.ts - b.ts);
-  const due = skills.filter((s) => !s.due || s.due <= Date.now());
+  const inScope = (s) =>
+    (!filter.discipline || (s.discipline || "") === filter.discipline) &&
+    (!filter.subject || (s.subject || "") === filter.subject);
+  const due = skills.filter((s) => inScope(s) && (!s.due || s.due <= Date.now()));
   const recent = attempts.slice(-12);
   const bias = recent.length ? Math.round(recent.reduce((s, a) => s + a.gap, 0) / recent.length) : null;
   const avgMiss = recent.length ? Math.round(recent.reduce((s, a) => s + Math.abs(a.gap), 0) / recent.length) : null;
@@ -620,7 +644,10 @@ function CalibrationBench() {
   // library grouped by tag (plain computation — no hook, since this sits below an early return)
   const groups = (() => {
     const g = {};
-    skills.forEach((s) => { const k = s.tag || "Uncategorized"; (g[k] = g[k] || []).push(s); });
+    skills.forEach((s) => {
+      const k = ((s.discipline || "").trim() || "General") + " · " + ((s.subject || s.tag || "").trim() || "Uncategorized");
+      (g[k] = g[k] || []).push(s);
+    });
     return Object.entries(g).sort(([a], [b]) => a.localeCompare(b));
   })();
 
@@ -632,6 +659,10 @@ function CalibrationBench() {
         @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
         button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid ${T.brass}; outline-offset: 2px; }
         input[type=range] { height: 4px; }
+        .cb-home { font-family: ${T.mono}; font-size: 12px; letter-spacing: 0.08em; color: ${T.text};
+          text-decoration: none; border: 1.5px solid ${T.etch}; border-radius: 3px; padding: 6px 12px; margin-left: 6px; }
+        .cb-home:hover { border-color: ${T.brass}; color: ${T.brass}; }
+        @media (max-width: 640px) { .cb-home { display: none; } }
       `}</style>
 
       <div style={{ maxWidth: 920, margin: "0 auto", padding: "28px 20px 60px" }}>
@@ -645,15 +676,16 @@ function CalibrationBench() {
               predict · recall · grade · read the gauge
             </div>
           </div>
-          <nav style={{ display: "flex", gap: 18 }}>
+          <nav style={{ display: "flex", gap: 18, alignItems: "center" }}>
             <Tab id="bench">Bench</Tab>
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
+            <a className="cb-home" href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
           </nav>
         </div>
 
-        {view === "add" && <SkillForm onSave={addSkill} onCancel={() => setView("bench")} />}
-        {view === "edit" && editing && <SkillForm initial={editing} onSave={updateSkill} onCancel={() => { setEditing(null); setView("library"); }} />}
+        {view === "add" && <SkillForm skills={skills} onSave={addSkill} onCancel={() => setView("bench")} />}
+        {view === "edit" && editing && <SkillForm skills={skills} initial={editing} onSave={updateSkill} onCancel={() => { setEditing(null); setView("library"); }} />}
 
         {view === "drill" && activeSkill && (
           <Drill skill={activeSkill} onComplete={completeDrill}
@@ -662,6 +694,35 @@ function CalibrationBench() {
 
         {view === "bench" && (
           <div style={{ display: "grid", gap: 16 }}>
+            {(() => {
+              const disciplineOpts = [...new Set(skills.map((s) => s.discipline).filter(Boolean))].sort();
+              const subjectOpts = [...new Set(skills
+                .filter((s) => !filter.discipline || (s.discipline || "") === filter.discipline)
+                .map((s) => s.subject).filter(Boolean))].sort();
+              if (!disciplineOpts.length && !subjectOpts.length) return null;
+              const sel = { fontFamily: T.mono, fontSize: 12, letterSpacing: "0.05em", background: T.bg,
+                color: T.text, border: `1px solid ${T.etch}`, borderRadius: 3, padding: "8px 10px" };
+              return (
+                <Panel style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", padding: "12px 16px" }}>
+                  <span style={{ fontFamily: T.mono, fontSize: 11, letterSpacing: "0.2em", color: T.brass, textTransform: "uppercase" }}>
+                    Session scope
+                  </span>
+                  <select style={sel} value={filter.discipline} aria-label="filter by discipline"
+                    onChange={(e) => setFilter({ discipline: e.target.value, subject: "" })}>
+                    <option value="">All disciplines</option>
+                    {disciplineOpts.map((d) => <option key={d} value={d}>{d}</option>)}
+                  </select>
+                  <select style={sel} value={filter.subject} aria-label="filter by subject"
+                    onChange={(e) => setFilter({ ...filter, subject: e.target.value })}>
+                    <option value="">All subjects</option>
+                    {subjectOpts.map((s) => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  {(filter.discipline || filter.subject) && (
+                    <Btn small onClick={() => setFilter({ discipline: "", subject: "" })}>Clear</Btn>
+                  )}
+                </Panel>
+              );
+            })()}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
               <Panel style={{ textAlign: "center" }}>
                 <div style={{ fontFamily: T.mono, fontSize: 30, color: due.length ? T.needle : T.green }}>{due.length}</div>
@@ -695,7 +756,7 @@ function CalibrationBench() {
               {skills.length > 0 && due.length === 0 && (
                 <div style={{ color: T.muted, fontSize: 14 }}>
                   Nothing due. That's the spacing working — reviewing now would feel productive but teach less.
-                  Next up: {(() => { const n = [...skills].sort((a, b) => a.due - b.due)[0]; return `${n.name} on ${fmtDate(n.due)}`; })()}
+                  Next up: {(() => { const pool = skills.filter(inScope); const n = [...(pool.length ? pool : skills)].sort((a, b) => a.due - b.due)[0]; return `${n.name} on ${fmtDate(n.due)}`; })()}
                 </div>
               )}
               <div style={{ display: "grid", gap: 8 }}>
@@ -705,7 +766,7 @@ function CalibrationBench() {
                     <div>
                       <div style={{ fontSize: 15 }}><TypeBadge type={s.type} />{s.name}</div>
                       <div style={{ fontSize: 12, color: T.muted, fontFamily: T.mono, marginTop: 2 }}>
-                        {s.tag ? s.tag + " · " : ""}{unitLine(s)} · {s.attempts.length === 0 ? "never drilled" :
+                        {(s.discipline || s.subject) ? [s.discipline, s.subject || s.tag].filter(Boolean).join(" / ") + " · " : (s.tag ? s.tag + " · " : "")}{unitLine(s)} · {s.attempts.length === 0 ? "never drilled" :
                           `last: ${Math.round(s.attempts[s.attempts.length - 1].accuracy * 100)}% (predicted ${s.attempts[s.attempts.length - 1].confidence}%)`}
                       </div>
                     </div>

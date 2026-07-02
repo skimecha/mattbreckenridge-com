@@ -68,6 +68,64 @@ function importBackup(json) {
   });
 }
 
+/* ── additive library import ─────────────────────────────────
+   Accepts a "calibration-bench-library" JSON document (or a bare
+   array of items) and MERGES the items into the existing library.
+   Nothing is overwritten: existing items and their drill history
+   are untouched, and duplicates (same discipline+subject+name)
+   are skipped. Each imported item is scheduled as new (due today).
+
+   Document shape:
+     { "format": "calibration-bench-library", "version": 1,
+       "discipline": "Aviation",            // optional default
+       "subject": "FAA Regulations",        // optional default
+       "items": [ { "type": "fact"|"concept"|"procedure",
+                    "name": "...", "cue": "...",
+                    "discipline": "...", "subject": "...",
+                    "steps": ["..."] } ] }
+   ──────────────────────────────────────────────────────────── */
+function importLibrary(json) {
+  const doc = typeof json === "string" ? JSON.parse(json) : json;
+  const items = Array.isArray(doc) ? doc : doc.items;
+  if (!Array.isArray(items) || items.length === 0) throw new Error("No items array found in this file");
+  const defaults = { discipline: (doc.discipline || "").trim(), subject: (doc.subject || "").trim() };
+
+  const KEY = NS + "calbench-v1";
+  let data = { skills: [] };
+  try { const raw = localStorage.getItem(KEY); if (raw) data = JSON.parse(raw); } catch (e) {}
+  data.skills = data.skills || [];
+
+  const VALID = ["fact", "concept", "procedure"];
+  const norm = (v) => (typeof v === "string" ? v.trim() : "");
+  const keyOf = (d, s, n) => [d, s, n].join("|").toLowerCase();
+  const seen = new Set(data.skills.map((s) => keyOf(norm(s.discipline), norm(s.subject || s.tag), norm(s.name))));
+  const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
+  const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
+
+  let added = 0, duplicates = 0, invalid = 0;
+  items.forEach((it) => {
+    const type = VALID.includes(it.type) ? it.type : null;
+    const name = norm(it.name);
+    const steps = Array.isArray(it.steps) ? it.steps.map(norm).filter(Boolean) : [];
+    const stepsOk = type === "fact" ? steps.length === 1 : type === "procedure" ? steps.length >= 2 : steps.length >= 1;
+    if (!type || !name || !stepsOk) { invalid++; return; }
+    const discipline = norm(it.discipline) || defaults.discipline;
+    const subject = norm(it.subject) || defaults.subject;
+    const k = keyOf(discipline, subject, name);
+    if (seen.has(k)) { duplicates++; return; }
+    seen.add(k);
+    data.skills.push({
+      id: uid(), type, name, cue: norm(it.cue), discipline, subject, tag: subject,
+      steps, created: Date.now(), intervalDays: 1, due: midnight.getTime(), attempts: [],
+    });
+    added++;
+  });
+
+  localStorage.setItem(KEY, JSON.stringify(data));
+  return { added, duplicates, invalid, total: items.length };
+}
+
 window.storage = storage;
 window.exportBackup = exportBackup;
 window.importBackup = importBackup;
+window.importLibrary = importLibrary;
