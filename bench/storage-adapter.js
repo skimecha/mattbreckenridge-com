@@ -75,19 +75,39 @@ function importBackup(json) {
    are untouched, and duplicates (same discipline+subject+name)
    are skipped. Each imported item is scheduled as new (due today).
 
-   Document shape:
-     { "format": "calibration-bench-library", "version": 1,
-       "discipline": "Aviation",            // optional default
-       "subject": "FAA Regulations",        // optional default
-       "items": [ { "type": "fact"|"concept"|"procedure",
-                    "name": "...", "cue": "...",
-                    "discipline": "...", "subject": "...",
-                    "steps": ["..."] } ] }
+   Accepted document shapes (all merge additively):
+     A) { "discipline": "Aviation", "subject": "FAA Regulations",
+          "items": [ { "type": "fact"|"concept"|"procedure",
+                       "name": "...", "cue": "...", "steps": ["..."] } ] }
+     B) a bare array of those item objects
+     C) { "discipline": "Aviation",
+          "subjects": [ { "name": "FAA Regulations",
+                          "items": [ { "type": "...", "prompt": "...", "steps": [...] } ] } ] }
+   In every shape: `prompt` is accepted as an alias for `name`, an item's own
+   `subject` wins over its enclosing group name, and both fall back to the
+   top-level `subject`/`discipline` defaults.
    ──────────────────────────────────────────────────────────── */
 function importLibrary(json) {
   const doc = typeof json === "string" ? JSON.parse(json) : json;
-  const items = Array.isArray(doc) ? doc : doc.items;
-  if (!Array.isArray(items) || items.length === 0) throw new Error("No items array found in this file");
+
+  // Flatten to a single item list, tagging each with its enclosing subject (shape C).
+  let items;
+  if (Array.isArray(doc)) {
+    items = doc;
+  } else if (Array.isArray(doc.items)) {
+    items = doc.items;
+  } else if (Array.isArray(doc.subjects)) {
+    items = [];
+    doc.subjects.forEach((g) => {
+      const groupSubject = (g && typeof g.name === "string") ? g.name : "";
+      (Array.isArray(g.items) ? g.items : []).forEach((it) => {
+        items.push(Object.assign({ _groupSubject: groupSubject }, it));
+      });
+    });
+  }
+  if (!Array.isArray(items) || items.length === 0) {
+    throw new Error("No items found — expected an items array or subjects[].items");
+  }
   const defaults = { discipline: (doc.discipline || "").trim(), subject: (doc.subject || "").trim() };
 
   const KEY = NS + "calbench-v1";
@@ -105,12 +125,12 @@ function importLibrary(json) {
   let added = 0, duplicates = 0, invalid = 0;
   items.forEach((it) => {
     const type = VALID.includes(it.type) ? it.type : null;
-    const name = norm(it.name);
+    const name = norm(it.name) || norm(it.prompt);
     const steps = Array.isArray(it.steps) ? it.steps.map(norm).filter(Boolean) : [];
     const stepsOk = type === "fact" ? steps.length === 1 : type === "procedure" ? steps.length >= 2 : steps.length >= 1;
     if (!type || !name || !stepsOk) { invalid++; return; }
     const discipline = norm(it.discipline) || defaults.discipline;
-    const subject = norm(it.subject) || defaults.subject;
+    const subject = norm(it.subject) || norm(it._groupSubject) || defaults.subject;
     const k = keyOf(discipline, subject, name);
     if (seen.has(k)) { duplicates++; return; }
     seen.add(k);
