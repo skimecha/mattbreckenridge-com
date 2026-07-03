@@ -41,12 +41,9 @@
 <footer id="cb-footer">
   <a href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
   <span class="cb-spacer"></span>
-  <span class="cb-note">Data lives in this browser</span>
-  <button id="cb-import-lib" type="button">Import library</button>
+  <span class="cb-note">Demo: data stays in this browser</span>
   <button id="cb-export" type="button">Export backup</button>
-  <button id="cb-import" type="button">Import backup</button>
-  <input type="file" id="cb-file" accept="application/json" hidden>
-  <input type="file" id="cb-lib-file" accept="application/json" hidden>
+  <button id="cb-reset" type="button">Reset demo data</button>
 </footer>
 
 <!-- React, ReactDOM, Recharts as UMD globals -->
@@ -56,7 +53,9 @@
 <script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js" crossorigin></script>
 
 <!-- localStorage-backed window.storage + backup helpers (classic script) -->
-<script src="storage-adapter.js?v=2"></script>
+<script src="storage-adapter.js?v=3"></script>
+<!-- curated sample library, applied on first boot / demo reset -->
+<script src="demo-library.js?v=1"></script>
 
 <!-- In-browser JSX transpile (no build step) -->
 <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js" crossorigin></script>
@@ -68,31 +67,10 @@
   (function () {
     var $ = function (id) { return document.getElementById(id); };
     $("cb-export").onclick = function () { window.exportBackup(); };
-    $("cb-import").onclick = function () { $("cb-file").click(); };
-    $("cb-file").onchange = function (e) {
-      var f = e.target.files[0];
-      if (!f) return;
-      if (!confirm("Import backup REPLACES all current data with the backup's contents. Continue?")) { e.target.value = ""; return; }
-      var r = new FileReader();
-      r.onload = function () {
-        try { window.importBackup(r.result); location.reload(); }
-        catch (err) { alert("Import failed: " + err.message); }
-      };
-      r.readAsText(f);
-    };
-    $("cb-import-lib").onclick = function () { $("cb-lib-file").click(); };
-    $("cb-lib-file").onchange = function (e) {
-      var f = e.target.files[0];
-      if (!f) return;
-      var r = new FileReader();
-      r.onload = function () {
-        try {
-          var res = window.importLibrary(r.result);
-          alert("Library import: " + res.added + " added, " + res.duplicates + " duplicates skipped, " + res.invalid + " invalid skipped (of " + res.total + ").");
-          location.reload();
-        } catch (err) { alert("Library import failed: " + err.message); }
-      };
-      r.readAsText(f);
+    $("cb-reset").onclick = function () {
+      if (!confirm("Reset the demo? This replaces everything here with the original sample library.")) return;
+      localStorage.removeItem("calbench:calbench-v1");
+      location.reload();
     };
   })();
 </script>

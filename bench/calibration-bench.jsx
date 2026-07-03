@@ -74,7 +74,21 @@ async function loadData() {
       return d;
     }
   } catch (e) { /* first run */ }
-  return { skills: [] };
+  const seeded = { skills: buildDemoSeed() };
+  saveData(seeded);
+  return seeded;
+}
+
+/* Demo port: first boot (or Reset demo data) populates the bench from the
+   curated seed in demo-library.js so visitors never see an empty state. */
+function buildDemoSeed() {
+  const raw = Array.isArray(window.CALBENCH_DEMO_SEED) ? window.CALBENCH_DEMO_SEED : [];
+  return raw.map((it) => ({
+    id: uid(), type: it.type, name: it.name, cue: it.cue || "",
+    discipline: it.discipline || "", subject: it.subject || "", tag: it.subject || "",
+    steps: Array.isArray(it.steps) ? it.steps : [],
+    created: Date.now(), intervalDays: 1, due: today(), attempts: [],
+  }));
 }
 async function saveData(data) {
   try { await window.storage.set(STORAGE_KEY, JSON.stringify(data)); }
@@ -671,6 +685,9 @@ function CalibrationBench() {
           <div>
             <div style={{ fontFamily: T.mono, fontSize: 20, letterSpacing: "0.22em" }}>
               CALIBRATION<span style={{ color: T.brass }}> BENCH</span>
+              <span style={{ fontSize: 10, letterSpacing: "0.18em", color: T.green,
+                border: `1px solid ${T.green}`, borderRadius: 2, padding: "2px 7px",
+                marginLeft: 12, verticalAlign: "3px" }}>DEMO</span>
             </div>
             <div style={{ fontSize: 12, color: T.muted, marginTop: 2 }}>
               predict · recall · grade · read the gauge
@@ -680,9 +697,81 @@ function CalibrationBench() {
             <Tab id="bench">Bench</Tab>
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
+            <Tab id="theory">Theory</Tab>
             <a className="cb-home" href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
           </nav>
         </div>
+
+        {view === "theory" && (
+          <div style={{ display: "grid", gap: 16 }}>
+            <Panel>
+              <Eyebrow>What this is</Eyebrow>
+              <div style={{ fontSize: 14.5, lineHeight: 1.75, color: T.text }}>
+                Calibration Bench is a metacognition trainer. Most study tools test what you know.
+                This one also tests whether you <em>know</em> what you know, because the gap between
+                confidence and competence is where real-world mistakes live. Every drill runs one loop:
+                predict how well you will recall an item, retrieve it from memory, grade yourself
+                strictly against a reference, then read the gauge.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>Why predict first: delayed judgments of learning</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                Judging your own knowledge right after studying mostly measures short-term familiarity,
+                which evaporates. Research on judgments of learning (JOLs) shows that predictions made
+                after a delay, when the answer is not fresh, track later performance far better. The
+                bench forces that delayed prediction before every recall, so each drill generates one
+                honest data point about your self-assessment.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>Why type from memory: the testing effect</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                Retrieval practice strengthens memory more than re-reading the same material, an effect
+                replicated across hundreds of studies. The effortful act of pulling an answer out of
+                memory is the learning event. That is why the bench makes you produce the answer in
+                full before it reveals the reference, and why struggling is the point.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>Why grade strictly: the fluency illusion</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                Recognizing the correct answer feels like knowing it. It is not the same thing. Grading
+                against an explicit reference, step by step, prevents "I basically had it" from inflating
+                your score. On a knowledge test or in a cockpit, close is a wrong answer.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>The gauge: calibration</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                The dual needles show predicted versus actual on every drill, and the calibration curve
+                accumulates them: if the points sit on the diagonal, your confidence means something.
+                Above the line is underconfidence, below it is overconfidence. The bias stat tracks which
+                way you habitually miss. Well-calibrated people who say "80% sure" are right about 80%
+                of the time; most of us start out overconfident.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>The scheduler: spacing with an overconfidence penalty</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                Items you recall well come back later (the interval roughly doubles); items you miss come
+                back tomorrow. One twist: if your confidence exceeded your accuracy by more than 20 points,
+                the next review is pulled sooner regardless of the score. Overconfident knowledge is the
+                dangerous kind, so the scheduler treats it as fragile until your prediction and your
+                performance agree.
+              </div>
+            </Panel>
+            <Panel>
+              <Eyebrow>About this demo</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                The bench is pre-loaded with sample items across three disciplines so you can run real
+                drills; use the Session Scope on the Bench tab to focus one discipline or subject. Anything
+                you log stays in this browser only. Restore the original samples with Reset demo data in
+                the footer. Built by <a href="https://mattbreckenridge.com" style={{ color: T.brass }}>Matt Breckenridge</a>.
+              </div>
+            </Panel>
+          </div>
+        )}
 
         {view === "add" && <SkillForm skills={skills} onSave={addSkill} onCancel={() => setView("bench")} />}
         {view === "edit" && editing && <SkillForm skills={skills} initial={editing} onSave={updateSkill} onCancel={() => { setEditing(null); setView("library"); }} />}
