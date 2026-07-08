@@ -783,6 +783,19 @@ function CalibrationBench() {
 
         {view === "bench" && (
           <div style={{ display: "grid", gap: 16 }}>
+            <Panel style={{ borderLeft: `3px solid ${T.brass}` }}>
+              <Eyebrow>Live demo</Eyebrow>
+              <div style={{ fontSize: 14, lineHeight: 1.7, color: T.text }}>
+                This is a working demo of <strong>Calibration Bench</strong>, a metacognition trainer that
+                measures not just what you know but how well you know it. Each drill: predict how much you'll
+                recall, retrieve it from memory, grade yourself against the reference, then read the gauge.
+                It's pre-loaded with sample items across a few disciplines, so pick a card below and hit
+                <span style={{ fontFamily: T.mono, color: T.brass }}> Drill</span>.
+                {" "}The <button onClick={() => setView("theory")} style={{ background: "none", border: "none",
+                  color: T.brass, cursor: "pointer", padding: 0, font: "inherit", textDecoration: "underline" }}>Theory
+                tab</button> explains the science; everything you log stays in this browser only.
+              </div>
+            </Panel>
             {(() => {
               const disciplineOpts = [...new Set(skills.map((s) => s.discipline).filter(Boolean))].sort();
               const subjectOpts = [...new Set(skills
