@@ -298,10 +298,10 @@
     <h1 id="hero-name" tabindex="0">Matt Breckenridge</h1>
     <p class="hero-sub">10 years building digital products. Currently exploring what's possible when a product owner can prototype and validate independently using AI.</p>
     <nav class="hero-links">
-      <a class="hero-link" href="resume.html">Resume</a>
-      <a class="hero-link" href="https://www.linkedin.com/in/mattbreckenridge/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="hero-link" href="https://github.com/skimecha" target="_blank" rel="noopener">GitHub</a>
-      <a class="hero-link" href="mailto:matt.breckenridge@gmail.com">Email</a>
+      <a class="hero-link" href="resume.html" data-gc="contact-resume">Resume</a>
+      <a class="hero-link" href="https://www.linkedin.com/in/mattbreckenridge/" target="_blank" rel="noopener" data-gc="contact-linkedin">LinkedIn</a>
+      <a class="hero-link" href="https://github.com/skimecha" target="_blank" rel="noopener" data-gc="contact-github">GitHub</a>
+      <a class="hero-link" href="mailto:matt.breckenridge@gmail.com" data-gc="contact-email">Email</a>
       <button class="hero-link theme-toggle" id="theme-toggle" type="button"></button>
     </nav>
   </header>
@@ -323,7 +323,7 @@
             <span class="tag">Vanilla JS</span>
           </div>
         </div>
-        <a class="cta-btn" href="https://skimecha.github.io/scout-demo/" target="_blank" rel="noopener">View Demo</a>
+        <a class="cta-btn" href="https://skimecha.github.io/scout-demo/" target="_blank" rel="noopener" data-gc="demo-scout">View Demo</a>
       </article>
 
       <article class="card">
@@ -339,7 +339,7 @@
             <span class="tag">localStorage</span>
           </div>
         </div>
-        <a class="cta-btn" href="/bench/">Try Demo</a>
+        <a class="cta-btn" href="/bench/" data-gc="demo-bench">Try Demo</a>
       </article>
 
       <article class="card">
@@ -356,7 +356,7 @@
             <span class="tag">PWA</span>
           </div>
         </div>
-        <a class="cta-btn" href="https://skimecha.github.io/strength-demo/" target="_blank" rel="noopener">Try Demo</a>
+        <a class="cta-btn" href="https://skimecha.github.io/strength-demo/" target="_blank" rel="noopener" data-gc="demo-strength">Try Demo</a>
       </article>
 
       <article class="card">
@@ -372,7 +372,7 @@
             <span class="tag">Aviation</span>
           </div>
         </div>
-        <a class="cta-btn" href="https://skimecha.github.io/radio-recall/" target="_blank" rel="noopener">Try It</a>
+        <a class="cta-btn" href="https://skimecha.github.io/radio-recall/" target="_blank" rel="noopener" data-gc="demo-radio">Try It</a>
       </article>
 
     </div>
@@ -382,14 +382,14 @@
     <div class="slabel">About</div>
     <div class="about-card">
       <p><strong>10+ years in eCommerce and digital product ownership.</strong> Recent experience includes <strong>Boehringer Ingelheim</strong> (pharma, SAFe, global platform), <strong>ChemPoint</strong> (headless eCommerce migration, 30% international traffic growth), and <strong>KURU Footwear</strong> (Magento, Agile team lead).</p>
-      <p>Every project above is a real, working tool built end to end: scoped, prototyped, shipped, and iterated. Full history on <a href="https://www.linkedin.com/in/mattbreckenridge/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <p>Every project above is a real, working tool built end to end: scoped, prototyped, shipped, and iterated. Full history on <a href="https://www.linkedin.com/in/mattbreckenridge/" target="_blank" rel="noopener" data-gc="contact-linkedin">LinkedIn</a>.</p>
     </div>
   </section>
 
   <footer>
     <div class="footer-links">
-      <a href="mailto:matt.breckenridge@gmail.com">matt.breckenridge@gmail.com</a>
-      <a href="https://github.com/skimecha" target="_blank" rel="noopener">github.com/skimecha</a>
+      <a href="mailto:matt.breckenridge@gmail.com" data-gc="contact-email">matt.breckenridge@gmail.com</a>
+      <a href="https://github.com/skimecha" target="_blank" rel="noopener" data-gc="contact-github">github.com/skimecha</a>
     </div>
     <div>mattbreckenridge.com</div>
   </footer>
@@ -441,6 +441,14 @@
     nameEl.addEventListener('click', togglePortrait);
     nameEl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePortrait(); } });
   }
+
+  // GoatCounter click events for any link tagged data-gc (demo CTAs, contact links).
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[data-gc]') : null;
+    if (a && window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: a.dataset.gc, title: a.dataset.gc, event: true });
+    }
+  });
 </script>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
