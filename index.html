@@ -421,6 +421,9 @@
       portrait.src = PORTRAITS[showCount % PORTRAITS.length];
       showCount++;
       portrait.classList.remove('is-hidden');
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'portrait-egg', title: 'Header portrait easter egg', event: true });
+      }
     } else {
       portrait.classList.add('is-hidden');
     }
@@ -433,5 +436,9 @@
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
 <!-- End Cloudflare Web Analytics -->
+<!-- GoatCounter: single-purpose counter for the header easter egg. no_onload = no pageview tracking, fires only the portrait-egg event. -->
+<script data-goatcounter="https://mattbreck.goatcounter.com/count"
+        data-goatcounter-settings='{"no_onload": true}'
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
