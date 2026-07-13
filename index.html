@@ -421,8 +421,13 @@
       portrait.src = PORTRAITS[showCount % PORTRAITS.length];
       showCount++;
       portrait.classList.remove('is-hidden');
-      if (window.goatcounter && window.goatcounter.count) {
+      // Count distinct browsers that discover the egg: fire the event only the
+      // first time this browser reveals it (first-party flag, no cookie).
+      var eggSeen = false;
+      try { eggSeen = localStorage.getItem('mb-egg-seen') === '1'; } catch (e) {}
+      if (!eggSeen && window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'portrait-egg', title: 'Header portrait easter egg', event: true });
+        try { localStorage.setItem('mb-egg-seen', '1'); } catch (e) {}
       }
     } else {
       portrait.classList.add('is-hidden');
