@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Chess | Black Magic Dev Journal</title>
+<meta name="description" content="Episode 1: why the world needs a new Space Chess, and the three decisions that shaped Black Magic before a single line of game code existed.">
+<meta property="og:title" content="Space Chess | Black Magic Dev Journal">
+<meta property="og:description" content="Why the world needs a new Space Chess, and the three decisions that shaped an RTS before a single line of game code existed.">
+<meta property="og:url" content="https://mattbreckenridge.com/journal/ep1.html">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
+<link rel="stylesheet" href="journal.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="topnav">
+    <div class="topnav-links">
+      <a class="nav-link" href="./">← Journal</a>
+      <a class="nav-link" href="/">mattbreckenridge.com</a>
+    </div>
+    <button class="nav-link theme-toggle" id="theme-toggle" type="button"></button>
+  </nav>
+
+  <article class="prose">
+
+    <header class="jhead">
+      <div class="jhead-kicker">Black Magic Dev Journal</div>
+      <div class="ep-meta">EP 1<span class="sep">·</span>July 2026<span class="sep">·</span>Written before the code</div>
+      <h1>Space Chess</h1>
+    </header>
+
+    <section>
+      <div class="slabel">The thesis</div>
+      <p>Chess has endured for 1,500 years. StarCraft: Brood War is still played professionally 28 years after release. Same reason: each is an inherently fair test of skill between opponents.</p>
+      <p>Most of what we call video games are really simulators with game elements sprinkled in. Nothing on the other side of the screen is actively trying to thwart you. A game in the purest sense is defined pieces, defined moves, one win condition, and another player following the same rulebook, seeking checkmate. That is why I call StarCraft <strong>Space Chess</strong>. Nothing has replaced it, and the genre has drifted toward hero units, roguelike layers, and monetization loops.</p>
+      <p><strong>Black Magic</strong> is my bet that the original formula still has an audience: a modern RTS with the fairness of chess and the complexity of StarCraft 2, still satisfying ten years after release because of its fundamental architecture.</p>
+      <p>For the record: I have been playing RTS games since Command and Conquer, and SC2 since the week Wings of Liberty launched. I am a Diamond 4v4 Random player who grew up on LAN games with five-minute no-rush house rules. I say that to be clear about what this game is not. It is not built for my comfort. It is built for the purist.</p>
+    </section>
+
+    <section>
+      <div class="slabel">The other game</div>
+      <p>There is a second experiment running inside the first. I am a product owner, not a programmer, and Black Magic is being built by an AI staff with me steering. Ten years of product work taught me to ration engineering hours. That constraint just evaporated: implementation is nearly free now, and the scarce resource is my attention. Every planning habit built around the old constraint is up for review.</p>
+      <p>This journal documents both games: the RTS, and the way it gets built. What a one-person product org with an AI staff actually looks like, decision by decision, with the receipts <a href="https://github.com/skimecha/black-magic" target="_blank" rel="noopener" data-gc="journal-repo">public in the repo</a>.</p>
+    </section>
+
+    <section>
+      <div class="slabel">Three decisions before any code</div>
+      <p>The tempting first answer was a web game, because this journal could then embed playable prototypes in every episode. But the vision is a true native successor with real 3D production values, and the journal's job is to document the project, not bend it.</p>
+      <p>Then the engine. Rust plus Bevy is the most AI-native workflow there is, all code and no editor, and it still lost for a human reason: I will be steering and approving code I did not write, and I cannot review Rust I cannot read. Unity 6 won on the two inputs that mattered, C# being the most readable serious language on the list and a mature 3D pipeline one person can actually leverage. A custom C++ engine was scope suicide and died fast.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 460" role="img" aria-label="Decision cascade: native build over web game, Unity 6 over Bevy and custom C plus plus, ending at a pure C sharp simulation rendered by Unity" style="font-family:var(--mono)">
+          <defs>
+            <marker id="arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/>
+            </marker>
+          </defs>
+
+          <text x="40" y="28" font-size="11" letter-spacing="1.5" fill="var(--text-3)">DECISION 1 · WHERE DOES IT RUN?</text>
+          <rect x="40" y="42" width="330" height="58" rx="8" fill="var(--surface-2)" stroke="var(--border-2)"/>
+          <text x="56" y="66" font-size="13" font-weight="600" fill="var(--text-3)">✗ Web game · TS + WebGL</text>
+          <text x="56" y="86" font-size="11" fill="var(--text-3)">embeddable demos, but not the vision</text>
+          <rect x="410" y="42" width="310" height="58" rx="8" fill="var(--gold-dim)" stroke="var(--gold-rim)"/>
+          <text x="426" y="66" font-size="13" font-weight="600" fill="var(--text)">✓ Native build</text>
+          <text x="426" y="86" font-size="11" fill="var(--text-2)">a true successor, 3D production values</text>
+
+          <path d="M565,100 C565,138 612,136 612,174" fill="none" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <text x="40" y="160" font-size="11" letter-spacing="1.5" fill="var(--text-3)">DECISION 2 · WHICH ENGINE?</text>
+          <rect x="40" y="174" width="225" height="58" rx="8" fill="var(--surface-2)" stroke="var(--border-2)"/>
+          <text x="56" y="198" font-size="13" font-weight="600" fill="var(--text-3)">✗ Rust + Bevy</text>
+          <text x="56" y="218" font-size="11" fill="var(--text-3)">can't review what I can't read</text>
+          <rect x="280" y="174" width="210" height="58" rx="8" fill="var(--surface-2)" stroke="var(--border-2)"/>
+          <text x="296" y="198" font-size="13" font-weight="600" fill="var(--text-3)">✗ Custom C++</text>
+          <text x="296" y="218" font-size="11" fill="var(--text-3)">years of plumbing first</text>
+          <rect x="505" y="174" width="215" height="58" rx="8" fill="var(--gold-dim)" stroke="var(--gold-rim)"/>
+          <text x="521" y="198" font-size="13" font-weight="600" fill="var(--text)">✓ Unity 6 + C#</text>
+          <text x="521" y="218" font-size="11" fill="var(--text-2)">readable, mature 3D pipeline</text>
+
+          <path d="M612,232 C612,270 380,268 380,306" fill="none" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+
+          <text x="40" y="292" font-size="11" letter-spacing="1.5" fill="var(--text-3)">DECISION 3 · WHERE DOES THE GAME LIVE?</text>
+          <rect x="40" y="306" width="680" height="74" rx="8" fill="var(--gold-dim)" stroke="var(--gold-rim)"/>
+          <text x="56" y="334" font-size="13" font-weight="600" fill="var(--text)">✓ A pure C# simulation, rendered by Unity</text>
+          <text x="56" y="356" font-size="11" fill="var(--text-2)">deterministic lockstep · fixed-point math · replays are command logs · runs headless</text>
+
+          <path d="M380,380 L380,410" fill="none" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#arr-g)"/>
+          <text x="380" y="438" text-anchor="middle" font-size="12" font-weight="600" fill="var(--gold-lt)">M0: prove determinism, or change course while it's cheap</text>
+        </svg>
+        <figcaption class="figcap">Three forks, one path. The full decision records live in the repo: <a href="https://github.com/skimecha/black-magic/tree/main/decisions" target="_blank" rel="noopener" data-gc="journal-decisions">decisions/0001 through 0004</a>.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="slabel">The architecture that fell out</div>
+      <p>What made StarCraft 2 work on 2008 internet connections still holds today: a deterministic lockstep simulation. Only player commands travel the wire. Every client computes the identical game, and a replay is nothing but the command log.</p>
+      <p>So the simulation is a pure C# library with zero Unity dependencies: fixed-point math, a tick loop fed by a command queue, state that can be hashed. Unity renders what the sim says and converts clicks into commands. It never reaches inside. The payoff goes beyond multiplayer: the AI staff can run the sim headless, simulate thousands of battles, and verify its own work without ever opening an editor. The workflow advantage that made Bevy tempting got rebuilt inside a Unity project.</p>
+
+      <figure class="figure">
+        <svg viewBox="0 0 760 330" role="img" aria-label="Architecture: Unity sends commands across a one-way boundary to the pure C sharp simulation, which returns state snapshots" style="font-family:var(--mono)">
+          <defs>
+            <marker id="arr-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--text-2)"/>
+            </marker>
+          </defs>
+
+          <line x1="495" y1="40" x2="495" y2="285" stroke="var(--gold)" stroke-width="2" stroke-dasharray="6 6"/>
+          <text x="495" y="26" text-anchor="middle" font-size="11" fill="var(--gold-lt)">the one-way boundary</text>
+
+          <rect x="40" y="70" width="400" height="190" rx="10" fill="var(--surface-2)" stroke="var(--border-2)"/>
+          <text x="56" y="100" font-size="14" font-weight="600" fill="var(--text)">Simulation · sim/</text>
+          <text x="56" y="130" font-size="12" fill="var(--text-2)">pure C#, zero Unity references</text>
+          <text x="56" y="154" font-size="12" fill="var(--text-2)">Fix64 fixed-point math, no floats ever</text>
+          <text x="56" y="178" font-size="12" fill="var(--text-2)">tick loop fed by a command queue</text>
+          <text x="56" y="202" font-size="12" fill="var(--text-2)">SHA-256 hash of full state, every tick</text>
+          <text x="56" y="226" font-size="12" fill="var(--text-2)">runs headless: dotnet test, no editor</text>
+
+          <rect x="550" y="70" width="170" height="190" rx="10" fill="var(--surface-2)" stroke="var(--border-2)"/>
+          <text x="566" y="100" font-size="14" font-weight="600" fill="var(--text)">Unity 6 · game/</text>
+          <text x="566" y="130" font-size="12" fill="var(--text-2)">captures input</text>
+          <text x="566" y="154" font-size="12" fill="var(--text-2)">renders snapshots</text>
+          <text x="566" y="178" font-size="12" fill="var(--text-2)">interpolates ticks</text>
+          <text x="566" y="202" font-size="12" fill="var(--text-2)">never writes state</text>
+
+          <line x1="550" y1="120" x2="448" y2="120" stroke="var(--text-2)" stroke-width="1.5" marker-end="url(#arr-m)"/>
+          <text x="497" y="108" text-anchor="middle" font-size="11" fill="var(--text-2)">commands</text>
+
+          <line x1="440" y1="225" x2="542" y2="225" stroke="var(--text-2)" stroke-width="1.5" marker-end="url(#arr-m)"/>
+          <text x="497" y="250" text-anchor="middle" font-size="11" fill="var(--text-2)">state snapshots</text>
+
+          <text x="40" y="305" font-size="11" fill="var(--text-3)">a replay is the command log played back · a multiplayer game is the command log shared live</text>
+        </svg>
+        <figcaption class="figcap">game/ depends on sim/. sim/ never knows Unity exists. The dependency arrow points one way, enforced by project structure.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="slabel">The rules</div>
+      <p>No off-the-shelf methodology fits a team of one human and an AI staff, because they all assume the scarce resource is developer hours. Here it is my attention. The methodology is assembled from four borrowed parts, each chosen because it rations attention or kills risk:</p>
+      <ul>
+        <li><strong>Vertical slices.</strong> Every milestone cuts sim to screen and ends in a showable artifact. No "80% done" layers.</li>
+        <li><strong>Appetites, not estimates.</strong> Each milestone gets a time budget. Blowing it means cutting scope, not extending, and the cuts get journaled.</li>
+        <li><strong>Risk first.</strong> The unknowns that could kill the project die first, cheaply.</li>
+        <li><strong>A WIP limit on me, not the code.</strong> The staff generates work faster than I can review it. My queue is capped at three items; when it is full, the staff works the backlog instead of my inbox.</li>
+      </ul>
+      <p>And one engineering rule held sacred: acceptance tests before implementation on all simulation work. I approve the contract, the staff verifies against it, and my review shifts from reading every line to approving behavior.</p>
+    </section>
+
+    <section>
+      <div class="slabel">Next</div>
+      <p>First milestone: M0, Foundations. One question: can C# produce a bit-identical simulation across machines and runtimes? If not, the architecture is wrong, and I want to find out for a week of evenings, not a year. Episode 2 has the answer.</p>
+    </section>
+
+    <nav class="ep-nav">
+      <a class="nav-link" href="./">← All episodes</a>
+      <a class="nav-link" href="ep2.html" data-gc="journal-ep2">Episode 2: 601 Identical Hashes →</a>
+    </nav>
+
+  </article>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:matt.breckenridge@gmail.com" data-gc="contact-email">matt.breckenridge@gmail.com</a>
+      <a href="https://github.com/skimecha/black-magic" target="_blank" rel="noopener" data-gc="journal-repo">github.com/skimecha/black-magic</a>
+    </div>
+    <div>mattbreckenridge.com</div>
+  </footer>
+
+</div>
+<script src="journal.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
+<!-- GoatCounter: events only, no pageview tracking (Cloudflare handles pageviews). -->
+<script data-goatcounter="https://mattbreck.goatcounter.com/count"
+        data-goatcounter-settings='{"no_onload": true}'
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Magic Dev Journal | Matt Breckenridge</title>
+<meta name="description" content="Black Magic is a real-time strategy game in the StarCraft lineage, built in public by one product owner and an AI staff. This journal is the record.">
+<meta property="og:title" content="Black Magic Dev Journal">
+<meta property="og:description" content="An RTS spiritual successor to StarCraft 2, built in public by one product owner and an AI staff. Every decision, milestone, and artifact, documented.">
+<meta property="og:url" content="https://mattbreckenridge.com/journal/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
+<link rel="stylesheet" href="journal.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="topnav">
+    <div class="topnav-links">
+      <a class="nav-link" href="/">← mattbreckenridge.com</a>
+    </div>
+    <button class="nav-link theme-toggle" id="theme-toggle" type="button"></button>
+  </nav>
+
+  <header class="jhead">
+    <div class="jhead-kicker">Dev Journal</div>
+    <h1>Black Magic</h1>
+    <p class="jhead-sub">A real-time strategy game in the StarCraft lineage: the fairness of chess, the complexity of SC2, built on a modern deterministic architecture. One product owner, an AI staff, everything in public. This journal is the record: every decision, milestone, artifact, and misstep.</p>
+    <div class="jhead-links">
+      <a class="nav-link" href="https://github.com/skimecha/black-magic" target="_blank" rel="noopener" data-gc="journal-repo">Source on GitHub</a>
+      <a class="nav-link" href="https://github.com/skimecha/black-magic/blob/main/plan/vision.md" target="_blank" rel="noopener" data-gc="journal-vision">The vision doc</a>
+    </div>
+  </header>
+
+  <section class="miles">
+    <div class="slabel">Milestones</div>
+    <div class="mile-row">
+      <div class="mile">
+        <div class="mile-id">M0</div>
+        <div class="mile-name">Foundations</div>
+        <span class="mile-state done">Determinism proven</span>
+      </div>
+      <div class="mile">
+        <div class="mile-id">M1</div>
+        <div class="mile-name">First Marine</div>
+        <span class="mile-state active">In flight</span>
+      </div>
+      <div class="mile">
+        <div class="mile-id">M2</div>
+        <div class="mile-name">Space Chess Minimum</div>
+        <span class="mile-state next">Up next</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="episodes">
+    <div class="slabel">Episodes</div>
+    <div class="epcards">
+
+      <article class="epcard">
+        <div class="card-body">
+          <div class="epcard-top">
+            <span class="ep-num">EP 2</span>
+            <h3>601 Identical Hashes</h3>
+            <span class="ep-date">July 2026 · Milestone M0</span>
+          </div>
+          <p>The entire multiplayer architecture rides on one property: the same commands must produce the same game, bit for bit, on every machine. Milestone zero existed to prove that or kill the project cheap. Fifty acceptance tests, two operating systems, two .NET runtimes, 601 state hashes per run. All of them identical.</p>
+        </div>
+        <a class="cta-btn" href="ep2.html" data-gc="journal-ep2">Read Episode 2</a>
+      </article>
+
+      <article class="epcard">
+        <div class="card-body">
+          <div class="epcard-top">
+            <span class="ep-num">EP 1</span>
+            <h3>Space Chess</h3>
+            <span class="ep-date">July 2026 · Before the code</span>
+          </div>
+          <p>Why the world needs a new Space Chess, and the three decisions that shaped Black Magic before a single line of game code existed: native over web, Unity over Bevy, and a simulation that never touches its own renderer. Plus the methodology experiment: what project planning looks like when implementation is nearly free and the bottleneck is one person's attention.</p>
+        </div>
+        <a class="cta-btn" href="ep1.html" data-gc="journal-ep1">Read Episode 1</a>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:matt.breckenridge@gmail.com" data-gc="contact-email">matt.breckenridge@gmail.com</a>
+      <a href="https://github.com/skimecha" target="_blank" rel="noopener" data-gc="contact-github">github.com/skimecha</a>
+    </div>
+    <div>mattbreckenridge.com</div>
+  </footer>
+
+</div>
+<script src="journal.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
+<!-- GoatCounter: events only, no pageview tracking (Cloudflare handles pageviews). -->
+<script data-goatcounter="https://mattbreck.goatcounter.com/count"
+        data-goatcounter-settings='{"no_onload": true}'
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

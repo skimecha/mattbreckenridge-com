@@ -1,0 +1,252 @@
+/* Black Magic dev journal. Shares the design tokens of mattbreckenridge.com. */
+:root {
+  --bg: #080A10;
+  --surface: #0E1118;
+  --surface-2: #141820;
+  --border: #1E2438;
+  --border-2: #28304A;
+  --text: #DDE0EC;
+  --text-2: #727796;
+  --text-3: #424660;
+  --gold: #C49A0C;
+  --gold-lt: #E8B620;
+  --gold-dim: rgba(196,154,12,0.11);
+  --gold-rim: rgba(196,154,12,0.28);
+  --green: #2D9966;
+  --green-dim: rgba(45,153,102,0.11);
+  --green-rim: rgba(45,153,102,0.30);
+  --cta-bg: #C49A0C;
+  --cta-bg-hover: #E8B620;
+  --cta-text: #0A0800;
+  --r: 10px;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+:root[data-theme="light"] {
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --surface-2: #EFEDE6;
+  --border: #E0DDD2;
+  --border-2: #CCC8B8;
+  --text: #1C1F2E;
+  --text-2: #5B5F77;
+  --text-3: #8F92A6;
+  --gold: #9C7A08;
+  --gold-lt: #7E6206;
+  --gold-dim: rgba(156,122,8,0.10);
+  --gold-rim: rgba(156,122,8,0.38);
+  --green: #1E7A4E;
+  --green-dim: rgba(30,122,78,0.10);
+  --green-rim: rgba(30,122,78,0.35);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 900px; margin: 0 auto; padding: 28px 24px 100px; }
+a { color: inherit; }
+
+/* ---- Top nav ---- */
+.topnav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 48px; }
+.topnav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.nav-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 8px 14px;
+  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.nav-link:hover { border-color: var(--gold-rim); color: var(--gold-lt); }
+
+/* ---- Section labels ---- */
+.slabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+.slabel::before { content: "// "; color: var(--gold); }
+
+/* ---- Journal header ---- */
+.jhead { padding: 8px 0 56px; }
+.jhead-kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.jhead h1 { font-size: 40px; font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 16px; }
+.jhead-sub { font-size: 16.5px; line-height: 1.7; color: var(--text-2); max-width: 640px; margin-bottom: 24px; }
+.jhead-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ---- Milestone strip ---- */
+.miles { padding-bottom: 64px; }
+.mile-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.mile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+}
+.mile-id { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-bottom: 6px; }
+.mile-name { font-family: var(--mono); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.mile-state {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 20px;
+  padding: 2px 10px;
+  white-space: nowrap;
+  display: inline-block;
+}
+.mile-state.done { color: var(--green); background: var(--green-dim); border: 1px solid var(--green-rim); }
+.mile-state.done::before { content: "✓ "; }
+.mile-state.active { color: var(--gold-lt); background: var(--gold-dim); border: 1px solid var(--gold-rim); }
+.mile-state.active::before { content: "◌ "; }
+.mile-state.next { color: var(--text-3); background: var(--surface-2); border: 1px solid var(--border-2); }
+.mile-state.next::before { content: "· "; }
+
+/* ---- Episode cards ---- */
+.epcards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.epcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 32px;
+  align-items: start;
+  transition: border-color 0.15s;
+}
+.epcard:hover { border-color: var(--border-2); }
+.epcard-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.epcard h3 { font-family: var(--mono); font-size: 17px; font-weight: 600; letter-spacing: 0.01em; }
+.ep-num { font-family: var(--mono); font-size: 11px; color: var(--gold); }
+.ep-date { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+.epcard p { color: var(--text-2); font-size: 14.5px; line-height: 1.7; }
+.cta-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cta-text);
+  background: var(--cta-bg);
+  border: none;
+  border-radius: 7px;
+  padding: 11px 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  align-self: center;
+  transition: background 0.15s;
+}
+.cta-btn:hover { background: var(--cta-bg-hover); }
+
+/* ---- Episode article ---- */
+.ep-meta { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-bottom: 14px; }
+.ep-meta .sep { color: var(--border-2); margin: 0 6px; }
+article.prose { max-width: 720px; }
+article.prose .jhead { padding-bottom: 40px; }
+article.prose section { margin-bottom: 44px; }
+article.prose p { color: var(--text-2); font-size: 15px; line-height: 1.78; }
+article.prose p + p { margin-top: 14px; }
+article.prose strong { color: var(--text); font-weight: 600; }
+article.prose a { color: var(--gold-lt); text-decoration: none; }
+article.prose a:hover { text-decoration: underline; }
+article.prose ul { margin: 14px 0 0 20px; color: var(--text-2); }
+article.prose li { margin-bottom: 8px; line-height: 1.7; }
+article.prose li::marker { color: var(--gold); }
+
+/* ---- Figures ---- */
+.figure {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 22px;
+  margin: 22px 0 0;
+  max-width: 860px;
+}
+.figure svg { display: block; width: 100%; height: auto; }
+.figcap { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-top: 14px; line-height: 1.6; }
+.figcap a { color: var(--text-2); }
+.figcap a:hover { color: var(--gold-lt); }
+
+/* The raw artifact keeps its own dark chrome in both themes. */
+.artifact-frame {
+  background: #0d1117;
+  border: 1px solid var(--border-2);
+  border-radius: var(--r);
+  margin: 22px 0 0;
+  overflow-x: auto;
+  max-width: 860px;
+}
+.artifact-frame img { display: block; width: 1294px; max-width: none; height: auto; }
+@media (min-width: 920px) { .artifact-frame img { width: 100%; min-width: 816px; } }
+
+/* ---- Stat tiles ---- */
+.statrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; max-width: 860px; }
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+}
+.stat-num { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--text); line-height: 1.2; }
+.stat-num .dim { color: var(--text-3); font-size: 15px; }
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ---- Episode footer nav ---- */
+.ep-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+/* ---- Footer ---- */
+footer {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  margin-top: 72px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+footer a { color: var(--text-2); text-decoration: none; }
+footer a:hover { color: var(--gold-lt); }
+.footer-links { display: flex; gap: 22px; }
+
+@media (max-width: 720px) {
+  .jhead h1 { font-size: 31px; }
+  .mile-row { grid-template-columns: 1fr; }
+  .statrow { grid-template-columns: repeat(2, 1fr); }
+  .epcard { grid-template-columns: 1fr; }
+  .epcard .cta-btn { justify-self: start; margin-top: 12px; }
+}

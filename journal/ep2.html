@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>601 Identical Hashes | Black Magic Dev Journal</title>
+<meta name="description" content="Episode 2: milestone M0 existed to prove one property or kill the project cheap. Fifty acceptance tests, two OSes, two runtimes, 601 state hashes per run. All identical.">
+<meta property="og:title" content="601 Identical Hashes | Black Magic Dev Journal">
+<meta property="og:description" content="Milestone M0: prove the same commands produce the same game, bit for bit, on every machine. Or kill the architecture cheap.">
+<meta property="og:url" content="https://mattbreckenridge.com/journal/ep2.html">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
+<link rel="stylesheet" href="journal.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="topnav">
+    <div class="topnav-links">
+      <a class="nav-link" href="./">← Journal</a>
+      <a class="nav-link" href="/">mattbreckenridge.com</a>
+    </div>
+    <button class="nav-link theme-toggle" id="theme-toggle" type="button"></button>
+  </nav>
+
+  <article class="prose">
+
+    <header class="jhead">
+      <div class="jhead-kicker">Black Magic Dev Journal</div>
+      <div class="ep-meta">EP 2<span class="sep">·</span>July 2026<span class="sep">·</span>Milestone M0: Foundations</div>
+      <h1>601 Identical Hashes</h1>
+    </header>
+
+    <section>
+      <div class="slabel">The bet</div>
+      <p>Black Magic's multiplayer model transmits nothing but player commands. Every client computes the identical simulation, and a replay is just the command log. That architecture let StarCraft 2 run 200-unit battles on 2008 internet connections, and it works only if one property holds absolutely: <strong>the same commands must produce the same game, bit for bit, on every machine.</strong></p>
+      <p>That property cannot be retrofitted. If C# could not deliver it across operating systems and runtimes, the engine decision from <a href="ep1.html" data-gc="journal-ep1">Episode 1</a> was wrong, and I wanted to know while changing course cost a week of evenings instead of a year. That was milestone zero: prove determinism, or kill the architecture cheap.</p>
+    </section>
+
+    <section>
+      <div class="slabel">The result</div>
+      <div class="statrow">
+        <div class="stat">
+          <div class="stat-num">50</div>
+          <div class="stat-label">Acceptance tests, written before the code</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">601<span class="dim">/601</span></div>
+          <div class="stat-label">Per-tick state hashes, identical</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2 × 2</div>
+          <div class="stat-label">OSes × .NET runtimes, verified in CI</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1 <span class="dim">day</span></div>
+          <div class="stat-label">Against a 7-evening appetite</div>
+        </div>
+      </div>
+      <p style="margin-top:22px">The staff wrote the acceptance tests first, and I approved the contract before implementation began: what fixed-point overflow does, how command ordering breaks ties, what gets hashed. Fifty tests later the sim core exists. Fix64 math with no floats anywhere, a tick loop fed by a command queue, and a harness that serializes the entire sim state and hashes it with SHA-256, every tick.</p>
+    </section>
+
+    <section>
+      <div class="slabel">The proof</div>
+      <p>The canonical scenario: seed 42, six hundred ticks of scripted commands. Run it twice in separate processes, compare all 601 hashes (tick zero counts). Then the stronger version: a golden hash file generated on my Windows machine under .NET 10 is checked into the repo, and CI re-verifies every hash on Ubuntu and on Windows under .NET 8, on every push. Different OS, different runtime, bit-identical state. If divergence ever appears, the harness reports the first differing tick.</p>
+
+      <figure>
+        <div class="artifact-frame">
+          <img src="assets/m0-determinism.svg" alt="M0 determinism harness output: two independent runs rendered as colored hash ribbons with a tick-by-tick match row showing 601 of 601 hashes identical" loading="lazy">
+        </div>
+        <figcaption class="figcap">The actual M0 artifact, generated by the harness, not illustrated. Each ribbon is one run; color comes from the leading bits of each tick's hash; the match row compares them. Raw logs in the repo: <a href="https://github.com/skimecha/black-magic/blob/main/artifacts/m0/run1.hashes.txt" target="_blank" rel="noopener" data-gc="journal-m0-logs">run 1</a>, <a href="https://github.com/skimecha/black-magic/blob/main/artifacts/m0/run2.hashes.txt" target="_blank" rel="noopener" data-gc="journal-m0-logs">run 2</a>, and <a href="https://github.com/skimecha/black-magic/tree/main/sim" target="_blank" rel="noopener" data-gc="journal-sim">the sim itself</a>.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="slabel">What the calendar said</div>
+      <p>M0's appetite was a week of evenings. It closed in a day.</p>
+      <p>I am resisting the obvious conclusion, because inflating the next milestone's scope is exactly how an RTS becomes a decade project. The better reading: an appetite exists to absorb the unknowns that are actually risky, and M0's headline risk turned out to be dead on arrival. M1's risk is different in kind. It is the first milestone that touches the Unity editor, where the AI staff is weakest and I start doing hands-on work myself. That is what its two weeks of evenings are for. The appetite stays; the thing it insures against changes.</p>
+    </section>
+
+    <section>
+      <div class="slabel">Next</div>
+      <p>M1, First Marine: one unit on a ground plane, moving where the mouse clicks, the sim driving Unity across the one-way boundary. The first clip will be ugly. It will also be the first time Black Magic looks like a game.</p>
+    </section>
+
+    <nav class="ep-nav">
+      <a class="nav-link" href="ep1.html" data-gc="journal-ep1">← Episode 1: Space Chess</a>
+      <a class="nav-link" href="./">All episodes</a>
+    </nav>
+
+  </article>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:matt.breckenridge@gmail.com" data-gc="contact-email">matt.breckenridge@gmail.com</a>
+      <a href="https://github.com/skimecha/black-magic" target="_blank" rel="noopener" data-gc="journal-repo">github.com/skimecha/black-magic</a>
+    </div>
+    <div>mattbreckenridge.com</div>
+  </footer>
+
+</div>
+<script src="journal.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
+<!-- GoatCounter: events only, no pageview tracking (Cloudflare handles pageviews). -->
+<script data-goatcounter="https://mattbreck.goatcounter.com/count"
+        data-goatcounter-settings='{"no_onload": true}'
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
