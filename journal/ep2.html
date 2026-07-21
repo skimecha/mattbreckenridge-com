@@ -12,11 +12,12 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
 <link rel="stylesheet" href="journal.css">
 </head>
 <body>
+<div class="progress-bar" id="progress-bar"></div>
 <div class="page">
 
   <nav class="topnav">
@@ -27,22 +28,33 @@
     <button class="nav-link theme-toggle" id="theme-toggle" type="button"></button>
   </nav>
 
+  <aside class="toc" aria-label="Table of contents">
+    <div class="toc-title">This episode</div>
+    <a href="#bet">The Bet</a>
+    <a href="#result">The Result</a>
+    <a href="#proof">The Proof</a>
+    <a href="#calendar">The Calendar</a>
+    <a href="#next">Next</a>
+  </aside>
+
   <article class="prose">
 
     <header class="jhead">
       <div class="jhead-kicker">Black Magic Dev Journal</div>
-      <div class="ep-meta">EP 2<span class="sep">·</span>July 2026<span class="sep">·</span>Milestone M0: Foundations</div>
+      <div class="ep-meta">EP 2<span class="sep">·</span>July 2026<span class="sep">·</span>Milestone M0: Foundations<span class="sep">·</span>3 min read</div>
       <h1>601 Identical Hashes</h1>
+      <div class="board-strip" aria-hidden="true"></div>
     </header>
 
-    <section>
-      <div class="slabel">The bet</div>
-      <p>Black Magic's multiplayer model transmits nothing but player commands. Every client computes the identical simulation, and a replay is just the command log. That architecture let StarCraft 2 run 200-unit battles on 2008 internet connections, and it works only if one property holds absolutely: <strong>the same commands must produce the same game, bit for bit, on every machine.</strong></p>
-      <p>That property cannot be retrofitted. If C# could not deliver it across operating systems and runtimes, the engine decision from <a href="ep1.html" data-gc="journal-ep1">Episode 1</a> was wrong, and I wanted to know while changing course cost a week of evenings instead of a year. That was milestone zero: prove determinism, or kill the architecture cheap.</p>
+    <section id="bet">
+      <h2><span class="pc">♚</span>The Bet</h2>
+      <p class="lede">Black Magic's multiplayer model transmits nothing but player commands. Every client computes the identical simulation, and a replay is just the command log. That architecture let StarCraft 2 run 200-unit battles on 2008 internet connections, and it works only if one property holds absolutely: <strong>the same commands must produce the same game, bit for bit, on every machine.</strong></p>
+      <p>That property cannot be retrofitted. If C# could not deliver it across operating systems and runtimes, the engine decision from <a href="ep1.html" data-gc="journal-ep1">Episode 1</a> was wrong, and I wanted to know while changing course cost a week of evenings instead of a year. That was milestone zero.</p>
+      <blockquote class="pull">Prove determinism, or kill the architecture cheap.</blockquote>
     </section>
 
-    <section>
-      <div class="slabel">The result</div>
+    <section id="result">
+      <h2><span class="pc">♛</span>The Result</h2>
       <div class="statrow">
         <div class="stat">
           <div class="stat-num">50</div>
@@ -61,11 +73,11 @@
           <div class="stat-label">Against a 7-evening appetite</div>
         </div>
       </div>
-      <p style="margin-top:22px">The staff wrote the acceptance tests first, and I approved the contract before implementation began: what fixed-point overflow does, how command ordering breaks ties, what gets hashed. Fifty tests later the sim core exists. Fix64 math with no floats anywhere, a tick loop fed by a command queue, and a harness that serializes the entire sim state and hashes it with SHA-256, every tick.</p>
+      <p style="margin-top:24px">The staff wrote the acceptance tests first, and I approved the contract before implementation began: what fixed-point overflow does, how command ordering breaks ties, what gets hashed. Fifty tests later the sim core exists. Fix64 math with no floats anywhere, a tick loop fed by a command queue, and a harness that serializes the entire sim state and hashes it with SHA-256, every tick.</p>
     </section>
 
-    <section>
-      <div class="slabel">The proof</div>
+    <section id="proof">
+      <h2><span class="pc">♜</span>The Proof</h2>
       <p>The canonical scenario: seed 42, six hundred ticks of scripted commands. Run it twice in separate processes, compare all 601 hashes (tick zero counts). Then the stronger version: a golden hash file generated on my Windows machine under .NET 10 is checked into the repo, and CI re-verifies every hash on Ubuntu and on Windows under .NET 8, on every push. Different OS, different runtime, bit-identical state. If divergence ever appears, the harness reports the first differing tick.</p>
 
       <figure>
@@ -76,20 +88,26 @@
       </figure>
     </section>
 
-    <section>
-      <div class="slabel">What the calendar said</div>
+    <section id="calendar">
+      <h2><span class="pc">♝</span>What the Calendar Said</h2>
       <p>M0's appetite was a week of evenings. It closed in a day.</p>
       <p>I am resisting the obvious conclusion, because inflating the next milestone's scope is exactly how an RTS becomes a decade project. The better reading: an appetite exists to absorb the unknowns that are actually risky, and M0's headline risk turned out to be dead on arrival. M1's risk is different in kind. It is the first milestone that touches the Unity editor, where the AI staff is weakest and I start doing hands-on work myself. That is what its two weeks of evenings are for. The appetite stays; the thing it insures against changes.</p>
     </section>
 
-    <section>
-      <div class="slabel">Next</div>
+    <section id="next">
+      <h2><span class="pc">♟</span>Next</h2>
       <p>M1, First Marine: one unit on a ground plane, moving where the mouse clicks, the sim driving Unity across the one-way boundary. The first clip will be ugly. It will also be the first time Black Magic looks like a game.</p>
     </section>
 
-    <nav class="ep-nav">
-      <a class="nav-link" href="ep1.html" data-gc="journal-ep1">← Episode 1: Space Chess</a>
-      <a class="nav-link" href="./">All episodes</a>
+    <nav class="ep-nav-cards">
+      <a class="ep-nav-card" href="ep1.html" data-gc="journal-ep1">
+        <div class="ep-nav-kicker">← Previous episode</div>
+        <div class="ep-nav-title">EP 1 · Space Chess</div>
+      </a>
+      <a class="ep-nav-card is-next" href="./">
+        <div class="ep-nav-kicker">Index</div>
+        <div class="ep-nav-title">All episodes</div>
+      </a>
     </nav>
 
   </article>

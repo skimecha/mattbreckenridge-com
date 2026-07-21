@@ -1,4 +1,7 @@
-/* Black Magic dev journal. Shares the design tokens of mattbreckenridge.com. */
+/* Black Magic dev journal. Shares the design tokens of mattbreckenridge.com.
+   Articles switch to an editorial reading register: serif body, tighter measure,
+   real headings. Chrome (nav, labels, captions, stats, figures) stays in the
+   site's mono/sans dashboard voice. Chess motifs run through both. */
 :root {
   --bg: #080A10;
   --surface: #0E1118;
@@ -8,6 +11,7 @@
   --text: #DDE0EC;
   --text-2: #727796;
   --text-3: #424660;
+  --ink: #CBD0E0;
   --gold: #C49A0C;
   --gold-lt: #E8B620;
   --gold-dim: rgba(196,154,12,0.11);
@@ -21,6 +25,7 @@
   --r: 10px;
   --mono: 'IBM Plex Mono', monospace;
   --sans: 'DM Sans', sans-serif;
+  --serif: 'Newsreader', Georgia, serif;
 }
 :root[data-theme="light"] {
   --bg: #F6F5F1;
@@ -31,6 +36,7 @@
   --text: #1C1F2E;
   --text-2: #5B5F77;
   --text-3: #8F92A6;
+  --ink: #23283B;
   --gold: #9C7A08;
   --gold-lt: #7E6206;
   --gold-dim: rgba(156,122,8,0.10);
@@ -52,6 +58,16 @@ body {
 .page { max-width: 900px; margin: 0 auto; padding: 28px 24px 100px; }
 a { color: inherit; }
 
+/* ---- Reading progress ---- */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--gold);
+  z-index: 60;
+}
+
 /* ---- Top nav ---- */
 .topnav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 48px; }
 .topnav-links { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -70,7 +86,7 @@ a { color: inherit; }
 }
 .nav-link:hover { border-color: var(--gold-rim); color: var(--gold-lt); }
 
-/* ---- Section labels ---- */
+/* ---- Section labels (index chrome) ---- */
 .slabel {
   font-family: var(--mono);
   font-size: 10px;
@@ -83,7 +99,20 @@ a { color: inherit; }
 .slabel::before { content: "// "; color: var(--gold); }
 
 /* ---- Journal header ---- */
-.jhead { padding: 8px 0 56px; }
+.jhead { padding: 8px 0 56px; position: relative; }
+.jhead > * { position: relative; z-index: 2; }
+.jhead::after {
+  content: "♞";
+  position: absolute;
+  top: -60px;
+  right: -10px;
+  font-size: 240px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 1;
+}
 .jhead-kicker {
   font-family: var(--mono);
   font-size: 11px;
@@ -96,6 +125,15 @@ a { color: inherit; }
 .jhead h1 { font-size: 40px; font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 16px; }
 .jhead-sub { font-size: 16.5px; line-height: 1.7; color: var(--text-2); max-width: 640px; margin-bottom: 24px; }
 .jhead-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Eight alternating squares, a rank of the board. */
+.board-strip {
+  width: 112px;
+  height: 14px;
+  border: 1px solid var(--gold-rim);
+  background: repeating-conic-gradient(var(--gold-rim) 0% 25%, transparent 0% 50%) 0 0 / 28px 28px;
+  margin: 4px 0 20px;
+}
 
 /* ---- Milestone strip ---- */
 .miles { padding-bottom: 64px; }
@@ -139,10 +177,11 @@ a { color: inherit; }
   align-items: start;
   transition: border-color 0.15s;
 }
-.epcard:hover { border-color: var(--border-2); }
+.epcard:hover { border-color: var(--gold-rim); }
 .epcard-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
 .epcard h3 { font-family: var(--mono); font-size: 17px; font-weight: 600; letter-spacing: 0.01em; }
 .ep-num { font-family: var(--mono); font-size: 11px; color: var(--gold); }
+.ep-num::before { content: "♟ "; font-size: 12px; }
 .ep-date { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
 .epcard p { color: var(--text-2); font-size: 14.5px; line-height: 1.7; }
 .cta-btn {
@@ -161,29 +200,148 @@ a { color: inherit; }
 }
 .cta-btn:hover { background: var(--cta-bg-hover); }
 
-/* ---- Episode article ---- */
+/* ---- Episode article: the reading register ---- */
 .ep-meta { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-bottom: 14px; }
 .ep-meta .sep { color: var(--border-2); margin: 0 6px; }
-article.prose { max-width: 720px; }
-article.prose .jhead { padding-bottom: 40px; }
-article.prose section { margin-bottom: 44px; }
-article.prose p { color: var(--text-2); font-size: 15px; line-height: 1.78; }
-article.prose p + p { margin-top: 14px; }
+
+article.prose section { margin-bottom: 20px; }
+article.prose section + section::before {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 12px;
+  margin: 44px 0;
+  border: 1px solid var(--border);
+  background: repeating-conic-gradient(var(--border) 0% 25%, transparent 0% 50%) 0 0 / 28px 28px;
+  opacity: 0.75;
+}
+article.prose h2 {
+  font-family: var(--sans);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  max-width: 640px;
+  margin-bottom: 16px;
+  scroll-margin-top: 32px;
+}
+article.prose h2 .pc {
+  color: var(--gold);
+  font-size: 19px;
+  font-weight: 400;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+article.prose p,
+article.prose ul {
+  font-family: var(--serif);
+  font-size: 17.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 640px;
+}
+article.prose p + p { margin-top: 16px; }
 article.prose strong { color: var(--text); font-weight: 600; }
 article.prose a { color: var(--gold-lt); text-decoration: none; }
 article.prose a:hover { text-decoration: underline; }
-article.prose ul { margin: 14px 0 0 20px; color: var(--text-2); }
-article.prose li { margin-bottom: 8px; line-height: 1.7; }
+article.prose ul { margin: 16px 0 0 22px; }
+article.prose li { margin-bottom: 10px; }
 article.prose li::marker { color: var(--gold); }
 
-/* ---- Figures ---- */
+/* Lead paragraph with a chess-square drop cap. */
+article.prose .lede { font-size: 20px; line-height: 1.7; }
+article.prose .lede::first-letter {
+  font-family: var(--serif);
+  font-size: 50px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--text);
+  float: left;
+  padding: 10px 14px;
+  margin: 5px 14px 0 0;
+  border: 1px solid var(--gold-rim);
+  border-radius: 6px;
+  background: repeating-conic-gradient(var(--gold-dim) 0% 25%, transparent 0% 50%) 0 0 / 35px 35px;
+}
+
+/* Pull quote, crowned. */
+article.prose blockquote.pull {
+  max-width: 560px;
+  margin: 40px auto;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text);
+}
+article.prose blockquote.pull::before {
+  content: "♛";
+  display: block;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+/* ---- Table of contents (wide screens) ---- */
+.toc {
+  display: none;
+  position: fixed;
+  top: 140px;
+  right: max(24px, calc((100vw - 900px) / 2 - 236px));
+  width: 200px;
+  z-index: 40;
+}
+@media (min-width: 1360px) { .toc { display: block; } }
+.toc-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+.toc-title::before { content: "♜ "; color: var(--gold); }
+.toc a {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-3);
+  text-decoration: none;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid var(--border);
+  transition: color 0.15s, border-color 0.15s;
+}
+.toc a:hover { color: var(--text-2); }
+.toc a.active { color: var(--gold-lt); border-left-color: var(--gold); }
+
+/* ---- Figures: instrument chrome ---- */
 .figure {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r);
   padding: 22px;
-  margin: 22px 0 0;
+  margin: 26px 0 0;
   max-width: 860px;
+  position: relative;
+}
+.figure::before {
+  content: "FIG";
+  position: absolute;
+  top: -9px;
+  left: 18px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 2px 8px;
+  border: 1px solid var(--gold-rim);
+  border-radius: 4px;
 }
 .figure svg { display: block; width: 100%; height: auto; }
 .figcap { font-family: var(--mono); font-size: 11px; color: var(--text-3); margin-top: 14px; line-height: 1.6; }
@@ -195,7 +353,7 @@ article.prose li::marker { color: var(--gold); }
   background: #0d1117;
   border: 1px solid var(--border-2);
   border-radius: var(--r);
-  margin: 22px 0 0;
+  margin: 26px 0 0;
   overflow-x: auto;
   max-width: 860px;
 }
@@ -203,7 +361,7 @@ article.prose li::marker { color: var(--gold); }
 @media (min-width: 920px) { .artifact-frame img { width: 100%; min-width: 816px; } }
 
 /* ---- Stat tiles ---- */
-.statrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; max-width: 860px; }
+.statrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; max-width: 860px; }
 .stat {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -223,8 +381,36 @@ article.prose li::marker { color: var(--gold); }
   line-height: 1.5;
 }
 
-/* ---- Episode footer nav ---- */
-.ep-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+/* ---- Prev / next episode cards ---- */
+.ep-nav-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 56px;
+  max-width: 860px;
+}
+.ep-nav-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.ep-nav-card:hover { border-color: var(--gold-rim); }
+.ep-nav-card.is-next { text-align: right; }
+.ep-nav-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.ep-nav-title { font-family: var(--mono); font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.45; }
+.ep-nav-card:hover .ep-nav-title { color: var(--gold-lt); }
+.ep-nav-card.is-index { text-align: center; }
 
 /* ---- Footer ---- */
 footer {
@@ -245,8 +431,15 @@ footer a:hover { color: var(--gold-lt); }
 
 @media (max-width: 720px) {
   .jhead h1 { font-size: 31px; }
+  .jhead::after { font-size: 150px; top: -30px; opacity: 0.05; }
   .mile-row { grid-template-columns: 1fr; }
   .statrow { grid-template-columns: repeat(2, 1fr); }
   .epcard { grid-template-columns: 1fr; }
   .epcard .cta-btn { justify-self: start; margin-top: 12px; }
+  article.prose h2 { font-size: 21px; }
+  article.prose p, article.prose ul { font-size: 16.5px; }
+  article.prose .lede { font-size: 18px; }
+  article.prose blockquote.pull { font-size: 20.5px; }
+  .ep-nav-cards { grid-template-columns: 1fr; }
+  .ep-nav-card.is-next { text-align: left; }
 }

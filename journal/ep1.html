@@ -12,11 +12,12 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
 <link rel="stylesheet" href="journal.css">
 </head>
 <body>
+<div class="progress-bar" id="progress-bar"></div>
 <div class="page">
 
   <nav class="topnav">
@@ -27,30 +28,42 @@
     <button class="nav-link theme-toggle" id="theme-toggle" type="button"></button>
   </nav>
 
+  <aside class="toc" aria-label="Table of contents">
+    <div class="toc-title">This episode</div>
+    <a href="#thesis">The Thesis</a>
+    <a href="#other-game">The Other Game</a>
+    <a href="#decisions">Three Decisions</a>
+    <a href="#architecture">The Architecture</a>
+    <a href="#rules">The Rules</a>
+    <a href="#next">Next</a>
+  </aside>
+
   <article class="prose">
 
     <header class="jhead">
       <div class="jhead-kicker">Black Magic Dev Journal</div>
-      <div class="ep-meta">EP 1<span class="sep">·</span>July 2026<span class="sep">·</span>Written before the code</div>
+      <div class="ep-meta">EP 1<span class="sep">·</span>July 2026<span class="sep">·</span>Written before the code<span class="sep">·</span>5 min read</div>
       <h1>Space Chess</h1>
+      <div class="board-strip" aria-hidden="true"></div>
     </header>
 
-    <section>
-      <div class="slabel">The thesis</div>
-      <p>Chess has endured for 1,500 years. StarCraft: Brood War is still played professionally 28 years after release. Same reason: each is an inherently fair test of skill between opponents.</p>
+    <section id="thesis">
+      <h2><span class="pc">♚</span>The Thesis</h2>
+      <p class="lede">Chess has endured for 1,500 years. StarCraft: Brood War is still played professionally 28 years after release. Same reason: each is an inherently fair test of skill between opponents.</p>
       <p>Most of what we call video games are really simulators with game elements sprinkled in. Nothing on the other side of the screen is actively trying to thwart you. A game in the purest sense is defined pieces, defined moves, one win condition, and another player following the same rulebook, seeking checkmate. That is why I call StarCraft <strong>Space Chess</strong>. Nothing has replaced it, and the genre has drifted toward hero units, roguelike layers, and monetization loops.</p>
       <p><strong>Black Magic</strong> is my bet that the original formula still has an audience: a modern RTS with the fairness of chess and the complexity of StarCraft 2, still satisfying ten years after release because of its fundamental architecture.</p>
-      <p>For the record: I have been playing RTS games since Command and Conquer, and SC2 since the week Wings of Liberty launched. I am a Diamond 4v4 Random player who grew up on LAN games with five-minute no-rush house rules. I say that to be clear about what this game is not. It is not built for my comfort. It is built for the purist.</p>
+      <p>For the record: I have been playing RTS games since Command and Conquer, and SC2 since the week Wings of Liberty launched. I am a Diamond 4v4 Random player who grew up on LAN games with five-minute no-rush house rules. I say that to be clear about what this game is not.</p>
+      <blockquote class="pull">It is not built for my comfort. It is built for the purist.</blockquote>
     </section>
 
-    <section>
-      <div class="slabel">The other game</div>
+    <section id="other-game">
+      <h2><span class="pc">♛</span>The Other Game</h2>
       <p>There is a second experiment running inside the first. I am a product owner, not a programmer, and Black Magic is being built by an AI staff with me steering. Ten years of product work taught me to ration engineering hours. That constraint just evaporated: implementation is nearly free now, and the scarce resource is my attention. Every planning habit built around the old constraint is up for review.</p>
       <p>This journal documents both games: the RTS, and the way it gets built. What a one-person product org with an AI staff actually looks like, decision by decision, with the receipts <a href="https://github.com/skimecha/black-magic" target="_blank" rel="noopener" data-gc="journal-repo">public in the repo</a>.</p>
     </section>
 
-    <section>
-      <div class="slabel">Three decisions before any code</div>
+    <section id="decisions">
+      <h2><span class="pc">♞</span>Three Decisions Before Any Code</h2>
       <p>The tempting first answer was a web game, because this journal could then embed playable prototypes in every episode. But the vision is a true native successor with real 3D production values, and the journal's job is to document the project, not bend it.</p>
       <p>Then the engine. Rust plus Bevy is the most AI-native workflow there is, all code and no editor, and it still lost for a human reason: I will be steering and approving code I did not write, and I cannot review Rust I cannot read. Unity 6 won on the two inputs that mattered, C# being the most readable serious language on the list and a mature 3D pipeline one person can actually leverage. A custom C++ engine was scope suicide and died fast.</p>
 
@@ -97,8 +110,8 @@
       </figure>
     </section>
 
-    <section>
-      <div class="slabel">The architecture that fell out</div>
+    <section id="architecture">
+      <h2><span class="pc">♜</span>The Architecture That Fell Out</h2>
       <p>What made StarCraft 2 work on 2008 internet connections still holds today: a deterministic lockstep simulation. Only player commands travel the wire. Every client computes the identical game, and a replay is nothing but the command log.</p>
       <p>So the simulation is a pure C# library with zero Unity dependencies: fixed-point math, a tick loop fed by a command queue, state that can be hashed. Unity renders what the sim says and converts clicks into commands. It never reaches inside. The payoff goes beyond multiplayer: the AI staff can run the sim headless, simulate thousands of battles, and verify its own work without ever opening an editor. The workflow advantage that made Bevy tempting got rebuilt inside a Unity project.</p>
 
@@ -140,8 +153,8 @@
       </figure>
     </section>
 
-    <section>
-      <div class="slabel">The rules</div>
+    <section id="rules">
+      <h2><span class="pc">♝</span>The Rules</h2>
       <p>No off-the-shelf methodology fits a team of one human and an AI staff, because they all assume the scarce resource is developer hours. Here it is my attention. The methodology is assembled from four borrowed parts, each chosen because it rations attention or kills risk:</p>
       <ul>
         <li><strong>Vertical slices.</strong> Every milestone cuts sim to screen and ends in a showable artifact. No "80% done" layers.</li>
@@ -152,14 +165,20 @@
       <p>And one engineering rule held sacred: acceptance tests before implementation on all simulation work. I approve the contract, the staff verifies against it, and my review shifts from reading every line to approving behavior.</p>
     </section>
 
-    <section>
-      <div class="slabel">Next</div>
+    <section id="next">
+      <h2><span class="pc">♟</span>Next</h2>
       <p>First milestone: M0, Foundations. One question: can C# produce a bit-identical simulation across machines and runtimes? If not, the architecture is wrong, and I want to find out for a week of evenings, not a year. Episode 2 has the answer.</p>
     </section>
 
-    <nav class="ep-nav">
-      <a class="nav-link" href="./">← All episodes</a>
-      <a class="nav-link" href="ep2.html" data-gc="journal-ep2">Episode 2: 601 Identical Hashes →</a>
+    <nav class="ep-nav-cards">
+      <a class="ep-nav-card is-index" href="./">
+        <div class="ep-nav-kicker">Index</div>
+        <div class="ep-nav-title">All episodes</div>
+      </a>
+      <a class="ep-nav-card is-next" href="ep2.html" data-gc="journal-ep2">
+        <div class="ep-nav-kicker">Next episode →</div>
+        <div class="ep-nav-title">EP 2 · 601 Identical Hashes</div>
+      </a>
     </nav>
 
   </article>
