@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAA Private Pilot Written — Mastery Tracker</title>
+<meta name="description" content="Progress tracker for the FAA Private Pilot (PAR) written exam: 173 topics across 13 knowledge areas from FAA-S-ACS-6C, mapped to a 14-day study schedule.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Cpath d='M16 5l2.2 8.2 8.8 2.8-8.8 2.8L16 27l-2.2-8.2L5 16l8.8-2.8z' fill='%233987e5'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --accent: #2a78d6;
+    --accent-soft: #cde2fb;
+    --good: #0ca30c;
+    --good-text: #006300;
+    --warn: #eda100;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --accent: #3987e5;
+      --accent-soft: #104281;
+      --good: #0ca30c;
+      --good-text: #0ca30c;
+      --warn: #c98500;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page);
+    color: var(--text-primary);
+    line-height: 1.45;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 80px; }
+  header h1 { font-size: 22px; margin: 0 0 4px; }
+  header .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+
+  .factcard {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px 20px;
+  }
+  .factcard b { color: var(--text-primary); font-weight: 600; display:block; font-size:12px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); }
+  .factcard span { font-size: 14px; color: var(--text-primary); }
+
+  .overall {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+  .overall .row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+  .overall .big { font-size: 28px; font-weight: 700; }
+  .overall .lbl { color: var(--text-secondary); font-size: 13px; }
+  .bar { height: 10px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+  .bar > div { height: 100%; background: var(--accent); border-radius: 5px 0 0 5px; transition: width .25s; min-width:0; }
+  .bar > div.done { background: var(--good); }
+
+  .tabs { display:flex; gap:8px; margin-bottom:18px; }
+  .tabs button {
+    font: inherit; font-size:14px; font-weight:600;
+    padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-1); color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .tabs button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  details.section {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  details.section summary {
+    list-style: none; cursor: pointer;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    align-items: center;
+  }
+  details.section summary::-webkit-details-marker { display:none; }
+  .sec-title { font-weight: 600; font-size: 15px; }
+  .sec-meta { color: var(--muted); font-size: 12px; }
+  .sec-count { font-size: 13px; color: var(--text-secondary); text-align:right; white-space:nowrap; }
+  .sec-bar { grid-column: 1 / -1; }
+  .items { padding: 4px 16px 12px; border-top: 1px solid var(--grid); }
+  label.item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 7px 4px; font-size: 14px;
+    border-bottom: 1px solid var(--grid);
+    cursor: pointer;
+  }
+  label.item:last-child { border-bottom: none; }
+  label.item input { margin-top: 3px; accent-color: var(--good); width:16px; height:16px; flex:none; }
+  label.item.checked span.txt { color: var(--muted); text-decoration: line-through; }
+  .hy {
+    font-size: 10px; font-weight: 700; letter-spacing:.04em;
+    color: var(--good-text);
+    border: 1px solid currentColor;
+    border-radius: 4px; padding: 0 4px;
+    white-space: nowrap; margin-left: 6px;
+    vertical-align: 1px;
+  }
+  /* 14-day plan */
+  .day {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 2px 14px;
+  }
+  .day .dnum { font-weight: 700; font-size: 15px; grid-row: span 3; color: var(--accent); }
+  .day .dtitle { font-weight: 600; font-size: 14px; }
+  .day .dtopics { color: var(--text-secondary); font-size: 13px; }
+  .day .dgoal { color: var(--muted); font-size: 12px; }
+  .day.rest .dnum { color: var(--good-text); }
+
+  .savebox {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 22px;
+    font-size: 13px; color: var(--text-secondary);
+  }
+  .savebox textarea {
+    width: 100%; font: 12px/1.4 ui-monospace, monospace;
+    background: var(--page); color: var(--text-primary);
+    border: 1px solid var(--grid); border-radius: 6px;
+    padding: 6px 8px; margin: 8px 0 6px; resize: vertical; min-height: 40px;
+  }
+  .savebox button {
+    font: inherit; font-size: 13px; font-weight: 600;
+    padding: 6px 12px; border-radius: 6px; margin-right: 8px;
+    border: 1px solid var(--border); background: var(--page);
+    color: var(--text-primary); cursor: pointer;
+  }
+  .note { font-size:12px; color: var(--muted); margin-top:14px; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>FAA Private Pilot Written (PAR) — Mastery Tracker</h1>
+    <div class="sub">Every knowledge area on the exam, mapped to a 14-day study plan. Based on FAA-S-ACS-6C. Target: 100%.</div>
+  </header>
+
+  <div class="factcard">
+    <div><b>Exam</b><span>PAR — Private Pilot Airplane</span></div>
+    <div><b>Questions</b><span>60 multiple choice</span></div>
+    <div><b>Time limit</b><span>2 hours 30 minutes</span></div>
+    <div><b>Passing score</b><span>70% (your target: 100%)</span></div>
+    <div><b>Results valid</b><span>24 calendar months</span></div>
+    <div><b>Prerequisites</b><span>Ground school endorsement + FTN, photo ID; taken at a PSI test center</span></div>
+  </div>
+
+  <div class="overall">
+    <div class="row">
+      <span class="lbl">Overall mastery</span>
+      <span class="big"><span id="ov-pct">0</span>%</span>
+    </div>
+    <div class="bar"><div id="ov-bar" style="width:0%"></div></div>
+    <div class="lbl" style="margin-top:6px"><span id="ov-count">0</span> of <span id="ov-total">0</span> topics mastered</div>
+  </div>
+
+  <div class="tabs">
+    <button id="tab-areas" class="active" onclick="showTab('areas')">Knowledge Areas</button>
+    <button id="tab-plan" onclick="showTab('plan')">14-Day Plan</button>
+  </div>
+
+  <div id="view-areas"></div>
+  <div id="view-plan" class="hidden"></div>
+
+  <div class="savebox">
+    <b style="color:var(--text-primary)">Backup / transfer progress</b><br>
+    Progress saves automatically in this browser. To move it to another device (or keep a backup), click <i>Copy progress code</i> and paste the code there with <i>Load</i>.
+    <textarea id="code" spellcheck="false" placeholder="Progress code appears here…"></textarea>
+    <button onclick="exportCode()">Copy progress code</button>
+    <button onclick="importCode()">Load</button>
+    <span id="savemsg"></span>
+  </div>
+
+  <div class="note"><a href="https://mattbreckenridge.com" style="color:var(--muted)">&larr; mattbreckenridge.com</a></div>
+
+  <div class="note">HY = high-yield: heavily represented on the exam or a common miss. Item counts reflect testable knowledge under FAA-S-ACS-6C — flight-proficiency-only tasks (maneuvers, landings) are excluded because the written doesn't test them beyond the aerodynamics behind them.</div>
+</div>
+
+<script>
+const SECTIONS = [
+{ id:"S1", title:"1 · Aerodynamics & Principles of Flight", day:"Day 1", items:[
+  ["Four forces of flight and their equilibrium in climbs, descents, and level flight",1],
+  ["How lift is generated — angle of attack, relative wind, chord, camber",0],
+  ["Stalls: critical angle of attack; a wing can stall at any airspeed/attitude",1],
+  ["Stall speed vs. weight, bank angle, load factor, and CG position",1],
+  ["Spins: cause (stall + yaw), phases, and recovery (PARE); which wing stalls first",0],
+  ["Load factor: bank angle relationship (60° level turn = 2G); V-G diagram",1],
+  ["Maneuvering speed (Va): why it decreases as weight decreases",1],
+  ["Stability: static vs. dynamic; longitudinal stability and the horizontal stabilizer",0],
+  ["CG effects: aft CG = less stable, harder stall/spin recovery; fwd CG = higher stall speed",1],
+  ["Left-turning tendencies: torque, P-factor, spiraling slipstream, gyroscopic precession",1],
+  ["Adverse yaw and why coordinated rudder is needed in turns",0],
+  ["Ground effect: floating on landing, lifting off before Vr on takeoff",1],
+  ["Flaps and high-lift devices: effect on lift, drag, stall speed, approach angle",0],
+  ["Wingtip vortices / wake turbulence: where they form, how to avoid on takeoff & landing",1],
+  ["Frost, ice, and contamination: effect on lift and takeoff performance",1],
+  ["Turn rate & radius vs. airspeed and bank; overbanking tendency",0],
+  ["Rectangular course / turns around a point: wind drift correction concepts",0],
+]},
+{ id:"S2", title:"2 · Aircraft Systems", day:"Day 2", items:[
+  ["Four-stroke reciprocating engine basics; air cooling and cowl flaps",0],
+  ["Dual magneto ignition: why it's independent of the electrical system",1],
+  ["Fuel grades & dye colors (100LL = blue); what to do if proper grade unavailable",1],
+  ["Fuel system: gravity-feed vs. pump; sumps, drains, and contamination checks",0],
+  ["Mixture control: why and when to lean; symptoms of too rich / too lean",1],
+  ["Float-type carburetor operation and venturi principle",0],
+  ["Carburetor icing: conditions (high humidity, 20–70°F), symptoms in fixed-pitch vs. constant-speed, carb heat effects",1],
+  ["Fuel injection: advantages, vapor lock, hot-start issues",0],
+  ["Detonation vs. preignition: causes, symptoms, remedies",1],
+  ["Abnormal engine indications: high oil temp, low oil pressure — causes and actions",1],
+  ["Oil system: functions of engine oil (lubricate, cool, seal, clean)",0],
+  ["Propeller: fixed-pitch vs. constant-speed; throttle/prop control relationship",0],
+  ["Electrical system: alternator vs. battery, ammeter/loadmeter readings, alternator failure",1],
+  ["Exhaust system and carbon monoxide hazard from cabin heat",1],
+  ["Pitot heat, stall warning, and other anti-ice/deice equipment",0],
+]},
+{ id:"S3", title:"3 · Flight Instruments", day:"Day 3", items:[
+  ["Pitot-static system: which instruments use pitot vs. static pressure",1],
+  ["Blocked pitot tube / blocked static port: effect on ASI, altimeter, VSI",1],
+  ["Airspeed types: indicated, calibrated, true, groundspeed",1],
+  ["Airspeed indicator markings: white/green/yellow arcs, red line — what each boundary is",1],
+  ["V-speeds: Vso, Vs1, Vfe, Vno, Vne, Va, Vx, Vy, Vr, best glide (Va is NOT marked)",1],
+  ["Five altitudes: indicated, pressure, density, true, absolute",1],
+  ["Altimeter: setting procedure; 'high to low, look out below'; temperature errors",1],
+  ["Pressure altitude: read with 29.92 set; when it equals true altitude",0],
+  ["Gyroscopic instruments: attitude, heading, turn coordinator; vacuum vs. electric power sources",1],
+  ["Magnetic compass errors: variation, deviation, dip, acceleration (ANDS), turning (UNOS)",1],
+  ["Transponder modes and ADS-B Out basics; where each is required",0],
+]},
+{ id:"S4", title:"4 · Regulations — Pilot, Medical & Aircraft", day:"Day 4", items:[
+  ["Private pilot privileges & limitations (61.113): pro-rata sharing, charitable flights, business-incidental",1],
+  ["Documents to carry: pilot certificate, photo ID, medical (61.3)",1],
+  ["Medical certificate classes & duration for private privileges (under/over age 40); BasicMed",1],
+  ["Flight review: 24 calendar months (61.56)",1],
+  ["Passenger currency: 3 takeoffs/landings in 90 days; night = full-stop, 1hr after sunset–1hr before sunrise",1],
+  ["Endorsements: high-performance (>200hp), complex, tailwheel, high-altitude",0],
+  ["Alcohol & drugs: 8 hours bottle-to-throttle, 0.04% BAC, conviction reporting (91.17, 61.15)",1],
+  ["Change of permanent address: notify FAA within 30 days (61.60)",0],
+  ["Aircraft documents aboard: ARROW (91.203, 91.9)",1],
+  ["Required inspections: annual, 100-hour (for hire), transponder 24mo, ELT 12mo & battery rules",1],
+  ["100-hour vs. annual: who needs which, the 10-hour overflight rule, who can perform them",1],
+  ["Airworthiness: PIC responsibility (91.7); Airworthiness Directives are mandatory",1],
+  ["Preventive maintenance a private pilot may perform and logbook entries (Part 43)",0],
+  ["Inoperative equipment: 91.213 decision path, placarding, MELs",1],
+  ["Required equipment: day VFR (91.205 'ATOMATOFLAMES'), night ('FLAPS')",1],
+  ["Special flight permits (ferry permits): when and how",0],
+  ["NTSB 830: immediate notification events, accident vs. incident, 10-day report",1],
+]},
+{ id:"S5", title:"5 · Regulations — Flight Rules", day:"Day 5", items:[
+  ["Preflight action (91.103): weather, fuel, alternatives, runway lengths, performance ('NWKRAFT')",1],
+  ["Seatbelts & briefings: crew and passenger requirements by phase of flight (91.105/.107)",0],
+  ["Right-of-way rules: category hierarchy, converging, head-on, overtaking, landing (91.113)",1],
+  ["Minimum safe altitudes (91.119): congested 1,000/2,000; other areas 500 ft",1],
+  ["VFR cruising altitudes above 3,000 AGL: magnetic course odd/even + 500 (91.159)",1],
+  ["VFR fuel reserves: 30 min day / 45 min night beyond destination (91.151)",1],
+  ["Speed limits: 250 kt below 10,000; 200 kt under Class B shelf & in Class C/D surface areas (91.117)",0],
+  ["Supplemental oxygen (91.211): 12,500 >30 min, 14,000 crew, 15,000 passengers offered",1],
+  ["Aerobatic flight limits & parachute requirements (91.303/.307)",0],
+  ["Emergency authority: PIC may deviate from any rule; report to FAA on request (91.3)",1],
+  ["ATC instructions & clearances: compliance and priority (91.123)",0],
+  ["Careless/reckless operation; dropping objects; formation flight rules",0],
+  ["Position lights: sunset to sunrise; anticollision lights (91.209)",0],
+  ["TFRs and Special Flight Rules Areas: how to find them and comply",1],
+]},
+{ id:"S6", title:"6 · Airspace", day:"Day 6", items:[
+  ["Class A: 18,000 MSL–FL600, IFR only, altimeter 29.92",0],
+  ["Class B: dimensions, explicit clearance required, private-pilot & student rules, Mode C veil (30nm)",1],
+  ["Class C: dimensions (5/10nm shelves), two-way comms established, Mode C",1],
+  ["Class D: dimensions, two-way comms, what happens when the tower closes",1],
+  ["Class E: where it starts (surface, 700, 1,200 AGL), magenta/blue chart shading",1],
+  ["Class G: dimensions and where it exists",0],
+  ["VFR weather minimums for EVERY class, day and night, above/below 10,000 MSL — memorize the full table",1],
+  ["Special VFR: 1sm & clear of clouds, ATC clearance, night SVFR requires instrument rating & equipment",1],
+  ["Transponder/ADS-B required airspace: A, B, C, above 10,000, Mode C veil",1],
+  ["Special use: prohibited, restricted, warning, MOA, alert, controlled firing — who may enter what",1],
+  ["Military Training Routes (VR/IR, 4-digit vs 3-digit) and VFR flyways",0],
+  ["TRSA, ADIZ, national security areas, parachute jump areas",0],
+  ["Basic VFR minimums at airports: 1,000-ft ceiling / 3sm (91.155)",1],
+]},
+{ id:"S7", title:"7 · Sectional Charts & Airport Operations", day:"Days 6–7", items:[
+  ["Airport symbols: blue vs. magenta, tower/CT frequencies, star (beacon), tick marks (fuel)",1],
+  ["Airport data block: elevation, lighting codes (*L), runway length, ATIS/CTAF",1],
+  ["Airspace boundaries on the sectional: solid/shaded/dashed lines for B, C, D, E",1],
+  ["Obstacles & MEF (maximum elevation figures); isogonic lines",1],
+  ["Latitude/longitude: reading coordinates off the chart",0],
+  ["Chart Supplement: what's in it and how to read an airport entry",1],
+  ["Runway markings: numbers, displaced threshold, chevrons, blast pad, closed (X)",1],
+  ["Taxiway signs & markings: hold-short lines, runway boundary, ILS critical area, direction signs",1],
+  ["Airport lighting: rotating beacon colors (and daytime beacon = below VFR minimums), pilot-controlled lighting",1],
+  ["VASI/PAPI: interpreting the lights, obstacle clearance range, requirement to stay at/above glidepath (91.129)",1],
+  ["Wind direction indicators & the segmented circle: reading traffic-pattern indicators",1],
+  ["Traffic pattern: standard left turns, pattern altitude, recommended entry/departure at nontowered airports",1],
+  ["LAHSO: what it is, PIC may decline, available landing distance",0],
+  ["Runway incursion avoidance, hot spots, sterile-cockpit discipline",0],
+]},
+{ id:"S8", title:"8 · Communications, ATC & Emergency Procedures", day:"Day 7", items:[
+  ["Radio phraseology & phonetic alphabet; stating altitudes and headings",0],
+  ["Nontowered airports: CTAF/UNICOM self-announce positions and procedures",1],
+  ["Towered airports: who to call and when (clearance/ground/tower)",0],
+  ["Light gun signals: all six colors, meanings on ground AND in flight — memorize",1],
+  ["Lost communications: transponder 7600, light-gun arrival at towered field",1],
+  ["Transponder codes: 1200 VFR, 7500 hijack, 7600 lost comm, 7700 emergency",1],
+  ["ELT: 121.5 monitoring, testing only in first 5 minutes of the hour, battery replacement rules",1],
+  ["VFR flight plans: filing, opening, closing, and search & rescue timing",1],
+  ["Flight following / radar traffic advisories; traffic called by clock position relative to ground track",1],
+  ["Emergency declarations: MAYDAY/PAN-PAN, squawk 7700, ATC emergency assistance",0],
+  ["Emergency approach & landing: best glide, field selection, passenger brief (knowledge elements)",0],
+]},
+{ id:"S9", title:"9 · Weather Theory", day:"Day 8", items:[
+  ["Standard atmosphere (15°C / 29.92\" Hg at sea level; ~2°C lapse per 1,000 ft)",1],
+  ["Cause of all weather: uneven surface heating; general circulation & Coriolis force",1],
+  ["Pressure systems: highs (clockwise, descending, fair) vs. lows (counterclockwise, rising, bad wx)",1],
+  ["Wind: pressure gradient force, surface friction, land/sea breezes, valley/mountain winds",0],
+  ["Atmospheric stability: lapse rates, how to judge stability, characteristics of stable vs. unstable air",1],
+  ["Temperature/dew point spread: fog and cloud formation when they converge",1],
+  ["Fog types: radiation, advection, upslope, steam, precipitation-induced — formation conditions",1],
+  ["Cloud families & types; cumulus = turbulence, stratus = stable; standing lenticular = severe turbulence",1],
+  ["Fronts: cold, warm, stationary, occluded — weather at each; wind shift & temperature change at passage",1],
+  ["Thunderstorms: 3 ingredients (moisture, instability, lifting); life cycle — rain begins = mature stage",1],
+  ["Thunderstorm hazards: squall lines, embedded cells, microbursts, hail; stay 20nm from severe cells",1],
+  ["Icing: visible moisture + freezing temps; structural types (clear, rime, mixed); frost must be removed",1],
+  ["Turbulence types: convective, mechanical, mountain wave, clear-air",0],
+  ["Wind shear & low-level wind shear: where it occurs, effect on airspeed on approach",1],
+]},
+{ id:"S10", title:"10 · Weather Services & Reports", day:"Day 9", items:[
+  ["METAR: decode every field — wind (true, gusts), visibility, RVR, weather codes, sky condition, temp/dew, altimeter",1],
+  ["Ceiling definition: lowest broken or overcast layer (or vertical visibility)",1],
+  ["TAF: validity period, FM, TEMPO, PROB, BECMG groups; ~5sm coverage of the airport",1],
+  ["PIREPs (UA/UUA): decode; only source of actual observed icing/turbulence/tops",1],
+  ["AIRMETs: Sierra (IFR/mtn obscuration), Tango (turbulence), Zulu (icing)",1],
+  ["SIGMET & Convective SIGMET: what each covers, valid times",1],
+  ["Winds & temps aloft (FB): decode; '9900' = light & variable; temps negative above 24,000",1],
+  ["Graphical Forecasts for Aviation (GFA), surface analysis, prog charts",0],
+  ["Radar & satellite imagery: what precipitation returns do and don't tell you",0],
+  ["Preflight briefings: standard, abbreviated, outlook; Leidos 1800wxbrief & EFB self-briefing",1],
+  ["AWOS/ASOS vs. ATIS: what each provides and how often it updates",0],
+]},
+{ id:"S11", title:"11 · Performance & Weight and Balance", day:"Day 10", items:[
+  ["Density altitude: compute it (chart & E6B) and explain effects — high, hot, humid = poor performance",1],
+  ["Effect of density altitude on takeoff roll, climb rate, and TRUE airspeed at touchdown",1],
+  ["Takeoff & landing distance charts: read, interpolate, apply wind/surface corrections",1],
+  ["Headwind & crosswind components: chart problems; max demonstrated crosswind",1],
+  ["Cruise performance charts: power settings, fuel burn, endurance, range",1],
+  ["Vx vs. Vy: what each gives you; how they converge with altitude",1],
+  ["Weight & balance terms: datum, arm, moment, station, moment index",1],
+  ["Compute gross weight and CG; determine if within envelope (table & graph methods)",1],
+  ["Weight-shift problems: moving baggage/passengers to bring CG in limits",1],
+  ["Standard weights: fuel 6 lb/gal, oil 7.5 lb/gal",1],
+  ["Effects of overweight and out-of-CG flight on performance and stability",1],
+]},
+{ id:"S12", title:"12 · Navigation & Cross-Country Planning", day:"Day 11", items:[
+  ["Pilotage and dead reckoning; choosing checkpoints",0],
+  ["Course corrections: true course → true heading (wind) → magnetic heading (variation) → compass heading (deviation)",1],
+  ["Magnetic variation: 'east is least, west is best'; isogonic lines",1],
+  ["Plotter skills: measure true course and distance on a sectional",1],
+  ["E6B / flight computer: groundspeed, time en route, fuel burn, wind correction angle, TAS, density altitude",1],
+  ["VOR: radials, OBS, CDI, TO/FROM, reverse sensing; position fixing from two VORs",1],
+  ["VOR checks & service volumes (knowledge-level); identifying stations by Morse ID",0],
+  ["GPS: RAIM, database currency, moving-map limitations",0],
+  ["Lost procedures: climb, communicate, confess, comply; diversion to an alternate",1],
+  ["Fuel planning: total required with reserves; when to recompute in flight",1],
+  ["NOTAMs: D, FDC, TFR — where to get them and what each covers",1],
+  ["Night operations: required equipment, position-light hours, airport lighting at night",0],
+]},
+{ id:"S13", title:"13 · Human Factors & Aeronautical Decision Making", day:"Day 12", items:[
+  ["Hypoxia: 4 types (hypoxic, hypemic, stagnant, histotoxic), symptoms, time of useful consciousness",1],
+  ["Hyperventilation: symptoms overlap hypoxia; remedy (slow breathing, paper bag)",1],
+  ["Carbon monoxide poisoning: source (cabin heat), symptoms, corrective action",1],
+  ["Middle ear & sinus problems; scuba diving wait times before flight",1],
+  ["Spatial disorientation & vestibular illusions: the leans, graveyard spiral, somatogravic — trust the instruments",1],
+  ["Visual illusions: runway width/slope, black hole approach, haze effects on distance",1],
+  ["Night vision: rods vs. cones, off-center scanning, 30-minute dark adaptation, oxygen effects",1],
+  ["Hazardous attitudes & antidotes: anti-authority, impulsivity, invulnerability, macho, resignation",1],
+  ["Checklists & frameworks: IMSAFE, PAVE, DECIDE, 5P — what each assesses",1],
+  ["Risk management: identifying hazards, personal minimums, external pressures (get-there-itis)",1],
+  ["Single-pilot resource management, workload, automation, situational awareness",0],
+  ["Fatigue, stress, dehydration, and nutrition effects on performance",0],
+  ["Medications: self-grounding, OTC sedating antihistamines, IM SAFE medical items",0],
+]},
+];
+
+const PLAN = [
+  ["Day 1","Aerodynamics & Principles of Flight","Section 1","~2.5–3 hrs of course video + section quiz"],
+  ["Day 2","Aircraft Systems","Section 2","Engine, fuel, electrical, prop; end-of-day quiz"],
+  ["Day 3","Flight Instruments","Section 3","Pitot-static & gyro instruments; start flashcards for V-speeds"],
+  ["Day 4","Regulations I — Pilot, Medical & Aircraft","Section 4","Certificates, currency, ARROW, inspections, NTSB 830"],
+  ["Day 5","Regulations II — Flight Rules","Section 5","91.103–91.211; quiz both regs sections together"],
+  ["Day 6","Airspace + Sectional Basics","Section 6, start 7","Memorize the full VFR weather-minimums table cold"],
+  ["Day 7","Charts, Airport Ops & Communications","Sections 7–8","Week-1 checkpoint: practice quiz over Sections 1–8; light gun signals memorized"],
+  ["Day 8","Weather Theory","Section 9","Fronts, stability, thunderstorms, icing, fog"],
+  ["Day 9","Weather Services","Section 10","Decode METARs/TAFs until it's automatic"],
+  ["Day 10","Performance & Weight and Balance","Section 11","Work every chart problem type twice; E6B practice"],
+  ["Day 11","Navigation & Cross-Country","Section 12","Plotter + E6B full XC problems; VOR interpretation drills"],
+  ["Day 12","Human Factors & ADM + finish course","Section 13","Finish remaining videos · Practice exam #1 (score it, log misses)"],
+  ["Day 13","Weak-area review","Practice exams #2–3","Re-study every missed question's topic area; aim ≥90%"],
+  ["Day 14","Final polish","Practice exam #4","Target ≥95% · get your course endorsement · schedule PSI exam"],
+];
+
+const areasEl = document.getElementById('view-areas');
+let ITEMS = [];
+SECTIONS.forEach((sec, si) => {
+  const d = document.createElement('details');
+  d.className = 'section'; d.open = si === 0;
+  const total = sec.items.length;
+  d.innerHTML = `<summary>
+      <div><div class="sec-title">${sec.title}</div><div class="sec-meta">${sec.day} · ${total} topics</div></div>
+      <div class="sec-count" id="cnt-${sec.id}">0 / ${total}</div>
+      <div class="sec-bar bar"><div id="bar-${sec.id}" style="width:0%"></div></div>
+    </summary><div class="items" id="items-${sec.id}"></div>`;
+  areasEl.appendChild(d);
+  const wrap = d.querySelector('.items');
+  sec.items.forEach((it, ii) => {
+    const id = `${sec.id}-${ii}`;
+    ITEMS.push(id);
+    const lab = document.createElement('label');
+    lab.className = 'item'; lab.id = 'lab-' + id;
+    lab.innerHTML = `<input type="checkbox" id="cb-${id}" onchange="refresh()">
+      <span class="txt">${it[0]}${it[1] ? ' <span class="hy">HY</span>' : ''}</span>`;
+    wrap.appendChild(lab);
+  });
+});
+
+const planEl = document.getElementById('view-plan');
+PLAN.forEach((p, i) => {
+  const d = document.createElement('div');
+  d.className = 'day' + (i >= 12 ? ' rest' : '');
+  d.innerHTML = `<div class="dnum">${p[0]}</div><div class="dtitle">${p[1]}</div>
+    <div class="dtopics">${p[2]}</div><div class="dgoal">${p[3]}</div>`;
+  planEl.appendChild(d);
+});
+
+function showTab(t){
+  document.getElementById('view-areas').classList.toggle('hidden', t!=='areas');
+  document.getElementById('view-plan').classList.toggle('hidden', t!=='plan');
+  document.getElementById('tab-areas').classList.toggle('active', t==='areas');
+  document.getElementById('tab-plan').classList.toggle('active', t==='plan');
+}
+
+function refresh(){
+  let done = 0;
+  SECTIONS.forEach(sec => {
+    let sd = 0;
+    sec.items.forEach((_, ii) => {
+      const cb = document.getElementById(`cb-${sec.id}-${ii}`);
+      document.getElementById(`lab-${sec.id}-${ii}`).classList.toggle('checked', cb.checked);
+      if (cb.checked) sd++;
+    });
+    done += sd;
+    const pct = Math.round(100 * sd / sec.items.length);
+    document.getElementById(`cnt-${sec.id}`).textContent = `${sd} / ${sec.items.length}`;
+    const bar = document.getElementById(`bar-${sec.id}`);
+    bar.style.width = pct + '%';
+    bar.classList.toggle('done', pct === 100);
+  });
+  const pct = Math.round(100 * done / ITEMS.length);
+  document.getElementById('ov-pct').textContent = pct;
+  const ob = document.getElementById('ov-bar');
+  ob.style.width = pct + '%';
+  ob.classList.toggle('done', pct === 100);
+  document.getElementById('ov-count').textContent = done;
+  document.getElementById('ov-total').textContent = ITEMS.length;
+  saveState();
+}
+
+function exportCode(){
+  let bits = ITEMS.map(id => document.getElementById('cb-'+id).checked ? '1' : '0').join('');
+  let hex = '';
+  for (let i = 0; i < bits.length; i += 4)
+    hex += parseInt(bits.slice(i, i+4).padEnd(4,'0'), 2).toString(16);
+  const code = 'PPL1-' + ITEMS.length + '-' + hex;
+  const ta = document.getElementById('code');
+  ta.value = code;
+  ta.select();
+  try { navigator.clipboard.writeText(code); msg('Copied.'); } catch(e){ msg('Select & copy the code above.'); }
+}
+function importCode(){
+  const raw = document.getElementById('code').value.trim();
+  const m = raw.match(/^PPL1-(\d+)-([0-9a-f]+)$/i);
+  if (!m || +m[1] !== ITEMS.length) { msg('That code doesn’t match this tracker.'); return; }
+  let bits = '';
+  for (const c of m[2]) bits += parseInt(c, 16).toString(2).padStart(4,'0');
+  ITEMS.forEach((id, i) => document.getElementById('cb-'+id).checked = bits[i] === '1');
+  refresh(); msg('Progress restored.');
+}
+function msg(t){
+  const el = document.getElementById('savemsg');
+  el.textContent = ' ' + t;
+  setTimeout(() => el.textContent = '', 4000);
+}
+
+// localStorage persistence (per-browser). Stored as the raw bit string;
+// length-checked on load so content changes invalidate stale state,
+// same contract as the progress code.
+const LS_KEY = 'ppl-tracker-v1';
+function saveState(){
+  try {
+    localStorage.setItem(LS_KEY, ITEMS.map(id => document.getElementById('cb-'+id).checked ? '1' : '0').join(''));
+  } catch(e){}
+}
+function loadState(){
+  try {
+    const bits = localStorage.getItem(LS_KEY);
+    if (bits && bits.length === ITEMS.length)
+      ITEMS.forEach((id, i) => { document.getElementById('cb-'+id).checked = bits[i] === '1'; });
+  } catch(e){}
+}
+
+loadState();
+refresh();
+</script>
+</body>
+</html>
