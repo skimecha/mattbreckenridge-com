@@ -1,0 +1,16 @@
+{
+ "decks": [
+  {
+   "id": "faa-abbr-ppl",
+   "file": "faa-abbr-ppl.json",
+   "name": "FAA Abbreviations — PPL Core",
+   "count": 191
+  },
+  {
+   "id": "faa-abbr-full",
+   "file": "faa-abbr-full.json",
+   "name": "FAA Abbreviations — Full Glossary",
+   "count": 1747
+  }
+ ]
+}

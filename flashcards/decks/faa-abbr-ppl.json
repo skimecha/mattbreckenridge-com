@@ -1,0 +1,964 @@
+{
+ "id": "faa-abbr-ppl",
+ "name": "FAA Abbreviations — PPL Core",
+ "description": "Abbreviations and acronyms a private pilot actually encounters: airspace, weather products, navigation aids, lighting systems, altitudes, charts, and regulations. Curated from the FAA glossary.",
+ "front_label": "Abbreviation",
+ "back_label": "Meaning",
+ "cards": [
+  {
+   "id": "ac",
+   "front": "AC",
+   "back": "Advisory Circular"
+  },
+  {
+   "id": "acs",
+   "front": "ACS",
+   "back": "Airman Certification Standards"
+  },
+  {
+   "id": "ad",
+   "front": "AD",
+   "back": "Airworthiness Directive"
+  },
+  {
+   "id": "adf",
+   "front": "ADF",
+   "back": "Automatic Direction Finding"
+  },
+  {
+   "id": "adiz",
+   "front": "ADIZ",
+   "back": "Air Defense Identification Zone"
+  },
+  {
+   "id": "adm",
+   "front": "ADM",
+   "back": "Aeronautical Decision Making"
+  },
+  {
+   "id": "ads-b",
+   "front": "ADS-B",
+   "back": "Automatic Dependent Surveillance-Broadcast"
+  },
+  {
+   "id": "afss",
+   "front": "AFSS",
+   "back": "Automated Flight Service Station"
+  },
+  {
+   "id": "agl",
+   "front": "AGL",
+   "back": "Above Ground Level"
+  },
+  {
+   "id": "aim",
+   "front": "AIM",
+   "back": "Aeronautical Information Manual"
+  },
+  {
+   "id": "airmet",
+   "front": "AIRMET",
+   "back": "Airmen's Meteorological Information"
+  },
+  {
+   "id": "als",
+   "front": "ALS",
+   "back": "Approach Lighting System"
+  },
+  {
+   "id": "alsf",
+   "front": "ALSF",
+   "back": "Approach Lighting System With Sequenced Flashing Lights"
+  },
+  {
+   "id": "amt",
+   "front": "AMT",
+   "back": "Aviation Maintenance Technician"
+  },
+  {
+   "id": "aopa",
+   "front": "AOPA",
+   "back": "Aircraft Owners and Pilots Association"
+  },
+  {
+   "id": "arff",
+   "front": "ARFF",
+   "back": "Aircraft Rescue and Fire Fighting"
+  },
+  {
+   "id": "arp",
+   "front": "ARP",
+   "back": "Airport Reference Point"
+  },
+  {
+   "id": "arsr",
+   "front": "ARSR",
+   "back": "Air Route Surveillance Radar"
+  },
+  {
+   "id": "artcc",
+   "front": "ARTCC",
+   "back": "Air Route Traffic Control Center"
+  },
+  {
+   "id": "asda",
+   "front": "ASDA",
+   "back": "Accelerate Stop Distance Available"
+  },
+  {
+   "id": "asos",
+   "front": "ASOS",
+   "back": "Automated Surface Observing System"
+  },
+  {
+   "id": "asr",
+   "front": "ASR",
+   "back": "Airport Surveillance Radar"
+  },
+  {
+   "id": "atc",
+   "front": "ATC",
+   "back": "Air Traffic Control"
+  },
+  {
+   "id": "atct",
+   "front": "ATCT",
+   "back": "Airport Traffic Control Tower"
+  },
+  {
+   "id": "atis",
+   "front": "ATIS",
+   "back": "Automatic Terminal Information Service"
+  },
+  {
+   "id": "awos",
+   "front": "AWOS",
+   "back": "Automated Weather Observing System"
+  },
+  {
+   "id": "cami",
+   "front": "CAMI",
+   "back": "Civil Aerospace Medical Institute"
+  },
+  {
+   "id": "cap",
+   "front": "CAP",
+   "back": "Civil Air Patrol"
+  },
+  {
+   "id": "cat",
+   "front": "CAT",
+   "back": "Clear Air Turbulence"
+  },
+  {
+   "id": "cdti",
+   "front": "CDTI",
+   "back": "Cockpit Display of Traffic Information"
+  },
+  {
+   "id": "cfi",
+   "front": "CFI",
+   "back": "Certified Flight Instructor"
+  },
+  {
+   "id": "cfit",
+   "front": "CFIT",
+   "back": "Controlled Flight Into Terrain"
+  },
+  {
+   "id": "cfr",
+   "front": "CFR",
+   "back": "Code of Federal Regulations"
+  },
+  {
+   "id": "cg",
+   "front": "CG",
+   "back": "Center of Gravity"
+  },
+  {
+   "id": "conus",
+   "front": "CONUS",
+   "back": "Continental United States"
+  },
+  {
+   "id": "crm",
+   "front": "CRM",
+   "back": "Crew Resource Management"
+  },
+  {
+   "id": "ctaf",
+   "front": "CTAF",
+   "back": "Common Traffic Advisory Frequency"
+  },
+  {
+   "id": "da",
+   "front": "DA",
+   "back": "Decision Altitude/Decision Height"
+  },
+  {
+   "id": "dh",
+   "front": "DH",
+   "back": "Decision Height"
+  },
+  {
+   "id": "dme",
+   "front": "DME",
+   "back": "Distance Measuring Equipment"
+  },
+  {
+   "id": "dp",
+   "front": "DP",
+   "back": "Departure Procedures"
+  },
+  {
+   "id": "dpe",
+   "front": "DPE",
+   "back": "Designated Pilot Examiner"
+  },
+  {
+   "id": "dvfr",
+   "front": "DVFR",
+   "back": "Defense Visual Flight Rules"
+  },
+  {
+   "id": "efas",
+   "front": "EFAS",
+   "back": "En Route Flight Advisory Service"
+  },
+  {
+   "id": "efb",
+   "front": "EFB",
+   "back": "Electronic Flight Bag"
+  },
+  {
+   "id": "elt",
+   "front": "ELT",
+   "back": "Emergency Locator Transmitter"
+  },
+  {
+   "id": "emas",
+   "front": "EMAS",
+   "back": "Engineered Materials Arresting System"
+  },
+  {
+   "id": "eta",
+   "front": "ETA",
+   "back": "Estimated Time of Arrival"
+  },
+  {
+   "id": "ete",
+   "front": "ETE",
+   "back": "Estimated Time En Route"
+  },
+  {
+   "id": "faa",
+   "front": "FAA",
+   "back": "Federal Aviation Administration"
+  },
+  {
+   "id": "faf",
+   "front": "FAF",
+   "back": "Final Approach Fix"
+  },
+  {
+   "id": "fap",
+   "front": "FAP",
+   "back": "Final Approach Point"
+  },
+  {
+   "id": "far",
+   "front": "FAR",
+   "back": "Federal Aviation Regulation"
+  },
+  {
+   "id": "fbo",
+   "front": "FBO",
+   "back": "Fixed Base Operator"
+  },
+  {
+   "id": "fcc",
+   "front": "FCC",
+   "back": "Federal Communications Commission"
+  },
+  {
+   "id": "fl",
+   "front": "FL",
+   "back": "Flight Level"
+  },
+  {
+   "id": "fod",
+   "front": "FOD",
+   "back": "Foreign Object Damage"
+  },
+  {
+   "id": "fsdo",
+   "front": "FSDO",
+   "back": "Flight Standards District Office"
+  },
+  {
+   "id": "fss",
+   "front": "FSS",
+   "back": "Flight Service Station"
+  },
+  {
+   "id": "ga",
+   "front": "GA",
+   "back": "General Aviation"
+  },
+  {
+   "id": "gnss",
+   "front": "GNSS",
+   "back": "Global Navigation Satellite System"
+  },
+  {
+   "id": "gps",
+   "front": "GPS",
+   "back": "Global Positioning System"
+  },
+  {
+   "id": "gpws",
+   "front": "GPWS",
+   "back": "Ground Proximity Warning System"
+  },
+  {
+   "id": "gs",
+   "front": "GS",
+   "back": "Glide Slope"
+  },
+  {
+   "id": "haa",
+   "front": "HAA",
+   "back": "Height Above Airport"
+  },
+  {
+   "id": "hat",
+   "front": "HAT",
+   "back": "Height Above Touchdown"
+  },
+  {
+   "id": "hf",
+   "front": "HF",
+   "back": "High Frequency"
+  },
+  {
+   "id": "hirl",
+   "front": "HIRL",
+   "back": "High Intensity Runway Lights"
+  },
+  {
+   "id": "hsi",
+   "front": "HSI",
+   "back": "Horizontal Situation Indicators"
+  },
+  {
+   "id": "hwas",
+   "front": "HWAS",
+   "back": "Hazardous In-Flight Weather Advisory"
+  },
+  {
+   "id": "iaf",
+   "front": "IAF",
+   "back": "Initial Approach Fix"
+  },
+  {
+   "id": "iap",
+   "front": "IAP",
+   "back": "Instrument Approach Procedures"
+  },
+  {
+   "id": "icao",
+   "front": "ICAO",
+   "back": "International Civil Aviation Organization"
+  },
+  {
+   "id": "if",
+   "front": "IF",
+   "back": "Intermediate Fix"
+  },
+  {
+   "id": "ifr",
+   "front": "IFR",
+   "back": "Instrument Flight Rules"
+  },
+  {
+   "id": "ils",
+   "front": "ILS",
+   "back": "Instrument Landing System"
+  },
+  {
+   "id": "im",
+   "front": "IM",
+   "back": "Inner Marker"
+  },
+  {
+   "id": "imc",
+   "front": "IMC",
+   "back": "Instrument Meteorological Conditions"
+  },
+  {
+   "id": "kcas",
+   "front": "KCAS",
+   "back": "Knots Calibrated Airspeed"
+  },
+  {
+   "id": "kias",
+   "front": "KIAS",
+   "back": "Knots Indicated Airspeed"
+  },
+  {
+   "id": "laa",
+   "front": "LAA",
+   "back": "Local Airport Advisory"
+  },
+  {
+   "id": "lahso",
+   "front": "LAHSO",
+   "back": "Land and Hold Short Operation"
+  },
+  {
+   "id": "lda",
+   "front": "LDA",
+   "back": "Localizer Directional Aid"
+  },
+  {
+   "id": "lf",
+   "front": "LF",
+   "back": "Low Frequency"
+  },
+  {
+   "id": "lirl",
+   "front": "LIRL",
+   "back": "Low Intensity Runway Lights"
+  },
+  {
+   "id": "llwas",
+   "front": "LLWAS",
+   "back": "Low Level Wind Shear Alert System"
+  },
+  {
+   "id": "lmm",
+   "front": "LMM",
+   "back": "Locator Middle Marker"
+  },
+  {
+   "id": "loc",
+   "front": "LOC",
+   "back": "Localizer"
+  },
+  {
+   "id": "lom",
+   "front": "LOM",
+   "back": "Locator Outer Marker"
+  },
+  {
+   "id": "loran",
+   "front": "LORAN",
+   "back": "Long-Range Aid to Navigation"
+  },
+  {
+   "id": "lpv",
+   "front": "LPV",
+   "back": "Localizer Performance with Vertical Guidance"
+  },
+  {
+   "id": "lrco",
+   "front": "LRCO",
+   "back": "Limited Remote Communications Outlet"
+  },
+  {
+   "id": "maa",
+   "front": "MAA",
+   "back": "Maximum Authorized Altitude"
+  },
+  {
+   "id": "mals",
+   "front": "MALS",
+   "back": "Medium-Intensity Approach Lighting System"
+  },
+  {
+   "id": "malsr",
+   "front": "MALSR",
+   "back": "Medium-Intensity Approach Lighting System With Runway Alignment Indicator"
+  },
+  {
+   "id": "map",
+   "front": "MAP",
+   "back": "Missed Approach Point"
+  },
+  {
+   "id": "mca",
+   "front": "MCA",
+   "back": "Minimum Crossing Altitude"
+  },
+  {
+   "id": "mda",
+   "front": "MDA",
+   "back": "Minimum Descent Altitude"
+  },
+  {
+   "id": "mea",
+   "front": "MEA",
+   "back": "Minimum Enroute Altitude"
+  },
+  {
+   "id": "mel",
+   "front": "MEL",
+   "back": "Minimum Equipment List"
+  },
+  {
+   "id": "metar",
+   "front": "METAR",
+   "back": "Aviation Routine Weather Report"
+  },
+  {
+   "id": "mf",
+   "front": "MF",
+   "back": "Middle Frequency"
+  },
+  {
+   "id": "mha",
+   "front": "MHA",
+   "back": "Minimum Holding Altitude"
+  },
+  {
+   "id": "mia",
+   "front": "MIA",
+   "back": "Minimum IFR Altitudes"
+  },
+  {
+   "id": "mirl",
+   "front": "MIRL",
+   "back": "Medium Intensity Runway Lights"
+  },
+  {
+   "id": "mm",
+   "front": "MM",
+   "back": "Middle Marker"
+  },
+  {
+   "id": "moa",
+   "front": "MOA",
+   "back": "Military Operations Area"
+  },
+  {
+   "id": "moca",
+   "front": "MOCA",
+   "back": "Minimum Obstruction Clearance Altitude"
+  },
+  {
+   "id": "mode-c",
+   "front": "MODE C",
+   "back": "Altitude Reporting Mode of Secondary Radar"
+  },
+  {
+   "id": "mode-s",
+   "front": "MODE S",
+   "back": "Mode Select; Discrete Addressable Secondary Radar System With Data Link"
+  },
+  {
+   "id": "mra",
+   "front": "MRA",
+   "back": "Minimum Reception Altitude"
+  },
+  {
+   "id": "msa",
+   "front": "MSA",
+   "back": "Minimum Safe Altitude"
+  },
+  {
+   "id": "msl",
+   "front": "MSL",
+   "back": "Mean Sea Level"
+  },
+  {
+   "id": "mtr",
+   "front": "MTR",
+   "back": "Military Training Route"
+  },
+  {
+   "id": "mva",
+   "front": "MVA",
+   "back": "Minimum Vectoring Altitude"
+  },
+  {
+   "id": "mvfr",
+   "front": "MVFR",
+   "back": "Marginal Visual Flight Rules"
+  },
+  {
+   "id": "nas",
+   "front": "NAS",
+   "back": "National Airspace System"
+  },
+  {
+   "id": "navaid",
+   "front": "NAVAID",
+   "back": "Navigation Aid"
+  },
+  {
+   "id": "ndb",
+   "front": "NDB",
+   "back": "Non-directional Beacon"
+  },
+  {
+   "id": "nexrad",
+   "front": "NEXRAD",
+   "back": "Next Generation Weather Radar"
+  },
+  {
+   "id": "nm",
+   "front": "NM",
+   "back": "Nautical Mile"
+  },
+  {
+   "id": "nmac",
+   "front": "NMAC",
+   "back": "Near Mid Air Collision"
+  },
+  {
+   "id": "noaa",
+   "front": "NOAA",
+   "back": "National Oceanic and Atmospheric Administration"
+  },
+  {
+   "id": "notam",
+   "front": "NOTAM",
+   "back": "Notice to Airmen"
+  },
+  {
+   "id": "nprm",
+   "front": "NPRM",
+   "back": "Notice of Proposed Rulemaking"
+  },
+  {
+   "id": "ntap",
+   "front": "NTAP",
+   "back": "Notices To Airmen Publication"
+  },
+  {
+   "id": "ntsb",
+   "front": "NTSB",
+   "back": "National Transportation Safety Board"
+  },
+  {
+   "id": "nws",
+   "front": "NWS",
+   "back": "National Weather Service"
+  },
+  {
+   "id": "odals",
+   "front": "ODALS",
+   "back": "Omnidirectional Approach Lighting Systems"
+  },
+  {
+   "id": "om",
+   "front": "OM",
+   "back": "Outer Marker"
+  },
+  {
+   "id": "papi",
+   "front": "PAPI",
+   "back": "Precision Approach Path Indicator"
+  },
+  {
+   "id": "par",
+   "front": "PAR",
+   "back": "Precision Approach Radar"
+  },
+  {
+   "id": "patwas",
+   "front": "PATWAS",
+   "back": "Pilots Automatic Telephone Weather Answering Service"
+  },
+  {
+   "id": "pca",
+   "front": "PCA",
+   "back": "Positive Control Airspace"
+  },
+  {
+   "id": "pirep",
+   "front": "PIREP",
+   "back": "Pilot Weather Report"
+  },
+  {
+   "id": "rail",
+   "front": "RAIL",
+   "back": "Runway Alignment Indicator Lights"
+  },
+  {
+   "id": "rco",
+   "front": "RCO",
+   "back": "Remote Communications Outlet"
+  },
+  {
+   "id": "reil",
+   "front": "REIL",
+   "back": "Runway End Identification Light"
+  },
+  {
+   "id": "rnav",
+   "front": "RNAV",
+   "back": "Area Navigation"
+  },
+  {
+   "id": "rnp",
+   "front": "RNP",
+   "back": "Required Navigation Performance"
+  },
+  {
+   "id": "rsa",
+   "front": "RSA",
+   "back": "Runway Safety Area"
+  },
+  {
+   "id": "rvr",
+   "front": "RVR",
+   "back": "Runway Visual Range"
+  },
+  {
+   "id": "rvsm",
+   "front": "RVSM",
+   "back": "Reduced Vertical Separation Minima"
+  },
+  {
+   "id": "rwy",
+   "front": "RWY",
+   "back": "Runway"
+  },
+  {
+   "id": "sar",
+   "front": "SAR",
+   "back": "Search and Rescue"
+  },
+  {
+   "id": "sdf",
+   "front": "SDF",
+   "back": "Simplified Direction Finding"
+  },
+  {
+   "id": "sfar",
+   "front": "SFAR",
+   "back": "Special Federal Aviation Regulations"
+  },
+  {
+   "id": "sfp",
+   "front": "SFP",
+   "back": "Special Flight Permit"
+  },
+  {
+   "id": "sid",
+   "front": "SID",
+   "back": "Standard Instrument Departure"
+  },
+  {
+   "id": "sigmet",
+   "front": "SIGMET",
+   "back": "Significant Meteorological Information"
+  },
+  {
+   "id": "sm",
+   "front": "SM",
+   "back": "Statute Mile"
+  },
+  {
+   "id": "srm",
+   "front": "SRM",
+   "back": "Single Pilot Resource Management"
+  },
+  {
+   "id": "star",
+   "front": "STAR",
+   "back": "Standard Terminal Arrival Route"
+  },
+  {
+   "id": "stc",
+   "front": "STC",
+   "back": "Supplemental Type Certificate"
+  },
+  {
+   "id": "sua",
+   "front": "SUA",
+   "back": "Special Use Airspace"
+  },
+  {
+   "id": "svfr",
+   "front": "SVFR",
+   "back": "Special Visual Flight Rules"
+  },
+  {
+   "id": "tac",
+   "front": "TAC",
+   "back": "Terminal Area Chart"
+  },
+  {
+   "id": "tacan",
+   "front": "TACAN",
+   "back": "Tactical Air Navigation"
+  },
+  {
+   "id": "taf",
+   "front": "TAF",
+   "back": "Terminal Area Forecast"
+  },
+  {
+   "id": "tas",
+   "front": "TAS",
+   "back": "True Air Speed"
+  },
+  {
+   "id": "taws",
+   "front": "TAWS",
+   "back": "Terrain Awareness and Warning System"
+  },
+  {
+   "id": "tca",
+   "front": "TCA",
+   "back": "Terminal Control Area"
+  },
+  {
+   "id": "tcas",
+   "front": "TCAS",
+   "back": "Traffic Alert and Collision Avoidance System"
+  },
+  {
+   "id": "tdwr",
+   "front": "TDWR",
+   "back": "Terminal Doppler Weather Radar"
+  },
+  {
+   "id": "terp",
+   "front": "TERP",
+   "back": "Terminal Instrument Procedure"
+  },
+  {
+   "id": "tfr",
+   "front": "TFR",
+   "back": "Temporary Flight Restriction"
+  },
+  {
+   "id": "tiph",
+   "front": "TIPH",
+   "back": "Taxi Into Position and Hold"
+  },
+  {
+   "id": "toda",
+   "front": "TODA",
+   "back": "Takeoff Distance Available"
+  },
+  {
+   "id": "tora",
+   "front": "TORA",
+   "back": "Take-off Run Available"
+  },
+  {
+   "id": "tpp",
+   "front": "TPP",
+   "back": "Terminal Procedures Publication"
+  },
+  {
+   "id": "tracon",
+   "front": "TRACON",
+   "back": "Terminal Radar Approach Control"
+  },
+  {
+   "id": "tvor",
+   "front": "TVOR",
+   "back": "Terminal VHF Omnidirectional Range"
+  },
+  {
+   "id": "tweb",
+   "front": "TWEB",
+   "back": "Transcribed Weather Broadcast"
+  },
+  {
+   "id": "twy",
+   "front": "TWY",
+   "back": "Taxiway"
+  },
+  {
+   "id": "uas",
+   "front": "UAS",
+   "back": "Unmanned Aircraft Systems"
+  },
+  {
+   "id": "uat",
+   "front": "UAT",
+   "back": "Universal Access Transceiver"
+  },
+  {
+   "id": "uhf",
+   "front": "UHF",
+   "back": "Ultra High Frequency"
+  },
+  {
+   "id": "utc",
+   "front": "UTC",
+   "back": "Coordinated Universal Time (ZULU)"
+  },
+  {
+   "id": "vasi",
+   "front": "VASI",
+   "back": "Visual Approach Slope Indicator"
+  },
+  {
+   "id": "vdf",
+   "front": "VDF",
+   "back": "Very High Frequency Direction-Finding Station"
+  },
+  {
+   "id": "vfr",
+   "front": "VFR",
+   "back": "Visual Flight Rules"
+  },
+  {
+   "id": "vgsi",
+   "front": "VGSI",
+   "back": "Visual Guidance Slope Indicator"
+  },
+  {
+   "id": "vhf",
+   "front": "VHF",
+   "back": "Very High Frequency"
+  },
+  {
+   "id": "vmc",
+   "front": "VMC",
+   "back": "Visual Meteorological Conditions"
+  },
+  {
+   "id": "vor",
+   "front": "VOR",
+   "back": "Very High Frequency Omnidirectional Range"
+  },
+  {
+   "id": "vor-dme",
+   "front": "VOR/DME",
+   "back": "VHF Omnidirectional Range/Distance Measuring Equipment"
+  },
+  {
+   "id": "vortac",
+   "front": "VORTAC",
+   "back": "VOR collocated with TACAN"
+  },
+  {
+   "id": "vot",
+   "front": "VOT",
+   "back": "VOR Test Facility"
+  },
+  {
+   "id": "vtol",
+   "front": "VTOL",
+   "back": "Vertical Take-off and landing"
+  },
+  {
+   "id": "waas",
+   "front": "WAAS",
+   "back": "Wide Area Augmentation System"
+  },
+  {
+   "id": "wx",
+   "front": "WX",
+   "back": "Weather"
+  }
+ ]
+}

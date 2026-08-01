@@ -1,0 +1,8744 @@
+{
+ "id": "faa-abbr-full",
+ "name": "FAA Abbreviations — Full Glossary",
+ "description": "The complete FAA abbreviations and acronyms glossary (1747 entries), including agency offices, programs, and systems. Duplicate acronyms are merged onto one card.",
+ "front_label": "Abbreviation",
+ "back_label": "Meaning",
+ "cards": [
+  {
+   "id": "a-e",
+   "front": "A&E",
+   "back": "Architecture and Engineering"
+  },
+  {
+   "id": "a-c",
+   "front": "A/C",
+   "back": "Aircraft"
+  },
+  {
+   "id": "a-g",
+   "front": "A/G",
+   "back": "Air to Ground"
+  },
+  {
+   "id": "a-h",
+   "front": "A/H",
+   "back": "Altitude/Height"
+  },
+  {
+   "id": "aaa",
+   "front": "AAA",
+   "back": "Airport Airspace Analysis"
+  },
+  {
+   "id": "aac",
+   "front": "AAC",
+   "back": "Mike Monroney Aeronautical Center; Approval, acceptance, concurrence"
+  },
+  {
+   "id": "aadc",
+   "front": "AADC",
+   "back": "Airport Average Daily Capacity"
+  },
+  {
+   "id": "aaf",
+   "front": "AAF",
+   "back": "Airway Facilities Service; Army Air Field"
+  },
+  {
+   "id": "aaf-1",
+   "front": "AAF-1",
+   "back": "Director of Airway Facilities"
+  },
+  {
+   "id": "aai",
+   "front": "AAI",
+   "back": "Arrival Aircraft Interval; FAA Office of Accident Investigation"
+  },
+  {
+   "id": "aal",
+   "front": "AAL",
+   "back": "Alaska Region"
+  },
+  {
+   "id": "aam",
+   "front": "AAM",
+   "back": "Office of Aerospace Medicine"
+  },
+  {
+   "id": "aams",
+   "front": "AAMS",
+   "back": "Aircraft Arrival Management System"
+  },
+  {
+   "id": "aap",
+   "front": "AAP",
+   "back": "Advanced Automation Program"
+  },
+  {
+   "id": "aar",
+   "front": "AAR",
+   "back": "After Action Review; Airport Acceptance Rate; Airport and Aircraft Safety Research and Development"
+  },
+  {
+   "id": "aas",
+   "front": "AAS",
+   "back": "Advanced Automation System"
+  },
+  {
+   "id": "aasr",
+   "front": "AASR",
+   "back": "Aging Aircraft Safety Rule"
+  },
+  {
+   "id": "aat",
+   "front": "AAT",
+   "back": "Associate Administrator for Air Traffic"
+  },
+  {
+   "id": "aba",
+   "front": "ABA",
+   "back": "FAA Office of Financial Services; Office of Budget"
+  },
+  {
+   "id": "abdis",
+   "front": "ABDIS",
+   "back": "Automated Data Interchange System Service"
+  },
+  {
+   "id": "ac",
+   "front": "AC",
+   "back": "Advisory Circular"
+  },
+  {
+   "id": "acaa",
+   "front": "ACAA",
+   "back": "Air Carrier Association of America"
+  },
+  {
+   "id": "acais",
+   "front": "ACAIS",
+   "back": "Air Carrier Activity Information System"
+  },
+  {
+   "id": "acas",
+   "front": "ACAS",
+   "back": "Aircraft Collision Avoidance System"
+  },
+  {
+   "id": "acc",
+   "front": "ACC",
+   "back": "Airports Consultants Council; Area Control Center"
+  },
+  {
+   "id": "acct",
+   "front": "ACCT",
+   "back": "Accounting Records"
+  },
+  {
+   "id": "acd",
+   "front": "ACD",
+   "back": "Automatic Call Distributor"
+  },
+  {
+   "id": "acdo",
+   "front": "ACDO",
+   "back": "Air Carrier District Office"
+  },
+  {
+   "id": "ace",
+   "front": "ACE",
+   "back": "Central Region"
+  },
+  {
+   "id": "acep",
+   "front": "ACEP",
+   "back": "Airport Capacity Enhancement Plan"
+  },
+  {
+   "id": "acf",
+   "front": "ACF",
+   "back": "Area Control Facility"
+  },
+  {
+   "id": "acfo",
+   "front": "ACFO",
+   "back": "Aircraft Certification Field Office"
+  },
+  {
+   "id": "acft",
+   "front": "ACFT",
+   "back": "Aircraft"
+  },
+  {
+   "id": "aci-na",
+   "front": "ACI-NA",
+   "back": "Airports Council International-North America"
+  },
+  {
+   "id": "acid",
+   "front": "ACID",
+   "back": "Aircraft Identification"
+  },
+  {
+   "id": "acip",
+   "front": "ACIP",
+   "back": "Airport Capital Improvement Plan; Automated Conformity Inspection Process"
+  },
+  {
+   "id": "acls",
+   "front": "ACLS",
+   "back": "Automatic Carrier Landing System"
+  },
+  {
+   "id": "aclt",
+   "front": "ACLT",
+   "back": "Actual Landing Time Calculated"
+  },
+  {
+   "id": "aco",
+   "front": "ACO",
+   "back": "Aircraft Certification Office; Associate Contracting Officer; Office of Airports Compliance and Field Operations"
+  },
+  {
+   "id": "acr",
+   "front": "ACR",
+   "back": "FAA Office of Civil Rights"
+  },
+  {
+   "id": "acrp",
+   "front": "ACRP",
+   "back": "Airport Cooperative Research Program"
+  },
+  {
+   "id": "acs",
+   "front": "ACS",
+   "back": "Airman Certification Standards"
+  },
+  {
+   "id": "acsep",
+   "front": "ACSEP",
+   "back": "Aircraft Certification Systems Evaluation Program"
+  },
+  {
+   "id": "act",
+   "front": "ACT",
+   "back": "William J. Hughes Technical Center"
+  },
+  {
+   "id": "ad",
+   "front": "AD",
+   "back": "Airworthiness Directive"
+  },
+  {
+   "id": "ada",
+   "front": "ADA",
+   "back": "Air Defense Area"
+  },
+  {
+   "id": "adap",
+   "front": "ADAP",
+   "back": "Airport Development Aid Program"
+  },
+  {
+   "id": "adas",
+   "front": "ADAS",
+   "back": "Automated Weather Observing System Data Acquisition System; AWOS Data Acquisition System"
+  },
+  {
+   "id": "adc",
+   "front": "ADC",
+   "back": "Air Defense Command"
+  },
+  {
+   "id": "adccp",
+   "front": "ADCCP",
+   "back": "Advanced Data Communications Control Procedure"
+  },
+  {
+   "id": "adda",
+   "front": "ADDA",
+   "back": "Administrative Data"
+  },
+  {
+   "id": "adds",
+   "front": "ADDS",
+   "back": "Aviation Digital Data Service"
+  },
+  {
+   "id": "adf",
+   "front": "ADF",
+   "back": "Automatic Direction Finding"
+  },
+  {
+   "id": "adi",
+   "front": "ADI",
+   "back": "Automatic De-Ice and Inhibitor"
+  },
+  {
+   "id": "adic",
+   "front": "ADIC",
+   "back": "ATS Interfacility Data Communications"
+  },
+  {
+   "id": "adin",
+   "front": "ADIN",
+   "back": "AUTODIN Service"
+  },
+  {
+   "id": "adiz",
+   "front": "ADIZ",
+   "back": "Air Defense Identification Zone"
+  },
+  {
+   "id": "adl",
+   "front": "ADL",
+   "back": "Aeronautical Data Link"
+  },
+  {
+   "id": "adlo",
+   "front": "ADLO",
+   "back": "Air Defense Liaison Office"
+  },
+  {
+   "id": "adly",
+   "front": "ADLY",
+   "back": "Arrival Delay"
+  },
+  {
+   "id": "adm",
+   "front": "ADM",
+   "back": "Aeronautical Decision Making"
+  },
+  {
+   "id": "ado",
+   "front": "ADO",
+   "back": "Airline Dispatch Office; Airport District Office"
+  },
+  {
+   "id": "adp",
+   "front": "ADP",
+   "back": "Automated Data Processing"
+  },
+  {
+   "id": "ads",
+   "front": "ADS",
+   "back": "Automated Distribution System; Air Defense Sector; Automatic Dependent Surveillance"
+  },
+  {
+   "id": "ads-b",
+   "front": "ADS-B",
+   "back": "Automatic Dependent Surveillance-Broadcast"
+  },
+  {
+   "id": "adsim",
+   "front": "ADSIM",
+   "back": "Airfield Delay Simulation Model"
+  },
+  {
+   "id": "adsy",
+   "front": "ADSY",
+   "back": "Administrative Equipment Systems"
+  },
+  {
+   "id": "adtn",
+   "front": "ADTN",
+   "back": "Administrative Data Transmission Network"
+  },
+  {
+   "id": "adtn2000",
+   "front": "ADTN2000",
+   "back": "Administrative Data Transmission Network 2000"
+  },
+  {
+   "id": "advo",
+   "front": "ADVO",
+   "back": "Administrative Voice"
+  },
+  {
+   "id": "aea",
+   "front": "AEA",
+   "back": "Eastern Region"
+  },
+  {
+   "id": "aed",
+   "front": "AED",
+   "back": "Aircraft Evaluation Division; Automated External Defibrillator"
+  },
+  {
+   "id": "aedt",
+   "front": "AEDT",
+   "back": "Aviation Environmental Design Tool"
+  },
+  {
+   "id": "aee",
+   "front": "AEE",
+   "back": "FAA Office of Environment and Energy"
+  },
+  {
+   "id": "aeec",
+   "front": "AEEC",
+   "back": "Airlines Electronic Engineering Committee"
+  },
+  {
+   "id": "aep",
+   "front": "AEP",
+   "back": "FAA Office of Aviation Policy Planning and Environment"
+  },
+  {
+   "id": "aera",
+   "front": "AERA",
+   "back": "Automated En-Route Air Traffic Control"
+  },
+  {
+   "id": "aex",
+   "front": "AEX",
+   "back": "Automated Execution"
+  },
+  {
+   "id": "af",
+   "front": "AF",
+   "back": "Air Force; Airway Facilities"
+  },
+  {
+   "id": "afb",
+   "front": "AFB",
+   "back": "Air Force Base"
+  },
+  {
+   "id": "afdss",
+   "front": "AFDSS",
+   "back": "Air Fix Data Sub Set"
+  },
+  {
+   "id": "afer",
+   "front": "AFER",
+   "back": "Aircraft Fuel Expense Reconciliation System"
+  },
+  {
+   "id": "afis",
+   "front": "AFIS",
+   "back": "Automated Flight Inspection System"
+  },
+  {
+   "id": "afms",
+   "front": "AFMS",
+   "back": "Automatic Flight Management System"
+  },
+  {
+   "id": "afmt",
+   "front": "AFMT",
+   "back": "Airway Facilities Management Team"
+  },
+  {
+   "id": "afo",
+   "front": "AFO",
+   "back": "Airport Field Office"
+  },
+  {
+   "id": "afp",
+   "front": "AFP",
+   "back": "Airspace Flow Program; Area Flight Plan"
+  },
+  {
+   "id": "afres",
+   "front": "AFRES",
+   "back": "Air Force Reserve Station"
+  },
+  {
+   "id": "afs",
+   "front": "AFS",
+   "back": "Airways Facilities Sector; Flight Standards Service"
+  },
+  {
+   "id": "afsfo",
+   "front": "AFSFO",
+   "back": "AFS Field Office"
+  },
+  {
+   "id": "afsfu",
+   "front": "AFSFU",
+   "back": "AFS Field Unit"
+  },
+  {
+   "id": "afsou",
+   "front": "AFSOU",
+   "back": "AFS Field Office Unit (Standard is AFSFOU)"
+  },
+  {
+   "id": "afss",
+   "front": "AFSS",
+   "back": "Automated Flight Service Station"
+  },
+  {
+   "id": "aftil",
+   "front": "AFTIL",
+   "back": "Airway Facilities Tower Integration Laboratory"
+  },
+  {
+   "id": "aftn",
+   "front": "AFTN",
+   "back": "Automated Fixed Telecommunications Network"
+  },
+  {
+   "id": "afz",
+   "front": "AFZ",
+   "back": "Resource Management"
+  },
+  {
+   "id": "agc",
+   "front": "AGC",
+   "back": "FAA Office of the Chief Counsel"
+  },
+  {
+   "id": "aghme",
+   "front": "AGHME",
+   "back": "Aircraft Geometric Height Measurement Element"
+  },
+  {
+   "id": "agi",
+   "front": "AGI",
+   "back": "FAA Office of Government and Industry Affairs"
+  },
+  {
+   "id": "agl",
+   "front": "AGL",
+   "back": "Above Ground Level; Alliance Great Lakes Region"
+  },
+  {
+   "id": "ahr",
+   "front": "AHR",
+   "back": "FAA Office of Human Resources"
+  },
+  {
+   "id": "aics",
+   "front": "AICS",
+   "back": "Aircraft Inventory and Charter System"
+  },
+  {
+   "id": "aid",
+   "front": "AID",
+   "back": "Airport Information Desk"
+  },
+  {
+   "id": "ait",
+   "front": "AIT",
+   "back": "Information Technology Service; Automated Information Transfer"
+  },
+  {
+   "id": "aifss",
+   "front": "AIFSS",
+   "back": "Automated International Flight Service"
+  },
+  {
+   "id": "aig",
+   "front": "AIG",
+   "back": "Airbus Industries Group"
+  },
+  {
+   "id": "ails",
+   "front": "AILS",
+   "back": "Automatic Instrument Landing System"
+  },
+  {
+   "id": "aim",
+   "front": "AIM",
+   "back": "Aeronautical Information Manual; Airman's Information Manual"
+  },
+  {
+   "id": "aip",
+   "front": "AIP",
+   "back": "Aeronautical Information Publication; Airport Improvement Plan; Airport Improvement Program"
+  },
+  {
+   "id": "aipa",
+   "front": "AIPA",
+   "back": "Aeronautical Information Production Application"
+  },
+  {
+   "id": "air",
+   "front": "AIR",
+   "back": "Aircraft Certification Service"
+  },
+  {
+   "id": "airmet",
+   "front": "AIRMET",
+   "back": "Airmen's Meteorological Information"
+  },
+  {
+   "id": "airnav",
+   "front": "AIRNAV",
+   "back": "Airports and Navigation Aids Database System"
+  },
+  {
+   "id": "airnet",
+   "front": "AIRNET",
+   "back": "Airport Network Simulation Model"
+  },
+  {
+   "id": "airpac",
+   "front": "AIRPAC",
+   "back": "Advisor for the Intelligent Resolution of Predicted Aircraft"
+  },
+  {
+   "id": "ais",
+   "front": "AIS",
+   "back": "Aeronautical Information Service; Aeronautical Information System; FAA Office of Information Systems Security"
+  },
+  {
+   "id": "aits",
+   "front": "AITS",
+   "back": "Automated Inventory Tracking System"
+  },
+  {
+   "id": "aja",
+   "front": "AJA",
+   "back": "Acquisition & Business Services, Air Traffic Organization"
+  },
+  {
+   "id": "ajc",
+   "front": "AJC",
+   "back": "Communications Services, Air Traffic Organization"
+  },
+  {
+   "id": "aje",
+   "front": "AJE",
+   "back": "En Route & Oceanic Service, Air Traffic Organization"
+  },
+  {
+   "id": "ajf",
+   "front": "AJF",
+   "back": "Finance Services, Air Traffic Organization"
+  },
+  {
+   "id": "ajo",
+   "front": "AJO",
+   "back": "Chief Operating Officer, Air Traffic Organization"
+  },
+  {
+   "id": "ajp",
+   "front": "AJP",
+   "back": "Operations Planning Services, Air Traffic Organization"
+  },
+  {
+   "id": "ajr",
+   "front": "AJR",
+   "back": "System Operations Services, Air Traffic Organization"
+  },
+  {
+   "id": "ajs",
+   "front": "AJS",
+   "back": "Safety Services, Air Traffic Organization"
+  },
+  {
+   "id": "ajt",
+   "front": "AJT",
+   "back": "Terminal Service, Air Traffic Organization"
+  },
+  {
+   "id": "ajw",
+   "front": "AJW",
+   "back": "Technical Operation Services, Air Traffic Organization"
+  },
+  {
+   "id": "alo",
+   "front": "ALO",
+   "back": "Aviation Logistics Organization"
+  },
+  {
+   "id": "alp",
+   "front": "ALP",
+   "back": "Airport Layout Plan"
+  },
+  {
+   "id": "alpa",
+   "front": "ALPA",
+   "back": "Airlines Pilots Association"
+  },
+  {
+   "id": "als",
+   "front": "ALS",
+   "back": "Approach Lighting System"
+  },
+  {
+   "id": "alsf",
+   "front": "ALSF",
+   "back": "Approach Lighting System With Sequenced Flashing Lights"
+  },
+  {
+   "id": "alsf1",
+   "front": "ALSF1",
+   "back": "ALS with Sequenced Flashers I"
+  },
+  {
+   "id": "alsf2",
+   "front": "ALSF2",
+   "back": "ALS with Sequenced Flashers II"
+  },
+  {
+   "id": "alsip",
+   "front": "ALSIP",
+   "back": "Approach Lighting System Improvement Plan"
+  },
+  {
+   "id": "altrv",
+   "front": "ALTRV",
+   "back": "Altitude Reservation"
+  },
+  {
+   "id": "amass",
+   "front": "AMASS",
+   "back": "Airport Movement Area Safety System"
+  },
+  {
+   "id": "amc",
+   "front": "AMC",
+   "back": "Mike Monroney Aeronautical Center"
+  },
+  {
+   "id": "amcc",
+   "front": "AMCC",
+   "back": "ACF/ARTCC Maintenance Control Center; Air Route Traffic Control Center Maintenance Control Center"
+  },
+  {
+   "id": "amic",
+   "front": "AMIC",
+   "back": "Area Manager in Charge"
+  },
+  {
+   "id": "amis",
+   "front": "AMIS",
+   "back": "Aircraft Management Information System"
+  },
+  {
+   "id": "amoc",
+   "front": "AMOC",
+   "back": "Alternative Methods of Compliance; Air and Marine Operations Center (DoD)"
+  },
+  {
+   "id": "amos",
+   "front": "AMOS",
+   "back": "Automated Meteorological Observation Station"
+  },
+  {
+   "id": "amp",
+   "front": "AMP",
+   "back": "ARINC Message Processor (OR) Airport Master Plan"
+  },
+  {
+   "id": "ams",
+   "front": "AMS",
+   "back": "Acquisition Management System"
+  },
+  {
+   "id": "amt",
+   "front": "AMT",
+   "back": "Aviation Maintenance Technician"
+  },
+  {
+   "id": "amver",
+   "front": "AMVER",
+   "back": "Automated Mutual Assistance Vessel Rescue System"
+  },
+  {
+   "id": "anc",
+   "front": "ANC",
+   "back": "Alternate Network Connectivity"
+  },
+  {
+   "id": "anca",
+   "front": "ANCA",
+   "back": "Airport Noise and Capacity Act"
+  },
+  {
+   "id": "and",
+   "front": "AND",
+   "back": "Associate Administrator for NAS Development"
+  },
+  {
+   "id": "ane",
+   "front": "ANE",
+   "back": "New England Region"
+  },
+  {
+   "id": "ang",
+   "front": "ANG",
+   "back": "Air National Guard"
+  },
+  {
+   "id": "angb",
+   "front": "ANGB",
+   "back": "Air National Guard Base"
+  },
+  {
+   "id": "anm",
+   "front": "ANM",
+   "back": "Northwest Mountain Region"
+  },
+  {
+   "id": "anms",
+   "front": "ANMS",
+   "back": "Automated Network Monitoring System"
+  },
+  {
+   "id": "ans",
+   "front": "ANS",
+   "back": "NAS Transition and Integration Directorate; NAS Transitions and Implementation"
+  },
+  {
+   "id": "ansi",
+   "front": "ANSI",
+   "back": "American National Standards Institute"
+  },
+  {
+   "id": "ansp",
+   "front": "ANSP",
+   "back": "Air Navigation Service Providers"
+  },
+  {
+   "id": "ao",
+   "front": "AO",
+   "back": "Authorizing Official"
+  },
+  {
+   "id": "aoa",
+   "front": "AOA",
+   "back": "Air Operations Area; FAA Office of the Administrator"
+  },
+  {
+   "id": "aoas",
+   "front": "AOAS",
+   "back": "Advanced Oceanic Automation System"
+  },
+  {
+   "id": "aoc",
+   "front": "AOC",
+   "back": "Airline Operational Control Center; FAA Office of Communications"
+  },
+  {
+   "id": "aocc",
+   "front": "AOCC",
+   "back": "Atlantic Operations Control Center"
+  },
+  {
+   "id": "aodr",
+   "front": "AODR",
+   "back": "Authorizing Official Designated Representative"
+  },
+  {
+   "id": "aop",
+   "front": "AOP",
+   "back": "NAS Operations"
+  },
+  {
+   "id": "aopa",
+   "front": "AOPA",
+   "back": "Aircraft Owners and Pilots Association"
+  },
+  {
+   "id": "aos",
+   "front": "AOS",
+   "back": "Operational Support Service"
+  },
+  {
+   "id": "aov",
+   "front": "AOV",
+   "back": "Air Traffic Safety Oversight Service"
+  },
+  {
+   "id": "ap",
+   "front": "AP",
+   "back": "Acquisition Plan"
+  },
+  {
+   "id": "apb",
+   "front": "APB",
+   "back": "Acquisition Program Baselines"
+  },
+  {
+   "id": "apc",
+   "front": "APC",
+   "back": "Air-to-Ground Protocol Converter"
+  },
+  {
+   "id": "apg",
+   "front": "APG",
+   "back": "Airport Planning Guidance; Agency Priority Goals"
+  },
+  {
+   "id": "api",
+   "front": "API",
+   "back": "Office of Policy and International Affairs"
+  },
+  {
+   "id": "apl",
+   "front": "APL",
+   "back": "Policy, International Affairs and Environment"
+  },
+  {
+   "id": "apm",
+   "front": "APM",
+   "back": "Approach Path Monitor"
+  },
+  {
+   "id": "apo",
+   "front": "APO",
+   "back": "Office of Aviation Policy and Plans"
+  },
+  {
+   "id": "app",
+   "front": "APP",
+   "back": "Approach; Agency Performance Plan"
+  },
+  {
+   "id": "apr",
+   "front": "APR",
+   "back": "Agency Performance Report"
+  },
+  {
+   "id": "aps",
+   "front": "APS",
+   "back": "Airport Planning Standard"
+  },
+  {
+   "id": "apts",
+   "front": "APTS",
+   "back": "Automated Personnel Tracking System; AVN (Aviation Systems Standards) Process Tracking System"
+  },
+  {
+   "id": "aqafo",
+   "front": "AQAFO",
+   "back": "Aeronautical Quality Assurance Field Office"
+  },
+  {
+   "id": "aqs",
+   "front": "AQS",
+   "back": "FAA Office of Quality, Integration and Executive Services"
+  },
+  {
+   "id": "ara",
+   "front": "ARA",
+   "back": "Research and Acquisition; National Engagement and Regional Administration"
+  },
+  {
+   "id": "arac",
+   "front": "ARAC",
+   "back": "Army Radar Approach Control (AAF); Aviation Rulemaking Advisory Committee"
+  },
+  {
+   "id": "arb",
+   "front": "ARB",
+   "back": "Air Reserve Base; Architectural Review Board"
+  },
+  {
+   "id": "arc",
+   "front": "ARC",
+   "back": "Administrator's Review Committee; Airlines Reporting Corporation; Aviation Review Committee; FAA Office of Regions and Center Operations"
+  },
+  {
+   "id": "arctr",
+   "front": "ARCTR",
+   "back": "FAA Aeronautical Center or Academy"
+  },
+  {
+   "id": "area",
+   "front": "AREA",
+   "back": "Automated En Route Air Traffic Control"
+  },
+  {
+   "id": "arf",
+   "front": "ARF",
+   "back": "Airport Reservation Function"
+  },
+  {
+   "id": "arff",
+   "front": "ARFF",
+   "back": "Aircraft Rescue and Fire Fighting"
+  },
+  {
+   "id": "arinc",
+   "front": "ARINC",
+   "back": "Aeronautical Radio Incorporated; Aeronautical Radio, Inc."
+  },
+  {
+   "id": "arlno",
+   "front": "ARLNO",
+   "back": "Airline Office"
+  },
+  {
+   "id": "arm",
+   "front": "ARM",
+   "back": "FAA Office of Rulemaking"
+  },
+  {
+   "id": "aro",
+   "front": "ARO",
+   "back": "Airport Reservation Office"
+  },
+  {
+   "id": "arp",
+   "front": "ARP",
+   "back": "Airport Reference Point; FAA Airports Organization; FAA Office of Airports"
+  },
+  {
+   "id": "ars",
+   "front": "ARS",
+   "back": "Air Traffic Requirements Service; Airport Surveillance Radar; Automated Reproduction System"
+  },
+  {
+   "id": "arsa",
+   "front": "ARSA",
+   "back": "Airport Service Radar Area"
+  },
+  {
+   "id": "arsr",
+   "front": "ARSR",
+   "back": "Air Route Surveillance Radar; Long Range Surveillance Radar"
+  },
+  {
+   "id": "artcc",
+   "front": "ARTCC",
+   "back": "Air Route Traffic Control Center"
+  },
+  {
+   "id": "arts",
+   "front": "ARTS",
+   "back": "Automated Radar Terminal System"
+  },
+  {
+   "id": "asap",
+   "front": "ASAP",
+   "back": "Aviation Safety Action Program"
+  },
+  {
+   "id": "asas",
+   "front": "ASAS",
+   "back": "Aviation Safety Analysis System"
+  },
+  {
+   "id": "asc",
+   "front": "ASC",
+   "back": "AUTODIN Switching Center"
+  },
+  {
+   "id": "ascp",
+   "front": "ASCP",
+   "back": "Aviation System Capacity Plan"
+  },
+  {
+   "id": "asd",
+   "front": "ASD",
+   "back": "Aircraft Situation Display"
+  },
+  {
+   "id": "asda",
+   "front": "ASDA",
+   "back": "Accelerate Stop Distance Available"
+  },
+  {
+   "id": "asde",
+   "front": "ASDE",
+   "back": "Area Surveillance Detection Equipment - (Radar)"
+  },
+  {
+   "id": "asde-x",
+   "front": "ASDE-X",
+   "back": "Airport Surface Detection Equipment"
+  },
+  {
+   "id": "ash",
+   "front": "ASH",
+   "back": "FAA Office of Security & Hazardous Materials"
+  },
+  {
+   "id": "asi",
+   "front": "ASI",
+   "back": "Aviation Safety Inspector"
+  },
+  {
+   "id": "asias",
+   "front": "ASIAS",
+   "back": "Aviation Safety Information Analysis and Sharing"
+  },
+  {
+   "id": "aslar",
+   "front": "ASLAR",
+   "back": "Aircraft Surge Launch And Recovery"
+  },
+  {
+   "id": "asm",
+   "front": "ASM",
+   "back": "Available Seat Mile"
+  },
+  {
+   "id": "aso",
+   "front": "ASO",
+   "back": "Southern Region"
+  },
+  {
+   "id": "asos",
+   "front": "ASOS",
+   "back": "Automated Surface Observing System; Automated Surface Observing Systems"
+  },
+  {
+   "id": "asp",
+   "front": "ASP",
+   "back": "Arrival Sequencing Program"
+  },
+  {
+   "id": "aspm",
+   "front": "ASPM",
+   "back": "Aviation System Performance Metrics"
+  },
+  {
+   "id": "asqp",
+   "front": "ASQP",
+   "back": "Airline Service Quality Performance"
+  },
+  {
+   "id": "asr",
+   "front": "ASR",
+   "back": "Airport Surveillance Radar; Airways Facilities Spectrum Policy and Management; Alkali Silica Reactivity; Terminal Surveillance Radar"
+  },
+  {
+   "id": "asr-wsp",
+   "front": "ASR-WSP",
+   "back": "Airport Surveillance Radar-Weather System Processor"
+  },
+  {
+   "id": "ast",
+   "front": "AST",
+   "back": "FAA Office of Commercial Space Transportation"
+  },
+  {
+   "id": "asta",
+   "front": "ASTA",
+   "back": "Airport Surface Traffic Automation"
+  },
+  {
+   "id": "asv",
+   "front": "ASV",
+   "back": "Airline Schedule Vendor"
+  },
+  {
+   "id": "asw",
+   "front": "ASW",
+   "back": "Southwest Region"
+  },
+  {
+   "id": "async",
+   "front": "ASYNC",
+   "back": "Asynchronous Concentrator"
+  },
+  {
+   "id": "at",
+   "front": "AT",
+   "back": "Air Traffic"
+  },
+  {
+   "id": "at-t",
+   "front": "AT&T",
+   "back": "American Telephone and Telegraph; ASDC AT&T Agency Service Delivery Center; CSA AT&T Customer Support Associate"
+  },
+  {
+   "id": "ata",
+   "front": "ATA",
+   "back": "Air Transport Association of America; Airline Transport Association"
+  },
+  {
+   "id": "atas",
+   "front": "ATAS",
+   "back": "Airspace and Traffic Advisory Service"
+  },
+  {
+   "id": "atc",
+   "front": "ATC",
+   "back": "Air Traffic Control"
+  },
+  {
+   "id": "atca",
+   "front": "ATCA",
+   "back": "Air Traffic Control Association"
+  },
+  {
+   "id": "atcaa",
+   "front": "ATCAA",
+   "back": "Air Traffic Control Assigned Airspace; ATC Assigned Airspace"
+  },
+  {
+   "id": "atcals",
+   "front": "ATCALS",
+   "back": "Air Traffic Control and Landing Systems (DoD)"
+  },
+  {
+   "id": "atcbi",
+   "front": "ATCBI",
+   "back": "Maintenance of Air Traffic Control Beacon Indicator"
+  },
+  {
+   "id": "atccc",
+   "front": "ATCCC",
+   "back": "Air Traffic Control Command Center"
+  },
+  {
+   "id": "atco",
+   "front": "ATCO",
+   "back": "Air Taxi Commercial Operator"
+  },
+  {
+   "id": "atcots",
+   "front": "ATCOTS",
+   "back": "Air Traffic Control Optimum Training Solutions"
+  },
+  {
+   "id": "atcrb",
+   "front": "ATCRB",
+   "back": "Air Traffic Control Radar Beacon"
+  },
+  {
+   "id": "atcrbs",
+   "front": "ATCRBS",
+   "back": "Air Traffic Control Radar Beacon System"
+  },
+  {
+   "id": "atcs",
+   "front": "ATCS",
+   "back": "Air Traffic Control Specialist"
+  },
+  {
+   "id": "atcscc",
+   "front": "ATCSCC",
+   "back": "Air Traffic Control Systems Command Center"
+  },
+  {
+   "id": "atct",
+   "front": "ATCT",
+   "back": "Airport Traffic Control Tower"
+  },
+  {
+   "id": "atids",
+   "front": "ATIDS",
+   "back": "Airport Surface Target Identification System"
+  },
+  {
+   "id": "atis",
+   "front": "ATIS",
+   "back": "Automated Terminal Information Service; Automatic Terminal Information Service"
+  },
+  {
+   "id": "atisr",
+   "front": "ATISR",
+   "back": "ATIS Recorder"
+  },
+  {
+   "id": "atm",
+   "front": "ATM",
+   "back": "Air Traffic Management; Air Traffic Manager; Asynchronous Transfer Mode"
+  },
+  {
+   "id": "atmac",
+   "front": "ATMAC",
+   "back": "Air Traffic Management Advisory Committee"
+  },
+  {
+   "id": "atms",
+   "front": "ATMS",
+   "back": "Advanced Traffic Management System; Automated Training Management System"
+  },
+  {
+   "id": "atn",
+   "front": "ATN",
+   "back": "Aeronautical Telecommunications Network"
+  },
+  {
+   "id": "ato",
+   "front": "ATO",
+   "back": "Air Traffic Organization"
+  },
+  {
+   "id": "atodn",
+   "front": "ATODN",
+   "back": "AUTODIN Terminal (FUS)"
+  },
+  {
+   "id": "atoms",
+   "front": "ATOMS",
+   "back": "Air Traffic Operations Management System"
+  },
+  {
+   "id": "atop",
+   "front": "ATOP",
+   "back": "Advanced Technologies and Oceanic Procedures"
+  },
+  {
+   "id": "atos",
+   "front": "ATOS",
+   "back": "Air Transportation Oversight System"
+  },
+  {
+   "id": "atovn",
+   "front": "ATOVN",
+   "back": "AUOTVON (Facility)"
+  },
+  {
+   "id": "atr",
+   "front": "ATR",
+   "back": "Air Traffic Requirements"
+  },
+  {
+   "id": "atrep",
+   "front": "ATREP",
+   "back": "Air Traffic Representative"
+  },
+  {
+   "id": "ats",
+   "front": "ATS",
+   "back": "Air Traffic Services"
+  },
+  {
+   "id": "atsap",
+   "front": "ATSAP",
+   "back": "Air Traffic Safety Action Program"
+  },
+  {
+   "id": "atsccp",
+   "front": "ATSCCP",
+   "back": "ATS Contingency Command Post"
+  },
+  {
+   "id": "atsi",
+   "front": "ATSI",
+   "back": "Air Traffic Safety Inspector"
+  },
+  {
+   "id": "atss",
+   "front": "ATSS",
+   "back": "Airway Transportation Systems Specialist"
+  },
+  {
+   "id": "attis",
+   "front": "ATTIS",
+   "back": "AT&T Information Systems"
+  },
+  {
+   "id": "autodin",
+   "front": "AUTODIN",
+   "back": "DoD Automatic Digital Network"
+  },
+  {
+   "id": "autovon",
+   "front": "AUTOVON",
+   "back": "DoD Automatic Voice Network"
+  },
+  {
+   "id": "avn",
+   "front": "AVN",
+   "back": "Aviation Standards National Field Office, Oklahoma City; Aviation System Standards"
+  },
+  {
+   "id": "avon",
+   "front": "AVON",
+   "back": "AUTOVON Service"
+  },
+  {
+   "id": "avp",
+   "front": "AVP",
+   "back": "Office of Accident Investigation and Prevention"
+  },
+  {
+   "id": "avs",
+   "front": "AVS",
+   "back": "FAA Office of Aviation Safety"
+  },
+  {
+   "id": "avsi",
+   "front": "AVSI",
+   "back": "Aerospace Vehicle Systems Institute"
+  },
+  {
+   "id": "awc",
+   "front": "AWC",
+   "back": "Air Worthiness Certification Tool"
+  },
+  {
+   "id": "awis",
+   "front": "AWIS",
+   "back": "Airport Weather Information"
+  },
+  {
+   "id": "awos",
+   "front": "AWOS",
+   "back": "Automated Weather Observing System"
+  },
+  {
+   "id": "awp",
+   "front": "AWP",
+   "back": "Aviation Weather Processor; Western Pacific Region"
+  },
+  {
+   "id": "awpg",
+   "front": "AWPG",
+   "back": "Aviation Weather Products Generator"
+  },
+  {
+   "id": "aws",
+   "front": "AWS",
+   "back": "Air Weather Station"
+  },
+  {
+   "id": "awss",
+   "front": "AWSS",
+   "back": "Automated Weather Sensors System"
+  },
+  {
+   "id": "awtt",
+   "front": "AWTT",
+   "back": "Aviation Weather Technology Transfer"
+  },
+  {
+   "id": "axx",
+   "front": "AXX",
+   "back": "One of the 9 Regional Offices"
+  },
+  {
+   "id": "ba",
+   "front": "BA",
+   "back": "Budget Analyst"
+  },
+  {
+   "id": "baa",
+   "front": "BAA",
+   "back": "Bilateral Airworthiness Agreement"
+  },
+  {
+   "id": "bad",
+   "front": "BAD",
+   "back": "Budget Analysis Database"
+  },
+  {
+   "id": "bans",
+   "front": "BANS",
+   "back": "BRITE Alphanumeric System"
+  },
+  {
+   "id": "bart",
+   "front": "BART",
+   "back": "Billing Analysis Reporting Tool (GSA software tool)"
+  },
+  {
+   "id": "basa",
+   "front": "BASA",
+   "back": "Bilateral Aviation Safety Agreement"
+  },
+  {
+   "id": "basic",
+   "front": "BASIC",
+   "back": "Basic Contract Observing Station"
+  },
+  {
+   "id": "basop",
+   "front": "BASOP",
+   "back": "Military Base Operations"
+  },
+  {
+   "id": "bca",
+   "front": "BCA",
+   "back": "Benefit/Cost Analysis"
+  },
+  {
+   "id": "bcr",
+   "front": "BCR",
+   "back": "Benefit/Cost Ratio"
+  },
+  {
+   "id": "bdat",
+   "front": "BDAT",
+   "back": "Digitized Beacon Data"
+  },
+  {
+   "id": "berms",
+   "front": "BERMS",
+   "back": "Beacon Environmental Remote Monitoring Subsystem"
+  },
+  {
+   "id": "bfo",
+   "front": "BFO",
+   "back": "Backfill Overtime; Blazing Flash of the Obvious (DOD)"
+  },
+  {
+   "id": "bim",
+   "front": "BIM",
+   "back": "Building Information Modeling"
+  },
+  {
+   "id": "bip",
+   "front": "BIP",
+   "back": "Backup Interface Processor"
+  },
+  {
+   "id": "bmp",
+   "front": "BMP",
+   "back": "Best Management Practices"
+  },
+  {
+   "id": "boc",
+   "front": "BOC",
+   "back": "Bell Operating Company"
+  },
+  {
+   "id": "bod",
+   "front": "BOD",
+   "back": "Beneficial Occupancy Date"
+  },
+  {
+   "id": "bp",
+   "front": "BP",
+   "back": "Business Plan"
+  },
+  {
+   "id": "bpb",
+   "front": "BPB",
+   "back": "Business Plan Builder"
+  },
+  {
+   "id": "bps",
+   "front": "BPS",
+   "back": "Bits Per Second"
+  },
+  {
+   "id": "bri",
+   "front": "BRI",
+   "back": "Basic Rate Interface"
+  },
+  {
+   "id": "brite",
+   "front": "BRITE",
+   "back": "Bright Radar Indicator Terminal Equipment; Bright Radar Indicator Tower Equipment"
+  },
+  {
+   "id": "brl",
+   "front": "BRL",
+   "back": "Building Restriction Line"
+  },
+  {
+   "id": "buec",
+   "front": "BUEC",
+   "back": "Back-up Emergency Communications"
+  },
+  {
+   "id": "buece",
+   "front": "BUECE",
+   "back": "Back-up Emergency Communications Equipment"
+  },
+  {
+   "id": "c-a",
+   "front": "C&A",
+   "back": "Certification and Accreditation"
+  },
+  {
+   "id": "c-e",
+   "front": "C/E",
+   "back": "Compliance and Enforcement"
+  },
+  {
+   "id": "c-s-s-n",
+   "front": "C/S/S/N",
+   "back": "Capacity/Safety/Security/Noise"
+  },
+  {
+   "id": "ca",
+   "front": "CA",
+   "back": "Conflict Alert"
+  },
+  {
+   "id": "caa",
+   "front": "CAA",
+   "back": "Civil Airworthiness Authority; Civil Aviation Authority; Clean Air Act"
+  },
+  {
+   "id": "caafi",
+   "front": "CAAFI",
+   "back": "Commercial Aviation Alternative Fuels Initiative"
+  },
+  {
+   "id": "caasd",
+   "front": "CAASD",
+   "back": "Center for Advanced Aviation System Development"
+  },
+  {
+   "id": "cab",
+   "front": "CAB",
+   "back": "Civil Aeronautics Board"
+  },
+  {
+   "id": "cad",
+   "front": "CAD",
+   "back": "Computer-aided Design; Computer-aided Drawing"
+  },
+  {
+   "id": "caeg",
+   "front": "CAEG",
+   "back": "Computer-aided Engineering Graphics"
+  },
+  {
+   "id": "cai",
+   "front": "CAI",
+   "back": "Contractor-Acceptance Inspection"
+  },
+  {
+   "id": "cairs",
+   "front": "CAIRS",
+   "back": "Cable Assignment Information Retrieval System"
+  },
+  {
+   "id": "cami",
+   "front": "CAMI",
+   "back": "Civil Aerospace Medical Institute"
+  },
+  {
+   "id": "cap",
+   "front": "CAP",
+   "back": "Civil Air Patrol; Corrective Action Plan"
+  },
+  {
+   "id": "car",
+   "front": "CAR",
+   "back": "Civil Aviation Regulations"
+  },
+  {
+   "id": "carat",
+   "front": "CARAT",
+   "back": "Center for Aviation Research and Aerospace Technology"
+  },
+  {
+   "id": "carf",
+   "front": "CARF",
+   "back": "Central Altitude Reservation Facility; Central Altitude Reservation Function"
+  },
+  {
+   "id": "cars",
+   "front": "CARS",
+   "back": "Civilian Air Routes System"
+  },
+  {
+   "id": "carsr",
+   "front": "CARSR",
+   "back": "Common Air Route Surveillance Radar"
+  },
+  {
+   "id": "carts",
+   "front": "CARTS",
+   "back": "Common Automated Radar Terminal System"
+  },
+  {
+   "id": "cas",
+   "front": "CAS",
+   "back": "Cost Accounting System"
+  },
+  {
+   "id": "casa",
+   "front": "CASA",
+   "back": "Controller Automated Spacing Aid"
+  },
+  {
+   "id": "casfo",
+   "front": "CASFO",
+   "back": "Civil Aviation Security Office"
+  },
+  {
+   "id": "cass",
+   "front": "CASS",
+   "back": "Computer Appliance System Service; Continuing Analysis and Surveillance System"
+  },
+  {
+   "id": "casst",
+   "front": "CASST",
+   "back": "Commercial Aviation Safety Strategic Team"
+  },
+  {
+   "id": "cast",
+   "front": "CAST",
+   "back": "Certification Authority Software Team"
+  },
+  {
+   "id": "castle",
+   "front": "CASTLE",
+   "back": "Consolidated Automated System for Time and Labor Entry"
+  },
+  {
+   "id": "cat",
+   "front": "CAT",
+   "back": "Category; Clear Air Turbulence"
+  },
+  {
+   "id": "catts",
+   "front": "CATTS",
+   "back": "Computerized Air Traffic Training System"
+  },
+  {
+   "id": "catx",
+   "front": "CATX",
+   "back": "Categorical Exclusion"
+  },
+  {
+   "id": "cau",
+   "front": "CAU",
+   "back": "Crypto Ancillary Unit"
+  },
+  {
+   "id": "cbi",
+   "front": "CBI",
+   "back": "Computer Based Instruction"
+  },
+  {
+   "id": "cc",
+   "front": "CC",
+   "back": "Construction Coordinator"
+  },
+  {
+   "id": "cc-o",
+   "front": "CC&O",
+   "back": "Customer Cost and Obligation"
+  },
+  {
+   "id": "ccc",
+   "front": "CCC",
+   "back": "Communications Command Center"
+  },
+  {
+   "id": "cccc",
+   "front": "CCCC",
+   "back": "Staff Communications"
+  },
+  {
+   "id": "ccch",
+   "front": "CCCH",
+   "back": "Central Computer Complex Host"
+  },
+  {
+   "id": "ccs7-ni",
+   "front": "CCS7-NI",
+   "back": "Communication Channel Signal-7 Network Interconnect"
+  },
+  {
+   "id": "ccsd",
+   "front": "CCSD",
+   "back": "Command Communications Service Designator"
+  },
+  {
+   "id": "ccu",
+   "front": "CCU",
+   "back": "Central Control Unit"
+  },
+  {
+   "id": "cd",
+   "front": "CD",
+   "back": "Common Digitizer; Compact Disc"
+  },
+  {
+   "id": "cd-rom",
+   "front": "CD-ROM",
+   "back": "Compact Disc Read-Only Memory"
+  },
+  {
+   "id": "cda",
+   "front": "CDA",
+   "back": "Continuous Descent Arrival"
+  },
+  {
+   "id": "cdb",
+   "front": "CDB",
+   "back": "Corporate Database"
+  },
+  {
+   "id": "cdc",
+   "front": "CDC",
+   "back": "Computer Display Channel"
+  },
+  {
+   "id": "cdd",
+   "front": "CDD",
+   "back": "Corporate Data Dictionary"
+  },
+  {
+   "id": "cdl",
+   "front": "CDL",
+   "back": "Configuration Deviation List"
+  },
+  {
+   "id": "cdm",
+   "front": "CDM",
+   "back": "Collaborative Decision Making"
+  },
+  {
+   "id": "cdr",
+   "front": "CDR",
+   "back": "Cost Detail Report"
+  },
+  {
+   "id": "cdra",
+   "front": "CDRA",
+   "back": "Cooperative Research and Development Agreement"
+  },
+  {
+   "id": "cds",
+   "front": "CDS",
+   "back": "Central Dispatch System"
+  },
+  {
+   "id": "cdt",
+   "front": "CDT",
+   "back": "Controlled Departure Time"
+  },
+  {
+   "id": "cdti",
+   "front": "CDTI",
+   "back": "Cockpit Display of Traffic Information"
+  },
+  {
+   "id": "cdv",
+   "front": "CDV",
+   "back": "Compressed Digital Video"
+  },
+  {
+   "id": "ced",
+   "front": "CED",
+   "back": "Categorical Exclusion Determination"
+  },
+  {
+   "id": "cenrap",
+   "front": "CENRAP",
+   "back": "Center Radar Arts Presentation"
+  },
+  {
+   "id": "centx",
+   "front": "CENTX",
+   "back": "Central Telephone Exchange"
+  },
+  {
+   "id": "cep",
+   "front": "CEP",
+   "back": "Capacity Enhancement Program"
+  },
+  {
+   "id": "ceq",
+   "front": "CEQ",
+   "back": "Council on Environmental Quality"
+  },
+  {
+   "id": "cerap",
+   "front": "CERAP",
+   "back": "Center Radar Approach Control; Central Radar Approach"
+  },
+  {
+   "id": "cfc",
+   "front": "CFC",
+   "back": "Central Flow Control"
+  },
+  {
+   "id": "cfcf",
+   "front": "CFCF",
+   "back": "Central Flow Control Facility"
+  },
+  {
+   "id": "cfcs",
+   "front": "CFCS",
+   "back": "Central Flow Control Service"
+  },
+  {
+   "id": "cfi",
+   "front": "CFI",
+   "back": "Certified Flight Instructor"
+  },
+  {
+   "id": "cfit",
+   "front": "CFIT",
+   "back": "Controlled Flight Into Terrain"
+  },
+  {
+   "id": "cfr",
+   "front": "CFR",
+   "back": "Code of Federal Regulations"
+  },
+  {
+   "id": "cfwp",
+   "front": "CFWP",
+   "back": "Central Flow Weather Processor"
+  },
+  {
+   "id": "cfwu",
+   "front": "CFWU",
+   "back": "Central Flow Weather Unit"
+  },
+  {
+   "id": "cg",
+   "front": "CG",
+   "back": "Center of Gravity"
+  },
+  {
+   "id": "cgas",
+   "front": "CGAS",
+   "back": "Coast Guard Air Station"
+  },
+  {
+   "id": "chi",
+   "front": "CHI",
+   "back": "Computer Human Interface"
+  },
+  {
+   "id": "cio",
+   "front": "CIO",
+   "back": "Chief Information Officer"
+  },
+  {
+   "id": "cip",
+   "front": "CIP",
+   "back": "Capital Investment Plan"
+  },
+  {
+   "id": "ciso",
+   "front": "CISO",
+   "back": "Chief Information Security Officer"
+  },
+  {
+   "id": "ciws",
+   "front": "CIWS",
+   "back": "Corridor Integrated Weather System"
+  },
+  {
+   "id": "clc",
+   "front": "CLC",
+   "back": "Course Line Computer"
+  },
+  {
+   "id": "cleen",
+   "front": "CLEEN",
+   "back": "Continuous Lower Energy, Emissions & Noise"
+  },
+  {
+   "id": "clin",
+   "front": "CLIN",
+   "back": "Contract Line Item"
+  },
+  {
+   "id": "clt",
+   "front": "CLT",
+   "back": "Calculated Landing Time"
+  },
+  {
+   "id": "cm",
+   "front": "CM",
+   "back": "Configuration Management; Certificate Management"
+  },
+  {
+   "id": "cmap",
+   "front": "CMAP",
+   "back": "Center Mapping Automation Program"
+  },
+  {
+   "id": "cmfo",
+   "front": "CMFO",
+   "back": "Certificate Management Field Office"
+  },
+  {
+   "id": "cmis",
+   "front": "CMIS",
+   "back": "Certificate Management Information System"
+  },
+  {
+   "id": "cmo",
+   "front": "CMO",
+   "back": "Certificate Management Office"
+  },
+  {
+   "id": "cmu",
+   "front": "CMU",
+   "back": "Certificate Management Unit"
+  },
+  {
+   "id": "cnmps",
+   "front": "CNMPS",
+   "back": "Canadian Minimum Navigation Performance Specification Airspace"
+  },
+  {
+   "id": "cns",
+   "front": "CNS",
+   "back": "Communications, Navigation and Surveillance; Consolidated NOTAM System"
+  },
+  {
+   "id": "cnsp",
+   "front": "CNSP",
+   "back": "Consolidated NOTAM System Processor"
+  },
+  {
+   "id": "co",
+   "front": "CO",
+   "back": "Central Office; Contracting Officer"
+  },
+  {
+   "id": "coe",
+   "front": "COE",
+   "back": "Center of Excellence; U.S. Army Corps of Engineers"
+  },
+  {
+   "id": "comco",
+   "front": "COMCO",
+   "back": "Command Communications Outlet"
+  },
+  {
+   "id": "conops",
+   "front": "CONOPS",
+   "back": "Concept of Operations"
+  },
+  {
+   "id": "conus",
+   "front": "CONUS",
+   "back": "Continental United States"
+  },
+  {
+   "id": "coop",
+   "front": "COOP",
+   "back": "Continuity of Operations Plan"
+  },
+  {
+   "id": "corp",
+   "front": "CORP",
+   "back": "Private Corporation other than ARINC or MITRE"
+  },
+  {
+   "id": "cotr",
+   "front": "COTR",
+   "back": "Contracting Officer's Technical Representative"
+  },
+  {
+   "id": "cots",
+   "front": "COTS",
+   "back": "Commercial Off-the-Shelf"
+  },
+  {
+   "id": "cp",
+   "front": "CP",
+   "back": "Command Post; Conflict Probe"
+  },
+  {
+   "id": "cpc",
+   "front": "CPC",
+   "back": "Certified Professional Controller"
+  },
+  {
+   "id": "cpcs",
+   "front": "CPCS",
+   "back": "Consolidated Production Control System"
+  },
+  {
+   "id": "cpdlc",
+   "front": "CPDLC",
+   "back": "Controller Pilot Data Link Communications"
+  },
+  {
+   "id": "cpe",
+   "front": "CPE",
+   "back": "Customer Premise Equipment"
+  },
+  {
+   "id": "cpic",
+   "front": "CPIC",
+   "back": "Capital Planning and Investment Control"
+  },
+  {
+   "id": "cpmis",
+   "front": "CPMIS",
+   "back": "Consolidated Personnel Management Information System"
+  },
+  {
+   "id": "cpoc",
+   "front": "CPOC",
+   "back": "Correspondence Point-of-Contact"
+  },
+  {
+   "id": "cra",
+   "front": "CRA",
+   "back": "Conflict Resolution Advisory"
+  },
+  {
+   "id": "crc",
+   "front": "CRC",
+   "back": "Coordinating Research Council"
+  },
+  {
+   "id": "crda",
+   "front": "CRDA",
+   "back": "Converging Runway Display Aid; Cooperative Research & Development Agreement"
+  },
+  {
+   "id": "crm",
+   "front": "CRM",
+   "back": "Crew Resource Management"
+  },
+  {
+   "id": "crt",
+   "front": "CRT",
+   "back": "Cathode Ray Tube"
+  },
+  {
+   "id": "csa",
+   "front": "CSA",
+   "back": "Central Service Area; Communications Service Authorization; Comparative Safety Assessment"
+  },
+  {
+   "id": "csap",
+   "front": "CSAP",
+   "back": "Combined Services Access Point; Common Services Access Point"
+  },
+  {
+   "id": "csc",
+   "front": "CSC",
+   "back": "Central Service Center"
+  },
+  {
+   "id": "cser",
+   "front": "CSER",
+   "back": "Contractor Site Engineering Report"
+  },
+  {
+   "id": "csis",
+   "front": "CSIS",
+   "back": "Centralized Storm Information System"
+  },
+  {
+   "id": "csmc",
+   "front": "CSMC",
+   "back": "Cyber Security Management Center"
+  },
+  {
+   "id": "cso",
+   "front": "CSO",
+   "back": "Customer Service Office"
+  },
+  {
+   "id": "csr",
+   "front": "CSR",
+   "back": "Communications Service Request"
+  },
+  {
+   "id": "css",
+   "front": "CSS",
+   "back": "Central Site System"
+  },
+  {
+   "id": "csta",
+   "front": "CSTA",
+   "back": "Chief Scientist and Technical Advisor"
+  },
+  {
+   "id": "csti",
+   "front": "CSTI",
+   "back": "Corporate Short Term Incentives"
+  },
+  {
+   "id": "cstwrk",
+   "front": "CSTWRK",
+   "back": "Cost Work"
+  },
+  {
+   "id": "cta",
+   "front": "CTA",
+   "back": "Control Area; Controlled Time of Arrival"
+  },
+  {
+   "id": "cta-fir",
+   "front": "CTA/FIR",
+   "back": "Control Area/Flight Information Region"
+  },
+  {
+   "id": "ctaf",
+   "front": "CTAF",
+   "back": "Common Traffic Advisory Frequency"
+  },
+  {
+   "id": "ctas",
+   "front": "CTAS",
+   "back": "Center TRACON Automation System"
+  },
+  {
+   "id": "ctma",
+   "front": "CTMA",
+   "back": "Center Traffic Management Advisor"
+  },
+  {
+   "id": "cups",
+   "front": "CUPS",
+   "back": "Consolidated Uniform Payroll System"
+  },
+  {
+   "id": "cvfr",
+   "front": "CVFR",
+   "back": "Controlled Visual Flight Rules"
+  },
+  {
+   "id": "cvts",
+   "front": "CVTS",
+   "back": "Compressed Video Transmission Service"
+  },
+  {
+   "id": "cw",
+   "front": "CW",
+   "back": "Continuous Wave"
+  },
+  {
+   "id": "cwo",
+   "front": "CWO",
+   "back": "Contract Weather Observer"
+  },
+  {
+   "id": "cwp",
+   "front": "CWP",
+   "back": "Central Weather Processor; Corporate Work Plan"
+  },
+  {
+   "id": "cwsu",
+   "front": "CWSU",
+   "back": "Central Weather Service Unit"
+  },
+  {
+   "id": "cwy",
+   "front": "CWY",
+   "back": "Clearway"
+  },
+  {
+   "id": "d-atis",
+   "front": "D-ATIS",
+   "back": "Digital - Automatic Terminal Information Service"
+  },
+  {
+   "id": "da",
+   "front": "DA",
+   "back": "Decision Altitude/Decision Height; Descent Advisor; Direct Access"
+  },
+  {
+   "id": "da-h",
+   "front": "DA/H",
+   "back": "Decision Altitude/Height"
+  },
+  {
+   "id": "dabbs",
+   "front": "DABBS",
+   "back": "DITCO Automated Bulletin Board System"
+  },
+  {
+   "id": "dacs",
+   "front": "DACS",
+   "back": "Digital Aeronautical Chart Supplement"
+  },
+  {
+   "id": "dads",
+   "front": "DADS",
+   "back": "Digital Aeronautical Database System"
+  },
+  {
+   "id": "dafis",
+   "front": "DAFIS",
+   "back": "Departmental Accounting and Financial Information System"
+  },
+  {
+   "id": "dair",
+   "front": "DAIR",
+   "back": "Direct Altitude and Identity Readout"
+  },
+  {
+   "id": "dalr",
+   "front": "DALR",
+   "back": "Digital Audio Legal Recorder"
+  },
+  {
+   "id": "dar",
+   "front": "DAR",
+   "back": "Designated Agency Representative"
+  },
+  {
+   "id": "darc",
+   "front": "DARC",
+   "back": "Direct Access Radar Channel"
+  },
+  {
+   "id": "darp",
+   "front": "DARP",
+   "back": "Dynamic Aircraft Route Planning"
+  },
+  {
+   "id": "dasi",
+   "front": "DASI",
+   "back": "Digital Altimeter Setting Indicator"
+  },
+  {
+   "id": "dasr",
+   "front": "DASR",
+   "back": "Digital Airport Surveillance Radar"
+  },
+  {
+   "id": "db",
+   "front": "DB",
+   "back": "Database"
+  },
+  {
+   "id": "db-2",
+   "front": "dB",
+   "back": "Decibel"
+  },
+  {
+   "id": "dba",
+   "front": "DBA",
+   "back": "Database Administrator"
+  },
+  {
+   "id": "dba-2",
+   "front": "dBA",
+   "back": "Decibels A-Weighted"
+  },
+  {
+   "id": "dbcrc",
+   "front": "DBCRC",
+   "back": "Defense Base Closure and Realignment Commission"
+  },
+  {
+   "id": "dbe",
+   "front": "DBE",
+   "back": "Disadvantaged Business Enterprise"
+  },
+  {
+   "id": "dbms",
+   "front": "DBMS",
+   "back": "Data Base Management System"
+  },
+  {
+   "id": "dbrite",
+   "front": "DBRITE",
+   "back": "Digital Bright Radar Indicator Tower Equipment"
+  },
+  {
+   "id": "dca",
+   "front": "DCA",
+   "back": "Defense Communications Agency"
+  },
+  {
+   "id": "dcaa",
+   "front": "DCAA",
+   "back": "Dual Call, Automatic Answer Device"
+  },
+  {
+   "id": "dcc",
+   "front": "DCC",
+   "back": "Direct Channel Complex"
+  },
+  {
+   "id": "dccu",
+   "front": "DCCU",
+   "back": "Data Communications Control Unit"
+  },
+  {
+   "id": "dce",
+   "front": "DCE",
+   "back": "Data Communications Equipment"
+  },
+  {
+   "id": "dda",
+   "front": "DDA",
+   "back": "Dedicated Digital Access"
+  },
+  {
+   "id": "ddd",
+   "front": "DDD",
+   "back": "Direct Distance Dialing"
+  },
+  {
+   "id": "ddm",
+   "front": "DDM",
+   "back": "Difference in Depth of Modulation"
+  },
+  {
+   "id": "dds",
+   "front": "DDS",
+   "back": "Digital Data Service"
+  },
+  {
+   "id": "dea",
+   "front": "DEA",
+   "back": "Drug Enforcement Agency"
+  },
+  {
+   "id": "deds",
+   "front": "DEDS",
+   "back": "Data Entry and Display System"
+  },
+  {
+   "id": "deis",
+   "front": "DEIS",
+   "back": "Draft Environmental Impact Statement"
+  },
+  {
+   "id": "dem",
+   "front": "DEM",
+   "back": "Digital Elevation Model"
+  },
+  {
+   "id": "dep",
+   "front": "DEP",
+   "back": "Departure"
+  },
+  {
+   "id": "dewiz",
+   "front": "DEWIZ",
+   "back": "Distance Early Warning Identification Zone"
+  },
+  {
+   "id": "df",
+   "front": "DF",
+   "back": "Direction Finder"
+  },
+  {
+   "id": "dfax",
+   "front": "DFAX",
+   "back": "Digital Facsimile"
+  },
+  {
+   "id": "dfi",
+   "front": "DFI",
+   "back": "Direction Finding Indicator"
+  },
+  {
+   "id": "dfl",
+   "front": "DFL",
+   "back": "Daily Flight Log"
+  },
+  {
+   "id": "dfm",
+   "front": "DFM",
+   "back": "Departure Flow Management"
+  },
+  {
+   "id": "dgnss",
+   "front": "DGNSS",
+   "back": "Differential Global Navigation Satellite System"
+  },
+  {
+   "id": "dgps",
+   "front": "DGPS",
+   "back": "Differential Global Positioning Satellite (System); Differential Global Positioning System"
+  },
+  {
+   "id": "dh",
+   "front": "DH",
+   "back": "Decision Height"
+  },
+  {
+   "id": "dhs",
+   "front": "DHS",
+   "back": "Department of Homeland Security"
+  },
+  {
+   "id": "dia",
+   "front": "DIA",
+   "back": "Denver International Airport"
+  },
+  {
+   "id": "did",
+   "front": "DID",
+   "back": "Direct Inward Dial"
+  },
+  {
+   "id": "dip",
+   "front": "DIP",
+   "back": "Drop and Insert Point"
+  },
+  {
+   "id": "dirf",
+   "front": "DIRF",
+   "back": "Direction Finding"
+  },
+  {
+   "id": "disu",
+   "front": "DISU",
+   "back": "Drug Investigation Support Unit"
+  },
+  {
+   "id": "ditco",
+   "front": "DITCO",
+   "back": "Defense Information Technology Contracting Office Agency"
+  },
+  {
+   "id": "dlap",
+   "front": "DLAP",
+   "back": "Data Link Applications Processor"
+  },
+  {
+   "id": "dlrs",
+   "front": "DLRS",
+   "back": "Digital Legal Recording System"
+  },
+  {
+   "id": "dme",
+   "front": "DME",
+   "back": "Distance Measuring Equipment"
+  },
+  {
+   "id": "dme-p",
+   "front": "DME/P",
+   "back": "Precision Distance Measuring Equipment"
+  },
+  {
+   "id": "dmn",
+   "front": "DMN",
+   "back": "Data Multiplexing Network"
+  },
+  {
+   "id": "dmir",
+   "front": "DMIR",
+   "back": "Designated Manufacturing Inspection Representative"
+  },
+  {
+   "id": "dmrs",
+   "front": "DMRS",
+   "back": "Database Management Reporting System"
+  },
+  {
+   "id": "dms",
+   "front": "DMS",
+   "back": "Data Management System; Drawing Management System"
+  },
+  {
+   "id": "dnl",
+   "front": "DNL",
+   "back": "Day-Night Equivalent Sound Level"
+  },
+  {
+   "id": "dod",
+   "front": "DOD",
+   "back": "Department of Defense; Direct Outward Dial"
+  },
+  {
+   "id": "dof",
+   "front": "DOF",
+   "back": "Digital Obstacle File"
+  },
+  {
+   "id": "doi",
+   "front": "DOI",
+   "back": "Department of Interior"
+  },
+  {
+   "id": "dos",
+   "front": "DOS",
+   "back": "Department of State"
+  },
+  {
+   "id": "dot",
+   "front": "DOT",
+   "back": "Department of Transportation"
+  },
+  {
+   "id": "dotcc",
+   "front": "DOTCC",
+   "back": "Department of Transportation Computer Center"
+  },
+  {
+   "id": "dots",
+   "front": "DOTS",
+   "back": "Dynamic Ocean Track System; Dynamic Ocean Tracking System"
+  },
+  {
+   "id": "dove",
+   "front": "DOVE",
+   "back": "DSR Oceanic VSCS En Route Implementation Working Group"
+  },
+  {
+   "id": "dp",
+   "front": "DP",
+   "back": "Departure Procedures"
+  },
+  {
+   "id": "dpe",
+   "front": "DPE",
+   "back": "Designated Pilot Examiner"
+  },
+  {
+   "id": "dr",
+   "front": "DR",
+   "back": "Disaster Recovery"
+  },
+  {
+   "id": "drp",
+   "front": "DRP",
+   "back": "Disaster Recovery Plan"
+  },
+  {
+   "id": "dscs",
+   "front": "DSCS",
+   "back": "Digital Satellite Compression Service"
+  },
+  {
+   "id": "dsg",
+   "front": "DSG",
+   "back": "Data Services Group"
+  },
+  {
+   "id": "dsp",
+   "front": "DSP",
+   "back": "Departure Sequencing Program"
+  },
+  {
+   "id": "dsr",
+   "front": "DSR",
+   "back": "Display System Replacement"
+  },
+  {
+   "id": "dss",
+   "front": "DSS",
+   "back": "Decision Support System"
+  },
+  {
+   "id": "dsua",
+   "front": "DSUA",
+   "back": "Dynamic Special Use Airspace"
+  },
+  {
+   "id": "dted",
+   "front": "DTED",
+   "back": "Digital Terrain Elevation Data"
+  },
+  {
+   "id": "dtm",
+   "front": "DTM",
+   "back": "Digital Terrain Model"
+  },
+  {
+   "id": "dts",
+   "front": "DTS",
+   "back": "Dedicated Transmission Service"
+  },
+  {
+   "id": "duat",
+   "front": "DUAT",
+   "back": "Direct User Access Terminal"
+  },
+  {
+   "id": "duats",
+   "front": "DUATS",
+   "back": "Direct User Access Terminal System"
+  },
+  {
+   "id": "dvd",
+   "front": "DVD",
+   "back": "Digital Versatile Disk"
+  },
+  {
+   "id": "dvfr",
+   "front": "DVFR",
+   "back": "Day Visual Flight Rules; Defense Visual Flight Rules"
+  },
+  {
+   "id": "dvof",
+   "front": "DVOF",
+   "back": "Digital Vertical Obstruction File"
+  },
+  {
+   "id": "dvor",
+   "front": "DVOR",
+   "back": "Doppler Very High Frequency Omni Directional Range; Doppler Very High Frequency Omni-- Directional Range"
+  },
+  {
+   "id": "dvrs",
+   "front": "DVRS",
+   "back": "Digital Voice Recorder System"
+  },
+  {
+   "id": "dysim",
+   "front": "DYSIM",
+   "back": "Dynamic Simulator"
+  },
+  {
+   "id": "e-msaw",
+   "front": "E-MSAW",
+   "back": "En Route Automated Minimum Safe Altitude Warning"
+  },
+  {
+   "id": "e-ose",
+   "front": "E-OSE",
+   "back": "Enterprise Operational Support Environment"
+  },
+  {
+   "id": "ea",
+   "front": "EA",
+   "back": "Enterprise Architecture; Environmental Assessment"
+  },
+  {
+   "id": "eads",
+   "front": "EADS",
+   "back": "Eastern Air Defense Sector"
+  },
+  {
+   "id": "ears",
+   "front": "EARS",
+   "back": "En Route Analysis and Reporting System"
+  },
+  {
+   "id": "earts",
+   "front": "EARTS",
+   "back": "En Route Automated Radar Tracking System"
+  },
+  {
+   "id": "easa",
+   "front": "EASA",
+   "back": "European Aviation Safety Agency"
+  },
+  {
+   "id": "ebc",
+   "front": "EBC",
+   "back": "Event Based Currency"
+  },
+  {
+   "id": "ebus",
+   "front": "EBUS",
+   "back": "Enhanced Backup Surveillance"
+  },
+  {
+   "id": "ec",
+   "front": "EC",
+   "back": "Engineering Center"
+  },
+  {
+   "id": "ecg",
+   "front": "ECG",
+   "back": "En Route Communications Gateway"
+  },
+  {
+   "id": "ecom",
+   "front": "ECOM",
+   "back": "En Route Communications"
+  },
+  {
+   "id": "ecpic",
+   "front": "eCPIC",
+   "back": "Electronic Capital Planning Investment Control"
+  },
+  {
+   "id": "ecvfp",
+   "front": "ECVFP",
+   "back": "Expanded Charted Visual Flight Procedures"
+  },
+  {
+   "id": "edc",
+   "front": "EDC",
+   "back": "Early Display Configuration; En Route Departure Capability; Enterprise Data Center"
+  },
+  {
+   "id": "edct",
+   "front": "EDCT",
+   "back": "Estimated Departure Control Time; Expedite Departure Path"
+  },
+  {
+   "id": "edda",
+   "front": "EDDA",
+   "back": "Environmental Due Diligence Audit"
+  },
+  {
+   "id": "edi",
+   "front": "EDI",
+   "back": "Electronic Data Interchange"
+  },
+  {
+   "id": "edms",
+   "front": "EDMS",
+   "back": "Electronic Document Management Systems; Emissions and Dispersion Modeling System"
+  },
+  {
+   "id": "edrs",
+   "front": "EDRS",
+   "back": "Electronic Document Retrieval System"
+  },
+  {
+   "id": "eds",
+   "front": "EDS",
+   "back": "Enterprise Database System"
+  },
+  {
+   "id": "eeo",
+   "front": "EEO",
+   "back": "Equal Employment Opportunity"
+  },
+  {
+   "id": "efas",
+   "front": "EFAS",
+   "back": "En Route Flight Advisory Service"
+  },
+  {
+   "id": "efb",
+   "front": "EFB",
+   "back": "Electronic Flight Bag"
+  },
+  {
+   "id": "efc",
+   "front": "EFC",
+   "back": "Expect Further Clearance"
+  },
+  {
+   "id": "efis",
+   "front": "EFIS",
+   "back": "Electronic Flight Information Systems"
+  },
+  {
+   "id": "efsts",
+   "front": "EFSTS",
+   "back": "Electronic Flight Strip Transfer System"
+  },
+  {
+   "id": "eiaf",
+   "front": "EIAF",
+   "back": "Expanded Inward Access Features"
+  },
+  {
+   "id": "eis",
+   "front": "EIS",
+   "back": "Environmental Impact Statement"
+  },
+  {
+   "id": "eld",
+   "front": "ELD",
+   "back": "Electrical Load Database"
+  },
+  {
+   "id": "elms",
+   "front": "eLMS",
+   "back": "Electronic Learning Management System"
+  },
+  {
+   "id": "elt",
+   "front": "ELT",
+   "back": "Emergency Locator Transmitter"
+  },
+  {
+   "id": "elwrt",
+   "front": "ELWRT",
+   "back": "Electrowriter"
+  },
+  {
+   "id": "emas",
+   "front": "EMAS",
+   "back": "Engineered Materials Arresting System"
+  },
+  {
+   "id": "emps",
+   "front": "EMPS",
+   "back": "En Route Maintenance Processor System"
+  },
+  {
+   "id": "ems",
+   "front": "EMS",
+   "back": "Environmental Management System"
+  },
+  {
+   "id": "enav",
+   "front": "ENAV",
+   "back": "En Route Navigational Aids"
+  },
+  {
+   "id": "eof",
+   "front": "EOF",
+   "back": "Emergency Operating Facility"
+  },
+  {
+   "id": "eon",
+   "front": "EON",
+   "back": "Emergency Operations Network"
+  },
+  {
+   "id": "eopf",
+   "front": "eOPF",
+   "back": "Electronic Official Personnel File"
+  },
+  {
+   "id": "eosh",
+   "front": "EOSH",
+   "back": "Environmental and Occupational Safety & Health; Environmental Compliance Occupational Safety and Health"
+  },
+  {
+   "id": "epa",
+   "front": "EPA",
+   "back": "Environmental Protection Agency"
+  },
+  {
+   "id": "epi",
+   "front": "EPI",
+   "back": "Element Performance Inspection"
+  },
+  {
+   "id": "eps",
+   "front": "EPS",
+   "back": "Engineered Performance Standards"
+  },
+  {
+   "id": "epss",
+   "front": "EPSS",
+   "back": "Enhanced Packet Switched Service"
+  },
+  {
+   "id": "erad",
+   "front": "ERAD",
+   "back": "En Route Broadband Radar"
+  },
+  {
+   "id": "eram",
+   "front": "ERAM",
+   "back": "En Route Automation Modernization"
+  },
+  {
+   "id": "erids",
+   "front": "ERIDS",
+   "back": "En Route Information Display System"
+  },
+  {
+   "id": "erit",
+   "front": "ERIT",
+   "back": "Enhanced Radar Intelligent Tool"
+  },
+  {
+   "id": "erm",
+   "front": "ERM",
+   "back": "En Route Spacing Program"
+  },
+  {
+   "id": "erms",
+   "front": "ERMS",
+   "back": "Environmental Remote Monitoring System"
+  },
+  {
+   "id": "es-h",
+   "front": "ES&H",
+   "back": "Environmental Safety and Health"
+  },
+  {
+   "id": "esa",
+   "front": "ESA",
+   "back": "Eastern Service Area"
+  },
+  {
+   "id": "esc",
+   "front": "ESC",
+   "back": "Eastern Service Center; Enterprise Service Center"
+  },
+  {
+   "id": "esec",
+   "front": "ESEC",
+   "back": "En Route Broadband Secondary Radar"
+  },
+  {
+   "id": "esf",
+   "front": "ESF",
+   "back": "Extended Superframe Format"
+  },
+  {
+   "id": "esis",
+   "front": "ESIS",
+   "back": "Enhanced Status Information System; Environmental Safety Information System"
+  },
+  {
+   "id": "esp",
+   "front": "ESP",
+   "back": "En Route Spacing Program; En Route Sequencing Program"
+  },
+  {
+   "id": "esri",
+   "front": "ESRI",
+   "back": "Environmental Systems Research Institute"
+  },
+  {
+   "id": "esys",
+   "front": "ESYS",
+   "back": "En Route Equipment Systems"
+  },
+  {
+   "id": "eta",
+   "front": "ETA",
+   "back": "Estimated Time of Arrival"
+  },
+  {
+   "id": "ete",
+   "front": "ETE",
+   "back": "Estimated Time En Route"
+  },
+  {
+   "id": "etg",
+   "front": "ETG",
+   "back": "Enhanced Target Generator"
+  },
+  {
+   "id": "etms",
+   "front": "ETMS",
+   "back": "Enhanced Traffic management Systems"
+  },
+  {
+   "id": "etn",
+   "front": "ETN",
+   "back": "Electronic Telecommunications Network"
+  },
+  {
+   "id": "eto",
+   "front": "ETO",
+   "back": "Engineering Technical Officer"
+  },
+  {
+   "id": "etvct",
+   "front": "ETVCT",
+   "back": "En Route Training Voice Communication Tool"
+  },
+  {
+   "id": "etvs",
+   "front": "ETVS",
+   "back": "Enhanced Terminal Voice Switch"
+  },
+  {
+   "id": "eurocae",
+   "front": "EUROCAE",
+   "back": "European Organization for Civil Aviation Equipment"
+  },
+  {
+   "id": "evas",
+   "front": "EVAS",
+   "back": "Enhanced Vortex Advisory System"
+  },
+  {
+   "id": "evcs",
+   "front": "EVCS",
+   "back": "Emergency Voice Communications System"
+  },
+  {
+   "id": "evfr",
+   "front": "EVFR",
+   "back": "Electronic Visual Flight Rules"
+  },
+  {
+   "id": "evm",
+   "front": "EVM",
+   "back": "Earned Value Management"
+  },
+  {
+   "id": "f-e",
+   "front": "F&E",
+   "back": "Facilities and Equipment"
+  },
+  {
+   "id": "faa",
+   "front": "FAA",
+   "back": "Federal Aviation Administration"
+  },
+  {
+   "id": "faaac",
+   "front": "FAAAC",
+   "back": "FAA Aeronautical Center"
+  },
+  {
+   "id": "faacis",
+   "front": "FAACIS",
+   "back": "FAA Communications Information System"
+  },
+  {
+   "id": "faasteam",
+   "front": "FAASTeam",
+   "back": "FAA Safety Team"
+  },
+  {
+   "id": "faatc",
+   "front": "FAATC",
+   "back": "FAA Technical Center; Federal Aviation Administration Technical Center"
+  },
+  {
+   "id": "faatsat",
+   "front": "FAATSAT",
+   "back": "FAA Telecommunications Satellite; Federal Aviation Administration Telecommunications Satellite"
+  },
+  {
+   "id": "fac",
+   "front": "FAC",
+   "back": "Facility"
+  },
+  {
+   "id": "facutl",
+   "front": "FACUTL",
+   "back": "Facility Utilization System"
+  },
+  {
+   "id": "facsfac",
+   "front": "FACSFAC",
+   "back": "Fleet Area Control and Surveillance Facility"
+  },
+  {
+   "id": "fade",
+   "front": "FADE",
+   "back": "FAA/Airline Data Exchange"
+  },
+  {
+   "id": "faf",
+   "front": "FAF",
+   "back": "Final Approach Fix"
+  },
+  {
+   "id": "fairs",
+   "front": "FAIRS",
+   "back": "Federal Aircraft Management Information System"
+  },
+  {
+   "id": "famis",
+   "front": "FAMIS",
+   "back": "Federal Air Marshal Information System"
+  },
+  {
+   "id": "fans",
+   "front": "FANS",
+   "back": "Future Air Navigation System"
+  },
+  {
+   "id": "fap",
+   "front": "FAP",
+   "back": "Final Approach Point"
+  },
+  {
+   "id": "fapm",
+   "front": "FAPM",
+   "back": "FTS2000 Associate Program Manager"
+  },
+  {
+   "id": "faq",
+   "front": "FAQ",
+   "back": "Frequently Asked Questions"
+  },
+  {
+   "id": "far",
+   "front": "FAR",
+   "back": "Federal Aviation Regulation"
+  },
+  {
+   "id": "farm",
+   "front": "FARM",
+   "back": "Fielded Automation Requirements Management"
+  },
+  {
+   "id": "fasc",
+   "front": "FASC",
+   "back": "FAA Aviation Safety Center"
+  },
+  {
+   "id": "fast",
+   "front": "FAST",
+   "back": "Final Approach Spacing Tool"
+  },
+  {
+   "id": "faves",
+   "front": "FAVES",
+   "back": "FAA Administrative Voice Enterprise Services"
+  },
+  {
+   "id": "fax",
+   "front": "FAX",
+   "back": "Facsimile Equipment"
+  },
+  {
+   "id": "fbo",
+   "front": "FBO",
+   "back": "Fixed Base Operator"
+  },
+  {
+   "id": "fbs",
+   "front": "FBS",
+   "back": "Fall Back Switch"
+  },
+  {
+   "id": "fcc",
+   "front": "FCC",
+   "back": "Federal Communications Commission"
+  },
+  {
+   "id": "fclt",
+   "front": "FCLT",
+   "back": "Freeze Calculated Landing Time"
+  },
+  {
+   "id": "fcm",
+   "front": "FCM",
+   "back": "Flight Schedule Monitor"
+  },
+  {
+   "id": "fcom",
+   "front": "FCOM",
+   "back": "FSS Radio Voice Communications"
+  },
+  {
+   "id": "fcpu",
+   "front": "FCPU",
+   "back": "Facility Central Processing Unit"
+  },
+  {
+   "id": "fct",
+   "front": "FCT",
+   "back": "Federal Contract Tower"
+  },
+  {
+   "id": "fdat",
+   "front": "FDAT",
+   "back": "Flight Data; Flight Data Entry and Printout (FDEP) and Flight Data Service"
+  },
+  {
+   "id": "fde",
+   "front": "FDE",
+   "back": "Flight Data Entry"
+  },
+  {
+   "id": "fdep",
+   "front": "FDEP",
+   "back": "Flight Data Entry and Printout"
+  },
+  {
+   "id": "fdio",
+   "front": "FDIO",
+   "back": "Flight Data Input/Output"
+  },
+  {
+   "id": "fdioc",
+   "front": "FDIOC",
+   "back": "Flight Data Input/Output Center"
+  },
+  {
+   "id": "fdior",
+   "front": "FDIOR",
+   "back": "Flight Data Input/Output Remote"
+  },
+  {
+   "id": "fdm",
+   "front": "FDM",
+   "back": "Frequency Division Multiplexing"
+  },
+  {
+   "id": "fdmsaw",
+   "front": "FDMSAW",
+   "back": "Fully Digital Minimum Safe Altitude Warning"
+  },
+  {
+   "id": "fdp",
+   "front": "FDP",
+   "back": "Flight Data Processing"
+  },
+  {
+   "id": "fdp-rdp",
+   "front": "FDP/RDP",
+   "back": "Flight Data Processing/Radar Data Processing"
+  },
+  {
+   "id": "fdr",
+   "front": "FDR",
+   "back": "Federal Data Registry"
+  },
+  {
+   "id": "fdt",
+   "front": "FDT",
+   "back": "Flight Deck Training Program"
+  },
+  {
+   "id": "fed",
+   "front": "FED",
+   "back": "Federal"
+  },
+  {
+   "id": "feis",
+   "front": "FEIS",
+   "back": "Final Environmental Impact Statement"
+  },
+  {
+   "id": "feodp",
+   "front": "FEODP",
+   "back": "Flight Edit and On-Demand Printing"
+  },
+  {
+   "id": "fep",
+   "front": "FEP",
+   "back": "Front End Processor"
+  },
+  {
+   "id": "fers",
+   "front": "FERS",
+   "back": "Facility and Equipment Reporting System"
+  },
+  {
+   "id": "ffac",
+   "front": "FFAC",
+   "back": "From Facility"
+  },
+  {
+   "id": "ffla",
+   "front": "FFLA",
+   "back": "Flexible Flight Level Assignment"
+  },
+  {
+   "id": "ffrdc",
+   "front": "FFRDC",
+   "back": "Federal Funded Research & Development Center"
+  },
+  {
+   "id": "fiao",
+   "front": "FIAO",
+   "back": "Flight Inspection Area Office"
+  },
+  {
+   "id": "fico",
+   "front": "FICO",
+   "back": "Flight Inspection Central Office"
+  },
+  {
+   "id": "fifo",
+   "front": "FIFO",
+   "back": "Flight Inspection Field Office"
+  },
+  {
+   "id": "fig",
+   "front": "FIG",
+   "back": "Flight Inspection Group"
+  },
+  {
+   "id": "fino",
+   "front": "FINO",
+   "back": "Flight Inspection National Field Office"
+  },
+  {
+   "id": "fio",
+   "front": "FIO",
+   "back": "Flight Inspection Office"
+  },
+  {
+   "id": "fip",
+   "front": "FIP",
+   "back": "Facility Improvement Program"
+  },
+  {
+   "id": "fips",
+   "front": "FIPS",
+   "back": "Federal Information Publication Standard"
+  },
+  {
+   "id": "fir",
+   "front": "FIR",
+   "back": "Flight Information Region"
+  },
+  {
+   "id": "fire",
+   "front": "FIRE",
+   "back": "Fire Station"
+  },
+  {
+   "id": "firmr",
+   "front": "FIRMR",
+   "back": "Federal Information Resource Management Regulation"
+  },
+  {
+   "id": "firps",
+   "front": "FIRPS",
+   "back": "Flight Inspection Reports Processing System"
+  },
+  {
+   "id": "fis",
+   "front": "FIS",
+   "back": "Flight Information Services"
+  },
+  {
+   "id": "fisdl",
+   "front": "FISDL",
+   "back": "Flight Information Services Data Link"
+  },
+  {
+   "id": "fisma",
+   "front": "FISMA",
+   "back": "Federal Information Security Management Act of 2002"
+  },
+  {
+   "id": "fits",
+   "front": "FITS",
+   "back": "FAA/Industry Training Standards"
+  },
+  {
+   "id": "fl",
+   "front": "FL",
+   "back": "Flight Level"
+  },
+  {
+   "id": "flds",
+   "front": "FLDS",
+   "back": "Flight Loads Data System"
+  },
+  {
+   "id": "flip",
+   "front": "FLIP",
+   "back": "Flight Information Publication"
+  },
+  {
+   "id": "flm",
+   "front": "FLM",
+   "back": "Front Line Manager"
+  },
+  {
+   "id": "flowsim",
+   "front": "FLOWSIM",
+   "back": "Traffic Flow Planning Simulation"
+  },
+  {
+   "id": "flsa",
+   "front": "FLSA",
+   "back": "Fair Labor Standards Act"
+  },
+  {
+   "id": "fltck",
+   "front": "FLTCK",
+   "back": "Flight Check"
+  },
+  {
+   "id": "fma",
+   "front": "FMA",
+   "back": "Final Monitor Aid"
+  },
+  {
+   "id": "fmc",
+   "front": "FMC",
+   "back": "Frontline Managers Courses"
+  },
+  {
+   "id": "fmf",
+   "front": "FMF",
+   "back": "Facility Master File"
+  },
+  {
+   "id": "fmis",
+   "front": "FMIS",
+   "back": "FTS2000 Management Information System"
+  },
+  {
+   "id": "fmo",
+   "front": "FMO",
+   "back": "Facility Management Office"
+  },
+  {
+   "id": "fmp",
+   "front": "FMP",
+   "back": "Field Maintenance Party"
+  },
+  {
+   "id": "fms",
+   "front": "FMS",
+   "back": "Financial Management System; Flight Management System"
+  },
+  {
+   "id": "fnms",
+   "front": "FNMS",
+   "back": "FTS2000 Network Management System"
+  },
+  {
+   "id": "fod",
+   "front": "FOD",
+   "back": "Foreign Object Damage"
+  },
+  {
+   "id": "foia",
+   "front": "FOIA",
+   "back": "Freedom of Information Act"
+  },
+  {
+   "id": "foms",
+   "front": "FOMS",
+   "back": "Flight Operations Management System"
+  },
+  {
+   "id": "fonsi",
+   "front": "FONSI",
+   "back": "Finding of No Significant Impact"
+  },
+  {
+   "id": "foqa",
+   "front": "FOQA",
+   "back": "Flight Operations Quality Assurance"
+  },
+  {
+   "id": "fots",
+   "front": "FOTS",
+   "back": "Fiber Optics Transmission System"
+  },
+  {
+   "id": "fouo",
+   "front": "FOUO",
+   "back": "For Official Use Only"
+  },
+  {
+   "id": "fp",
+   "front": "FP",
+   "back": "Flight Plan"
+  },
+  {
+   "id": "fp21",
+   "front": "FP21",
+   "back": "Flight Plan 21"
+  },
+  {
+   "id": "fpi",
+   "front": "FPI",
+   "back": "Fluorescent Penetrate Inspection"
+  },
+  {
+   "id": "fpl",
+   "front": "FPL",
+   "back": "Full Performance Level"
+  },
+  {
+   "id": "fpo",
+   "front": "FPO",
+   "back": "Flight Procedures Office"
+  },
+  {
+   "id": "fpps",
+   "front": "FPPS",
+   "back": "Federal Personnel Payroll System"
+  },
+  {
+   "id": "fps",
+   "front": "FPS",
+   "back": "Military Primary Radar"
+  },
+  {
+   "id": "frc",
+   "front": "FRC",
+   "back": "Request Full Route Clearance"
+  },
+  {
+   "id": "frd",
+   "front": "FRD",
+   "back": "Facility Reference Data"
+  },
+  {
+   "id": "frms",
+   "front": "FRMS",
+   "back": "Facility Roster Management System"
+  },
+  {
+   "id": "fs",
+   "front": "FS",
+   "back": "Flight Standards"
+  },
+  {
+   "id": "fsas",
+   "front": "FSAS",
+   "back": "Flight Service Automation System"
+  },
+  {
+   "id": "fscap",
+   "front": "FSCAP",
+   "back": "Flight Safety Critical Aircraft Parts"
+  },
+  {
+   "id": "fsdo",
+   "front": "FSDO",
+   "back": "Flight Standards District Office"
+  },
+  {
+   "id": "fsdps",
+   "front": "FSDPS",
+   "back": "Flight Service Data Processing System"
+  },
+  {
+   "id": "fsep",
+   "front": "FSEP",
+   "back": "Facility, Service, and Equipment Profile"
+  },
+  {
+   "id": "fsfo",
+   "front": "FSFO",
+   "back": "Flight Standards Field Office"
+  },
+  {
+   "id": "fsiag",
+   "front": "FSIAG",
+   "back": "Flight Service Information Area Group"
+  },
+  {
+   "id": "fsm",
+   "front": "FSM",
+   "back": "Flight Schedule Monitor"
+  },
+  {
+   "id": "fsp",
+   "front": "FSP",
+   "back": "Flight Strip Printer"
+  },
+  {
+   "id": "fspd",
+   "front": "FSPD",
+   "back": "Freeze Speed Parameter"
+  },
+  {
+   "id": "fsrm",
+   "front": "FSRM",
+   "back": "Facility Security Risk Management"
+  },
+  {
+   "id": "fss",
+   "front": "FSS",
+   "back": "Flight Service Station"
+  },
+  {
+   "id": "fssa",
+   "front": "FSSA",
+   "back": "Flight Service Station Automated Service"
+  },
+  {
+   "id": "fst",
+   "front": "FST",
+   "back": "Fuel Storage Tanks"
+  },
+  {
+   "id": "fsts",
+   "front": "FSTS",
+   "back": "Federal Secure Telephone Service"
+  },
+  {
+   "id": "fsys",
+   "front": "FSYS",
+   "back": "Flight Service Station Equipment Systems"
+  },
+  {
+   "id": "fte",
+   "front": "FTE",
+   "back": "Full Time Equivalent"
+  },
+  {
+   "id": "fti",
+   "front": "FTI",
+   "back": "FAA Telecommunications Infrastructure"
+  },
+  {
+   "id": "ftp",
+   "front": "FTP",
+   "back": "File Transfer Protocol"
+  },
+  {
+   "id": "fts",
+   "front": "FTS",
+   "back": "Federal Telecommunications System"
+  },
+  {
+   "id": "fts2000",
+   "front": "FTS2000",
+   "back": "Federal Telecommunications System 2000"
+  },
+  {
+   "id": "fus",
+   "front": "FUS",
+   "back": "Functional Units or Systems"
+  },
+  {
+   "id": "fwcs",
+   "front": "FWCS",
+   "back": "Flight Watch Control Station"
+  },
+  {
+   "id": "fws",
+   "front": "FWS",
+   "back": "FAA Weather Service"
+  },
+  {
+   "id": "fy",
+   "front": "FY",
+   "back": "Fiscal Year"
+  },
+  {
+   "id": "ga",
+   "front": "GA",
+   "back": "General Aviation"
+  },
+  {
+   "id": "gaa",
+   "front": "GAA",
+   "back": "General Aviation Activity"
+  },
+  {
+   "id": "gaaa",
+   "front": "GAAA",
+   "back": "General Aviation Activity and Avionics"
+  },
+  {
+   "id": "gado",
+   "front": "GADO",
+   "back": "General Aviation District Office"
+  },
+  {
+   "id": "ganp",
+   "front": "GANP",
+   "back": "Global Air Navigation Plan"
+  },
+  {
+   "id": "gao",
+   "front": "GAO",
+   "back": "Government Accountability Office; Government Accounting Office"
+  },
+  {
+   "id": "gca",
+   "front": "GCA",
+   "back": "Ground Control Approach"
+  },
+  {
+   "id": "gde",
+   "front": "GDE",
+   "back": "Ground Delay Enhancements"
+  },
+  {
+   "id": "gdp",
+   "front": "GDP",
+   "back": "Ground Delay Program"
+  },
+  {
+   "id": "genot",
+   "front": "GENOT",
+   "back": "General Notice"
+  },
+  {
+   "id": "gets",
+   "front": "GETS",
+   "back": "Government Emergency Telecommunications Service; Grievance Electronic Tracking System"
+  },
+  {
+   "id": "gfe",
+   "front": "GFE",
+   "back": "Government Furnished Equipment"
+  },
+  {
+   "id": "gfm",
+   "front": "GFM",
+   "back": "Government Furnished Materials"
+  },
+  {
+   "id": "gfp",
+   "front": "GFP",
+   "back": "Government Furnished Property"
+  },
+  {
+   "id": "gis",
+   "front": "GIS",
+   "back": "Geographic Information System"
+  },
+  {
+   "id": "glonass",
+   "front": "GLONASS",
+   "back": "Global Orbiting Navigational Satellite System"
+  },
+  {
+   "id": "gmcc",
+   "front": "GMCC",
+   "back": "General National Airspace System Maintenance Control Center"
+  },
+  {
+   "id": "gml",
+   "front": "GML",
+   "back": "Geography Markup Language"
+  },
+  {
+   "id": "gms",
+   "front": "GMS",
+   "back": "Grants Management System"
+  },
+  {
+   "id": "gnas",
+   "front": "GNAS",
+   "back": "General National Airspace System"
+  },
+  {
+   "id": "gnss",
+   "front": "GNSS",
+   "back": "Global Navigation Satellite System"
+  },
+  {
+   "id": "goes",
+   "front": "GOES",
+   "back": "Geostationary Operational Environmental Satellite"
+  },
+  {
+   "id": "goesf",
+   "front": "GOESF",
+   "back": "GOES Feed Point"
+  },
+  {
+   "id": "goest",
+   "front": "GOEST",
+   "back": "GOES Terminal Equipment"
+  },
+  {
+   "id": "gpo",
+   "front": "GPO",
+   "back": "Government Printing Office"
+  },
+  {
+   "id": "gpra",
+   "front": "GPRA",
+   "back": "Government Performance and Results Act"
+  },
+  {
+   "id": "gprama",
+   "front": "GPRAMA",
+   "back": "Government Performance and Results Modernization Act"
+  },
+  {
+   "id": "gps",
+   "front": "GPS",
+   "back": "Global Positioning Satellite; Global Positioning System"
+  },
+  {
+   "id": "gpws",
+   "front": "GPWS",
+   "back": "Ground Proximity Warning System"
+  },
+  {
+   "id": "grade",
+   "front": "GRADE",
+   "back": "Graphical Airspace Design Environment"
+  },
+  {
+   "id": "gs",
+   "front": "GS",
+   "back": "Glide Slope; Glide Slope Indicator"
+  },
+  {
+   "id": "gsa",
+   "front": "GSA",
+   "back": "General Services Administration"
+  },
+  {
+   "id": "gse",
+   "front": "GSE",
+   "back": "Ground Support Equipment"
+  },
+  {
+   "id": "gtm",
+   "front": "GTM",
+   "back": "General Terrain Model"
+  },
+  {
+   "id": "gui",
+   "front": "GUI",
+   "back": "Graphic User Interface"
+  },
+  {
+   "id": "gwds",
+   "front": "GWDS",
+   "back": "Graphic Weather Display System"
+  },
+  {
+   "id": "haa",
+   "front": "HAA",
+   "back": "Height Above Airport"
+  },
+  {
+   "id": "hal",
+   "front": "HAL",
+   "back": "Height Above Landing"
+  },
+  {
+   "id": "hars",
+   "front": "HARS",
+   "back": "High Altitude Route System"
+  },
+  {
+   "id": "hat",
+   "front": "HAT",
+   "back": "Height Above Touchdown"
+  },
+  {
+   "id": "hazmat",
+   "front": "HAZMAT",
+   "back": "Hazardous Materials"
+  },
+  {
+   "id": "hcap",
+   "front": "HCAP",
+   "back": "High Capacity Carriers"
+  },
+  {
+   "id": "hcs",
+   "front": "HCS",
+   "back": "Host Computer System"
+  },
+  {
+   "id": "hdme",
+   "front": "HDME",
+   "back": "NDB with Distance Measuring Equipment"
+  },
+  {
+   "id": "hdq",
+   "front": "HDQ",
+   "back": "FAA Headquarters"
+  },
+  {
+   "id": "hdr",
+   "front": "HDR",
+   "back": "Hardware Discrepancy Report"
+  },
+  {
+   "id": "heli",
+   "front": "HELI",
+   "back": "Heliport"
+  },
+  {
+   "id": "hems",
+   "front": "HEMS",
+   "back": "Helicopter Emergency Medical Service"
+  },
+  {
+   "id": "hf",
+   "front": "HF",
+   "back": "High Frequency"
+  },
+  {
+   "id": "hi-efas",
+   "front": "HI-EFAS",
+   "back": "High Altitude EFAS"
+  },
+  {
+   "id": "hid",
+   "front": "HID",
+   "back": "Host Interface Display"
+  },
+  {
+   "id": "hid-nas-lan",
+   "front": "HID/NAS/LAN",
+   "back": "Host Interface Device/National Airspace System/Local Area Network"
+  },
+  {
+   "id": "hirl",
+   "front": "HIRL",
+   "back": "High Intensity Runway Lights"
+  },
+  {
+   "id": "hldc",
+   "front": "HLDC",
+   "back": "High Level Data Link Control"
+  },
+  {
+   "id": "hmi",
+   "front": "HMI",
+   "back": "Hazardously Misleading Information"
+  },
+  {
+   "id": "hov",
+   "front": "HOV",
+   "back": "High Occupancy Vehicle"
+  },
+  {
+   "id": "hq",
+   "front": "HQ",
+   "back": "FAA Headquarters"
+  },
+  {
+   "id": "hsi",
+   "front": "HSI",
+   "back": "Horizontal Situation Indicators"
+  },
+  {
+   "id": "hspd",
+   "front": "HSPD",
+   "back": "Homeland Security Presidential Directive"
+  },
+  {
+   "id": "hud",
+   "front": "HUD",
+   "back": "Heads Up Display; Housing and Urban Development"
+  },
+  {
+   "id": "hums",
+   "front": "HUMS",
+   "back": "Health & Usage Monitoring Systems"
+  },
+  {
+   "id": "hvac",
+   "front": "HVAC",
+   "back": "Heating, Ventilating, and Air Conditioning"
+  },
+  {
+   "id": "hwas",
+   "front": "HWAS",
+   "back": "Hazardous In-Flight Weather Advisory"
+  },
+  {
+   "id": "hz",
+   "front": "Hz",
+   "back": "Hertz"
+  },
+  {
+   "id": "i-i",
+   "front": "I&I",
+   "back": "Impact and Implementation"
+  },
+  {
+   "id": "i-afss",
+   "front": "I/AFSS",
+   "back": "International AFSS"
+  },
+  {
+   "id": "ia",
+   "front": "IA",
+   "back": "Indirect Access; Information Assurance"
+  },
+  {
+   "id": "iaf",
+   "front": "IAF",
+   "back": "Initial Approach Fix"
+  },
+  {
+   "id": "iap",
+   "front": "IAP",
+   "back": "Instrument Approach Procedures"
+  },
+  {
+   "id": "iapa",
+   "front": "IAPA",
+   "back": "Instrument Approach Procedures Automation"
+  },
+  {
+   "id": "iar",
+   "front": "IAR",
+   "back": "Investment Analysis Report"
+  },
+  {
+   "id": "ias",
+   "front": "IAS",
+   "back": "Investment Analysis Staff"
+  },
+  {
+   "id": "iat",
+   "front": "IAT",
+   "back": "Investment Analysis Team"
+  },
+  {
+   "id": "iata",
+   "front": "IATA",
+   "back": "International Air Transport Association"
+  },
+  {
+   "id": "ibm",
+   "front": "IBM",
+   "back": "International Business Machines"
+  },
+  {
+   "id": "ibp",
+   "front": "IBP",
+   "back": "International Boundary Point"
+  },
+  {
+   "id": "ibr",
+   "front": "IBR",
+   "back": "Intermediate Bit Rate"
+  },
+  {
+   "id": "ic",
+   "front": "IC",
+   "back": "Implementation Center"
+  },
+  {
+   "id": "ica",
+   "front": "ICA",
+   "back": "Continued Airworthiness"
+  },
+  {
+   "id": "icao",
+   "front": "ICAO",
+   "back": "International Civil Aviation Organization"
+  },
+  {
+   "id": "icmm",
+   "front": "iCMM",
+   "back": "integrated Capability Maturity Model"
+  },
+  {
+   "id": "icms",
+   "front": "ICMS",
+   "back": "Integrated Control and Monitor System"
+  },
+  {
+   "id": "icss",
+   "front": "ICSS",
+   "back": "Integrated Communications Switching System; International Communications Switching Systems"
+  },
+  {
+   "id": "id",
+   "front": "ID",
+   "back": "Identification"
+  },
+  {
+   "id": "idat",
+   "front": "IDAT",
+   "back": "Interfacility Data"
+  },
+  {
+   "id": "idp",
+   "front": "IDP",
+   "back": "Individual Development Plan"
+  },
+  {
+   "id": "ids",
+   "front": "IDS",
+   "back": "Intrusion Detection System"
+  },
+  {
+   "id": "if",
+   "front": "IF",
+   "back": "Intermediate Fix"
+  },
+  {
+   "id": "ifb",
+   "front": "IFB",
+   "back": "Invitation For Bid"
+  },
+  {
+   "id": "ifcp",
+   "front": "IFCP",
+   "back": "Interfacility Communications Processor"
+  },
+  {
+   "id": "ifds",
+   "front": "IFDS",
+   "back": "Interfacility Data System"
+  },
+  {
+   "id": "ifea",
+   "front": "IFEA",
+   "back": "In-Flight Emergency Assistance"
+  },
+  {
+   "id": "ifo",
+   "front": "IFO",
+   "back": "International Field Office"
+  },
+  {
+   "id": "ifp",
+   "front": "IFP",
+   "back": "Instrument Flight Procedures"
+  },
+  {
+   "id": "ifpa",
+   "front": "IFPA",
+   "back": "Instrument Flight Procedures Automation Program"
+  },
+  {
+   "id": "ifr",
+   "front": "IFR",
+   "back": "Instrument Flight Rules"
+  },
+  {
+   "id": "ifss",
+   "front": "IFSS",
+   "back": "International Flight Service Station"
+  },
+  {
+   "id": "ig",
+   "front": "IG",
+   "back": "Inspector General"
+  },
+  {
+   "id": "igia",
+   "front": "IGIA",
+   "back": "Interagency Group on International Aviation"
+  },
+  {
+   "id": "iie",
+   "front": "IIE",
+   "back": "Integrated Information Environment"
+  },
+  {
+   "id": "ilm",
+   "front": "ILM",
+   "back": "Inventory Logistics and Maintenance Suite"
+  },
+  {
+   "id": "ils",
+   "front": "ILS",
+   "back": "Instrument Landing System"
+  },
+  {
+   "id": "ilsp",
+   "front": "ILSP",
+   "back": "Integrated Logistics Support Plan"
+  },
+  {
+   "id": "im",
+   "front": "IM",
+   "back": "Inner Marker; Interim Migration"
+  },
+  {
+   "id": "imc",
+   "front": "IMC",
+   "back": "Instrument Meteorological Conditions"
+  },
+  {
+   "id": "inm",
+   "front": "INM",
+   "back": "Integrated Noise Model"
+  },
+  {
+   "id": "ins",
+   "front": "INS",
+   "back": "Inertial Navigation System"
+  },
+  {
+   "id": "ioc",
+   "front": "IOC",
+   "back": "Initial Operating Capability; Initial Operating Condition"
+  },
+  {
+   "id": "iot-e",
+   "front": "IOT&E",
+   "back": "Independent Operational Test and Evaluation"
+  },
+  {
+   "id": "ip",
+   "front": "IP",
+   "back": "Internet Protocol"
+  },
+  {
+   "id": "ipds",
+   "front": "IPDS",
+   "back": "Instrument Procedure Development System"
+  },
+  {
+   "id": "ipms",
+   "front": "IPMS",
+   "back": "IT Program Management System"
+  },
+  {
+   "id": "ipr",
+   "front": "IPR",
+   "back": "In Process Review"
+  },
+  {
+   "id": "ipt",
+   "front": "IPT",
+   "back": "Integrated Product Team"
+  },
+  {
+   "id": "ircas",
+   "front": "iRCAS",
+   "back": "Intranet Radio Coverage Analysis System"
+  },
+  {
+   "id": "ird",
+   "front": "IRD",
+   "back": "Initial Requirements Document"
+  },
+  {
+   "id": "irm",
+   "front": "IRM",
+   "back": "Information Resource Management"
+  },
+  {
+   "id": "irmc",
+   "front": "IRMC",
+   "back": "Integrated Risk Management Checklist"
+  },
+  {
+   "id": "irmp",
+   "front": "IRMP",
+   "back": "Information Resources Management Plan"
+  },
+  {
+   "id": "isbp",
+   "front": "ISBP",
+   "back": "Information Security Business Portal"
+  },
+  {
+   "id": "isc",
+   "front": "ISC",
+   "back": "Initial System Capability"
+  },
+  {
+   "id": "isdn",
+   "front": "ISDN",
+   "back": "Integrated Services Digital Network"
+  },
+  {
+   "id": "ismls",
+   "front": "ISMLS",
+   "back": "Interim Standard Microwave Landing System"
+  },
+  {
+   "id": "iso",
+   "front": "ISO",
+   "back": "Information System Owner"
+  },
+  {
+   "id": "iss",
+   "front": "ISS",
+   "back": "Information Systems Security"
+  },
+  {
+   "id": "issca",
+   "front": "ISSCA",
+   "back": "Information Systems Security Certification Agent"
+  },
+  {
+   "id": "issm",
+   "front": "ISSM",
+   "back": "Information Systems Security Manager"
+  },
+  {
+   "id": "isso",
+   "front": "ISSO",
+   "back": "Information Systems Security Officer"
+  },
+  {
+   "id": "ist",
+   "front": "IST",
+   "back": "InterService Team"
+  },
+  {
+   "id": "it",
+   "front": "IT",
+   "back": "Information Technology"
+  },
+  {
+   "id": "itc",
+   "front": "ITC",
+   "back": "In-Trail Climb"
+  },
+  {
+   "id": "itd",
+   "front": "ITD",
+   "back": "In-Trail Descent"
+  },
+  {
+   "id": "iteb",
+   "front": "ITEB",
+   "back": "Information Technology Executive Board"
+  },
+  {
+   "id": "iti",
+   "front": "ITI",
+   "back": "Interactive Terminal Interface"
+  },
+  {
+   "id": "itil",
+   "front": "ITIL",
+   "back": "Information Technology Infrastructure Library"
+  },
+  {
+   "id": "itmra",
+   "front": "ITMRA",
+   "back": "Information Technology Management Reform Act"
+  },
+  {
+   "id": "itsm",
+   "front": "ITSM",
+   "back": "Information Technology Service Management"
+  },
+  {
+   "id": "itws",
+   "front": "ITWS",
+   "back": "Integrated Terminal Weather System"
+  },
+  {
+   "id": "ivrs",
+   "front": "IVRS",
+   "back": "Interim Voice Response System"
+  },
+  {
+   "id": "ivsr",
+   "front": "IVSR",
+   "back": "Interim Voice Switch Replacement Program"
+  },
+  {
+   "id": "ivt",
+   "front": "IVT",
+   "back": "Interactive Video Teletraining"
+  },
+  {
+   "id": "iw",
+   "front": "IW",
+   "back": "Inside Wiring"
+  },
+  {
+   "id": "iwgds",
+   "front": "IWGDS",
+   "back": "Interim Weather Graphic-Display System"
+  },
+  {
+   "id": "j2ee",
+   "front": "J2EE",
+   "back": "Java 2 Enterprise Edition"
+  },
+  {
+   "id": "jai",
+   "front": "JAI",
+   "back": "Joint Acceptance Inspection"
+  },
+  {
+   "id": "jcn",
+   "front": "JCN",
+   "back": "Job Control Number"
+  },
+  {
+   "id": "jpdo",
+   "front": "JPDO",
+   "back": "Joint Planning and Development Office"
+  },
+  {
+   "id": "jrc",
+   "front": "JRC",
+   "back": "Joint Resources Council"
+  },
+  {
+   "id": "jss",
+   "front": "JSS",
+   "back": "Joint Surveillance System"
+  },
+  {
+   "id": "jwics",
+   "front": "JWICS",
+   "back": "Joint World-Wide Intelligence Communications System (DoD)"
+  },
+  {
+   "id": "kbps",
+   "front": "Kbps",
+   "back": "Kilobits Per Second"
+  },
+  {
+   "id": "kcas",
+   "front": "KCAS",
+   "back": "Knots Calibrated Airspeed"
+  },
+  {
+   "id": "khz",
+   "front": "kHz",
+   "back": "Kilohertz"
+  },
+  {
+   "id": "kias",
+   "front": "KIAS",
+   "back": "Knots Indicated Airspeed"
+  },
+  {
+   "id": "ksn",
+   "front": "KSN",
+   "back": "Knowledge Services Network"
+  },
+  {
+   "id": "kvdt",
+   "front": "KVDT",
+   "back": "Keyboard Video Display Terminal"
+  },
+  {
+   "id": "laa",
+   "front": "LAA",
+   "back": "Local Airport Advisory"
+  },
+  {
+   "id": "laas",
+   "front": "LAAS",
+   "back": "Local Area Augmentation System; Low Altitude Alert System"
+  },
+  {
+   "id": "labs",
+   "front": "LABS",
+   "back": "Leased A B Service; Los Angeles Basin Study"
+  },
+  {
+   "id": "labsc",
+   "front": "LABSC",
+   "back": "LABS GS-200 Computer"
+  },
+  {
+   "id": "labsr",
+   "front": "LABSR",
+   "back": "LABS Remote Equipment"
+  },
+  {
+   "id": "labsw",
+   "front": "LABSW",
+   "back": "LABS Switch System"
+  },
+  {
+   "id": "lac",
+   "front": "LAC",
+   "back": "Logical Access Control"
+  },
+  {
+   "id": "lagps",
+   "front": "LAGPS",
+   "back": "Local Area Global Positioning System"
+  },
+  {
+   "id": "lahso",
+   "front": "LAHSO",
+   "back": "Land and Hold Short Operation"
+  },
+  {
+   "id": "lan",
+   "front": "LAN",
+   "back": "Local Area Network"
+  },
+  {
+   "id": "lata",
+   "front": "LATA",
+   "back": "Local Access and Transport Area"
+  },
+  {
+   "id": "lawrs",
+   "front": "LAWRS",
+   "back": "Limited Aviation Weather Reporting Service; Limited Aviation Weather Reporting System"
+  },
+  {
+   "id": "lbr",
+   "front": "LBR",
+   "back": "LAN Based Random Access Plan Position Indicator"
+  },
+  {
+   "id": "lcc",
+   "front": "LCC",
+   "back": "Life Cycle Cost"
+  },
+  {
+   "id": "lcf",
+   "front": "LCF",
+   "back": "Local Control Facility"
+  },
+  {
+   "id": "lcgs",
+   "front": "LCGS",
+   "back": "Low Cost Ground Surveillance Radar"
+  },
+  {
+   "id": "lcn",
+   "front": "LCN",
+   "back": "Local Communications Network"
+  },
+  {
+   "id": "lda",
+   "front": "LDA",
+   "back": "Landing Directional Aid; Localizer Directional Aid"
+  },
+  {
+   "id": "ldap",
+   "front": "LDAP",
+   "back": "Lightweight Directory Access Protocol"
+  },
+  {
+   "id": "ldin",
+   "front": "LDIN",
+   "back": "Lead-In Lights"
+  },
+  {
+   "id": "ldr",
+   "front": "LDR",
+   "back": "Labor Distribution Reporting"
+  },
+  {
+   "id": "lec",
+   "front": "LEC",
+   "back": "Local Exchange Carrier"
+  },
+  {
+   "id": "lf",
+   "front": "LF",
+   "back": "Low Frequency"
+  },
+  {
+   "id": "lfds",
+   "front": "LFDS",
+   "back": "Large Facility Demarcation System"
+  },
+  {
+   "id": "lfme",
+   "front": "LFME",
+   "back": "Local Flow Management Enhancements"
+  },
+  {
+   "id": "lincs",
+   "front": "LINCS",
+   "back": "Leased Interfacility NAS Communications System"
+  },
+  {
+   "id": "lirl",
+   "front": "LIRL",
+   "back": "Low Intensity Runway Lights"
+  },
+  {
+   "id": "lis",
+   "front": "LIS",
+   "back": "Logistics and Inventory System"
+  },
+  {
+   "id": "llwas",
+   "front": "LLWAS",
+   "back": "Low Level Wind Shear Alert System"
+  },
+  {
+   "id": "lm-ms",
+   "front": "LM/MS",
+   "back": "Low/Medium Frequency"
+  },
+  {
+   "id": "lmm",
+   "front": "LMM",
+   "back": "Locator Middle Marker"
+  },
+  {
+   "id": "lms",
+   "front": "LMS",
+   "back": "Logistics Management Specialist; LORAN Monitor Site"
+  },
+  {
+   "id": "loa",
+   "front": "LOA",
+   "back": "Letter of Agreement"
+  },
+  {
+   "id": "lob",
+   "front": "LOB",
+   "back": "Line Of Business"
+  },
+  {
+   "id": "loc",
+   "front": "LOC",
+   "back": "Localizer"
+  },
+  {
+   "id": "locid",
+   "front": "LOCID",
+   "back": "Location Identifier"
+  },
+  {
+   "id": "loi",
+   "front": "LOI",
+   "back": "Letter of Intent; Letter of Investigation"
+  },
+  {
+   "id": "lom",
+   "front": "LOM",
+   "back": "Compass Locator at Outer Marker; Locator Outer Marker"
+  },
+  {
+   "id": "loran",
+   "front": "LORAN",
+   "back": "Long-Range Aid to Navigation"
+  },
+  {
+   "id": "lov",
+   "front": "LOV",
+   "back": "List of Values"
+  },
+  {
+   "id": "lpc",
+   "front": "LPC",
+   "back": "Logistics Program Coordinator"
+  },
+  {
+   "id": "lpv",
+   "front": "LPV",
+   "back": "Lateral Precision Performance with Vertical Guidance; Localizer Performance with Vertical Guidance"
+  },
+  {
+   "id": "lrco",
+   "front": "LRCO",
+   "back": "Limited Remote Communications Outlet"
+  },
+  {
+   "id": "lrnav",
+   "front": "LRNAV",
+   "back": "Long Range Navigation"
+  },
+  {
+   "id": "lrr",
+   "front": "LRR",
+   "back": "Long Range Radar"
+  },
+  {
+   "id": "lrrap",
+   "front": "LRRAP",
+   "back": "Long Range Resource Allocation Plan"
+  },
+  {
+   "id": "lsms",
+   "front": "LSMS",
+   "back": "Line Station Maintenance Section"
+  },
+  {
+   "id": "m1fc",
+   "front": "M1FC",
+   "back": "Model 1 Full Capacity"
+  },
+  {
+   "id": "maa",
+   "front": "MAA",
+   "back": "Maximum Authorized Altitude"
+  },
+  {
+   "id": "mac",
+   "front": "MAC",
+   "back": "Maintenance Action Code; Mean Aerodynamic Cord"
+  },
+  {
+   "id": "mals",
+   "front": "MALS",
+   "back": "Medium-Intensity Approach Lighting System"
+  },
+  {
+   "id": "malsf",
+   "front": "MALSF",
+   "back": "Medium-Intensuty Approach Light System with Sequenced Flashers"
+  },
+  {
+   "id": "malsr",
+   "front": "MALSR",
+   "back": "MALS with Runway Alignment Indicator Lights; Medium-Intensity Approach Lighting System With Runway Alignment Indicator"
+  },
+  {
+   "id": "mam",
+   "front": "MAM",
+   "back": "Maintenance Assumed Monitoring"
+  },
+  {
+   "id": "map",
+   "front": "MAP",
+   "back": "Maintenance Automation Program; Military Airport Program; Missed Approach Point; Missed Approach Procedure; Modified Access Pricing"
+  },
+  {
+   "id": "mar",
+   "front": "MAR",
+   "back": "Minimally Attended Radar"
+  },
+  {
+   "id": "marsa",
+   "front": "MARSA",
+   "back": "Military Assumes Responsibility for Separation"
+  },
+  {
+   "id": "mcag",
+   "front": "MCAG",
+   "back": "Marine Corp Air Ground Combat Center"
+  },
+  {
+   "id": "mass",
+   "front": "MASS",
+   "back": "Maintenance Automation System Software; More Agile Systems & Service Levels"
+  },
+  {
+   "id": "mbo",
+   "front": "MBO",
+   "back": "Management by Objectives"
+  },
+  {
+   "id": "mbps",
+   "front": "Mbps",
+   "back": "Megabits Per Second"
+  },
+  {
+   "id": "mbt",
+   "front": "MBT",
+   "back": "Maneuvers Based Training"
+  },
+  {
+   "id": "mca",
+   "front": "MCA",
+   "back": "Minimum Crossing Altitude"
+  },
+  {
+   "id": "mcas",
+   "front": "MCAS",
+   "back": "Marine Corps Air Station"
+  },
+  {
+   "id": "mru",
+   "front": "MRU",
+   "back": "Military Radar Unit"
+  },
+  {
+   "id": "mruf",
+   "front": "MRUF",
+   "back": "Military Radar Unit Facility"
+  },
+  {
+   "id": "mcc",
+   "front": "MCC",
+   "back": "Maintenance Control Center"
+  },
+  {
+   "id": "mci",
+   "front": "MCI",
+   "back": "Mode C Intruder"
+  },
+  {
+   "id": "mck",
+   "front": "MCK",
+   "back": "Maintenance Check"
+  },
+  {
+   "id": "mcl",
+   "front": "MCL",
+   "back": "Middle Compass Locater"
+  },
+  {
+   "id": "mcs",
+   "front": "MCS",
+   "back": "Maintenance and Control System"
+  },
+  {
+   "id": "mda",
+   "front": "MDA",
+   "back": "Minimum Descent Altitude"
+  },
+  {
+   "id": "mdcrs",
+   "front": "MDCRS",
+   "back": "Metereological Data Collection and Reporting System"
+  },
+  {
+   "id": "mdfm",
+   "front": "MDFM",
+   "back": "Material Delivery Forecast Module"
+  },
+  {
+   "id": "mdt",
+   "front": "MDT",
+   "back": "Maintenance Data Terminal"
+  },
+  {
+   "id": "mea",
+   "front": "MEA",
+   "back": "Minimum Enroute Altitude"
+  },
+  {
+   "id": "mearts",
+   "front": "MEARTS",
+   "back": "Micro-EARTS"
+  },
+  {
+   "id": "mel",
+   "front": "MEL",
+   "back": "Minimum Equipment List"
+  },
+  {
+   "id": "metar",
+   "front": "METAR",
+   "back": "Aviation Routine Weather Report"
+  },
+  {
+   "id": "meti",
+   "front": "METI",
+   "back": "Meteorological Information"
+  },
+  {
+   "id": "mf",
+   "front": "MF",
+   "back": "Middle Frequency"
+  },
+  {
+   "id": "mfj",
+   "front": "MFJ",
+   "back": "Modified Final Judgment"
+  },
+  {
+   "id": "mfo",
+   "front": "MFO",
+   "back": "Medical Field Office"
+  },
+  {
+   "id": "mft",
+   "front": "MFT",
+   "back": "Meter Fix Crossing Time/Slot Time"
+  },
+  {
+   "id": "mha",
+   "front": "MHA",
+   "back": "Minimum Holding Altitude"
+  },
+  {
+   "id": "mhz",
+   "front": "MHz",
+   "back": "Megahertz"
+  },
+  {
+   "id": "mia",
+   "front": "MIA",
+   "back": "Minimum IFR Altitudes"
+  },
+  {
+   "id": "mido",
+   "front": "MIDO",
+   "back": "Manufacturing Inspection District Office"
+  },
+  {
+   "id": "mio",
+   "front": "MIO",
+   "back": "Manufacturing Inspection Office"
+  },
+  {
+   "id": "mirl",
+   "front": "MIRL",
+   "back": "Medium Intensity Runway Lights"
+  },
+  {
+   "id": "mis",
+   "front": "MIS",
+   "back": "Management Information System; Meteorological Impact Statement; Mechanical Interruption Summary Report"
+  },
+  {
+   "id": "mimt",
+   "front": "MIMT",
+   "back": "Management Inspection Management Team"
+  },
+  {
+   "id": "misc",
+   "front": "MISC",
+   "back": "Miscellaneous"
+  },
+  {
+   "id": "miso",
+   "front": "MISO",
+   "back": "Manufacturing Inspection Satellite Office"
+  },
+  {
+   "id": "mit",
+   "front": "MIT",
+   "back": "Miles In Trail"
+  },
+  {
+   "id": "mls",
+   "front": "MLS",
+   "back": "Microwave Landing System"
+  },
+  {
+   "id": "mm",
+   "front": "MM",
+   "back": "Middle Marker"
+  },
+  {
+   "id": "mmac",
+   "front": "MMAC",
+   "back": "Mike Monroney Aeronautical Center"
+  },
+  {
+   "id": "mmc",
+   "front": "MMC",
+   "back": "Maintenance Monitoring Console"
+  },
+  {
+   "id": "mmpi",
+   "front": "MMPI",
+   "back": "Minnesota Multiphase Personality Inventory"
+  },
+  {
+   "id": "mmr",
+   "front": "MMR",
+   "back": "Multi-Mode Receiver"
+  },
+  {
+   "id": "mms",
+   "front": "MMS",
+   "back": "Maintenance Monitoring System"
+  },
+  {
+   "id": "mnps",
+   "front": "MNPS",
+   "back": "Minimum Navigation Performance Specification"
+  },
+  {
+   "id": "mnpsa",
+   "front": "MNPSA",
+   "back": "Minimum Navigation Performance Specifications Airspace"
+  },
+  {
+   "id": "mns",
+   "front": "MNS",
+   "back": "Mission Needs Statement"
+  },
+  {
+   "id": "moa",
+   "front": "MOA",
+   "back": "Memorandum of Agreement; Military Operations Area"
+  },
+  {
+   "id": "moc",
+   "front": "MOC",
+   "back": "Memorandum of Cooperation; Memorandum of Correction"
+  },
+  {
+   "id": "moca",
+   "front": "MOCA",
+   "back": "Minimum Obstruction Clearance Altitude"
+  },
+  {
+   "id": "mocc",
+   "front": "MOCC",
+   "back": "Mid-States Operations Control Center"
+  },
+  {
+   "id": "mod",
+   "front": "MOD",
+   "back": "Memorandum of Decision"
+  },
+  {
+   "id": "mode-c",
+   "front": "MODE C",
+   "back": "Altitude Reporting Mode of Secondary Radar"
+  },
+  {
+   "id": "mode-s",
+   "front": "MODE S",
+   "back": "Mode Select; Discrete Addressable Secondary Radar System With Data Link"
+  },
+  {
+   "id": "modem",
+   "front": "MODEM",
+   "back": "Modulator-Demodulator"
+  },
+  {
+   "id": "mon",
+   "front": "MON",
+   "back": "Memorandum of Non-Compliance"
+  },
+  {
+   "id": "mos",
+   "front": "MOS",
+   "back": "Military Operations Specialist"
+  },
+  {
+   "id": "mou",
+   "front": "MOU",
+   "back": "Memorandum of Understanding"
+  },
+  {
+   "id": "mpar",
+   "front": "MPAR",
+   "back": "Multi-function Phased Array Radar"
+  },
+  {
+   "id": "mpo",
+   "front": "MPO",
+   "back": "Metropolitan Planning Organization"
+  },
+  {
+   "id": "mps",
+   "front": "MPS",
+   "back": "Maintenance Processor Subsystem (OR) Master Plan Supplement; Minimum Performance Standard"
+  },
+  {
+   "id": "mra",
+   "front": "MRA",
+   "back": "Minimum Reception Altitude"
+  },
+  {
+   "id": "mrc",
+   "front": "MRC",
+   "back": "Monthly Recurring Charge"
+  },
+  {
+   "id": "mrm",
+   "front": "MRM",
+   "back": "Maintenance Returned Monitoring"
+  },
+  {
+   "id": "mrr",
+   "front": "MRR",
+   "back": "Mechanical Reliability Report"
+  },
+  {
+   "id": "msa",
+   "front": "MSA",
+   "back": "Minimum Safe Altitude"
+  },
+  {
+   "id": "msaw",
+   "front": "MSAW",
+   "back": "Minimum Safe Altitude Warning"
+  },
+  {
+   "id": "msd",
+   "front": "MSD",
+   "back": "Multi-Site Damage"
+  },
+  {
+   "id": "msda",
+   "front": "MSDA",
+   "back": "Material Safety Data Sheet"
+  },
+  {
+   "id": "msds",
+   "front": "MSDS",
+   "back": "Microsoft Data Engine"
+  },
+  {
+   "id": "msl",
+   "front": "MSL",
+   "back": "Mean Sea Level"
+  },
+  {
+   "id": "msn",
+   "front": "MSN",
+   "back": "Message Switching Network"
+  },
+  {
+   "id": "msr",
+   "front": "MSR",
+   "back": "Monthly Status Report"
+  },
+  {
+   "id": "mtcs",
+   "front": "MTCS",
+   "back": "Modular Terminal Communications System"
+  },
+  {
+   "id": "mtd",
+   "front": "MTD",
+   "back": "Moving Target Detection"
+  },
+  {
+   "id": "mti",
+   "front": "MTI",
+   "back": "Moving Target Indicator"
+  },
+  {
+   "id": "mtr",
+   "front": "MTR",
+   "back": "Military Training Route"
+  },
+  {
+   "id": "mux",
+   "front": "MUX",
+   "back": "Multiplexor"
+  },
+  {
+   "id": "mva",
+   "front": "MVA",
+   "back": "Minimum Vectoring Altitude"
+  },
+  {
+   "id": "mvfr",
+   "front": "MVFR",
+   "back": "Marginal Visual Flight Rules"
+  },
+  {
+   "id": "mwp",
+   "front": "MWP",
+   "back": "Meteorological Weather Processor"
+  },
+  {
+   "id": "n-a",
+   "front": "N/A",
+   "back": "Not Applicable"
+  },
+  {
+   "id": "naaqs",
+   "front": "NAAQS",
+   "back": "National Ambient Air Quality Standards"
+  },
+  {
+   "id": "nacg",
+   "front": "NACG",
+   "back": "National Aeronautical Charting Group"
+  },
+  {
+   "id": "nada",
+   "front": "NADA",
+   "back": "NADIN Concentrator"
+  },
+  {
+   "id": "nadin",
+   "front": "NADIN",
+   "back": "National Airspace Data Interchange Network"
+  },
+  {
+   "id": "nadsw",
+   "front": "NADSW",
+   "back": "NADIN Switches"
+  },
+  {
+   "id": "nails",
+   "front": "NAILS",
+   "back": "National Airspace Integrated Logistics Support"
+  },
+  {
+   "id": "nams",
+   "front": "NAMS",
+   "back": "NADIN IA"
+  },
+  {
+   "id": "nap",
+   "front": "NAP",
+   "back": "Needs Assessment Program"
+  },
+  {
+   "id": "napm",
+   "front": "NAPM",
+   "back": "National Associate Program Manager"
+  },
+  {
+   "id": "naprs",
+   "front": "NAPRS",
+   "back": "National Airspace Performance Reporting System"
+  },
+  {
+   "id": "nar",
+   "front": "NAR",
+   "back": "National Airspace Review 66"
+  },
+  {
+   "id": "naracs",
+   "front": "NARACS",
+   "back": "National Radio Communications System"
+  },
+  {
+   "id": "narp",
+   "front": "NARP",
+   "back": "National Aviation Research Plan"
+  },
+  {
+   "id": "nas",
+   "front": "NAS",
+   "back": "National Air Space; National Airspace System; National Airspace System or Naval Air Station; Naval Air Station"
+  },
+  {
+   "id": "niwc",
+   "front": "NIWC",
+   "back": "Naval Information War Center"
+  },
+  {
+   "id": "nasdc",
+   "front": "NASDC",
+   "back": "National Aviation Safety Data"
+  },
+  {
+   "id": "nase",
+   "front": "NASE",
+   "back": "NAS Adaptation Services Environment"
+  },
+  {
+   "id": "nasp",
+   "front": "NASP",
+   "back": "National Airspace System Plan"
+  },
+  {
+   "id": "naspac",
+   "front": "NASPAC",
+   "back": "National Airspace System Performance Analysis Capability"
+  },
+  {
+   "id": "nasr",
+   "front": "NASR",
+   "back": "National Airspace System Resources"
+  },
+  {
+   "id": "nastep",
+   "front": "NASTEP",
+   "back": "National Airspace System Technical Evaluation Program"
+  },
+  {
+   "id": "natca",
+   "front": "NATCA",
+   "back": "National Air Traffic Control Association; National Air Traffic Controllers Association"
+  },
+  {
+   "id": "natco",
+   "front": "NATCO",
+   "back": "National Communications Switching Center"
+  },
+  {
+   "id": "nats",
+   "front": "NATS",
+   "back": "National Air Traffic Service"
+  },
+  {
+   "id": "navaid",
+   "front": "NAVAID",
+   "back": "Navigation Aid"
+  },
+  {
+   "id": "navaids",
+   "front": "NAVAIDS",
+   "back": "Navigational Aids"
+  },
+  {
+   "id": "navmn",
+   "front": "NAVMN",
+   "back": "Navigation Monitor and Control"
+  },
+  {
+   "id": "nawau",
+   "front": "NAWAU",
+   "back": "National Aviation Weather Advisory Unit"
+  },
+  {
+   "id": "nawpf",
+   "front": "NAWPF",
+   "back": "National Aviation Weather Processing Facility"
+  },
+  {
+   "id": "nbaa",
+   "front": "NBAA",
+   "back": "National Business Aircraft Association"
+  },
+  {
+   "id": "nbcap",
+   "front": "NBCAP",
+   "back": "National Beacon Code Allocation Plan"
+  },
+  {
+   "id": "nbcfae",
+   "front": "NBCFAE",
+   "back": "National Black Coalition of Federal Aviation Employees"
+  },
+  {
+   "id": "ncar",
+   "front": "NCAR",
+   "back": "National Center for Atmospheric Research; Boulder, CO"
+  },
+  {
+   "id": "ncf",
+   "front": "NCF",
+   "back": "National Control Facility"
+  },
+  {
+   "id": "nciu",
+   "front": "NCIU",
+   "back": "NEXRAD Communications Interface Unit"
+  },
+  {
+   "id": "ncp",
+   "front": "NCP",
+   "back": "NAS Change Proposal; Noise Compatibility Program"
+  },
+  {
+   "id": "ncs",
+   "front": "NCS",
+   "back": "National Communications System"
+  },
+  {
+   "id": "nsd",
+   "front": "NSD",
+   "back": "Navigation System Database"
+  },
+  {
+   "id": "ndag",
+   "front": "NDAG",
+   "back": "NAS Defense Air Ground"
+  },
+  {
+   "id": "ndb",
+   "front": "NDB",
+   "back": "Non-directional Beacon"
+  },
+  {
+   "id": "ndc",
+   "front": "NDC",
+   "back": "National Data Center"
+  },
+  {
+   "id": "ndi",
+   "front": "NDI",
+   "back": "Nondestructive Inspection"
+  },
+  {
+   "id": "ndnb",
+   "front": "NDNB",
+   "back": "NADIN II"
+  },
+  {
+   "id": "ndp",
+   "front": "NDP",
+   "back": "National Airspace System Defense Programs"
+  },
+  {
+   "id": "nec",
+   "front": "NEC",
+   "back": "National Electric Code"
+  },
+  {
+   "id": "ned",
+   "front": "NED",
+   "back": "National Elevation Data"
+  },
+  {
+   "id": "nem",
+   "front": "NEM",
+   "back": "Noise Exposure Map"
+  },
+  {
+   "id": "nemc",
+   "front": "NEMC",
+   "back": "Network Enterprise Maintenance Center"
+  },
+  {
+   "id": "nepa",
+   "front": "NEPA",
+   "back": "National Environmental Policy Act"
+  },
+  {
+   "id": "nexrad",
+   "front": "NEXRAD",
+   "back": "Next Generation Weather Radar"
+  },
+  {
+   "id": "nextgen",
+   "front": "NextGen",
+   "back": "Next Generation Air Transportation System"
+  },
+  {
+   "id": "nfax",
+   "front": "NFAX",
+   "back": "National Facsimile Service"
+  },
+  {
+   "id": "nfd",
+   "front": "NFD",
+   "back": "National Flight Database"
+  },
+  {
+   "id": "nfdc",
+   "front": "NFDC",
+   "back": "National Flight Data Center"
+  },
+  {
+   "id": "nfdd",
+   "front": "NFDD",
+   "back": "National Flight Data Digest"
+  },
+  {
+   "id": "nfis",
+   "front": "NFIS",
+   "back": "NAS Facilities Information System"
+  },
+  {
+   "id": "nfp",
+   "front": "NFP",
+   "back": "NIMS Premier Facility"
+  },
+  {
+   "id": "nga",
+   "front": "NGA",
+   "back": "National Geospatial-Intelligence Agency"
+  },
+  {
+   "id": "nhcfae",
+   "front": "NHCFAE",
+   "back": "National Hispanic Coalition of Federal Aviation Employees"
+  },
+  {
+   "id": "ni",
+   "front": "NI",
+   "back": "Network Interface"
+  },
+  {
+   "id": "nics",
+   "front": "NICS",
+   "back": "National Airspace System Interfacility Communications System; National Interfacility Communications System"
+  },
+  {
+   "id": "nima",
+   "front": "NIMA",
+   "back": "National Imagery and Mapping Agency"
+  },
+  {
+   "id": "nims",
+   "front": "NIMS",
+   "back": "NAS Infrastructure Management System"
+  },
+  {
+   "id": "niprnet",
+   "front": "NIPRNET",
+   "back": "Non-Secure IP Router Network (DoD)"
+  },
+  {
+   "id": "nipt",
+   "front": "NIPT",
+   "back": "National Infrastructure Planning Team"
+  },
+  {
+   "id": "nisc",
+   "front": "NISC",
+   "back": "NAS Implementation Support Contract; NAS Integration Support Contractor"
+  },
+  {
+   "id": "nist",
+   "front": "NIST",
+   "back": "National Institute of Standards and Technologies"
+  },
+  {
+   "id": "nm",
+   "front": "NM",
+   "back": "Nautical Mile"
+  },
+  {
+   "id": "nmac",
+   "front": "NMAC",
+   "back": "Near Mid Air Collision"
+  },
+  {
+   "id": "nmc",
+   "front": "NMC",
+   "back": "National Meteorological Center"
+  },
+  {
+   "id": "nmce",
+   "front": "NMCE",
+   "back": "Network Monitoring and Control Equipment"
+  },
+  {
+   "id": "nmcs",
+   "front": "NMCS",
+   "back": "Network Monitoring and Control System"
+  },
+  {
+   "id": "noaa",
+   "front": "NOAA",
+   "back": "National Oceanic and Atmospheric Administration"
+  },
+  {
+   "id": "noc",
+   "front": "NOC",
+   "back": "Notice Of Completion"
+  },
+  {
+   "id": "nocc",
+   "front": "NOCC",
+   "back": "National Operation Control Center"
+  },
+  {
+   "id": "nod",
+   "front": "NOD",
+   "back": "National Operations Development"
+  },
+  {
+   "id": "nog",
+   "front": "NOG",
+   "back": "National Operations Group"
+  },
+  {
+   "id": "nom",
+   "front": "NOM",
+   "back": "NAS Operations Manager"
+  },
+  {
+   "id": "norep",
+   "front": "NOREP",
+   "back": "National Oceanic Review and Enhancement Program"
+  },
+  {
+   "id": "notam",
+   "front": "NOTAM",
+   "back": "Notice to Airmen"
+  },
+  {
+   "id": "npdes",
+   "front": "NPDES",
+   "back": "National Pollutant Discharge Elimination System"
+  },
+  {
+   "id": "npe",
+   "front": "NPE",
+   "back": "Non-primary Airport Entitlement"
+  },
+  {
+   "id": "npias",
+   "front": "NPIAS",
+   "back": "National Plan for Integrated Airport Systems"
+  },
+  {
+   "id": "npm",
+   "front": "NPM",
+   "back": "NAS Program Manager/Management"
+  },
+  {
+   "id": "npr",
+   "front": "NPR",
+   "back": "National Performance Review"
+  },
+  {
+   "id": "nprm",
+   "front": "NPRM",
+   "back": "Notice of Proposed Rulemaking"
+  },
+  {
+   "id": "nrc",
+   "front": "NRC",
+   "back": "Non-Recurring Charge"
+  },
+  {
+   "id": "nrcs",
+   "front": "NRCS",
+   "back": "National Radio Communications Systems"
+  },
+  {
+   "id": "nrp",
+   "front": "NRP",
+   "back": "National Route Program"
+  },
+  {
+   "id": "nrt",
+   "front": "NRT",
+   "back": "Near-Real Time"
+  },
+  {
+   "id": "nsa",
+   "front": "NSA",
+   "back": "National Safety Analysis"
+  },
+  {
+   "id": "nsap",
+   "front": "NSAP",
+   "back": "National Service Assurance Plan"
+  },
+  {
+   "id": "nsc",
+   "front": "NSC",
+   "back": "National Service Center"
+  },
+  {
+   "id": "nsp",
+   "front": "NSP",
+   "back": "National Simulator Program"
+  },
+  {
+   "id": "nsrcatn",
+   "front": "NSRCATN",
+   "back": "National Strategy to Reduce Congestion on America's Transportation Network"
+  },
+  {
+   "id": "nssfc",
+   "front": "NSSFC",
+   "back": "National Severe Storms Forecast Center"
+  },
+  {
+   "id": "nssl",
+   "front": "NSSL",
+   "back": "National Severe Storms Laboratory; Norman, OK"
+  },
+  {
+   "id": "nswrh",
+   "front": "NSWRH",
+   "back": "NWS Regional Headquarters"
+  },
+  {
+   "id": "ntap",
+   "front": "NTAP",
+   "back": "Notices To Airmen Publication"
+  },
+  {
+   "id": "ntp",
+   "front": "NTP",
+   "back": "National Transportation Policy; Notice to Proceed"
+  },
+  {
+   "id": "nts",
+   "front": "NTS",
+   "back": "NOTAM Tracking System"
+  },
+  {
+   "id": "ntsb",
+   "front": "NTSB",
+   "back": "National Transportation Safety Board"
+  },
+  {
+   "id": "ntz",
+   "front": "NTZ",
+   "back": "No Transgression Zone"
+  },
+  {
+   "id": "nwp",
+   "front": "NWP",
+   "back": "National Work Plan; NextGen Weather Processor"
+  },
+  {
+   "id": "nws",
+   "front": "NWS",
+   "back": "National Weather Service"
+  },
+  {
+   "id": "nwsr",
+   "front": "NWSR",
+   "back": "NWS Weather Excluding NXRD"
+  },
+  {
+   "id": "nxrd",
+   "front": "NXRD",
+   "back": "Advanced Weather Radar System"
+  },
+  {
+   "id": "o-m",
+   "front": "O&M",
+   "back": "Operations and Maintenance"
+  },
+  {
+   "id": "o21",
+   "front": "O21",
+   "back": "Ocean21"
+  },
+  {
+   "id": "oag",
+   "front": "OAG",
+   "back": "Official Airline Guide"
+  },
+  {
+   "id": "oalt",
+   "front": "OALT",
+   "back": "Operational Acceptable Level of Traffic"
+  },
+  {
+   "id": "oamp",
+   "front": "OAMP",
+   "back": "Off-Line Aircraft Management Program"
+  },
+  {
+   "id": "oap",
+   "front": "OAP",
+   "back": "Oceanic Automation Program"
+  },
+  {
+   "id": "oas",
+   "front": "OAS",
+   "back": "Oceanic Automation System"
+  },
+  {
+   "id": "oasis",
+   "front": "OASIS",
+   "back": "Operational and Supportability Implementation System"
+  },
+  {
+   "id": "oats",
+   "front": "OATS",
+   "back": "Office Automation Technology Services"
+  },
+  {
+   "id": "oaw",
+   "front": "OAW",
+   "back": "Off-airway Weather Station"
+  },
+  {
+   "id": "oc4j",
+   "front": "OC4J",
+   "back": "Oracle Containers for Java Enterprise Edition"
+  },
+  {
+   "id": "oca",
+   "front": "OCA",
+   "back": "Oceanic Control Area"
+  },
+  {
+   "id": "occ",
+   "front": "OCC",
+   "back": "Operations Control Center"
+  },
+  {
+   "id": "ocdb",
+   "front": "OCDB",
+   "back": "Oracle Content Database"
+  },
+  {
+   "id": "odal",
+   "front": "ODAL",
+   "back": "Omnidirectional Approach Lighting System"
+  },
+  {
+   "id": "odals",
+   "front": "ODALS",
+   "back": "Omnidirectional Approach Lighting Systems"
+  },
+  {
+   "id": "odaps",
+   "front": "ODAPS",
+   "back": "Oceanic Display and Planning System; Oceanic Display and Processing Station"
+  },
+  {
+   "id": "odl",
+   "front": "ODL",
+   "back": "Oceanic Data Link"
+  },
+  {
+   "id": "odra",
+   "front": "ODRA",
+   "back": "Office of Dispute Resolution for Acquisition"
+  },
+  {
+   "id": "ods",
+   "front": "ODS",
+   "back": "Operational Data Store"
+  },
+  {
+   "id": "oe",
+   "front": "OE",
+   "back": "Obstacle Evaluation"
+  },
+  {
+   "id": "oe-aaa",
+   "front": "OE/AAA",
+   "back": "Obstruction Evaluation/Airport Airspace Analysis"
+  },
+  {
+   "id": "oem",
+   "front": "OEM",
+   "back": "Original Equipment Manufacturer"
+  },
+  {
+   "id": "oep",
+   "front": "OEP",
+   "back": "Operational Evolution Plan; Operational Evolution Plan / Partnership"
+  },
+  {
+   "id": "oets",
+   "front": "OETS",
+   "back": "Obstacle Evaluation Tracking System"
+  },
+  {
+   "id": "ofa",
+   "front": "OFA",
+   "back": "Object Free Area"
+  },
+  {
+   "id": "ofdps",
+   "front": "OFDPS",
+   "back": "Offshore Flight Data Processing System"
+  },
+  {
+   "id": "oft",
+   "front": "OFT",
+   "back": "Outer Fix Time"
+  },
+  {
+   "id": "ofz",
+   "front": "OFZ",
+   "back": "Obstacle Free Zone"
+  },
+  {
+   "id": "ogc",
+   "front": "OGC",
+   "back": "Open Geospatial Consortium"
+  },
+  {
+   "id": "oig",
+   "front": "OIG",
+   "back": "Office of the Inspector General"
+  },
+  {
+   "id": "om",
+   "front": "OM",
+   "back": "Outer Marker"
+  },
+  {
+   "id": "omb",
+   "front": "OMB",
+   "back": "Office of Management and Budget"
+  },
+  {
+   "id": "omega",
+   "front": "OMEGA",
+   "back": "Very Low Radio Navigation System"
+  },
+  {
+   "id": "omic",
+   "front": "OMIC",
+   "back": "Operations Manager in Charge"
+  },
+  {
+   "id": "oner",
+   "front": "ONER",
+   "back": "Oceanic Navigational Error Report"
+  },
+  {
+   "id": "opasi",
+   "front": "OPASI",
+   "back": "Observation of Potential Adverse Safety Impact"
+  },
+  {
+   "id": "opd",
+   "front": "OPD",
+   "back": "Optimum Profile Descent"
+  },
+  {
+   "id": "opi",
+   "front": "OPI",
+   "back": "Office of Primary Interest"
+  },
+  {
+   "id": "oplt",
+   "front": "OPLT",
+   "back": "Operational Acceptable Level of Traffic"
+  },
+  {
+   "id": "opr",
+   "front": "OPR",
+   "back": "Office of Primary Responsibility"
+  },
+  {
+   "id": "ops",
+   "front": "OPS",
+   "back": "AF Operations; Operations"
+  },
+  {
+   "id": "opsnet",
+   "front": "OPSNET",
+   "back": "Operations Network"
+  },
+  {
+   "id": "opsw",
+   "front": "OPSW",
+   "back": "Operational Switch"
+  },
+  {
+   "id": "opx",
+   "front": "OPX",
+   "back": "Off Premises Exchange"
+  },
+  {
+   "id": "ord",
+   "front": "ORD",
+   "back": "Operational Readiness Demonstration; Operational Readiness Demonstration - Milestone"
+  },
+  {
+   "id": "ors",
+   "front": "ORS",
+   "back": "Obstruction Repository System"
+  },
+  {
+   "id": "os",
+   "front": "OS",
+   "back": "Operating System; Operational Shakedown & Cutover"
+  },
+  {
+   "id": "osa",
+   "front": "OSA",
+   "back": "Operational Safety Assessment"
+  },
+  {
+   "id": "osd",
+   "front": "OSD",
+   "back": "Operational Suitability Demonstration"
+  },
+  {
+   "id": "osds",
+   "front": "OSDS",
+   "back": "Oceanic System Development and Support"
+  },
+  {
+   "id": "ose",
+   "front": "OSE",
+   "back": "Operational Support Environment"
+  },
+  {
+   "id": "osha",
+   "front": "OSHA",
+   "back": "Occupational Safety and Health Administration"
+  },
+  {
+   "id": "osi-m",
+   "front": "OSI/M",
+   "back": "Organizational Success Increase (OSI)/Organizational Success Measure (OSM)"
+  },
+  {
+   "id": "osip",
+   "front": "OSIP",
+   "back": "Office Safety Inspection Program"
+  },
+  {
+   "id": "osrwg",
+   "front": "OSRWG",
+   "back": "Oceanic Separation Reduction Working Group"
+  },
+  {
+   "id": "ost",
+   "front": "OST",
+   "back": "Office of the Secretary of Transportation"
+  },
+  {
+   "id": "ot-e",
+   "front": "OT&E",
+   "back": "Operational Test and Evaluation"
+  },
+  {
+   "id": "otfo",
+   "front": "OTFO",
+   "back": "Operations Technical Field Office"
+  },
+  {
+   "id": "otps",
+   "front": "OTPS",
+   "back": "Oceanic Traffic Planning System"
+  },
+  {
+   "id": "otr",
+   "front": "OTR",
+   "back": "Oceanic Transition Route"
+  },
+  {
+   "id": "ots",
+   "front": "OTS",
+   "back": "Organized Track System; Out of Service"
+  },
+  {
+   "id": "p2r2",
+   "front": "P2R2",
+   "back": "Preferred Route Reduction Program"
+  },
+  {
+   "id": "pa",
+   "front": "PA",
+   "back": "Project Authorization"
+  },
+  {
+   "id": "pabx",
+   "front": "PABX",
+   "back": "Private Automated Branch Exchange"
+  },
+  {
+   "id": "pad",
+   "front": "PAD",
+   "back": "Packet Assembler/Disassembler"
+  },
+  {
+   "id": "pah",
+   "front": "PAH",
+   "back": "Production Approval Holder"
+  },
+  {
+   "id": "pam",
+   "front": "PAM",
+   "back": "Peripheral Adapter Module"
+  },
+  {
+   "id": "pamri",
+   "front": "PAMRI",
+   "back": "Peripheral Adapter Module Replacement Item"
+  },
+  {
+   "id": "pans",
+   "front": "PANS",
+   "back": "Procedures for Air Navigation Services"
+  },
+  {
+   "id": "papi",
+   "front": "PAPI",
+   "back": "Precision Approach Path Indicator"
+  },
+  {
+   "id": "par",
+   "front": "PAR",
+   "back": "Precision Approach Radar; Preferential Arrival Route; Performance and Accountability Report"
+  },
+  {
+   "id": "pas",
+   "front": "PAS",
+   "back": "Project Assignment Sheet"
+  },
+  {
+   "id": "pass",
+   "front": "PASS",
+   "back": "Professional Aviation Safety Specialists"
+  },
+  {
+   "id": "pats",
+   "front": "PATS",
+   "back": "Precision Approach Tracking System"
+  },
+  {
+   "id": "patwas",
+   "front": "PATWAS",
+   "back": "Pilots Automatic Telephone Weather Answering Service"
+  },
+  {
+   "id": "pbct",
+   "front": "PBCT",
+   "back": "Proposed Boundary Crossing Time"
+  },
+  {
+   "id": "pbrf",
+   "front": "PBRF",
+   "back": "Pilot Briefing"
+  },
+  {
+   "id": "pbx",
+   "front": "PBX",
+   "back": "Private Branch Exchange"
+  },
+  {
+   "id": "pc",
+   "front": "PC",
+   "back": "Performance Committee APL; Personal Computer; Production Certificate"
+  },
+  {
+   "id": "pca",
+   "front": "PCA",
+   "back": "Positive Control Airspace"
+  },
+  {
+   "id": "pcb",
+   "front": "PCB",
+   "back": "Personnel Compensation and Benefits; Production Certification Board (Audit)"
+  },
+  {
+   "id": "pcb-t",
+   "front": "PCB&T",
+   "back": "Personnel Compensation Benefits and Travel"
+  },
+  {
+   "id": "pcm",
+   "front": "PCM",
+   "back": "Pulse Code Modulation"
+  },
+  {
+   "id": "pcn",
+   "front": "PCN",
+   "back": "Project Control Number"
+  },
+  {
+   "id": "pcps",
+   "front": "PCPS",
+   "back": "Purchase Card Processing System"
+  },
+  {
+   "id": "pcs",
+   "front": "PCS",
+   "back": "Permanent Change of Station; Power Conditioning System; Production Control System"
+  },
+  {
+   "id": "pda",
+   "front": "PDA",
+   "back": "Personal Digital Assistant"
+  },
+  {
+   "id": "pdar",
+   "front": "PDAR",
+   "back": "Preferential Arrival And Departure Route"
+  },
+  {
+   "id": "pdc",
+   "front": "PDC",
+   "back": "Pre-Departure Clearance; Program Designator Code"
+  },
+  {
+   "id": "pdf",
+   "front": "PDF",
+   "back": "Portable Document Format"
+  },
+  {
+   "id": "pdn",
+   "front": "PDN",
+   "back": "Public Data Network"
+  },
+  {
+   "id": "pdr",
+   "front": "PDR",
+   "back": "Preferential Departure Route"
+  },
+  {
+   "id": "pds",
+   "front": "PDS",
+   "back": "Proficiency Development Specialists"
+  },
+  {
+   "id": "ped",
+   "front": "PED",
+   "back": "Personal Electronic Devices"
+  },
+  {
+   "id": "perti",
+   "front": "PERTI",
+   "back": "Plan, Execute, Review, Train and Improve"
+  },
+  {
+   "id": "pfast",
+   "front": "PFAST",
+   "back": "Passive Final Approach Spacing Tool"
+  },
+  {
+   "id": "pfc",
+   "front": "PFC",
+   "back": "Passenger Facility Charge; Porous Friction Course"
+  },
+  {
+   "id": "pgmm",
+   "front": "PgMM",
+   "back": "Program Management Methodology"
+  },
+  {
+   "id": "pgp",
+   "front": "PGP",
+   "back": "Planning Grant Program"
+  },
+  {
+   "id": "pha",
+   "front": "PHA",
+   "back": "Preliminary Hazard Analysis"
+  },
+  {
+   "id": "phl",
+   "front": "PHL",
+   "back": "Preliminary Hazard List"
+  },
+  {
+   "id": "pi",
+   "front": "PI",
+   "back": "Principal Inspector"
+  },
+  {
+   "id": "pic",
+   "front": "PIC",
+   "back": "Principal Interexchange Carrier"
+  },
+  {
+   "id": "pidp",
+   "front": "PIDP",
+   "back": "Programmable Indicator Data Processor"
+  },
+  {
+   "id": "pii",
+   "front": "PII",
+   "back": "Personally Identifiable Information"
+  },
+  {
+   "id": "pim",
+   "front": "PIM",
+   "back": "Program Implementation Manager"
+  },
+  {
+   "id": "pip",
+   "front": "PIP",
+   "back": "Primary Interface Processor; Program Implementation Plan"
+  },
+  {
+   "id": "pirep",
+   "front": "PIREP",
+   "back": "Pilot Weather Report"
+  },
+  {
+   "id": "pjmm",
+   "front": "PjMM",
+   "back": "Project Management Methodology"
+  },
+  {
+   "id": "pjsa",
+   "front": "PjSA",
+   "back": "Project Scope Agreement"
+  },
+  {
+   "id": "pki",
+   "front": "PKI",
+   "back": "Public Key Infrastructure"
+  },
+  {
+   "id": "pm",
+   "front": "PM",
+   "back": "Preventive Maintenance"
+  },
+  {
+   "id": "pma",
+   "front": "PMA",
+   "back": "Parts Manufacturer Approval"
+  },
+  {
+   "id": "pmc",
+   "front": "PMC",
+   "back": "Project Materials Cumulative"
+  },
+  {
+   "id": "pml",
+   "front": "PML",
+   "back": "Project Material List"
+  },
+  {
+   "id": "pms",
+   "front": "PMS",
+   "back": "Program Management System"
+  },
+  {
+   "id": "poc",
+   "front": "POC",
+   "back": "Point-of-Contact"
+  },
+  {
+   "id": "pocc",
+   "front": "POCC",
+   "back": "Pacific Operations Control Center"
+  },
+  {
+   "id": "pog",
+   "front": "POG",
+   "back": "Portfolio of Goals"
+  },
+  {
+   "id": "pop",
+   "front": "POP",
+   "back": "Point-0f-Presence"
+  },
+  {
+   "id": "pot",
+   "front": "POT",
+   "back": "Point-of-Termination"
+  },
+  {
+   "id": "ppe",
+   "front": "PPE",
+   "back": "Personal Protective Equipment"
+  },
+  {
+   "id": "ppims",
+   "front": "PPIMS",
+   "back": "Personal Property Information Management System"
+  },
+  {
+   "id": "ppr",
+   "front": "PPR",
+   "back": "Personal Property Report"
+  },
+  {
+   "id": "pr",
+   "front": "PR",
+   "back": "Procurement Request; Project Review / Program Review"
+  },
+  {
+   "id": "pri",
+   "front": "PRI",
+   "back": "Primary Rate Interface"
+  },
+  {
+   "id": "prm",
+   "front": "PRM",
+   "back": "Precision Runway Monitor"
+  },
+  {
+   "id": "psc",
+   "front": "PSC",
+   "back": "Program Support Center"
+  },
+  {
+   "id": "psd",
+   "front": "PSD",
+   "back": "Process Support Document"
+  },
+  {
+   "id": "psdn",
+   "front": "PSDN",
+   "back": "Public Switched Data Network"
+  },
+  {
+   "id": "psl",
+   "front": "PSL",
+   "back": "Projected Service Life"
+  },
+  {
+   "id": "psn",
+   "front": "PSN",
+   "back": "Packet Switched Network"
+  },
+  {
+   "id": "psr",
+   "front": "PSR",
+   "back": "Project Status Report"
+  },
+  {
+   "id": "pss",
+   "front": "PSS",
+   "back": "Packet Switched Service"
+  },
+  {
+   "id": "pstn",
+   "front": "PSTN",
+   "back": "Public Switched Telephone Network"
+  },
+  {
+   "id": "pt",
+   "front": "PT",
+   "back": "Product Team"
+  },
+  {
+   "id": "ptc",
+   "front": "PTC",
+   "back": "Presumed-to-Conform"
+  },
+  {
+   "id": "ptr",
+   "front": "PTR",
+   "back": "Program Technical/Trouble Report"
+  },
+  {
+   "id": "pts",
+   "front": "PTS",
+   "back": "Procedures Tracking System"
+  },
+  {
+   "id": "pub",
+   "front": "PUB",
+   "back": "Publication"
+  },
+  {
+   "id": "pup",
+   "front": "PUP",
+   "back": "Principal User Processor"
+  },
+  {
+   "id": "pvc",
+   "front": "PVC",
+   "back": "Permanent Virtual Circuit"
+  },
+  {
+   "id": "pvd",
+   "front": "PVD",
+   "back": "Plan View Display"
+  },
+  {
+   "id": "pwi",
+   "front": "PWI",
+   "back": "Proximity Warning Indicator"
+  },
+  {
+   "id": "qa",
+   "front": "QA",
+   "back": "Quality Assurance"
+  },
+  {
+   "id": "qae",
+   "front": "QAE",
+   "back": "Quality Assurance Evaluator"
+  },
+  {
+   "id": "qar",
+   "front": "QAR",
+   "back": "Quality Assurance Resource"
+  },
+  {
+   "id": "qc",
+   "front": "QC",
+   "back": "Quality Control"
+  },
+  {
+   "id": "qms",
+   "front": "QMS",
+   "back": "Quality Management System"
+  },
+  {
+   "id": "qsa",
+   "front": "QSA",
+   "back": "Quality Systems Audit"
+  },
+  {
+   "id": "r-d",
+   "front": "R&D",
+   "back": "Research and Development"
+  },
+  {
+   "id": "r-e-d",
+   "front": "R,E&D",
+   "back": "Research, Engineering and Development"
+  },
+  {
+   "id": "radlo",
+   "front": "RADLO",
+   "back": "Regional Air Defense Liaison Office"
+  },
+  {
+   "id": "rail",
+   "front": "RAIL",
+   "back": "Runway Alignment Indicator Lights"
+  },
+  {
+   "id": "rapco",
+   "front": "RAPCO",
+   "back": "Radar Approach Control (USAF)"
+  },
+  {
+   "id": "rapcon",
+   "front": "RAPCON",
+   "back": "Radar Approach Control; Radar Approach Control (FAA)"
+  },
+  {
+   "id": "rappi",
+   "front": "RAPPI",
+   "back": "Random Access Plan Position Indicator"
+  },
+  {
+   "id": "rasp",
+   "front": "RASP",
+   "back": "Regional Airport System Plan"
+  },
+  {
+   "id": "raws",
+   "front": "RAWS",
+   "back": "Remote Automatic Weather Stations (FAA); Radar, Airfield & Weather Systems (Air Force)"
+  },
+  {
+   "id": "rat",
+   "front": "RAT",
+   "back": "Risk Assessment Team"
+  },
+  {
+   "id": "ratcc",
+   "front": "RATCC",
+   "back": "Radar Air Traffic Control Center"
+  },
+  {
+   "id": "ratcf",
+   "front": "RATCF",
+   "back": "Radar Air Traffic Control Facility (USN)"
+  },
+  {
+   "id": "rbc",
+   "front": "RBC",
+   "back": "Rotating Beam Ceilometer"
+  },
+  {
+   "id": "rbdpe",
+   "front": "RBDPE",
+   "back": "Radar Beacon Data Processing Equipment"
+  },
+  {
+   "id": "rbpm",
+   "front": "RBPM",
+   "back": "Remote Beacon Performance Monitor"
+  },
+  {
+   "id": "rbrt",
+   "front": "RBRT",
+   "back": "Risk-Based Resource Targeting"
+  },
+  {
+   "id": "rbss",
+   "front": "RBSS",
+   "back": "Radar Bomb Scoring Squadron"
+  },
+  {
+   "id": "rcag",
+   "front": "RCAG",
+   "back": "Remote Communications Air/Ground"
+  },
+  {
+   "id": "rcas",
+   "front": "RCAS",
+   "back": "Radio Coverage Analysis System"
+  },
+  {
+   "id": "rcc",
+   "front": "RCC",
+   "back": "Rescue Coordination Center"
+  },
+  {
+   "id": "rccc",
+   "front": "RCCC",
+   "back": "Regional Communications Control Center"
+  },
+  {
+   "id": "rce",
+   "front": "RCE",
+   "back": "Radio Control Equipment"
+  },
+  {
+   "id": "rcf",
+   "front": "RCF",
+   "back": "Remote Communications Facility"
+  },
+  {
+   "id": "rciu",
+   "front": "RCIU",
+   "back": "Remote Control Interface Unit"
+  },
+  {
+   "id": "rcl",
+   "front": "RCL",
+   "back": "Radio Communications Link"
+  },
+  {
+   "id": "rclr",
+   "front": "RCLR",
+   "back": "Radio Communications Link Repeater; RCL Repeater"
+  },
+  {
+   "id": "rclt",
+   "front": "RCLT",
+   "back": "RCL Terminal"
+  },
+  {
+   "id": "rcm",
+   "front": "RCM",
+   "back": "Reliability Centered Maintenance"
+  },
+  {
+   "id": "rco",
+   "front": "RCO",
+   "back": "Remote Communications Outlet"
+  },
+  {
+   "id": "rcu",
+   "front": "RCU",
+   "back": "Remote Control Unit"
+  },
+  {
+   "id": "rd",
+   "front": "RD",
+   "back": "Requirements Document"
+  },
+  {
+   "id": "rdp",
+   "front": "RDP",
+   "back": "Radar Data Processing"
+  },
+  {
+   "id": "rdsim",
+   "front": "RDSIM",
+   "back": "Runway Delay Simulation Model"
+  },
+  {
+   "id": "rdvs",
+   "front": "RDVS",
+   "back": "Rapid Deployment Voice Switch"
+  },
+  {
+   "id": "re",
+   "front": "RE",
+   "back": "Resident Engineer"
+  },
+  {
+   "id": "rec",
+   "front": "REC",
+   "back": "Request Evaluation Checklist"
+  },
+  {
+   "id": "redac",
+   "front": "REDAC",
+   "back": "Research, Engineering & Development Advisory Committee"
+  },
+  {
+   "id": "redmacs",
+   "front": "REDMACS",
+   "back": "Research, Engineering, and Development Monitoring, Analysis and Control System"
+  },
+  {
+   "id": "regis",
+   "front": "REGIS",
+   "back": "Regional Information System"
+  },
+  {
+   "id": "reil",
+   "front": "REIL",
+   "back": "Runway End Identification Light"
+  },
+  {
+   "id": "rf",
+   "front": "RF",
+   "back": "Radio Frequency"
+  },
+  {
+   "id": "rfi",
+   "front": "RFI",
+   "back": "Radio Frequency Interference; Request for Information; Return on Future Investment"
+  },
+  {
+   "id": "rfq",
+   "front": "RFQ",
+   "back": "Request for Quotes"
+  },
+  {
+   "id": "riiep",
+   "front": "RIIEP",
+   "back": "Runway Incursion Information Evaluation Program"
+  },
+  {
+   "id": "rip",
+   "front": "RIP",
+   "back": "Runway Incursion Program"
+  },
+  {
+   "id": "rm",
+   "front": "RM",
+   "back": "Risk Management"
+  },
+  {
+   "id": "rmcc",
+   "front": "RMCC",
+   "back": "Remote Monitor Control Center"
+  },
+  {
+   "id": "rmcf",
+   "front": "RMCF",
+   "back": "Remote Monitor Control Facility"
+  },
+  {
+   "id": "rml",
+   "front": "RML",
+   "back": "Radar Microwave Link"
+  },
+  {
+   "id": "rmlr",
+   "front": "RMLR",
+   "back": "RML Repeater"
+  },
+  {
+   "id": "rmls",
+   "front": "RMLS",
+   "back": "Remote Monitoring and Logging System"
+  },
+  {
+   "id": "rmlt",
+   "front": "RMLT",
+   "back": "RML Terminal"
+  },
+  {
+   "id": "rmm",
+   "front": "RMM",
+   "back": "Remote Maintenance Monitoring"
+  },
+  {
+   "id": "rmmc",
+   "front": "RMMC",
+   "back": "Remote Maintenance Monitoring and Control"
+  },
+  {
+   "id": "rmms",
+   "front": "RMMS",
+   "back": "Remote Maintenance Monitoring System; Remote Maintenance Monitoring Systems"
+  },
+  {
+   "id": "rms",
+   "front": "RMS",
+   "back": "Remote Maintenance Subsystem; Remote Monitoring Subsystem; Risk Management System"
+  },
+  {
+   "id": "rmsc",
+   "front": "RMSC",
+   "back": "Remote Monitoring Subsystem Concentrator"
+  },
+  {
+   "id": "rmt",
+   "front": "RMT",
+   "back": "Resource Management Tool; Risk Management Team"
+  },
+  {
+   "id": "rnav",
+   "front": "RNAV",
+   "back": "Area Navigation"
+  },
+  {
+   "id": "rnp",
+   "front": "RNP",
+   "back": "Required Navigation Performance"
+  },
+  {
+   "id": "rnp-10",
+   "front": "RNP-10",
+   "back": "Required Navigation Performance"
+  },
+  {
+   "id": "roa",
+   "front": "ROA",
+   "back": "Record of Assistance"
+  },
+  {
+   "id": "roc",
+   "front": "ROC",
+   "back": "Regional Operations Center"
+  },
+  {
+   "id": "rod",
+   "front": "ROD",
+   "back": "Record of Decision"
+  },
+  {
+   "id": "rom",
+   "front": "ROM",
+   "back": "Read-Only Memory"
+  },
+  {
+   "id": "rosa",
+   "front": "ROSA",
+   "back": "Report of Service Activity"
+  },
+  {
+   "id": "roshm",
+   "front": "ROSHM",
+   "back": "Regional Occupational Safety and Health Manager"
+  },
+  {
+   "id": "rot",
+   "front": "ROT",
+   "back": "Runway Occupancy Time"
+  },
+  {
+   "id": "rp",
+   "front": "RP",
+   "back": "Restoration Priority"
+  },
+  {
+   "id": "rpc",
+   "front": "RPC",
+   "back": "Restoration Priority Code"
+  },
+  {
+   "id": "rpg",
+   "front": "RPG",
+   "back": "Radar Processing Group"
+  },
+  {
+   "id": "rpi",
+   "front": "RPI",
+   "back": "Real Property Inventory"
+  },
+  {
+   "id": "rpm",
+   "front": "RPM",
+   "back": "Rational Portfolio Manager; RTP Program Manager"
+  },
+  {
+   "id": "rpmes",
+   "front": "RPMES",
+   "back": "Regional Program Manager for Environment and Safety"
+  },
+  {
+   "id": "rpoc",
+   "front": "RPOC",
+   "back": "Risk Point-of-Contact"
+  },
+  {
+   "id": "rpr",
+   "front": "RPR",
+   "back": "Real Property Report"
+  },
+  {
+   "id": "rpv",
+   "front": "RPV",
+   "back": "Remotely Piloted Vehicle"
+  },
+  {
+   "id": "rpz",
+   "front": "RPZ",
+   "back": "Runway Protection Zone"
+  },
+  {
+   "id": "rrcs",
+   "front": "RRCS",
+   "back": "Remote Radio Control System"
+  },
+  {
+   "id": "rrh",
+   "front": "RRH",
+   "back": "Remote Reading Hygrothermometer"
+  },
+  {
+   "id": "rrhs",
+   "front": "RRHS",
+   "back": "Remote Reading Hydrometer"
+  },
+  {
+   "id": "rrwds",
+   "front": "RRWDS",
+   "back": "Remote Radar Weather Display"
+  },
+  {
+   "id": "rrwss",
+   "front": "RRWSS",
+   "back": "RWDS Sensor Site"
+  },
+  {
+   "id": "rsa",
+   "front": "RSA",
+   "back": "Runway Safety Area"
+  },
+  {
+   "id": "rsap",
+   "front": "RSAP",
+   "back": "Runway Safety Action Plan"
+  },
+  {
+   "id": "rsat",
+   "front": "RSAT",
+   "back": "Runway Safety Action Team"
+  },
+  {
+   "id": "rsl",
+   "front": "RSL",
+   "back": "Runway Status Light"
+  },
+  {
+   "id": "rss",
+   "front": "RSS",
+   "back": "Remote Speaking System"
+  },
+  {
+   "id": "rt",
+   "front": "RT",
+   "back": "Remote Transmitter"
+  },
+  {
+   "id": "rt-btl",
+   "front": "RT&BTL",
+   "back": "Radar Tracking and Beacon Tracking Level"
+  },
+  {
+   "id": "rtad",
+   "front": "RTAD",
+   "back": "Remote Tower Alphanumeric Display"
+  },
+  {
+   "id": "rtca",
+   "front": "RTCA",
+   "back": "Radio Technical Commission for Aeronautics"
+  },
+  {
+   "id": "rtds",
+   "front": "RTDS",
+   "back": "Radar Terminal Display System"
+  },
+  {
+   "id": "rte",
+   "front": "RTE",
+   "back": "Route"
+  },
+  {
+   "id": "rtp",
+   "front": "RTP",
+   "back": "Regional Transportation Plan"
+  },
+  {
+   "id": "rtr",
+   "front": "RTR",
+   "back": "Remote Transmitter/Receiver; Remote Terminal Radar"
+  },
+  {
+   "id": "rtrd",
+   "front": "RTRD",
+   "back": "Remote Tower Radar Display"
+  },
+  {
+   "id": "rts",
+   "front": "RTS",
+   "back": "Return to Service"
+  },
+  {
+   "id": "ruc",
+   "front": "RUC",
+   "back": "Rapid Update Cycle"
+  },
+  {
+   "id": "rvm",
+   "front": "RVM",
+   "back": "Radar Video Map"
+  },
+  {
+   "id": "rvr",
+   "front": "RVR",
+   "back": "Runway Visual Range"
+  },
+  {
+   "id": "rvsm",
+   "front": "RVSM",
+   "back": "Reduced Vertical Separation Minima"
+  },
+  {
+   "id": "rw",
+   "front": "RW",
+   "back": "Runway"
+  },
+  {
+   "id": "rwp",
+   "front": "RWP",
+   "back": "Real-time Weather Processor"
+  },
+  {
+   "id": "rwsl",
+   "front": "RWSL",
+   "back": "Runway Status Lights"
+  },
+  {
+   "id": "rwy",
+   "front": "RWY",
+   "back": "Runway"
+  },
+  {
+   "id": "rx",
+   "front": "RX",
+   "back": "Receiver"
+  },
+  {
+   "id": "s-s",
+   "front": "S/S",
+   "back": "Sector Suite"
+  },
+  {
+   "id": "s2-pmr",
+   "front": "S2 PMR",
+   "back": "Deputy Secretary Performance Review by DOT Mode"
+  },
+  {
+   "id": "sa",
+   "front": "SA",
+   "back": "System Administrator"
+  },
+  {
+   "id": "sac",
+   "front": "SAC",
+   "back": "Strategic Air Command"
+  },
+  {
+   "id": "safi",
+   "front": "SAFI",
+   "back": "Semi Automatic Flight Inspection"
+  },
+  {
+   "id": "saga",
+   "front": "SAGA",
+   "back": "System Safety Approach for General Aviation"
+  },
+  {
+   "id": "sai",
+   "front": "SAI",
+   "back": "Safety Attribute Inspection; Special Audit Item"
+  },
+  {
+   "id": "sals",
+   "front": "SALS",
+   "back": "Short Approach Lighting System"
+  },
+  {
+   "id": "sam",
+   "front": "SAM",
+   "back": "Status Acquisition Message (DISA)"
+  },
+  {
+   "id": "sams",
+   "front": "SAMS",
+   "back": "Special Use Airspace Management System"
+  },
+  {
+   "id": "san",
+   "front": "SAN",
+   "back": "Storage Area Network"
+  },
+  {
+   "id": "saps",
+   "front": "SAPS",
+   "back": "Staffing and Personnel System"
+  },
+  {
+   "id": "sar",
+   "front": "SAR",
+   "back": "Search and Rescue"
+  },
+  {
+   "id": "sarp",
+   "front": "SARP",
+   "back": "Standards and Recommended Practices"
+  },
+  {
+   "id": "sas",
+   "front": "SAS",
+   "back": "Safety Assurance System"
+  },
+  {
+   "id": "saso",
+   "front": "SASO",
+   "back": "System Approach for Safety Oversight"
+  },
+  {
+   "id": "sat",
+   "front": "SAT",
+   "back": "Security, Awareness, and Training System; SEOAT Analytical Team"
+  },
+  {
+   "id": "satcom",
+   "front": "SATCOM",
+   "back": "Satellite Communications"
+  },
+  {
+   "id": "saves",
+   "front": "SAVES",
+   "back": "Strategic Sourcing for the Acquisition of Various Equipment and Supplies"
+  },
+  {
+   "id": "sawrs",
+   "front": "SAWRS",
+   "back": "Supplemental Aviation Weather Reporting Service; Supplementary Aviation Weather Reporting System"
+  },
+  {
+   "id": "saws",
+   "front": "SAWS",
+   "back": "Stand Alone Weather Sensors"
+  },
+  {
+   "id": "sbgp",
+   "front": "SBGP",
+   "back": "State Block Grant Program"
+  },
+  {
+   "id": "sbir",
+   "front": "SBIR",
+   "back": "Small Business Innovation Research"
+  },
+  {
+   "id": "sbm",
+   "front": "SBM",
+   "back": "Strategic Business Management Module Housed in the SPIRE tool"
+  },
+  {
+   "id": "sbs",
+   "front": "SBS",
+   "back": "Surveillance Broadcast Services"
+  },
+  {
+   "id": "sbt",
+   "front": "SBT",
+   "back": "Scenario Based Training"
+  },
+  {
+   "id": "scada",
+   "front": "SCADA",
+   "back": "Supervisory Control and Data Acquisition"
+  },
+  {
+   "id": "scap",
+   "front": "SCAP",
+   "back": "System Certification and Accreditation Package"
+  },
+  {
+   "id": "scat",
+   "front": "SCAT",
+   "back": "Staffing and Cost Analysis Tool"
+  },
+  {
+   "id": "scc",
+   "front": "SCC",
+   "back": "System Command Center"
+  },
+  {
+   "id": "sct",
+   "front": "SCT",
+   "back": "Southern California Area TRACON (Metroplex)"
+  },
+  {
+   "id": "scvts",
+   "front": "SCVTS",
+   "back": "Switched Compressed Video Telecommunications Service"
+  },
+  {
+   "id": "sdf",
+   "front": "SDF",
+   "back": "Simplified Direction Finding; Software Defined Network"
+  },
+  {
+   "id": "sdi",
+   "front": "SDI",
+   "back": "Service Difficulty Investigation"
+  },
+  {
+   "id": "sdis",
+   "front": "SDIS",
+   "back": "Switched Digital Integrated Service"
+  },
+  {
+   "id": "sdlc",
+   "front": "SDLC",
+   "back": "Software Development Life Cycle"
+  },
+  {
+   "id": "sdp",
+   "front": "SDP",
+   "back": "Service Delivery Point"
+  },
+  {
+   "id": "sdr",
+   "front": "SDR",
+   "back": "Service Difficulty Report; System Documentation Release"
+  },
+  {
+   "id": "sds",
+   "front": "SDS",
+   "back": "Switched Data Service"
+  },
+  {
+   "id": "sec",
+   "front": "SEC",
+   "back": "Strategic Event Coordination"
+  },
+  {
+   "id": "secm",
+   "front": "SECM",
+   "back": "Safety and Environmental Compliance Manager"
+  },
+  {
+   "id": "secra",
+   "front": "SECRA",
+   "back": "Secondary Radar"
+  },
+  {
+   "id": "sei",
+   "front": "SEI",
+   "back": "Special Emphasis Item"
+  },
+  {
+   "id": "sel",
+   "front": "SEL",
+   "back": "Single Event Level"
+  },
+  {
+   "id": "self",
+   "front": "SELF",
+   "back": "Simplified Short Approach Lighting System With Sequenced Flashing Lights"
+  },
+  {
+   "id": "seoat",
+   "front": "SEOAT",
+   "back": "Systems Engineering Operational Analysis Team"
+  },
+  {
+   "id": "serc",
+   "front": "SERC",
+   "back": "Software Engineering Resource Center"
+  },
+  {
+   "id": "serfi",
+   "front": "SERFI",
+   "back": "Special Emphasis Request for Information"
+  },
+  {
+   "id": "set",
+   "front": "SET",
+   "back": "Spacing Efficiency Tool"
+  },
+  {
+   "id": "seta",
+   "front": "SETA",
+   "back": "System Engineering and Technical Assistance"
+  },
+  {
+   "id": "sfar",
+   "front": "SFAR",
+   "back": "Special Federal Aviation Regulations"
+  },
+  {
+   "id": "sfar-38",
+   "front": "SFAR-38",
+   "back": "Special Federal Aviation Regulation 38"
+  },
+  {
+   "id": "sfd",
+   "front": "SFD",
+   "back": "Service Flow Diagram"
+  },
+  {
+   "id": "sfp",
+   "front": "SFP",
+   "back": "Special Flight Permit"
+  },
+  {
+   "id": "sgi",
+   "front": "SGI",
+   "back": "Silicon Graphics Incorporated"
+  },
+  {
+   "id": "shpo",
+   "front": "SHPO",
+   "back": "State Historic Preservation Officer"
+  },
+  {
+   "id": "shrp",
+   "front": "SHRP",
+   "back": "Strategic Highway Research Program"
+  },
+  {
+   "id": "siap",
+   "front": "SIAP",
+   "back": "Standard Instrument Flight Procedure"
+  },
+  {
+   "id": "sic",
+   "front": "SIC",
+   "back": "Service Initiation Charge"
+  },
+  {
+   "id": "sid",
+   "front": "SID",
+   "back": "Standard Instrument Departure; Station Identifier"
+  },
+  {
+   "id": "sigmet",
+   "front": "SIGMET",
+   "back": "Significant Meteorological Information"
+  },
+  {
+   "id": "sita",
+   "front": "SITA",
+   "back": "Société Internationale de Télécommunications Aéronautiques"
+  },
+  {
+   "id": "simmod",
+   "front": "SIMMOD",
+   "back": "Airspace and Airport Simulation Model"
+  },
+  {
+   "id": "sip",
+   "front": "SIP",
+   "back": "State Implementation Plan"
+  },
+  {
+   "id": "siprnet",
+   "front": "SIPRNET",
+   "back": "Secret IP Router Network (DoD)"
+  },
+  {
+   "id": "sir",
+   "front": "SIR",
+   "back": "Screening Information Request"
+  },
+  {
+   "id": "slep",
+   "front": "SLEP",
+   "back": "Service Life Extension Program"
+  },
+  {
+   "id": "sm",
+   "front": "SM",
+   "back": "Statute Mile"
+  },
+  {
+   "id": "sma",
+   "front": "SMA",
+   "back": "Surface Monitor Aid; Surface Movement Advisor"
+  },
+  {
+   "id": "smf",
+   "front": "SMF",
+   "back": "Systems Management Facility"
+  },
+  {
+   "id": "smgc",
+   "front": "SMGC",
+   "back": "Surface Movement Guidance and Control"
+  },
+  {
+   "id": "smgcs",
+   "front": "SMGCS",
+   "back": "Surface Movement Guidance and Control System"
+  },
+  {
+   "id": "smmc",
+   "front": "SMMC",
+   "back": "System Maintenance Monitor Console"
+  },
+  {
+   "id": "smo",
+   "front": "SMO",
+   "back": "System Management Office"
+  },
+  {
+   "id": "smps",
+   "front": "SMPS",
+   "back": "Sector Maintenance Processor Subsystem"
+  },
+  {
+   "id": "sms",
+   "front": "SMS",
+   "back": "Safety Management System; Simulation Modeling System"
+  },
+  {
+   "id": "smt",
+   "front": "SMT",
+   "back": "Schedule Management Toolset"
+  },
+  {
+   "id": "snr",
+   "front": "SNR",
+   "back": "Signal-to-Noise Ratio"
+  },
+  {
+   "id": "snt",
+   "front": "SNT",
+   "back": "Staffed NextGen Tower"
+  },
+  {
+   "id": "soar",
+   "front": "SOAR",
+   "back": "System of Airports Reporting"
+  },
+  {
+   "id": "soc",
+   "front": "SOC",
+   "back": "Service Operations Center; Service Oversight Center"
+  },
+  {
+   "id": "soir",
+   "front": "SOIR",
+   "back": "Simultaneous Operations On Intersecting Runways"
+  },
+  {
+   "id": "soiwr",
+   "front": "SOIWR",
+   "back": "Simultaneous Operations on Intersecting Wet Runways"
+  },
+  {
+   "id": "sop",
+   "front": "SOP",
+   "back": "Standard Operating Practice; Standard Operating Procedures"
+  },
+  {
+   "id": "sow",
+   "front": "SOW",
+   "back": "Statement of Work"
+  },
+  {
+   "id": "sp",
+   "front": "SP",
+   "back": "Surveillance Processing"
+  },
+  {
+   "id": "spas",
+   "front": "SPAS",
+   "back": "System Performance Analysis System"
+  },
+  {
+   "id": "spifr",
+   "front": "SPIFR",
+   "back": "Single Pilot IFR"
+  },
+  {
+   "id": "sport",
+   "front": "SPORT",
+   "back": "Space Positional Optical Radar Tracking"
+  },
+  {
+   "id": "srap",
+   "front": "SRAP",
+   "back": "Sensor Receiver and Processor"
+  },
+  {
+   "id": "srm",
+   "front": "SRM",
+   "back": "Safety Risk Management; Single Pilot Resource Management"
+  },
+  {
+   "id": "srmd",
+   "front": "SRMD",
+   "back": "Safety Risk Management Document"
+  },
+  {
+   "id": "srmdm",
+   "front": "SRMDM",
+   "back": "Safety Risk Management Memo"
+  },
+  {
+   "id": "srs",
+   "front": "SRS",
+   "back": "Shuttle Reservation System"
+  },
+  {
+   "id": "srtm",
+   "front": "SRTM",
+   "back": "Shuttle Radar Topography Mission"
+  },
+  {
+   "id": "ssalf",
+   "front": "SSALF",
+   "back": "SSALS with Sequenced Flashers"
+  },
+  {
+   "id": "ssalr",
+   "front": "SSALR",
+   "back": "Simplified Short Approach Lighting System"
+  },
+  {
+   "id": "ssb",
+   "front": "SSB",
+   "back": "Single Side Band"
+  },
+  {
+   "id": "ssc",
+   "front": "SSC",
+   "back": "System Support Center; Systems Support Center"
+  },
+  {
+   "id": "ssd",
+   "front": "SSD",
+   "back": "System Support Directive"
+  },
+  {
+   "id": "sse",
+   "front": "SSE",
+   "back": "Servicing Security Element"
+  },
+  {
+   "id": "ssm",
+   "front": "SSM",
+   "back": "System Support Modification"
+  },
+  {
+   "id": "ssrwg",
+   "front": "SSRWG",
+   "back": "Systems Safety Risk Working Group"
+  },
+  {
+   "id": "sst",
+   "front": "SST",
+   "back": "System Shakedown Testing"
+  },
+  {
+   "id": "st-e",
+   "front": "ST&E",
+   "back": "Security Test and Evaluation"
+  },
+  {
+   "id": "stamp",
+   "front": "STAMP",
+   "back": "Site Transition Activation Management Plan"
+  },
+  {
+   "id": "star",
+   "front": "STAR",
+   "back": "Standard Terminal Arrival Route; Standard Terminal Arrivals"
+  },
+  {
+   "id": "stars",
+   "front": "STARS",
+   "back": "Standard Terminal Automation Replacement System"
+  },
+  {
+   "id": "stc",
+   "front": "STC",
+   "back": "Supplemental Type Certificate"
+  },
+  {
+   "id": "std",
+   "front": "STD",
+   "back": "Standard"
+  },
+  {
+   "id": "sti",
+   "front": "STI",
+   "back": "Short Term Incentives"
+  },
+  {
+   "id": "stmp",
+   "front": "STMP",
+   "back": "Special Traffic Management Program"
+  },
+  {
+   "id": "stmux",
+   "front": "STMUX",
+   "back": "Statistical Data Multiplexer"
+  },
+  {
+   "id": "stol",
+   "front": "STOL",
+   "back": "Short Take - Off and Landing; Short Takeoff and Landing"
+  },
+  {
+   "id": "str",
+   "front": "STR",
+   "back": "System Technical Release"
+  },
+  {
+   "id": "stt",
+   "front": "STT",
+   "back": "Staffing to Traffic"
+  },
+  {
+   "id": "stvs",
+   "front": "STVS",
+   "back": "Small Tower Voice Switch"
+  },
+  {
+   "id": "sua",
+   "front": "SUA",
+   "back": "Special Use Airspace"
+  },
+  {
+   "id": "sup",
+   "front": "SUP",
+   "back": "Suspected Unapproved Parts"
+  },
+  {
+   "id": "supcom",
+   "front": "SUPCOM",
+   "back": "Supervisors Committee (AAT AND AAF)"
+  },
+  {
+   "id": "supps",
+   "front": "SUPPS",
+   "back": "Supplementary Procedures"
+  },
+  {
+   "id": "surpic",
+   "front": "SURPIC",
+   "back": "Surface Picture"
+  },
+  {
+   "id": "svca",
+   "front": "SVCA",
+   "back": "Service A"
+  },
+  {
+   "id": "svcb",
+   "front": "SVCB",
+   "back": "Service B"
+  },
+  {
+   "id": "svcc",
+   "front": "SVCC",
+   "back": "Service C"
+  },
+  {
+   "id": "svco",
+   "front": "SVCO",
+   "back": "Service O"
+  },
+  {
+   "id": "svfb",
+   "front": "SVFB",
+   "back": "Interphone Service F (B)"
+  },
+  {
+   "id": "svfc",
+   "front": "SVFC",
+   "back": "Interphone Service F (C)"
+  },
+  {
+   "id": "svfd",
+   "front": "SVFD",
+   "back": "Interphone Service F (D)"
+  },
+  {
+   "id": "svfo",
+   "front": "SVFO",
+   "back": "Interphone Service F (A)"
+  },
+  {
+   "id": "svfr",
+   "front": "SVFR",
+   "back": "Special Visual Flight Rules"
+  },
+  {
+   "id": "swap",
+   "front": "SWAP",
+   "back": "Severe Weather Avoidance Procedure/Program"
+  },
+  {
+   "id": "swift",
+   "front": "SWIFT",
+   "back": "Selections Within Faster Times"
+  },
+  {
+   "id": "swim",
+   "front": "SWIM",
+   "back": "System Wide Information Management"
+  },
+  {
+   "id": "swppp",
+   "front": "SWPPP",
+   "back": "Storm Water Pollution Protection Plan"
+  },
+  {
+   "id": "t1mux",
+   "front": "T1MUX",
+   "back": "T1 Multiplexer"
+  },
+  {
+   "id": "taas",
+   "front": "TAAS",
+   "back": "Terminal Advance Automation System"
+  },
+  {
+   "id": "tac",
+   "front": "TAC",
+   "back": "Tactical Air Command (USAF) Tester; Terminal Area Chart"
+  },
+  {
+   "id": "tacan",
+   "front": "TACAN",
+   "back": "Tactical Air Navigation; Tactical Aircraft Control and Navigation"
+  },
+  {
+   "id": "tacr",
+   "front": "TACR",
+   "back": "TACAN at VOR, TACAN only"
+  },
+  {
+   "id": "taf",
+   "front": "TAF",
+   "back": "Terminal Area Forecast"
+  },
+  {
+   "id": "tamr",
+   "front": "TAMR",
+   "back": "Terminal Automation Modernization and Replacement"
+  },
+  {
+   "id": "tars",
+   "front": "TARS",
+   "back": "Terminal Automated Radar Service"
+  },
+  {
+   "id": "tas",
+   "front": "TAS",
+   "back": "True Air Speed"
+  },
+  {
+   "id": "tatca",
+   "front": "TATCA",
+   "back": "Terminal Air Traffic Control Automation"
+  },
+  {
+   "id": "tavt",
+   "front": "TAVT",
+   "back": "Terminal Airspace Visualization Tool"
+  },
+  {
+   "id": "taws",
+   "front": "TAWS",
+   "back": "Terrain Awareness and Warning System"
+  },
+  {
+   "id": "tbfm",
+   "front": "TBFM",
+   "back": "Time Based Flow Management"
+  },
+  {
+   "id": "tbo",
+   "front": "TBO",
+   "back": "Trajectory Based Operation"
+  },
+  {
+   "id": "tc",
+   "front": "TC",
+   "back": "Type Certificate"
+  },
+  {
+   "id": "tca",
+   "front": "TCA",
+   "back": "Tactical Customer Advocate; Terminal Control Area; Traffic Control Airport or Tower Control Airport"
+  },
+  {
+   "id": "tcaccis",
+   "front": "TCACCIS",
+   "back": "Transportation Coordinator Automated Command and Control Information System"
+  },
+  {
+   "id": "tcap",
+   "front": "TCAP",
+   "back": "Traffic Count Automation Program"
+  },
+  {
+   "id": "tcas",
+   "front": "TCAS",
+   "back": "Traffic Alert and Collision Avoidance System"
+  },
+  {
+   "id": "tcc",
+   "front": "TCC",
+   "back": "DOT Transportation Computer Center"
+  },
+  {
+   "id": "tcbm",
+   "front": "TCBM",
+   "back": "Type Certification Board Meeting"
+  },
+  {
+   "id": "tccc",
+   "front": "TCCC",
+   "back": "Tower Control Computer Complex"
+  },
+  {
+   "id": "tcds",
+   "front": "TCDS",
+   "back": "Type Certificate Data Sheet"
+  },
+  {
+   "id": "tce",
+   "front": "TCE",
+   "back": "Tone Control Equipment"
+  },
+  {
+   "id": "tclt",
+   "front": "TCLT",
+   "back": "Tentative Calculated Landing Time"
+  },
+  {
+   "id": "tco",
+   "front": "TCO",
+   "back": "Telecommunications Certification Officer"
+  },
+  {
+   "id": "tcom",
+   "front": "TCOM",
+   "back": "Terminal Communications"
+  },
+  {
+   "id": "tcs",
+   "front": "TCS",
+   "back": "Tower Communications System"
+  },
+  {
+   "id": "tcvr",
+   "front": "TCVR",
+   "back": "Transceiver"
+  },
+  {
+   "id": "tdds",
+   "front": "TDDS",
+   "back": "Terminal Data Display System"
+  },
+  {
+   "id": "tdls",
+   "front": "TDLS",
+   "back": "Tower Data-Link Services"
+  },
+  {
+   "id": "tdmux",
+   "front": "TDMUX",
+   "back": "Time Division Data Multiplexer"
+  },
+  {
+   "id": "tdwr",
+   "front": "TDWR",
+   "back": "Terminal Doppler Weather Radar"
+  },
+  {
+   "id": "telco",
+   "front": "TELCO",
+   "back": "Telephone Company"
+  },
+  {
+   "id": "telms",
+   "front": "TELMS",
+   "back": "Telecommunications Management System"
+  },
+  {
+   "id": "terp",
+   "front": "TERP",
+   "back": "Terminal Instrument Procedure"
+  },
+  {
+   "id": "tfac",
+   "front": "TFAC",
+   "back": "To Facility"
+  },
+  {
+   "id": "tfdm",
+   "front": "TFDM",
+   "back": "Tower Flight Data Manager"
+  },
+  {
+   "id": "tfds",
+   "front": "TFDS",
+   "back": "Terminal Facility Design Standard"
+  },
+  {
+   "id": "tfm",
+   "front": "TFM",
+   "back": "Traffic Flow Management"
+  },
+  {
+   "id": "tfms",
+   "front": "TFMS",
+   "back": "Traffic Flow Management System"
+  },
+  {
+   "id": "tfr",
+   "front": "TFR",
+   "back": "Temporary Flight Restriction"
+  },
+  {
+   "id": "th",
+   "front": "TH",
+   "back": "Threshold"
+  },
+  {
+   "id": "tib",
+   "front": "TIB",
+   "back": "Technical Instruction Book"
+  },
+  {
+   "id": "tims",
+   "front": "TIMS",
+   "back": "Telecommunications Information Management System"
+  },
+  {
+   "id": "tiph",
+   "front": "TIPH",
+   "back": "Taxi Into Position and Hold"
+  },
+  {
+   "id": "tips",
+   "front": "TIPS",
+   "back": "Terminal Information Processing System"
+  },
+  {
+   "id": "tl",
+   "front": "TL",
+   "back": "Taxilane"
+  },
+  {
+   "id": "tm-o",
+   "front": "TM&O",
+   "back": "Telecommunications Management and Operations"
+  },
+  {
+   "id": "tma",
+   "front": "TMA",
+   "back": "Traffic Management Advisor"
+  },
+  {
+   "id": "tmc",
+   "front": "TMC",
+   "back": "Traffic Management Coordinator; Travel Management Center"
+  },
+  {
+   "id": "tmc-mc",
+   "front": "TMC/MC",
+   "back": "Traffic Management Coordinator/Military Coordinator"
+  },
+  {
+   "id": "tmcc",
+   "front": "TMCC",
+   "back": "Terminal Information Processing System; Traffic Management Computer Complex"
+  },
+  {
+   "id": "tmf",
+   "front": "TMF",
+   "back": "Traffic Management Facility"
+  },
+  {
+   "id": "tmi",
+   "front": "TMI",
+   "back": "Traffic Management Initiative"
+  },
+  {
+   "id": "tml",
+   "front": "TML",
+   "back": "Television Microwave Link"
+  },
+  {
+   "id": "tmli",
+   "front": "TMLI",
+   "back": "Television Microwave Link Indicator"
+  },
+  {
+   "id": "tmlr",
+   "front": "TMLR",
+   "back": "Television Microwave Link Repeater"
+  },
+  {
+   "id": "tmlt",
+   "front": "TMLT",
+   "back": "Television Microwave Link Terminal"
+  },
+  {
+   "id": "tmp",
+   "front": "TMP",
+   "back": "Traffic Management Processor"
+  },
+  {
+   "id": "tms",
+   "front": "TMS",
+   "back": "Traffic Management System"
+  },
+  {
+   "id": "tmsps",
+   "front": "TMSPS",
+   "back": "Traffic Management Specialists"
+  },
+  {
+   "id": "tmu",
+   "front": "TMU",
+   "back": "Traffic Management Unit"
+  },
+  {
+   "id": "tnav",
+   "front": "TNAV",
+   "back": "Terminal Navigational Aids"
+  },
+  {
+   "id": "tocc",
+   "front": "TOCC",
+   "back": "Technical Operations Control Center"
+  },
+  {
+   "id": "toda",
+   "front": "TODA",
+   "back": "Takeoff Distance Available"
+  },
+  {
+   "id": "tof",
+   "front": "TOF",
+   "back": "Time Of Flight"
+  },
+  {
+   "id": "tofms",
+   "front": "TOFMS",
+   "back": "Time of Flight Mass Spectrometer"
+  },
+  {
+   "id": "tom",
+   "front": "TOM",
+   "back": "Transition of Operations and Maintenance"
+  },
+  {
+   "id": "tops",
+   "front": "TOPS",
+   "back": "Telecommunications Ordering and Pricing System (GSA software tool)"
+  },
+  {
+   "id": "tora",
+   "front": "TORA",
+   "back": "Take-off Run Available"
+  },
+  {
+   "id": "tp",
+   "front": "TP",
+   "back": "Telecommunication Processor; Track Processing"
+  },
+  {
+   "id": "tpog",
+   "front": "TPOG",
+   "back": "Terminal Precipitation On Glass"
+  },
+  {
+   "id": "tpp",
+   "front": "TPP",
+   "back": "Terminal Procedures Publication"
+  },
+  {
+   "id": "tpr",
+   "front": "TPR",
+   "back": "Technical Performance Record"
+  },
+  {
+   "id": "tr",
+   "front": "TR",
+   "back": "Telecommunications Request"
+  },
+  {
+   "id": "tracab",
+   "front": "TRACAB",
+   "back": "Terminal Radar Approach Control in Tower Cab"
+  },
+  {
+   "id": "tracon",
+   "front": "TRACON",
+   "back": "Terminal Radar Approach Control; Terminal Radar Approach Control Facility"
+  },
+  {
+   "id": "trad",
+   "front": "TRAD",
+   "back": "Terminal Radar Service"
+  },
+  {
+   "id": "trb",
+   "front": "TRB",
+   "back": "Transportation Research Board"
+  },
+  {
+   "id": "trd",
+   "front": "TRD",
+   "back": "Technical Reference Data"
+  },
+  {
+   "id": "trdr",
+   "front": "TRDR",
+   "back": "Technical Reference Data Record"
+  },
+  {
+   "id": "trng",
+   "front": "TRNG",
+   "back": "Training"
+  },
+  {
+   "id": "ts",
+   "front": "TS",
+   "back": "Top Secret"
+  },
+  {
+   "id": "tsa",
+   "front": "TSA",
+   "back": "Taxiway Safety Area"
+  },
+  {
+   "id": "tsarts",
+   "front": "TSARTS",
+   "back": "Terminal Stand-Alone Radar Training System"
+  },
+  {
+   "id": "tsc",
+   "front": "TSC",
+   "back": "Technical Support Center"
+  },
+  {
+   "id": "tsd",
+   "front": "TSD",
+   "back": "Traffic Situation Display; Traffic Situational Display"
+  },
+  {
+   "id": "tsec",
+   "front": "TSEC",
+   "back": "Terminal Secondary Radar Service"
+  },
+  {
+   "id": "tso",
+   "front": "TSO",
+   "back": "Telecommunications Service Order (DISA); Technical Standard Order"
+  },
+  {
+   "id": "tsoa",
+   "front": "TSOA",
+   "back": "Technical Standard Order Authorization"
+  },
+  {
+   "id": "tsp",
+   "front": "TSP",
+   "back": "Telecommunications Service Priority"
+  },
+  {
+   "id": "tsr",
+   "front": "TSR",
+   "back": "Telecommunications Service Request"
+  },
+  {
+   "id": "tss",
+   "front": "TSS",
+   "back": "Tower Simulation System"
+  },
+  {
+   "id": "tssc",
+   "front": "TSSC",
+   "back": "Technical Support Services Contract"
+  },
+  {
+   "id": "tsys",
+   "front": "TSYS",
+   "back": "Terminal Equipment Systems"
+  },
+  {
+   "id": "ttma",
+   "front": "TTMA",
+   "back": "TRACON Traffic Management Advisor"
+  },
+  {
+   "id": "ttwg",
+   "front": "TTWG",
+   "back": "Technical Transfer Working Group"
+  },
+  {
+   "id": "tty",
+   "front": "TTY",
+   "back": "Teletype"
+  },
+  {
+   "id": "tur",
+   "front": "TUR",
+   "back": "Time Utilization Report"
+  },
+  {
+   "id": "tvor",
+   "front": "TVOR",
+   "back": "Terminal VHF Omnidirectional Range"
+  },
+  {
+   "id": "tvsr",
+   "front": "TVSR",
+   "back": "Terminal Voice Switch Replacement"
+  },
+  {
+   "id": "tw",
+   "front": "TW",
+   "back": "Taxiway"
+  },
+  {
+   "id": "tweb",
+   "front": "TWEB",
+   "back": "Transcribed Weather Broadcast"
+  },
+  {
+   "id": "twip",
+   "front": "TWIP",
+   "back": "Terminal Weather Information for Pilots"
+  },
+  {
+   "id": "twr",
+   "front": "TWR",
+   "back": "Tower (non-controlled)"
+  },
+  {
+   "id": "twy",
+   "front": "TWY",
+   "back": "Taxiway"
+  },
+  {
+   "id": "tx",
+   "front": "TX",
+   "back": "Transmitter"
+  },
+  {
+   "id": "ty",
+   "front": "TY",
+   "back": "Type (FAACIS)"
+  },
+  {
+   "id": "uas",
+   "front": "UAS",
+   "back": "Uniform Accounting System; Unmanned Aircraft Systems"
+  },
+  {
+   "id": "uat",
+   "front": "UAT",
+   "back": "Universal Access Transceiver"
+  },
+  {
+   "id": "uba",
+   "front": "UBA",
+   "back": "User Benefits Applications"
+  },
+  {
+   "id": "ubi",
+   "front": "UBI",
+   "back": "User Benefits Infrastructure"
+  },
+  {
+   "id": "ucr",
+   "front": "UCR",
+   "back": "Unsatisfactory Condition Report"
+  },
+  {
+   "id": "ufas",
+   "front": "UFAS",
+   "back": "Uniform Federal Accessibility Standard"
+  },
+  {
+   "id": "uhf",
+   "front": "UHF",
+   "back": "Ultra High Frequency"
+  },
+  {
+   "id": "uei",
+   "front": "UEI",
+   "back": "Unique Entity ID"
+  },
+  {
+   "id": "unix",
+   "front": "UNIX",
+   "back": "Uniplexed Information and Computing System"
+  },
+  {
+   "id": "upr",
+   "front": "UPR",
+   "back": "User Preferred Route"
+  },
+  {
+   "id": "ups",
+   "front": "UPS",
+   "back": "Uninterruptable Power Supply"
+  },
+  {
+   "id": "upt",
+   "front": "UPT",
+   "back": "User Preferred Trajectory"
+  },
+  {
+   "id": "ura",
+   "front": "URA",
+   "back": "Uniform Relocation Assistance and Real Property Acquisition Policies Act of 1970"
+  },
+  {
+   "id": "uret",
+   "front": "URET",
+   "back": "User Request Evaluation Tool"
+  },
+  {
+   "id": "usaf",
+   "front": "USAF",
+   "back": "United States Air Force"
+  },
+  {
+   "id": "usc",
+   "front": "USC",
+   "back": "United States Code"
+  },
+  {
+   "id": "uscg",
+   "front": "USCG",
+   "back": "United States Coast Guard"
+  },
+  {
+   "id": "usg",
+   "front": "USG",
+   "back": "United States Government"
+  },
+  {
+   "id": "usi",
+   "front": "USI",
+   "back": "Unique Service Identifier"
+  },
+  {
+   "id": "usns",
+   "front": "USNS",
+   "back": "United States Notices to Airmen System"
+  },
+  {
+   "id": "usoap",
+   "front": "USOAP",
+   "back": "Universal Safety Oversight Audit Program"
+  },
+  {
+   "id": "usoc",
+   "front": "USOC",
+   "back": "Uniform Service Order Code"
+  },
+  {
+   "id": "utc",
+   "front": "UTC",
+   "back": "Coordinated Universal Time (ZULU)"
+  },
+  {
+   "id": "vale",
+   "front": "VALE",
+   "back": "Voluntary Airport Low Emission; Voluntary Airport Low Emission Program"
+  },
+  {
+   "id": "vasi",
+   "front": "VASI",
+   "back": "Visual Approach Slope Indicator"
+  },
+  {
+   "id": "vbscript",
+   "front": "VBScript",
+   "back": "Visual Basic Scripting Edition"
+  },
+  {
+   "id": "vdf",
+   "front": "VDF",
+   "back": "Very High Frequency Direction-Finding Station"
+  },
+  {
+   "id": "vdl",
+   "front": "VDL",
+   "back": "Very High Frequency Data Link"
+  },
+  {
+   "id": "vdme",
+   "front": "VDME",
+   "back": "VOR with Distance Measuring Equipment"
+  },
+  {
+   "id": "vdrp",
+   "front": "VDRP",
+   "back": "Voluntary Disclosure Reporting Program"
+  },
+  {
+   "id": "vears",
+   "front": "VEARS",
+   "back": "VSCS Emergency Access Radio System"
+  },
+  {
+   "id": "vf",
+   "front": "VF",
+   "back": "Voice Frequency"
+  },
+  {
+   "id": "vfr",
+   "front": "VFR",
+   "back": "Visual Flight Rules"
+  },
+  {
+   "id": "vgsi",
+   "front": "VGSI",
+   "back": "Visual Guidance Slope Indicator"
+  },
+  {
+   "id": "vhf",
+   "front": "VHF",
+   "back": "Very High Frequency"
+  },
+  {
+   "id": "vlf",
+   "front": "VLF",
+   "back": "Very Low Frequency"
+  },
+  {
+   "id": "vlj",
+   "front": "VLJ",
+   "back": "Very Light Jet"
+  },
+  {
+   "id": "vmc",
+   "front": "VMC",
+   "back": "Visual Meteorological Conditions"
+  },
+  {
+   "id": "vms",
+   "front": "VMS",
+   "back": "Virtual Memory System"
+  },
+  {
+   "id": "vnav",
+   "front": "VNAV",
+   "back": "Visual Navigational Aids"
+  },
+  {
+   "id": "vntsc",
+   "front": "VNTSC",
+   "back": "Volpe National Transportation System Center"
+  },
+  {
+   "id": "voip",
+   "front": "VOIP",
+   "back": "Voice Over Internet Protocol"
+  },
+  {
+   "id": "von",
+   "front": "VON",
+   "back": "Virtual On-net"
+  },
+  {
+   "id": "vor",
+   "front": "VOR",
+   "back": "Very High Frequency Omnidirectional Range"
+  },
+  {
+   "id": "vor-dme",
+   "front": "VOR/DME",
+   "back": "Very High Frequency Omnidirectional Range Collocated with Distance Measuring Equipment; VHF Omnidirectional Range/Distance Measuring Equipment"
+  },
+  {
+   "id": "vortac",
+   "front": "VORTAC",
+   "back": "Very High Frequency Omnidirectional Range Collocated Tactical Air; VOR collocated with TACAN"
+  },
+  {
+   "id": "vot",
+   "front": "VOT",
+   "back": "VOR Test Facility"
+  },
+  {
+   "id": "v-pd",
+   "front": "V/PD",
+   "back": "Vehicle/Pedestrian Deviation"
+  },
+  {
+   "id": "vrrp",
+   "front": "VRRP",
+   "back": "Voice Recorder Replacement Program"
+  },
+  {
+   "id": "vrs",
+   "front": "VRS",
+   "back": "Voice Recording System"
+  },
+  {
+   "id": "vsbp",
+   "front": "VSBP",
+   "back": "Voice Switch Bypass"
+  },
+  {
+   "id": "vscs",
+   "front": "VSCS",
+   "back": "Voice Switching and Control System"
+  },
+  {
+   "id": "vta",
+   "front": "VTA",
+   "back": "Vertex Time of Arrival"
+  },
+  {
+   "id": "vtac",
+   "front": "VTAC",
+   "back": "VOR collocated with TACAN"
+  },
+  {
+   "id": "vtol",
+   "front": "VTOL",
+   "back": "Vertical Take-off and landing"
+  },
+  {
+   "id": "vts",
+   "front": "VTS",
+   "back": "Voice Telecommunications System"
+  },
+  {
+   "id": "vwos",
+   "front": "VWOS",
+   "back": "Visual Weather Observation System"
+  },
+  {
+   "id": "waas",
+   "front": "WAAS",
+   "back": "Wide Area Augmentation System"
+  },
+  {
+   "id": "wadgps",
+   "front": "WADGPS",
+   "back": "Wide Area Differential Global Positioning System"
+  },
+  {
+   "id": "wads",
+   "front": "WADS",
+   "back": "Western Air Defense Sector"
+  },
+  {
+   "id": "wan",
+   "front": "WAN",
+   "back": "Wide Area Network"
+  },
+  {
+   "id": "warp",
+   "front": "WARP",
+   "back": "Weather and Radar Processor"
+  },
+  {
+   "id": "wass",
+   "front": "WASS",
+   "back": "Wide Area Augmentation System - GPS"
+  },
+  {
+   "id": "wbs",
+   "front": "WBS",
+   "back": "Work Breakdown Structure"
+  },
+  {
+   "id": "wc",
+   "front": "WC",
+   "back": "Work Center"
+  },
+  {
+   "id": "wcam",
+   "front": "WCAM",
+   "back": "Weather Camera"
+  },
+  {
+   "id": "wcis",
+   "front": "WCIS",
+   "back": "Workmen's Compensation Information System"
+  },
+  {
+   "id": "wcp",
+   "front": "WCP",
+   "back": "Weather Communications Processor"
+  },
+  {
+   "id": "weco",
+   "front": "WECO",
+   "back": "Western Electric Company"
+  },
+  {
+   "id": "wescom",
+   "front": "WESCOM",
+   "back": "Western Electric Satellite Communications"
+  },
+  {
+   "id": "wfd",
+   "front": "WFD",
+   "back": "Widespread Fatigue Damage"
+  },
+  {
+   "id": "wg",
+   "front": "WG",
+   "back": "Working Group"
+  },
+  {
+   "id": "wifi",
+   "front": "WiFi",
+   "back": "Wireless Fidelity"
+  },
+  {
+   "id": "wjhtc",
+   "front": "WJHTC",
+   "back": "William J. Hughes Technical Center"
+  },
+  {
+   "id": "wms",
+   "front": "WMS",
+   "back": "Web Map Service; Wide-area Master Station"
+  },
+  {
+   "id": "wmsc",
+   "front": "WMSC",
+   "back": "Weather Message Switching Center"
+  },
+  {
+   "id": "wmscr",
+   "front": "WMSCR",
+   "back": "Weather Message Switching Center Replacement"
+  },
+  {
+   "id": "wn",
+   "front": "WN",
+   "back": "Warning Notice"
+  },
+  {
+   "id": "wocc",
+   "front": "WOCC",
+   "back": "Washington Operations Center Complex"
+  },
+  {
+   "id": "wrs",
+   "front": "WRS",
+   "back": "Wide Area Augmentation System Reference Station; Wide-area Reference Station"
+  },
+  {
+   "id": "wsa",
+   "front": "WSA",
+   "back": "Western Service Area"
+  },
+  {
+   "id": "wsc",
+   "front": "WSC",
+   "back": "Western Service Center"
+  },
+  {
+   "id": "wscmo",
+   "front": "WSCMO",
+   "back": "Weather Service Contract Meteorological Observatory"
+  },
+  {
+   "id": "wsfo",
+   "front": "WSFO",
+   "back": "Weather Service Forecast Office"
+  },
+  {
+   "id": "wso",
+   "front": "WSO",
+   "back": "Weather Service Office"
+  },
+  {
+   "id": "wsp",
+   "front": "WSP",
+   "back": "Weather Systems Processor"
+  },
+  {
+   "id": "wsr",
+   "front": "WSR",
+   "back": "Weather Surveillance Radar"
+  },
+  {
+   "id": "wstrp",
+   "front": "WSTRP",
+   "back": "Weather Sensors Technology Refresh Program"
+  },
+  {
+   "id": "wsus",
+   "front": "WSUS",
+   "back": "Windows Server Update Service"
+  },
+  {
+   "id": "wthr",
+   "front": "WTHR",
+   "back": "Weather"
+  },
+  {
+   "id": "wx",
+   "front": "WX",
+   "back": "Weather"
+  },
+  {
+   "id": "xml",
+   "front": "XML",
+   "back": "eXtensible Markup Language"
+  },
+  {
+   "id": "zab",
+   "front": "ZAB",
+   "back": "Albuquerque ARTCC"
+  },
+  {
+   "id": "zan",
+   "front": "ZAN",
+   "back": "Anchorage ARTCC"
+  },
+  {
+   "id": "zau",
+   "front": "ZAU",
+   "back": "Chicago ARTCC"
+  },
+  {
+   "id": "zbw",
+   "front": "ZBW",
+   "back": "Boston ARTCC"
+  },
+  {
+   "id": "zdc",
+   "front": "ZDC",
+   "back": "Washington ARTCC"
+  },
+  {
+   "id": "zdv",
+   "front": "ZDV",
+   "back": "Denver ARTCC"
+  },
+  {
+   "id": "zfw",
+   "front": "ZFW",
+   "back": "Fort Worth ARTCC"
+  },
+  {
+   "id": "zhu",
+   "front": "ZHU",
+   "back": "Houston ARTCC"
+  },
+  {
+   "id": "zid",
+   "front": "ZID",
+   "back": "Indianapolis ARTCC"
+  },
+  {
+   "id": "zjx",
+   "front": "ZJX",
+   "back": "Jacksonville ARTCC"
+  },
+  {
+   "id": "zkc",
+   "front": "ZKC",
+   "back": "Kansas City ARTCC"
+  },
+  {
+   "id": "zla",
+   "front": "ZLA",
+   "back": "Los Angeles ARTCC"
+  },
+  {
+   "id": "zlc",
+   "front": "ZLC",
+   "back": "Salt Lake City ARTCC"
+  },
+  {
+   "id": "zma",
+   "front": "ZMA",
+   "back": "Miami ARTCC"
+  },
+  {
+   "id": "zme",
+   "front": "ZME",
+   "back": "Memphis ARTCC"
+  },
+  {
+   "id": "zmp",
+   "front": "ZMP",
+   "back": "Minneapolis ARTCC"
+  },
+  {
+   "id": "zny",
+   "front": "ZNY",
+   "back": "New York ARTCC"
+  },
+  {
+   "id": "zoa",
+   "front": "ZOA",
+   "back": "Oakland ARTCC"
+  },
+  {
+   "id": "zob",
+   "front": "ZOB",
+   "back": "Cleveland ARTCC"
+  },
+  {
+   "id": "zse",
+   "front": "ZSE",
+   "back": "Seattle ARTCC"
+  },
+  {
+   "id": "ztl",
+   "front": "ZTL",
+   "back": "Atlanta ARTCC"
+  }
+ ]
+}

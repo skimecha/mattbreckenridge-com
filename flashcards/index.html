@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashcards</title>
+<meta name="description" content="Personal spaced-repetition flashcards.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Crect x='6' y='9' width='16' height='12' rx='2' fill='%23104281'/%3E%3Crect x='10' y='12' width='16' height='12' rx='2' fill='%233987e5'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --border: rgba(11,11,11,0.10);
+    --accent: #2a78d6;
+    --accent-soft: #cde2fb;
+    --good: #0ca30c;
+    --warn: #eda100;
+    --bad: #d64545;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --border: rgba(255,255,255,0.10);
+      --accent: #3987e5;
+      --accent-soft: #104281;
+      --good: #0ca30c;
+      --warn: #c98500;
+      --bad: #e05c5c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page);
+    color: var(--text-primary);
+    line-height: 1.45;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+  header h1 { font-size: 22px; margin: 0 0 4px; }
+  header .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
+  a { color: var(--accent); text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
+
+  .card-box {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .deck-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .deck-row h2 { font-size: 16px; margin: 0 0 2px; }
+  .deck-desc { color: var(--text-secondary); font-size: 13px; margin: 4px 0 10px; }
+  .counts { display: flex; gap: 14px; font-size: 13px; color: var(--text-secondary); flex-wrap: wrap; }
+  .counts b { font-weight: 700; }
+  .c-new b { color: var(--accent); }
+  .c-lrn b { color: var(--warn); }
+  .c-due b { color: var(--good); }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .btn:disabled { opacity: 0.45; cursor: default; }
+  .btn.small { padding: 4px 10px; font-size: 12px; }
+
+  /* study */
+  .study-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 13px; color: var(--text-secondary); }
+  .study-counts span { margin-left: 10px; font-weight: 700; }
+  .sc-new { color: var(--accent); } .sc-lrn { color: var(--warn); } .sc-due { color: var(--good); }
+  .flashcard {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 28px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .flashcard .front { font-size: 44px; font-weight: 800; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .flashcard .divider { width: 60px; border-top: 1px solid var(--grid); margin: 20px 0; }
+  .flashcard .back { font-size: 22px; color: var(--text-primary); max-width: 560px; overflow-wrap: anywhere; }
+  .flashcard .hint { margin-top: 22px; color: var(--muted); font-size: 13px; }
+  .flashcard .state-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 14px; }
+  .answers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+  .ans {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 4px 8px;
+    background: var(--surface-1);
+    color: var(--text-primary);
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .ans b { font-size: 14px; }
+  .ans span { font-size: 11px; color: var(--muted); }
+  .ans.again b { color: var(--bad); }
+  .ans.hard b { color: var(--warn); }
+  .ans.good b { color: var(--good); }
+  .ans.easy b { color: var(--accent); }
+  .done-box { text-align: center; padding: 60px 20px; }
+  .done-box .big { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+
+  /* browse */
+  .search { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); font: inherit; margin-bottom: 12px; }
+  table.browse { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.browse td { padding: 8px 6px; border-top: 1px solid var(--grid); vertical-align: top; }
+  table.browse td.f { font-weight: 700; white-space: nowrap; }
+  table.browse td.b { color: var(--text-secondary); }
+  .tag { font-size: 11px; border-radius: 5px; padding: 1px 7px; white-space: nowrap; }
+  .tag.new { background: var(--accent-soft); color: var(--accent); }
+  .tag.lrn { background: rgba(237,161,0,0.15); color: var(--warn); }
+  .tag.rev { background: rgba(12,163,12,0.15); color: var(--good); }
+  .tag.sus { background: var(--grid); color: var(--muted); }
+  .linkish { background: none; border: none; color: var(--accent); padding: 0; font-size: 12px; }
+
+  .footer-note { color: var(--muted); font-size: 12px; margin-top: 24px; }
+  .settings-grid { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; }
+  .settings-grid input[type=number] { width: 70px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font: inherit; }
+  .danger { color: var(--bad); }
+  @media (max-width: 480px) {
+    .flashcard .front { font-size: 34px; }
+    .flashcard .back { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+'use strict';
+/* ---------- storage ---------- */
+const LS_PREFIX = 'fc1:';
+function loadState(deckId) {
+  try {
+    const raw = localStorage.getItem(LS_PREFIX + deckId);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return { cards: {}, sus: {}, intro: {}, cfg: {} };
+}
+function saveState(deckId, st) {
+  localStorage.setItem(LS_PREFIX + deckId, JSON.stringify(st));
+}
+function todayKey() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function endOfToday() {
+  const d = new Date();
+  d.setHours(23, 59, 59, 999);
+  return d.getTime();
+}
+
+/* ---------- SM-2 scheduler ----------
+   card state: {st:'l'|'r', step, ivl, pivl, ease, due, reps, lapses, rl}
+   absent = new. ivl in days, due = epoch ms. */
+const DAY = 86400000, MIN = 60000;
+const LEARN_STEPS = [1, 10]; // minutes
+function schedule(cs, rating) {
+  const now = Date.now();
+  cs = cs ? { ...cs } : null;
+  if (!cs) cs = { st: 'l', step: 0, ivl: 0, pivl: 0, ease: 2.5, due: now, reps: 0, lapses: 0, rl: 0 };
+  cs.reps = (cs.reps || 0) + 1;
+  const graduate = (days) => {
+    cs.st = 'r'; cs.step = 0;
+    cs.ivl = cs.rl ? Math.max(1, Math.round((cs.pivl || 1) * 0.5)) : days;
+    cs.rl = 0;
+    cs.due = now + cs.ivl * DAY;
+  };
+  if (cs.st === 'l') {
+    if (rating === 1) { cs.step = 0; cs.due = now + LEARN_STEPS[0] * MIN; }
+    else if (rating === 2) { cs.due = now + LEARN_STEPS[cs.step] * 1.5 * MIN; }
+    else if (rating === 3) {
+      cs.step++;
+      if (cs.step >= LEARN_STEPS.length) graduate(1);
+      else cs.due = now + LEARN_STEPS[cs.step] * MIN;
+    } else { graduate(4); }
+  } else { // review
+    if (rating === 1) {
+      cs.lapses = (cs.lapses || 0) + 1;
+      cs.ease = Math.max(1.3, cs.ease - 0.2);
+      cs.pivl = cs.ivl; cs.rl = 1;
+      cs.st = 'l'; cs.step = LEARN_STEPS.length - 1;
+      cs.due = now + 10 * MIN;
+    } else if (rating === 2) {
+      cs.ease = Math.max(1.3, cs.ease - 0.15);
+      cs.ivl = Math.max(cs.ivl + 1, Math.round(cs.ivl * 1.2));
+      cs.due = now + cs.ivl * DAY;
+    } else if (rating === 3) {
+      cs.ivl = Math.max(cs.ivl + 1, Math.round(cs.ivl * cs.ease));
+      cs.due = now + cs.ivl * DAY;
+    } else {
+      cs.ease += 0.15;
+      cs.ivl = Math.max(cs.ivl + 1, Math.round(cs.ivl * cs.ease * 1.3));
+      cs.due = now + cs.ivl * DAY;
+    }
+  }
+  return cs;
+}
+function previewInterval(cs, rating) {
+  const next = schedule(cs, rating);
+  const ms = next.due - Date.now();
+  if (ms < 55 * MIN) return Math.max(1, Math.round(ms / MIN)) + 'm';
+  if (ms < DAY) return Math.round(ms / 3600000) + 'h';
+  const d = Math.round(ms / DAY);
+  if (d < 30) return d + 'd';
+  return (d / 30).toFixed(1).replace(/\.0$/, '') + 'mo';
+}
+
+/* ---------- data ---------- */
+let manifest = null;
+const deckCache = {};
+async function getManifest() {
+  if (!manifest) manifest = await (await fetch('decks/manifest.json')).json();
+  return manifest;
+}
+async function getDeck(id) {
+  if (!deckCache[id]) {
+    const m = await getManifest();
+    const entry = m.decks.find(d => d.id === id);
+    if (!entry) throw new Error('unknown deck ' + id);
+    deckCache[id] = await (await fetch('decks/' + entry.file)).json();
+  }
+  return deckCache[id];
+}
+function deckCounts(deck, st) {
+  const eod = endOfToday();
+  let nNew = 0, nLrn = 0, nDue = 0, nSus = 0;
+  for (const c of deck.cards) {
+    if (st.sus[c.id]) { nSus++; continue; }
+    const cs = st.cards[c.id];
+    if (!cs) nNew++;
+    else if (cs.st === 'l') nLrn++;
+    else if (cs.due <= eod) nDue++;
+  }
+  const introduced = st.intro[todayKey()] || 0;
+  const newPerDay = st.cfg.newPerDay ?? 20;
+  return { nNew, nLrn, nDue, nSus, newAvail: Math.max(0, Math.min(nNew, newPerDay - introduced)) };
+}
+
+/* ---------- session ---------- */
+let session = null; // {deckId, deck, st, learn:[], review:[], fresh:[], current, revealed, done:{...}}
+function buildSession(deck, st) {
+  const eod = endOfToday();
+  const counts = deckCounts(deck, st);
+  const learn = [], review = [], fresh = [];
+  for (const c of deck.cards) {
+    if (st.sus[c.id]) continue;
+    const cs = st.cards[c.id];
+    if (!cs) { if (fresh.length < counts.newAvail) fresh.push(c); }
+    else if (cs.st === 'l') learn.push(c);
+    else if (cs.due <= eod) review.push(c);
+  }
+  review.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
+  learn.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
+  shuffle(fresh);
+  return { learn, review, fresh, doneCount: 0 };
+}
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } }
+function nextCard(s) {
+  const now = Date.now();
+  const dueLearn = s.learn.filter(c => (s.st.cards[c.id]?.due ?? 0) <= now);
+  if (dueLearn.length) return dueLearn[0];
+  if (s.review.length) return s.review[0];
+  if (s.fresh.length) return s.fresh[0];
+  if (s.learn.length) return s.learn[0]; // learning card not yet due, but nothing else left
+  return null;
+}
+function answer(rating) {
+  const s = session, c = s.current;
+  if (!c) return;
+  const prev = s.st.cards[c.id];
+  const wasNew = !prev;
+  const next = schedule(prev, rating);
+  s.st.cards[c.id] = next;
+  if (wasNew) {
+    const k = todayKey();
+    s.st.intro[k] = (s.st.intro[k] || 0) + 1;
+  }
+  saveState(s.deckId, s.st);
+  // remove from whichever queue it's in
+  for (const q of [s.learn, s.review, s.fresh]) {
+    const i = q.indexOf(c);
+    if (i >= 0) q.splice(i, 1);
+  }
+  if (next.st === 'l') s.learn.push(c); // still (re)learning: stays in session
+  else s.doneCount++;
+  s.revealed = false;
+  s.current = nextCard(s);
+  render();
+}
+
+/* ---------- views ---------- */
+const app = document.getElementById('app');
+function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+async function renderHome() {
+  const m = await getManifest();
+  let html = `<header><h1>Flashcards</h1><div class="sub">Spaced repetition. Progress is stored in this browser.</div></header>`;
+  for (const entry of m.decks) {
+    const deck = await getDeck(entry.id);
+    const st = loadState(entry.id);
+    const c = deckCounts(deck, st);
+    html += `<div class="card-box">
+      <div class="deck-row">
+        <div>
+          <h2>${esc(deck.name)}</h2>
+          <div class="counts">
+            <span class="c-new"><b>${c.newAvail}</b> new</span>
+            <span class="c-lrn"><b>${c.nLrn}</b> learning</span>
+            <span class="c-due"><b>${c.nDue}</b> due</span>
+            <span><b>${deck.cards.length}</b> total${c.nSus ? ` · ${c.nSus} suspended` : ''}</span>
+          </div>
+        </div>
+        <div class="btns">
+          <button class="btn primary" data-study="${entry.id}" ${c.newAvail + c.nLrn + c.nDue === 0 ? 'disabled' : ''}>Study</button>
+          <button class="btn" data-browse="${entry.id}">Browse</button>
+        </div>
+      </div>
+      <div class="deck-desc">${esc(deck.description || '')}</div>
+      <div class="settings-grid">
+        <label>New cards/day <input type="number" min="0" max="500" value="${st.cfg.newPerDay ?? 20}" data-npd="${entry.id}"></label>
+        <button class="btn small" data-reset="${entry.id}">Reset progress</button>
+      </div>
+    </div>`;
+  }
+  html += `<div class="footer-note">
+    <button class="btn small" id="export">Export progress</button>
+    <button class="btn small" id="import">Import progress</button>
+    <input type="file" id="importFile" accept=".json" style="display:none">
+    <div style="margin-top:10px">Decks live in <code>decks/*.json</code> — ask Claude to add or edit decks.</div>
+  </div>`;
+  app.innerHTML = html;
+  app.querySelectorAll('[data-study]').forEach(b => b.onclick = () => { location.hash = '#/study/' + b.dataset.study; });
+  app.querySelectorAll('[data-browse]').forEach(b => b.onclick = () => { location.hash = '#/browse/' + b.dataset.browse; });
+  app.querySelectorAll('[data-npd]').forEach(inp => inp.onchange = () => {
+    const st = loadState(inp.dataset.npd);
+    st.cfg.newPerDay = Math.max(0, parseInt(inp.value || '0', 10));
+    saveState(inp.dataset.npd, st);
+    render();
+  });
+  app.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => {
+    if (confirm('Reset all progress for this deck? This cannot be undone.')) {
+      localStorage.removeItem(LS_PREFIX + b.dataset.reset);
+      render();
+    }
+  });
+  document.getElementById('export').onclick = () => {
+    const out = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k.startsWith(LS_PREFIX)) out[k] = JSON.parse(localStorage.getItem(k));
+    }
+    const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'flashcards-progress-' + todayKey() + '.json';
+    a.click();
+  };
+  document.getElementById('import').onclick = () => document.getElementById('importFile').click();
+  document.getElementById('importFile').onchange = (ev) => {
+    const f = ev.target.files[0];
+    if (!f) return;
+    f.text().then(t => {
+      const obj = JSON.parse(t);
+      const keys = Object.keys(obj).filter(k => k.startsWith(LS_PREFIX));
+      if (!keys.length) { alert('No flashcard progress found in that file.'); return; }
+      if (!confirm('Import progress for ' + keys.length + ' deck(s)? This overwrites current progress for those decks.')) return;
+      for (const k of keys) localStorage.setItem(k, JSON.stringify(obj[k]));
+      render();
+    }).catch(() => alert('Could not read that file as JSON.'));
+  };
+}
+
+async function renderStudy(deckId) {
+  const deck = await getDeck(deckId);
+  if (!session || session.deckId !== deckId) {
+    const st = loadState(deckId);
+    session = { deckId, deck, st, ...buildSession(deck, st), revealed: false };
+    session.current = nextCard(session);
+  }
+  const s = session;
+  const c = s.current;
+  const remaining = s.learn.length + s.review.length + s.fresh.length;
+  let html = `<header><h1>${esc(deck.name)}</h1>
+    <div class="study-top">
+      <a href="#/">&larr; All decks</a>
+      <div class="study-counts">
+        <span class="sc-new">${s.fresh.length}</span><span class="sc-lrn">${s.learn.length}</span><span class="sc-due">${s.review.length}</span>
+      </div>
+    </div></header>`;
+  if (!c) {
+    html += `<div class="card-box done-box">
+      <div class="big">Session complete</div>
+      <div>${s.doneCount} card${s.doneCount === 1 ? '' : 's'} reviewed. Come back tomorrow for the next batch.</div>
+      <div style="margin-top:18px"><a class="btn" href="#/">Back to decks</a></div>
+    </div>`;
+    app.innerHTML = html;
+    return;
+  }
+  const cs = s.st.cards[c.id];
+  const stateTag = !cs ? 'new card' : cs.st === 'l' ? (cs.rl ? 'relearning' : 'learning') : 'review';
+  html += `<div class="flashcard" id="flashcard">
+    <div class="state-tag">${stateTag}</div>
+    <div class="front">${esc(c.front)}</div>
+    ${s.revealed ? `<div class="divider"></div><div class="back">${esc(c.back)}</div>` : `<div class="hint">tap or press Space to reveal</div>`}
+  </div>`;
+  if (s.revealed) {
+    html += `<div class="answers">
+      <button class="ans again" data-r="1"><b>Again</b><span>${previewInterval(cs, 1)} · 1</span></button>
+      <button class="ans hard" data-r="2"><b>Hard</b><span>${previewInterval(cs, 2)} · 2</span></button>
+      <button class="ans good" data-r="3"><b>Good</b><span>${previewInterval(cs, 3)} · 3</span></button>
+      <button class="ans easy" data-r="4"><b>Easy</b><span>${previewInterval(cs, 4)} · 4</span></button>
+    </div>`;
+  }
+  html += `<div class="footer-note">${remaining} card${remaining === 1 ? '' : 's'} left this session</div>`;
+  app.innerHTML = html;
+  document.getElementById('flashcard').onclick = () => { if (!s.revealed) { s.revealed = true; render(); } };
+  app.querySelectorAll('[data-r]').forEach(b => b.onclick = () => answer(parseInt(b.dataset.r, 10)));
+}
+
+async function renderBrowse(deckId, query) {
+  const deck = await getDeck(deckId);
+  const st = loadState(deckId);
+  const q = (query || '').toLowerCase();
+  const rows = deck.cards.filter(c => !q || c.front.toLowerCase().includes(q) || c.back.toLowerCase().includes(q));
+  let html = `<header><h1>${esc(deck.name)}</h1>
+    <div class="study-top"><a href="#/">&larr; All decks</a><span>${rows.length} of ${deck.cards.length} cards</span></div></header>
+    <input class="search" id="search" placeholder="Search cards…" value="${esc(query || '')}">
+    <div class="card-box" style="padding:6px 12px"><table class="browse"><tbody>`;
+  for (const c of rows.slice(0, 400)) {
+    const cs = st.cards[c.id];
+    const sus = !!st.sus[c.id];
+    const tag = sus ? '<span class="tag sus">suspended</span>'
+      : !cs ? '<span class="tag new">new</span>'
+      : cs.st === 'l' ? '<span class="tag lrn">learning</span>'
+      : `<span class="tag rev">${cs.ivl}d</span>`;
+    html += `<tr><td class="f">${esc(c.front)}</td><td class="b">${esc(c.back)}</td>
+      <td>${tag}</td>
+      <td><button class="linkish" data-sus="${esc(c.id)}">${sus ? 'unsuspend' : 'suspend'}</button></td></tr>`;
+  }
+  if (rows.length > 400) html += `<tr><td colspan="4" style="color:var(--muted)">…${rows.length - 400} more — refine your search</td></tr>`;
+  html += `</tbody></table></div>`;
+  app.innerHTML = html;
+  const search = document.getElementById('search');
+  search.oninput = () => renderBrowse(deckId, search.value).then(() => {
+    const el = document.getElementById('search');
+    el.focus(); el.setSelectionRange(el.value.length, el.value.length);
+  });
+  app.querySelectorAll('[data-sus]').forEach(b => b.onclick = () => {
+    const st2 = loadState(deckId);
+    if (st2.sus[b.dataset.sus]) delete st2.sus[b.dataset.sus];
+    else st2.sus[b.dataset.sus] = 1;
+    saveState(deckId, st2);
+    renderBrowse(deckId, document.getElementById('search').value);
+  });
+}
+
+function render() {
+  const hash = location.hash || '#/';
+  const parts = hash.slice(2).split('/');
+  if (parts[0] === 'study' && parts[1]) renderStudy(parts[1]);
+  else if (parts[0] === 'browse' && parts[1]) renderBrowse(parts[1], '');
+  else { session = null; renderHome(); }
+}
+window.addEventListener('hashchange', render);
+document.addEventListener('keydown', (e) => {
+  if (!session || !location.hash.startsWith('#/study/')) return;
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') {
+    e.preventDefault();
+    if (!session.revealed && session.current) { session.revealed = true; render(); }
+    else if (session.revealed) answer(3);
+  } else if (session.revealed && ['1', '2', '3', '4'].includes(e.key)) {
+    answer(parseInt(e.key, 10));
+  }
+});
+render();
+</script>
+</body>
+</html>
