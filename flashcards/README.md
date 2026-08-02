@@ -4,7 +4,7 @@ Personal spaced-repetition flashcards at `/flashcards` (unlisted: `noindex`, not
 
 ## How it works
 
-- `index.html` — self-contained app. SM-2 style scheduler (Again/Hard/Good/Easy), learning steps 1m/10m, per-deck daily new-card limit (default 20). Progress lives in browser `localStorage` (`fc1:<deckId>` keys); export/import buttons on the home screen.
+- `index.html` — self-contained app. SM-2 style scheduler (Again/Hard/Good/Easy), learning steps 1m/10m, per-deck daily new-card limit (default 20). New cards are drawn from across the whole deck in shuffled order by default (per-deck "In order" setting available). Progress lives in browser `localStorage` (`fc1:<deckId>` keys); export/import buttons on the home screen.
 - `decks/manifest.json` — lists available decks: `{id, file, name, count}`.
 - `decks/*.json` — one file per deck.
 

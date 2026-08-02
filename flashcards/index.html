@@ -140,6 +140,7 @@
   .footer-note { color: var(--muted); font-size: 12px; margin-top: 24px; }
   .settings-grid { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; }
   .settings-grid input[type=number] { width: 70px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font: inherit; }
+  .settings-grid select { padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font: inherit; }
   .danger { color: var(--bad); }
   @media (max-width: 480px) {
     .flashcard .front { font-size: 34px; }
@@ -265,17 +266,18 @@ let session = null; // {deckId, deck, st, learn:[], review:[], fresh:[], current
 function buildSession(deck, st) {
   const eod = endOfToday();
   const counts = deckCounts(deck, st);
-  const learn = [], review = [], fresh = [];
+  const learn = [], review = [], freshPool = [];
   for (const c of deck.cards) {
     if (st.sus[c.id]) continue;
     const cs = st.cards[c.id];
-    if (!cs) { if (fresh.length < counts.newAvail) fresh.push(c); }
+    if (!cs) freshPool.push(c);
     else if (cs.st === 'l') learn.push(c);
     else if (cs.due <= eod) review.push(c);
   }
   review.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
   learn.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
-  shuffle(fresh);
+  if ((st.cfg.newOrder ?? 'shuffled') === 'shuffled') shuffle(freshPool);
+  const fresh = freshPool.slice(0, counts.newAvail);
   return { learn, review, fresh, doneCount: 0 };
 }
 function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } }
@@ -342,6 +344,10 @@ async function renderHome() {
       <div class="deck-desc">${esc(deck.description || '')}</div>
       <div class="settings-grid">
         <label>New cards/day <input type="number" min="0" max="500" value="${st.cfg.newPerDay ?? 20}" data-npd="${entry.id}"></label>
+        <label>New card order <select data-order="${entry.id}">
+          <option value="shuffled"${(st.cfg.newOrder ?? 'shuffled') === 'shuffled' ? ' selected' : ''}>Shuffled</option>
+          <option value="ordered"${st.cfg.newOrder === 'ordered' ? ' selected' : ''}>In order</option>
+        </select></label>
         <button class="btn small" data-reset="${entry.id}">Reset progress</button>
       </div>
     </div>`;
@@ -360,6 +366,11 @@ async function renderHome() {
     st.cfg.newPerDay = Math.max(0, parseInt(inp.value || '0', 10));
     saveState(inp.dataset.npd, st);
     render();
+  });
+  app.querySelectorAll('[data-order]').forEach(sel => sel.onchange = () => {
+    const st = loadState(sel.dataset.order);
+    st.cfg.newOrder = sel.value;
+    saveState(sel.dataset.order, st);
   });
   app.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => {
     if (confirm('Reset all progress for this deck? This cannot be undone.')) {
