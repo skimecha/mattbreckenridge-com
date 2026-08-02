@@ -137,6 +137,13 @@
   .tag.sus { background: var(--grid); color: var(--muted); }
   .linkish { background: none; border: none; color: var(--accent); padding: 0; font-size: 12px; }
 
+  .guide h2 { font-size: 15px; margin: 0 0 10px; }
+  .guide .g-row { display: flex; gap: 12px; font-size: 13px; color: var(--text-secondary); padding: 5px 0; border-top: 1px solid var(--grid); }
+  .guide .g-row:first-of-type { border-top: none; }
+  .guide .g-label { font-weight: 700; min-width: 44px; flex-shrink: 0; }
+  .guide .g-tips { margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-secondary); }
+  .guide .g-tips li { margin-bottom: 7px; }
+  .guide .g-tips b { color: var(--text-primary); }
   .footer-note { color: var(--muted); font-size: 12px; margin-top: 24px; }
   .settings-grid { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; }
   .settings-grid input[type=number] { width: 70px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font: inherit; }
@@ -352,7 +359,22 @@ async function renderHome() {
       </div>
     </div>`;
   }
-  html += `<div class="footer-note">
+  html += `<div class="card-box guide">
+    <h2>How to score yourself</h2>
+    <div class="g-row"><span class="g-label" style="color:var(--bad)">Again</span><span>You did not recall it. Counts "tip of the tongue" too. Be strict here; the card just comes back sooner.</span></div>
+    <div class="g-row"><span class="g-label" style="color:var(--warn)">Hard</span><span>You got it, but slowly or with doubt.</span></div>
+    <div class="g-row"><span class="g-label" style="color:var(--good)">Good</span><span>You recalled it correctly. This is the default answer, even when recall felt quick.</span></div>
+    <div class="g-row"><span class="g-label" style="color:var(--accent)">Easy</span><span>You knew it before you ever saw the card. Use it to clear pre-known terms out of the queue, not to reward a fast recall of something new.</span></div>
+    <h2 style="margin-top:18px">How to use the tool</h2>
+    <ul class="g-tips">
+      <li><b>Recall before you flip.</b> Say the meaning to yourself first, then reveal. The grade describes what happened before the reveal, not after.</li>
+      <li><b>Quick recall in the first session is short-term memory.</b> A card you just learned still needs to survive tomorrow's review, so score it Good and let the schedule test it.</li>
+      <li><b>When nothing is due, you are done for the day.</b> Cards are scheduled to return right before you would forget them. Re-drilling cards you answered an hour ago feels productive but adds almost nothing.</li>
+      <li><b>Honest grades beat optimistic ones.</b> The scheduler is only as accurate as what you feed it. Marking a miss as Good turns spaced repetition back into flipping through a stack you half know.</li>
+      <li><b>Suspend freely.</b> In Browse, suspend cards you will never need so reviews stay focused.</li>
+    </ul>
+  </div>
+  <div class="footer-note">
     <button class="btn small" id="export">Export progress</button>
     <button class="btn small" id="import">Import progress</button>
     <input type="file" id="importFile" accept=".json" style="display:none">
