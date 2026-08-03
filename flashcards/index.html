@@ -253,19 +253,36 @@ async function getDeck(id) {
   }
   return deckCache[id];
 }
+/* A unit is one scheduled direction of a card. Forward keeps the card's own id so
+   existing progress survives; the reverse sibling is scheduled independently. */
+const REV = '~r';
+function deckUnits(deck, st) {
+  const units = deck.cards.map(c => ({ uid: c.id, card: c, rev: false }));
+  if ((st.cfg.directions ?? 'forward') === 'both') {
+    for (const c of deck.cards) units.push({ uid: c.id + REV, card: c, rev: true });
+  }
+  return units;
+}
+function unitPrompt(u) { return u.rev ? u.card.back : u.card.front; }
+function unitAnswer(u) { return u.rev ? u.card.front : u.card.back; }
+function directionLabel(deck, rev) {
+  const f = deck.front_label || 'Front', b = deck.back_label || 'Back';
+  return rev ? b + ' → ' + f : f + ' → ' + b;
+}
 function deckCounts(deck, st) {
   const eod = endOfToday();
+  const units = deckUnits(deck, st);
   let nNew = 0, nLrn = 0, nDue = 0, nSus = 0;
-  for (const c of deck.cards) {
-    if (st.sus[c.id]) { nSus++; continue; }
-    const cs = st.cards[c.id];
+  for (const u of units) {
+    if (st.sus[u.card.id]) { nSus++; continue; }
+    const cs = st.cards[u.uid];
     if (!cs) nNew++;
     else if (cs.st === 'l') nLrn++;
     else if (cs.due <= eod) nDue++;
   }
   const introduced = st.intro[todayKey()] || 0;
   const newPerDay = st.cfg.newPerDay ?? 20;
-  return { nNew, nLrn, nDue, nSus, newAvail: Math.max(0, Math.min(nNew, newPerDay - introduced)) };
+  return { nNew, nLrn, nDue, nSus, total: units.length, newAvail: Math.max(0, Math.min(nNew, newPerDay - introduced)) };
 }
 
 /* ---------- session ---------- */
@@ -274,36 +291,42 @@ function buildSession(deck, st) {
   const eod = endOfToday();
   const counts = deckCounts(deck, st);
   const learn = [], review = [], freshPool = [];
-  for (const c of deck.cards) {
-    if (st.sus[c.id]) continue;
-    const cs = st.cards[c.id];
-    if (!cs) freshPool.push(c);
-    else if (cs.st === 'l') learn.push(c);
-    else if (cs.due <= eod) review.push(c);
+  for (const u of deckUnits(deck, st)) {
+    if (st.sus[u.card.id]) continue;
+    const cs = st.cards[u.uid];
+    if (!cs) freshPool.push(u);
+    else if (cs.st === 'l') learn.push(u);
+    else if (cs.due <= eod) review.push(u);
   }
-  review.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
-  learn.sort((a, b) => st.cards[a.id].due - st.cards[b.id].due);
+  review.sort((a, b) => st.cards[a.uid].due - st.cards[b.uid].due);
+  learn.sort((a, b) => st.cards[a.uid].due - st.cards[b.uid].due);
   if ((st.cfg.newOrder ?? 'shuffled') === 'shuffled') shuffle(freshPool);
   const fresh = freshPool.slice(0, counts.newAvail);
-  return { learn, review, fresh, doneCount: 0 };
+  return { learn, review, fresh, doneCount: 0, recent: [] };
 }
 function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } }
+// Skip a unit whose sibling direction came up in the last few answers: seeing the
+// reverse right after the forward tests nothing.
+function pick(q, s) {
+  for (const u of q) if (!s.recent.includes(u.card.id)) return u;
+  return q[0];
+}
 function nextCard(s) {
   const now = Date.now();
-  const dueLearn = s.learn.filter(c => (s.st.cards[c.id]?.due ?? 0) <= now);
-  if (dueLearn.length) return dueLearn[0];
-  if (s.review.length) return s.review[0];
-  if (s.fresh.length) return s.fresh[0];
-  if (s.learn.length) return s.learn[0]; // learning card not yet due, but nothing else left
+  const dueLearn = s.learn.filter(u => (s.st.cards[u.uid]?.due ?? 0) <= now);
+  if (dueLearn.length) return pick(dueLearn, s);
+  if (s.review.length) return pick(s.review, s);
+  if (s.fresh.length) return pick(s.fresh, s);
+  if (s.learn.length) return pick(s.learn, s); // learning card not yet due, but nothing else left
   return null;
 }
 function answer(rating) {
-  const s = session, c = s.current;
-  if (!c) return;
-  const prev = s.st.cards[c.id];
+  const s = session, u = s.current;
+  if (!u) return;
+  const prev = s.st.cards[u.uid];
   const wasNew = !prev;
   const next = schedule(prev, rating);
-  s.st.cards[c.id] = next;
+  s.st.cards[u.uid] = next;
   if (wasNew) {
     const k = todayKey();
     s.st.intro[k] = (s.st.intro[k] || 0) + 1;
@@ -311,11 +334,13 @@ function answer(rating) {
   saveState(s.deckId, s.st);
   // remove from whichever queue it's in
   for (const q of [s.learn, s.review, s.fresh]) {
-    const i = q.indexOf(c);
+    const i = q.indexOf(u);
     if (i >= 0) q.splice(i, 1);
   }
-  if (next.st === 'l') s.learn.push(c); // still (re)learning: stays in session
+  if (next.st === 'l') s.learn.push(u); // still (re)learning: stays in session
   else s.doneCount++;
+  s.recent.unshift(u.card.id);
+  if (s.recent.length > 3) s.recent.pop();
   s.revealed = false;
   s.current = nextCard(s);
   render();
@@ -340,7 +365,7 @@ async function renderHome() {
             <span class="c-new"><b>${c.newAvail}</b> new</span>
             <span class="c-lrn"><b>${c.nLrn}</b> learning</span>
             <span class="c-due"><b>${c.nDue}</b> due</span>
-            <span><b>${deck.cards.length}</b> total${c.nSus ? ` · ${c.nSus} suspended` : ''}</span>
+            <span><b>${c.total}</b> total${c.nSus ? ` · ${c.nSus} suspended` : ''}</span>
           </div>
         </div>
         <div class="btns">
@@ -354,6 +379,10 @@ async function renderHome() {
         <label>New card order <select data-order="${entry.id}">
           <option value="shuffled"${(st.cfg.newOrder ?? 'shuffled') === 'shuffled' ? ' selected' : ''}>Shuffled</option>
           <option value="ordered"${st.cfg.newOrder === 'ordered' ? ' selected' : ''}>In order</option>
+        </select></label>
+        <label>Directions <select data-dir="${entry.id}">
+          <option value="forward"${(st.cfg.directions ?? 'forward') === 'forward' ? ' selected' : ''}>${esc(directionLabel(deck, false))}</option>
+          <option value="both"${st.cfg.directions === 'both' ? ' selected' : ''}>Both directions</option>
         </select></label>
         <button class="btn small" data-reset="${entry.id}">Reset progress</button>
       </div>
@@ -371,7 +400,8 @@ async function renderHome() {
       <li><b>Quick recall in the first session is short-term memory.</b> A card you just learned still needs to survive tomorrow's review, so score it Good and let the schedule test it.</li>
       <li><b>When nothing is due, you are done for the day.</b> Cards are scheduled to return right before you would forget them. Re-drilling cards you answered an hour ago feels productive but adds almost nothing.</li>
       <li><b>Honest grades beat optimistic ones.</b> The scheduler is only as accurate as what you feed it. Marking a miss as Good turns spaced repetition back into flipping through a stack you half know.</li>
-      <li><b>Suspend freely.</b> In Browse, suspend cards you will never need so reviews stay focused.</li>
+      <li><b>Both directions are two separate cards.</b> Recognizing an acronym is not the same skill as producing it, so each direction gets its own schedule. Expect the deck's card count and daily load to roughly double when you turn it on.</li>
+      <li><b>Suspend freely.</b> In Browse, suspend cards you will never need so reviews stay focused. Suspending hides both directions.</li>
     </ul>
   </div>
   <div class="footer-note">
@@ -393,6 +423,12 @@ async function renderHome() {
     const st = loadState(sel.dataset.order);
     st.cfg.newOrder = sel.value;
     saveState(sel.dataset.order, st);
+  });
+  app.querySelectorAll('[data-dir]').forEach(sel => sel.onchange = () => {
+    const st = loadState(sel.dataset.dir);
+    st.cfg.directions = sel.value;
+    saveState(sel.dataset.dir, st);
+    render(); // counts change: the reverse side of every card is new
   });
   app.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => {
     if (confirm('Reset all progress for this deck? This cannot be undone.')) {
@@ -435,7 +471,7 @@ async function renderStudy(deckId) {
     session.current = nextCard(session);
   }
   const s = session;
-  const c = s.current;
+  const u = s.current;
   const remaining = s.learn.length + s.review.length + s.fresh.length;
   let html = `<header><h1>${esc(deck.name)}</h1>
     <div class="study-top">
@@ -444,7 +480,7 @@ async function renderStudy(deckId) {
         <span class="sc-new">${s.fresh.length}</span><span class="sc-lrn">${s.learn.length}</span><span class="sc-due">${s.review.length}</span>
       </div>
     </div></header>`;
-  if (!c) {
+  if (!u) {
     html += `<div class="card-box done-box">
       <div class="big">Session complete</div>
       <div>${s.doneCount} card${s.doneCount === 1 ? '' : 's'} reviewed. Come back tomorrow for the next batch.</div>
@@ -453,12 +489,15 @@ async function renderStudy(deckId) {
     app.innerHTML = html;
     return;
   }
-  const cs = s.st.cards[c.id];
+  const cs = s.st.cards[u.uid];
   const stateTag = !cs ? 'new card' : cs.st === 'l' ? (cs.rl ? 'relearning' : 'learning') : 'review';
+  // On a reversed card the prompt is the long side, so the two type sizes swap.
+  const promptCls = u.rev ? 'back' : 'front', answerCls = u.rev ? 'front' : 'back';
+  const dirTag = (s.st.cfg.directions ?? 'forward') === 'both' ? ' · ' + esc(directionLabel(deck, u.rev)) : '';
   html += `<div class="flashcard" id="flashcard">
-    <div class="state-tag">${stateTag}</div>
-    <div class="front">${esc(c.front)}</div>
-    ${s.revealed ? `<div class="divider"></div><div class="back">${esc(c.back)}</div>` : `<div class="hint">tap or press Space to reveal</div>`}
+    <div class="state-tag">${stateTag}${dirTag}</div>
+    <div class="${promptCls}">${esc(unitPrompt(u))}</div>
+    ${s.revealed ? `<div class="divider"></div><div class="${answerCls}">${esc(unitAnswer(u))}</div>` : `<div class="hint">tap or press Space to reveal</div>`}
   </div>`;
   if (s.revealed) {
     html += `<div class="answers">
@@ -483,13 +522,18 @@ async function renderBrowse(deckId, query) {
     <div class="study-top"><a href="#/">&larr; All decks</a><span>${rows.length} of ${deck.cards.length} cards</span></div></header>
     <input class="search" id="search" placeholder="Search cards…" value="${esc(query || '')}">
     <div class="card-box" style="padding:6px 12px"><table class="browse"><tbody>`;
-  for (const c of rows.slice(0, 400)) {
-    const cs = st.cards[c.id];
-    const sus = !!st.sus[c.id];
-    const tag = sus ? '<span class="tag sus">suspended</span>'
-      : !cs ? '<span class="tag new">new</span>'
+  const both = (st.cfg.directions ?? 'forward') === 'both';
+  const stateTag = (uid) => {
+    const cs = st.cards[uid];
+    return !cs ? '<span class="tag new">new</span>'
       : cs.st === 'l' ? '<span class="tag lrn">learning</span>'
       : `<span class="tag rev">${cs.ivl}d</span>`;
+  };
+  for (const c of rows.slice(0, 400)) {
+    const sus = !!st.sus[c.id];
+    // Suspending hides the card in both directions, so one tag pair per card.
+    const tag = sus ? '<span class="tag sus">suspended</span>'
+      : stateTag(c.id) + (both ? ' ' + stateTag(c.id + REV) : '');
     html += `<tr><td class="f">${esc(c.front)}</td><td class="b">${esc(c.back)}</td>
       <td>${tag}</td>
       <td><button class="linkish" data-sus="${esc(c.id)}">${sus ? 'unsuspend' : 'suspend'}</button></td></tr>`;
