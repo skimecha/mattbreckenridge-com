@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FAA Private Pilot Written — Mastery Tracker</title>
-<meta name="description" content="Progress tracker for the FAA Private Pilot (PAR) written exam: 173 topics across 13 knowledge areas from FAA-S-ACS-6C, mapped to a 14-day study schedule.">
+<meta name="description" content="Progress tracker for the FAA Private Pilot (PAR) written exam: 194 topics across 19 knowledge areas in Pilot Institute course order, mapped to a 14-day study schedule.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0d0d0d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Cpath d='M16 5l2.2 8.2 8.8 2.8-8.8 2.8L16 27l-2.2-8.2L5 16l8.8-2.8z' fill='%233987e5'/%3E%3C/svg%3E">
@@ -67,7 +67,7 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 8px 20px;
   }
-  .factcard b { color: var(--text-primary); font-weight: 600; display:block; font-size:12px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); }
+  .factcard b { font-weight: 600; display:block; font-size:12px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); }
   .factcard span { font-size: 14px; color: var(--text-primary); }
 
   .overall {
@@ -133,6 +133,12 @@
     vertical-align: 1px;
   }
   /* 14-day plan */
+  .stage-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 16px 0 6px; padding-left: 2px;
+  }
+  .stage-label:first-child { margin-top: 0; }
   .day {
     background: var(--surface-1);
     border: 1px solid var(--border);
@@ -147,6 +153,7 @@
   .day .dtitle { font-weight: 600; font-size: 14px; }
   .day .dtopics { color: var(--text-secondary); font-size: 13px; }
   .day .dgoal { color: var(--muted); font-size: 12px; }
+  .day .dgoal .exam { color: var(--good-text); font-weight: 600; }
   .day.rest .dnum { color: var(--good-text); }
 
   .savebox {
@@ -177,7 +184,7 @@
 <div class="wrap">
   <header>
     <h1>FAA Private Pilot Written (PAR) — Mastery Tracker</h1>
-    <div class="sub">Every knowledge area on the exam, mapped to a 14-day study plan. Based on FAA-S-ACS-6C. Target: 100%.</div>
+    <div class="sub">Every knowledge area on the exam, in Pilot Institute course order, mapped to a 14-day plan with the course's 7 stage exams as checkpoints. Based on FAA-S-ACS-6C. Target: 100%.</div>
   </header>
 
   <div class="factcard">
@@ -217,35 +224,23 @@
 
   <div class="note"><a href="https://mattbreckenridge.com" style="color:var(--muted)">&larr; mattbreckenridge.com</a></div>
 
-  <div class="note">HY = high-yield: heavily represented on the exam or a common miss. Item counts reflect testable knowledge under FAA-S-ACS-6C — flight-proficiency-only tasks (maneuvers, landings) are excluded because the written doesn't test them beyond the aerodynamics behind them.</div>
+  <div class="note">Sections follow the Pilot Institute chapter sequence (Stages 1–7). HY = high-yield: heavily represented on the exam or a common miss. The course's Introduction chapters and the CX-3 / Sporty's E6B / ForeFlight chapters aren't testable — watch or skip as you see fit. Flight-proficiency-only tasks (maneuvers, landings) are excluded because the written doesn't test them beyond the underlying aerodynamics.</div>
 </div>
 
 <script>
 const SECTIONS = [
-{ id:"S1", title:"1 · Aerodynamics & Principles of Flight", day:"Day 1", items:[
-  ["Four forces of flight and their equilibrium in climbs, descents, and level flight",1],
-  ["How lift is generated — angle of attack, relative wind, chord, camber",0],
-  ["Stalls: critical angle of attack; a wing can stall at any airspeed/attitude",1],
-  ["Stall speed vs. weight, bank angle, load factor, and CG position",1],
-  ["Spins: cause (stall + yaw), phases, and recovery (PARE); which wing stalls first",0],
-  ["Load factor: bank angle relationship (60° level turn = 2G); V-G diagram",1],
-  ["Maneuvering speed (Va): why it decreases as weight decreases",1],
-  ["Stability: static vs. dynamic; longitudinal stability and the horizontal stabilizer",0],
-  ["CG effects: aft CG = less stable, harder stall/spin recovery; fwd CG = higher stall speed",1],
-  ["Left-turning tendencies: torque, P-factor, spiraling slipstream, gyroscopic precession",1],
-  ["Adverse yaw and why coordinated rudder is needed in turns",0],
-  ["Ground effect: floating on landing, lifting off before Vr on takeoff",1],
-  ["Flaps and high-lift devices: effect on lift, drag, stall speed, approach angle",0],
-  ["Wingtip vortices / wake turbulence: where they form, how to avoid on takeoff & landing",1],
-  ["Frost, ice, and contamination: effect on lift and takeoff performance",1],
-  ["Turn rate & radius vs. airspeed and bank; overbanking tendency",0],
-  ["Rectangular course / turns around a point: wind drift correction concepts",0],
+{ id:"S1", title:"1 · Aircraft Structure", day:"Day 1 · Stage 1", items:[
+  ["Airplane components: fuselage, wing types, empennage, landing gear",0],
+  ["Axes of rotation (longitudinal, lateral, vertical) and which control governs motion about each",1],
+  ["Primary control surfaces: ailerons, rudder, elevator vs. stabilator",1],
+  ["Secondary controls: wing flaps and trim systems; trim tabs vs. anti-servo tabs",1],
+  ["Balance, servo, and ground-adjustable tabs; autopilot basics",0],
 ]},
-{ id:"S2", title:"2 · Aircraft Systems", day:"Day 2", items:[
+{ id:"S2", title:"2 · Aircraft Systems", day:"Days 1–2 · Stage 1", items:[
   ["Four-stroke reciprocating engine basics; air cooling and cowl flaps",0],
   ["Dual magneto ignition: why it's independent of the electrical system",1],
   ["Fuel grades & dye colors (100LL = blue); what to do if proper grade unavailable",1],
-  ["Fuel system: gravity-feed vs. pump; sumps, drains, and contamination checks",0],
+  ["Fuel system: gravity-feed vs. pump; sumps, drains, contamination checks, refueling & static",0],
   ["Mixture control: why and when to lean; symptoms of too rich / too lean",1],
   ["Float-type carburetor operation and venturi principle",0],
   ["Carburetor icing: conditions (high humidity, 20–70°F), symptoms in fixed-pitch vs. constant-speed, carb heat effects",1],
@@ -256,9 +251,12 @@ const SECTIONS = [
   ["Propeller: fixed-pitch vs. constant-speed; throttle/prop control relationship",0],
   ["Electrical system: alternator vs. battery, ammeter/loadmeter readings, alternator failure",1],
   ["Exhaust system and carbon monoxide hazard from cabin heat",1],
-  ["Pitot heat, stall warning, and other anti-ice/deice equipment",0],
+  ["Superchargers vs. turbochargers: what each does and when",0],
+  ["Pressurization and oxygen systems basics",0],
+  ["Deicing/anti-icing equipment and pitot heat",0],
+  ["ELT: 121.5 monitoring, testing only in first 5 minutes of the hour, battery replacement rules",1],
 ]},
-{ id:"S3", title:"3 · Flight Instruments", day:"Day 3", items:[
+{ id:"S3", title:"3 · Aircraft Instruments", day:"Day 3 · Stage 1", items:[
   ["Pitot-static system: which instruments use pitot vs. static pressure",1],
   ["Blocked pitot tube / blocked static port: effect on ASI, altimeter, VSI",1],
   ["Airspeed types: indicated, calibrated, true, groundspeed",1],
@@ -267,11 +265,50 @@ const SECTIONS = [
   ["Five altitudes: indicated, pressure, density, true, absolute",1],
   ["Altimeter: setting procedure; 'high to low, look out below'; temperature errors",1],
   ["Pressure altitude: read with 29.92 set; when it equals true altitude",0],
-  ["Gyroscopic instruments: attitude, heading, turn coordinator; vacuum vs. electric power sources",1],
+  ["Gyroscopic instruments: attitude, heading, turn coordinator; rigidity in space & precession; vacuum vs. electric power",1],
   ["Magnetic compass errors: variation, deviation, dip, acceleration (ANDS), turning (UNOS)",1],
-  ["Transponder modes and ADS-B Out basics; where each is required",0],
 ]},
-{ id:"S4", title:"4 · Regulations — Pilot, Medical & Aircraft", day:"Day 4", items:[
+{ id:"S4", title:"4 · Basic Aerodynamics", day:"Day 4 · Stage 2", items:[
+  ["Four forces of flight and their equilibrium in climbs, descents, and level flight",1],
+  ["How lift is generated — angle of attack, relative wind, chord, camber",0],
+  ["Parasite vs. induced drag; L/D max and best glide",1],
+  ["Wingtip vortices: where they form, how they behave, and avoidance on takeoff & landing",1],
+  ["Ground effect: floating on landing, lifting off before Vr on takeoff",1],
+  ["Flaps and high-lift devices: effect on lift, drag, stall speed, approach angle",0],
+]},
+{ id:"S5", title:"5 · Aerodynamic Forces", day:"Day 4 · Stage 2", items:[
+  ["Forces in turns; load factor: bank angle relationship (60° level turn = 2G)",1],
+  ["Slipping vs. skidding turns; adverse yaw and coordinated rudder",0],
+  ["Turn rate & radius vs. airspeed and bank; overbanking tendency",0],
+  ["Forces in climbs and descents",0],
+  ["Stalls: critical angle of attack; a wing can stall at any airspeed/attitude",1],
+  ["Stall speed vs. weight, bank angle, load factor, and CG position",1],
+  ["Spins: cause (stall + yaw), phases, and recovery (PARE); which wing stalls first",0],
+  ["V-G diagram and structural load limits",1],
+  ["Maneuvering speed (Va): why it decreases as weight decreases",1],
+  ["Stability: static vs. dynamic; longitudinal stability and the horizontal stabilizer",0],
+  ["CG effects: aft CG = less stable, harder stall/spin recovery; fwd CG = higher stall speed",1],
+  ["Left-turning tendencies: torque, P-factor, spiraling slipstream, gyroscopic precession",1],
+  ["Frost, ice, and contamination: effect on lift and takeoff performance",1],
+]},
+{ id:"S6", title:"6 · Weight and Balance", day:"Day 5 · Stage 2", items:[
+  ["Terms: datum, arm, moment, station, moment index",1],
+  ["Effects of CG location and overweight operation on performance and stability",1],
+  ["Compute gross weight and CG: computational method",1],
+  ["Graph and table methods; interpolation",1],
+  ["Weight shift / adding / removing weight problems",1],
+  ["Standard weights: fuel 6 lb/gal, oil 7.5 lb/gal",1],
+]},
+{ id:"S7", title:"7 · Performance & Limitations", day:"Day 6 · Stage 2", items:[
+  ["Calculate pressure altitude and density altitude",1],
+  ["Density altitude effects — high, hot, humid = poor performance; effect on TRUE airspeed",1],
+  ["Takeoff & climb performance charts: read, interpolate, apply corrections",1],
+  ["Cruise, fuel consumption, and TAS charts; range vs. endurance",1],
+  ["Landing distance charts",1],
+  ["Headwind & crosswind components: chart problems; max demonstrated crosswind",1],
+  ["Vx vs. Vy: what each gives you; how they converge with altitude",1],
+]},
+{ id:"S8", title:"8 · Regulations", day:"Day 7 · Stage 3", items:[
   ["Private pilot privileges & limitations (61.113): pro-rata sharing, charitable flights, business-incidental",1],
   ["Documents to carry: pilot certificate, photo ID, medical (61.3)",1],
   ["Medical certificate classes & duration for private privileges (under/over age 40); BasicMed",1],
@@ -280,33 +317,106 @@ const SECTIONS = [
   ["Endorsements: high-performance (>200hp), complex, tailwheel, high-altitude",0],
   ["Alcohol & drugs: 8 hours bottle-to-throttle, 0.04% BAC, conviction reporting (91.17, 61.15)",1],
   ["Change of permanent address: notify FAA within 30 days (61.60)",0],
-  ["Aircraft documents aboard: ARROW (91.203, 91.9)",1],
-  ["Required inspections: annual, 100-hour (for hire), transponder 24mo, ELT 12mo & battery rules",1],
-  ["100-hour vs. annual: who needs which, the 10-hour overflight rule, who can perform them",1],
-  ["Airworthiness: PIC responsibility (91.7); Airworthiness Directives are mandatory",1],
-  ["Preventive maintenance a private pilot may perform and logbook entries (Part 43)",0],
-  ["Inoperative equipment: 91.213 decision path, placarding, MELs",1],
-  ["Required equipment: day VFR (91.205 'ATOMATOFLAMES'), night ('FLAPS')",1],
-  ["Special flight permits (ferry permits): when and how",0],
-  ["NTSB 830: immediate notification events, accident vs. incident, 10-day report",1],
-]},
-{ id:"S5", title:"5 · Regulations — Flight Rules", day:"Day 5", items:[
   ["Preflight action (91.103): weather, fuel, alternatives, runway lengths, performance ('NWKRAFT')",1],
   ["Seatbelts & briefings: crew and passenger requirements by phase of flight (91.105/.107)",0],
   ["Right-of-way rules: category hierarchy, converging, head-on, overtaking, landing (91.113)",1],
   ["Minimum safe altitudes (91.119): congested 1,000/2,000; other areas 500 ft",1],
-  ["VFR cruising altitudes above 3,000 AGL: magnetic course odd/even + 500 (91.159)",1],
-  ["VFR fuel reserves: 30 min day / 45 min night beyond destination (91.151)",1],
   ["Speed limits: 250 kt below 10,000; 200 kt under Class B shelf & in Class C/D surface areas (91.117)",0],
+  ["VFR fuel reserves: 30 min day / 45 min night beyond destination (91.151)",1],
   ["Supplemental oxygen (91.211): 12,500 >30 min, 14,000 crew, 15,000 passengers offered",1],
   ["Aerobatic flight limits & parachute requirements (91.303/.307)",0],
   ["Emergency authority: PIC may deviate from any rule; report to FAA on request (91.3)",1],
-  ["ATC instructions & clearances: compliance and priority (91.123)",0],
-  ["Careless/reckless operation; dropping objects; formation flight rules",0],
-  ["Position lights: sunset to sunrise; anticollision lights (91.209)",0],
+  ["ATC compliance (91.123); careless/reckless ops; dropping objects; formation; position lights sunset–sunrise",0],
+  ["Required equipment: day VFR (91.205 'ATOMATOFLAMES'), night ('FLAPS')",1],
+  ["NTSB 830: immediate notification events, accident vs. incident, 10-day report",1],
   ["TFRs and Special Flight Rules Areas: how to find them and comply",1],
 ]},
-{ id:"S6", title:"6 · Airspace", day:"Day 6", items:[
+{ id:"S9", title:"9 · Inspections, Documents & Maintenance", day:"Day 7 · Stage 3", items:[
+  ["Aircraft documents aboard: ARROW (91.203, 91.9)",1],
+  ["POH/AFM and required placards",0],
+  ["Required inspections: annual, 100-hour (for hire), transponder 24mo, ELT 12mo & battery rules",1],
+  ["100-hour vs. annual: who needs which, the 10-hour overflight rule, who can perform them",1],
+  ["Airworthiness Directives are mandatory",1],
+  ["Preventive maintenance a private pilot may perform and logbook entries (Part 43)",0],
+  ["Inoperative equipment: 91.213 decision path, placarding, operating with/without an MEL",1],
+  ["Special flight permits (ferry permits): when and how",0],
+  ["Airworthiness: PIC responsibility to determine aircraft is airworthy (91.7)",1],
+]},
+{ id:"S10", title:"10 · Aeromedical Factors", day:"Day 8 · Stage 4", items:[
+  ["Hypoxia: 4 types (hypoxic, hypemic, stagnant, histotoxic), symptoms, time of useful consciousness",1],
+  ["Carbon monoxide poisoning: source (cabin heat), symptoms, corrective action",1],
+  ["Hyperventilation: symptoms overlap hypoxia; remedy (slow breathing, paper bag)",1],
+  ["Middle ear & sinus block; scuba diving wait times before flight",1],
+  ["Spatial disorientation & vestibular illusions: the leans, graveyard spiral, somatogravic — trust the instruments",1],
+  ["Visual & optical illusions: runway width/slope, black hole approach, haze effects",1],
+  ["Night vision: rods vs. cones, off-center scanning, 30-minute dark adaptation, oxygen effects",1],
+  ["Motion sickness, stress, fatigue, dehydration & heat stroke",0],
+  ["Medications: self-grounding, OTC sedating antihistamines; alcohol effects at altitude",0],
+  ["Decompression sickness after scuba diving",0],
+]},
+{ id:"S11", title:"11 · Aeronautical Decision Making", day:"Day 8 · Stage 4", items:[
+  ["Hazardous attitudes & antidotes: anti-authority, impulsivity, invulnerability, macho, resignation",1],
+  ["Checklists & frameworks: IMSAFE, PAVE, DECIDE, 5P — what each assesses",1],
+  ["Risk assessment & mitigation; personal minimums; external pressures (get-there-itis)",1],
+  ["Crew & single-pilot resource management; automation management",0],
+  ["Operational pitfalls & situational awareness; common accident factors",1],
+]},
+{ id:"S12", title:"12 · Weather Theory", day:"Day 9 · Stage 5", items:[
+  ["Standard atmosphere (15°C / 29.92\" Hg at sea level; ~2°C lapse per 1,000 ft)",1],
+  ["Cause of all weather: uneven surface heating; general circulation & Coriolis force",1],
+  ["Pressure systems: highs (clockwise, descending, fair) vs. lows (counterclockwise, rising, bad wx)",1],
+  ["Wind: pressure gradient force, surface friction, land/sea breezes, obstruction effects",0],
+  ["Atmospheric stability: lapse rates, how to judge stability, characteristics of stable vs. unstable air",1],
+  ["Temperature inversions: smooth air, poor visibility",1],
+  ["Temperature/dew point spread: fog and cloud formation when they converge; how air reaches saturation",1],
+  ["Fog types: radiation, advection, upslope, steam, precipitation-induced — formation conditions",1],
+  ["Cloud families & types; cumulus = turbulence, stratus = stable; standing lenticular = severe turbulence",1],
+  ["Fronts: cold, warm, stationary, occluded — weather at each; wind shift & temperature change at passage",1],
+  ["Thunderstorms: 3 ingredients; life cycle — rain begins = mature stage; hazards; stay 20nm from severe cells",1],
+  ["Wind shear & low-level wind shear: where it occurs, effect on airspeed on approach",1],
+  ["Icing: visible moisture + freezing temps; structural types (clear, rime, mixed)",1],
+  ["Ceiling & visibility definitions; precipitation types, jet stream, clear-air turbulence",1],
+]},
+{ id:"S13", title:"13 · Weather Services", day:"Day 10 · Stage 5", items:[
+  ["Flight Service Station & preflight briefings: standard, abbreviated, outlook; 1800wxbrief & EFB self-briefing",1],
+  ["AWOS/ASOS vs. ATIS: what each provides and how often it updates",0],
+  ["METAR: decode every field — wind (true, gusts), visibility, weather codes, sky condition, temp/dew, altimeter",1],
+  ["PIREPs (UA/UUA): decode; only source of actual observed icing/turbulence/tops",1],
+  ["TAF: validity period, FM, TEMPO, PROB, BECMG groups; ~5sm coverage of the airport",1],
+  ["AIRMETs: Sierra (IFR/mtn obscuration), Tango (turbulence), Zulu (icing)",1],
+  ["SIGMET & Convective SIGMET: what each covers, valid times",1],
+  ["Winds & temps aloft (FB): decode; '9900' = light & variable; temps negative above 24,000",1],
+  ["Graphical Forecasts for Aviation (GFA), surface analysis, prog charts",0],
+  ["Radar & satellite imagery: what precipitation returns do and don't tell you",0],
+]},
+{ id:"S14", title:"14 · Airport Operations", day:"Day 11 · Stage 6", items:[
+  ["Taxiway markings & signs: hold-short lines, runway boundary, ILS critical area, direction/location signs",1],
+  ["Runway incursion avoidance, hot spots, sterile-cockpit discipline; pilot deviations",0],
+  ["Runway markings: numbers/orientation, displaced threshold, chevrons, blast pad, aiming point, closed (X)",1],
+  ["Types of runways; LAHSO — what it is, PIC may decline, available landing distance",0],
+  ["VASI/PAPI: interpreting the lights, obstacle clearance range, requirement to stay at/above glidepath",1],
+  ["Airport lighting: rotating beacon colors (daytime beacon = below VFR minimums), pilot-controlled lighting",1],
+  ["Traffic pattern: standard left turns, pattern altitude, recommended entry/departure at nontowered airports",1],
+  ["Wind direction indicators & the segmented circle: reading traffic-pattern indicators",1],
+  ["Wake turbulence avoidance procedures: rotation points, timing behind heavy aircraft",1],
+  ["Ground reference maneuvers: wind-drift correction in rectangular course, S-turns, turns around a point",0],
+  ["Chart Supplement: what's in it and how to read an airport entry",1],
+  ["NOTAMs: D, FDC, TFR — where to get them and how to read them",1],
+  ["ATIS and other sources of airport data",0],
+  ["Clearing procedures and collision avoidance scanning",0],
+]},
+{ id:"S15", title:"15 · Radio Communications", day:"Day 11 · Stage 6", items:[
+  ["Phonetic alphabet, figures, call signs, and radio technique",0],
+  ["Nontowered airports: CTAF/UNICOM self-announce positions and procedures",1],
+  ["Towered airports: initial & subsequent contact; which frequency to use when",0],
+  ["Light gun signals: all six colors, meanings on ground AND in flight — memorize",1],
+  ["Lost communications: transponder 7600, light-gun arrival at towered field",1],
+  ["Transponder codes: 1200 VFR, 7500 hijack, 7600 lost comm, 7700 emergency",1],
+  ["Transponder modes and ADS-B Out: what they do, where required",0],
+  ["Flight following / radar traffic advisories; traffic called by clock position relative to ground track",1],
+  ["Emergency declarations: MAYDAY/PAN-PAN, squawk 7700, ATC emergency assistance",0],
+]},
+{ id:"S16", title:"16 · Airspace", day:"Day 12 · Stage 7", items:[
   ["Class A: 18,000 MSL–FL600, IFR only, altimeter 29.92",0],
   ["Class B: dimensions, explicit clearance required, private-pilot & student rules, Mode C veil (30nm)",1],
   ["Class C: dimensions (5/10nm shelves), two-way comms established, Mode C",1],
@@ -317,127 +427,73 @@ const SECTIONS = [
   ["Special VFR: 1sm & clear of clouds, ATC clearance, night SVFR requires instrument rating & equipment",1],
   ["Transponder/ADS-B required airspace: A, B, C, above 10,000, Mode C veil",1],
   ["Special use: prohibited, restricted, warning, MOA, alert, controlled firing — who may enter what",1],
-  ["Military Training Routes (VR/IR, 4-digit vs 3-digit) and VFR flyways",0],
-  ["TRSA, ADIZ, national security areas, parachute jump areas",0],
+  ["Military Training Routes (VR/IR, 4-digit vs 3-digit) and VFR routes/flyways",0],
+  ["TRSA, ADIZ, national security areas, wilderness areas, parachute jump areas, UAS airspace",0],
   ["Basic VFR minimums at airports: 1,000-ft ceiling / 3sm (91.155)",1],
 ]},
-{ id:"S7", title:"7 · Sectional Charts & Airport Operations", day:"Days 6–7", items:[
+{ id:"S17", title:"17 · Charts", day:"Day 12 · Stage 7", items:[
   ["Airport symbols: blue vs. magenta, tower/CT frequencies, star (beacon), tick marks (fuel)",1],
   ["Airport data block: elevation, lighting codes (*L), runway length, ATIS/CTAF",1],
   ["Airspace boundaries on the sectional: solid/shaded/dashed lines for B, C, D, E",1],
-  ["Obstacles & MEF (maximum elevation figures); isogonic lines",1],
-  ["Latitude/longitude: reading coordinates off the chart",0],
-  ["Chart Supplement: what's in it and how to read an airport entry",1],
-  ["Runway markings: numbers, displaced threshold, chevrons, blast pad, closed (X)",1],
-  ["Taxiway signs & markings: hold-short lines, runway boundary, ILS critical area, direction signs",1],
-  ["Airport lighting: rotating beacon colors (and daytime beacon = below VFR minimums), pilot-controlled lighting",1],
-  ["VASI/PAPI: interpreting the lights, obstacle clearance range, requirement to stay at/above glidepath (91.129)",1],
-  ["Wind direction indicators & the segmented circle: reading traffic-pattern indicators",1],
-  ["Traffic pattern: standard left turns, pattern altitude, recommended entry/departure at nontowered airports",1],
-  ["LAHSO: what it is, PIC may decline, available landing distance",0],
-  ["Runway incursion avoidance, hot spots, sterile-cockpit discipline",0],
+  ["Obstacles & MEF (maximum elevation figures)",1],
+  ["Latitude/longitude: determining coordinates on the chart",0],
+  ["Isogonic lines and magnetic variation on charts",1],
+  ["Terrain, land features, and other chart symbols",0],
 ]},
-{ id:"S8", title:"8 · Communications, ATC & Emergency Procedures", day:"Day 7", items:[
-  ["Radio phraseology & phonetic alphabet; stating altitudes and headings",0],
-  ["Nontowered airports: CTAF/UNICOM self-announce positions and procedures",1],
-  ["Towered airports: who to call and when (clearance/ground/tower)",0],
-  ["Light gun signals: all six colors, meanings on ground AND in flight — memorize",1],
-  ["Lost communications: transponder 7600, light-gun arrival at towered field",1],
-  ["Transponder codes: 1200 VFR, 7500 hijack, 7600 lost comm, 7700 emergency",1],
-  ["ELT: 121.5 monitoring, testing only in first 5 minutes of the hour, battery replacement rules",1],
-  ["VFR flight plans: filing, opening, closing, and search & rescue timing",1],
-  ["Flight following / radar traffic advisories; traffic called by clock position relative to ground track",1],
-  ["Emergency declarations: MAYDAY/PAN-PAN, squawk 7700, ATC emergency assistance",0],
-  ["Emergency approach & landing: best glide, field selection, passenger brief (knowledge elements)",0],
-]},
-{ id:"S9", title:"9 · Weather Theory", day:"Day 8", items:[
-  ["Standard atmosphere (15°C / 29.92\" Hg at sea level; ~2°C lapse per 1,000 ft)",1],
-  ["Cause of all weather: uneven surface heating; general circulation & Coriolis force",1],
-  ["Pressure systems: highs (clockwise, descending, fair) vs. lows (counterclockwise, rising, bad wx)",1],
-  ["Wind: pressure gradient force, surface friction, land/sea breezes, valley/mountain winds",0],
-  ["Atmospheric stability: lapse rates, how to judge stability, characteristics of stable vs. unstable air",1],
-  ["Temperature/dew point spread: fog and cloud formation when they converge",1],
-  ["Fog types: radiation, advection, upslope, steam, precipitation-induced — formation conditions",1],
-  ["Cloud families & types; cumulus = turbulence, stratus = stable; standing lenticular = severe turbulence",1],
-  ["Fronts: cold, warm, stationary, occluded — weather at each; wind shift & temperature change at passage",1],
-  ["Thunderstorms: 3 ingredients (moisture, instability, lifting); life cycle — rain begins = mature stage",1],
-  ["Thunderstorm hazards: squall lines, embedded cells, microbursts, hail; stay 20nm from severe cells",1],
-  ["Icing: visible moisture + freezing temps; structural types (clear, rime, mixed); frost must be removed",1],
-  ["Turbulence types: convective, mechanical, mountain wave, clear-air",0],
-  ["Wind shear & low-level wind shear: where it occurs, effect on airspeed on approach",1],
-]},
-{ id:"S10", title:"10 · Weather Services & Reports", day:"Day 9", items:[
-  ["METAR: decode every field — wind (true, gusts), visibility, RVR, weather codes, sky condition, temp/dew, altimeter",1],
-  ["Ceiling definition: lowest broken or overcast layer (or vertical visibility)",1],
-  ["TAF: validity period, FM, TEMPO, PROB, BECMG groups; ~5sm coverage of the airport",1],
-  ["PIREPs (UA/UUA): decode; only source of actual observed icing/turbulence/tops",1],
-  ["AIRMETs: Sierra (IFR/mtn obscuration), Tango (turbulence), Zulu (icing)",1],
-  ["SIGMET & Convective SIGMET: what each covers, valid times",1],
-  ["Winds & temps aloft (FB): decode; '9900' = light & variable; temps negative above 24,000",1],
-  ["Graphical Forecasts for Aviation (GFA), surface analysis, prog charts",0],
-  ["Radar & satellite imagery: what precipitation returns do and don't tell you",0],
-  ["Preflight briefings: standard, abbreviated, outlook; Leidos 1800wxbrief & EFB self-briefing",1],
-  ["AWOS/ASOS vs. ATIS: what each provides and how often it updates",0],
-]},
-{ id:"S11", title:"11 · Performance & Weight and Balance", day:"Day 10", items:[
-  ["Density altitude: compute it (chart & E6B) and explain effects — high, hot, humid = poor performance",1],
-  ["Effect of density altitude on takeoff roll, climb rate, and TRUE airspeed at touchdown",1],
-  ["Takeoff & landing distance charts: read, interpolate, apply wind/surface corrections",1],
-  ["Headwind & crosswind components: chart problems; max demonstrated crosswind",1],
-  ["Cruise performance charts: power settings, fuel burn, endurance, range",1],
-  ["Vx vs. Vy: what each gives you; how they converge with altitude",1],
-  ["Weight & balance terms: datum, arm, moment, station, moment index",1],
-  ["Compute gross weight and CG; determine if within envelope (table & graph methods)",1],
-  ["Weight-shift problems: moving baggage/passengers to bring CG in limits",1],
-  ["Standard weights: fuel 6 lb/gal, oil 7.5 lb/gal",1],
-  ["Effects of overweight and out-of-CG flight on performance and stability",1],
-]},
-{ id:"S12", title:"12 · Navigation & Cross-Country Planning", day:"Day 11", items:[
-  ["Pilotage and dead reckoning; choosing checkpoints",0],
+{ id:"S18", title:"18 · Navigation", day:"Day 13 · Stage 7", items:[
+  ["Pilotage and dead reckoning; choosing checkpoints; time zones & UTC",0],
   ["Course corrections: true course → true heading (wind) → magnetic heading (variation) → compass heading (deviation)",1],
-  ["Magnetic variation: 'east is least, west is best'; isogonic lines",1],
+  ["Magnetic variation: 'east is least, west is best'",1],
   ["Plotter skills: measure true course and distance on a sectional",1],
-  ["E6B / flight computer: groundspeed, time en route, fuel burn, wind correction angle, TAS, density altitude",1],
-  ["VOR: radials, OBS, CDI, TO/FROM, reverse sensing; position fixing from two VORs",1],
-  ["VOR checks & service volumes (knowledge-level); identifying stations by Morse ID",0],
+  ["VFR cruising altitudes above 3,000 AGL: magnetic course odd/even + 500 (91.159)",1],
+  ["VOR: radials, OBS, CDI needle, TO/FROM, reverse sensing; position fixing from two VORs",1],
+  ["VOR classes & service volumes, VOR checks, DME, HSI (knowledge-level)",0],
   ["GPS: RAIM, database currency, moving-map limitations",0],
   ["Lost procedures: climb, communicate, confess, comply; diversion to an alternate",1],
-  ["Fuel planning: total required with reserves; when to recompute in flight",1],
-  ["NOTAMs: D, FDC, TFR — where to get them and what each covers",1],
   ["Night operations: required equipment, position-light hours, airport lighting at night",0],
 ]},
-{ id:"S13", title:"13 · Human Factors & Aeronautical Decision Making", day:"Day 12", items:[
-  ["Hypoxia: 4 types (hypoxic, hypemic, stagnant, histotoxic), symptoms, time of useful consciousness",1],
-  ["Hyperventilation: symptoms overlap hypoxia; remedy (slow breathing, paper bag)",1],
-  ["Carbon monoxide poisoning: source (cabin heat), symptoms, corrective action",1],
-  ["Middle ear & sinus problems; scuba diving wait times before flight",1],
-  ["Spatial disorientation & vestibular illusions: the leans, graveyard spiral, somatogravic — trust the instruments",1],
-  ["Visual illusions: runway width/slope, black hole approach, haze effects on distance",1],
-  ["Night vision: rods vs. cones, off-center scanning, 30-minute dark adaptation, oxygen effects",1],
-  ["Hazardous attitudes & antidotes: anti-authority, impulsivity, invulnerability, macho, resignation",1],
-  ["Checklists & frameworks: IMSAFE, PAVE, DECIDE, 5P — what each assesses",1],
-  ["Risk management: identifying hazards, personal minimums, external pressures (get-there-itis)",1],
-  ["Single-pilot resource management, workload, automation, situational awareness",0],
-  ["Fatigue, stress, dehydration, and nutrition effects on performance",0],
-  ["Medications: self-grounding, OTC sedating antihistamines, IM SAFE medical items",0],
+{ id:"S19", title:"19 · Cross-Country Planning & E6B", day:"Day 13 · Stage 7", items:[
+  ["E6B: conversions, density altitude, true airspeed",1],
+  ["E6B: speed/distance/time and fuel calculations",1],
+  ["E6B: wind correction angle and groundspeed",1],
+  ["Fuel planning: total required with reserves; when to recompute in flight",1],
+  ["Cross-country planning steps: route, checkpoints, altitudes, airport info, performance",1],
+  ["Weather briefing + NOTAM/TFR check as part of preflight planning",0],
+  ["VFR flight plans: filing, opening, closing, and search & rescue timing; flight log vs. flight plan",1],
 ]},
 ];
 
 const PLAN = [
-  ["Day 1","Aerodynamics & Principles of Flight","Section 1","~2.5–3 hrs of course video + section quiz"],
-  ["Day 2","Aircraft Systems","Section 2","Engine, fuel, electrical, prop; end-of-day quiz"],
-  ["Day 3","Flight Instruments","Section 3","Pitot-static & gyro instruments; start flashcards for V-speeds"],
-  ["Day 4","Regulations I — Pilot, Medical & Aircraft","Section 4","Certificates, currency, ARROW, inspections, NTSB 830"],
-  ["Day 5","Regulations II — Flight Rules","Section 5","91.103–91.211; quiz both regs sections together"],
-  ["Day 6","Airspace + Sectional Basics","Section 6, start 7","Memorize the full VFR weather-minimums table cold"],
-  ["Day 7","Charts, Airport Ops & Communications","Sections 7–8","Week-1 checkpoint: practice quiz over Sections 1–8; light gun signals memorized"],
-  ["Day 8","Weather Theory","Section 9","Fronts, stability, thunderstorms, icing, fog"],
-  ["Day 9","Weather Services","Section 10","Decode METARs/TAFs until it's automatic"],
-  ["Day 10","Performance & Weight and Balance","Section 11","Work every chart problem type twice; E6B practice"],
-  ["Day 11","Navigation & Cross-Country","Section 12","Plotter + E6B full XC problems; VOR interpretation drills"],
-  ["Day 12","Human Factors & ADM + finish course","Section 13","Finish remaining videos · Practice exam #1 (score it, log misses)"],
-  ["Day 13","Weak-area review","Practice exams #2–3","Re-study every missed question's topic area; aim ≥90%"],
-  ["Day 14","Final polish","Practice exam #4","Target ≥95% · get your course endorsement · schedule PSI exam"],
+  ["Stage 1 — Know the machine", [
+    ["Day 1","Aircraft Structure + start Aircraft Systems","Sections 1–2","Skim the two Introduction chapters as needed; ~30 content videos"],
+    ["Day 2","Aircraft Systems (finish)","Section 2","Biggest chapter in the course (54 videos) — take the built-in quizzes"],
+    ["Day 3","Aircraft Instruments","Section 3","<span class='exam'>Stage 1 Practice Exam</span> at end of day"],
+  ]],
+  ["Stage 2 — Physics & numbers", [
+    ["Day 4","Basic Aerodynamics + Aerodynamic Forces","Sections 4–5","Two chapters, one theme; ~50 videos"],
+    ["Day 5","Weight and Balance","Section 6","Work all three methods: computational, graph, table"],
+    ["Day 6","Performance & Limitations","Section 7","<span class='exam'>Stage 2 Practice Exam</span> — do every chart problem twice"],
+  ]],
+  ["Stage 3 — The rules", [
+    ["Day 7","Regulation + Inspections and Documents","Sections 8–9","<span class='exam'>Stage 3 Practice Exam</span>"],
+  ]],
+  ["Stage 4 — The pilot", [
+    ["Day 8","Aeromedical Factors + ADM","Sections 10–11","<span class='exam'>Stage 4 Practice Exam</span>"],
+  ]],
+  ["Stage 5 — Weather", [
+    ["Day 9","Weather Theory","Section 12","Fronts, stability, thunderstorms, icing, fog"],
+    ["Day 10","Weather Services","Section 13","<span class='exam'>Stage 5 Practice Exam</span> — decode METARs/TAFs until automatic; start Airport Ops if ahead"],
+  ]],
+  ["Stage 6 — The airport", [
+    ["Day 11","Airport Operations + Radio Communications","Sections 14–15","<span class='exam'>Stage 6 Practice Exam</span> — biggest day (~59 videos); light gun signals memorized"],
+  ]],
+  ["Stage 7 — Getting somewhere", [
+    ["Day 12","Airspace + Charts","Sections 16–17","Memorize the full VFR weather-minimums table cold"],
+    ["Day 13","Navigation + E6B + Planning a Cross Country","Sections 18–19","<span class='exam'>Stage 7 Practice Exam</span> — CX-3 / Sporty's / ForeFlight chapters optional"],
+  ]],
+  ["Final", [
+    ["Day 14","Final FAA Practice Exam & review","All sections","Retake until ≥95% · review every miss · <span class='exam'>get endorsement & schedule PSI exam</span>"],
+  ]],
 ];
 
 const areasEl = document.getElementById('view-areas');
@@ -465,12 +521,18 @@ SECTIONS.forEach((sec, si) => {
 });
 
 const planEl = document.getElementById('view-plan');
-PLAN.forEach((p, i) => {
-  const d = document.createElement('div');
-  d.className = 'day' + (i >= 12 ? ' rest' : '');
-  d.innerHTML = `<div class="dnum">${p[0]}</div><div class="dtitle">${p[1]}</div>
-    <div class="dtopics">${p[2]}</div><div class="dgoal">${p[3]}</div>`;
-  planEl.appendChild(d);
+PLAN.forEach(([stage, days]) => {
+  const lbl = document.createElement('div');
+  lbl.className = 'stage-label';
+  lbl.textContent = stage;
+  planEl.appendChild(lbl);
+  days.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'day' + (p[0] === 'Day 14' ? ' rest' : '');
+    d.innerHTML = `<div class="dnum">${p[0]}</div><div class="dtitle">${p[1]}</div>
+      <div class="dtopics">${p[2]}</div><div class="dgoal">${p[3]}</div>`;
+    planEl.appendChild(d);
+  });
 });
 
 function showTab(t){
@@ -511,7 +573,7 @@ function exportCode(){
   let hex = '';
   for (let i = 0; i < bits.length; i += 4)
     hex += parseInt(bits.slice(i, i+4).padEnd(4,'0'), 2).toString(16);
-  const code = 'PPL1-' + ITEMS.length + '-' + hex;
+  const code = 'PPL2-' + ITEMS.length + '-' + hex;
   const ta = document.getElementById('code');
   ta.value = code;
   ta.select();
@@ -519,8 +581,8 @@ function exportCode(){
 }
 function importCode(){
   const raw = document.getElementById('code').value.trim();
-  const m = raw.match(/^PPL1-(\d+)-([0-9a-f]+)$/i);
-  if (!m || +m[1] !== ITEMS.length) { msg('That code doesn’t match this tracker.'); return; }
+  const m = raw.match(/^PPL2-(\d+)-([0-9a-f]+)$/i);
+  if (!m || +m[1] !== ITEMS.length) { msg('That code doesn’t match this tracker version.'); return; }
   let bits = '';
   for (const c of m[2]) bits += parseInt(c, 16).toString(2).padStart(4,'0');
   ITEMS.forEach((id, i) => document.getElementById('cb-'+id).checked = bits[i] === '1');
@@ -535,7 +597,7 @@ function msg(t){
 // localStorage persistence (per-browser). Stored as the raw bit string;
 // length-checked on load so content changes invalidate stale state,
 // same contract as the progress code.
-const LS_KEY = 'ppl-tracker-v1';
+const LS_KEY = 'ppl-tracker-v2';
 function saveState(){
   try {
     localStorage.setItem(LS_KEY, ITEMS.map(id => document.getElementById('cb-'+id).checked ? '1' : '0').join(''));
