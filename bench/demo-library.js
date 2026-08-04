@@ -10,17 +10,17 @@
    ──────────────────────────────────────────────────────────── */
 window.CALBENCH_DEMO_SEED = [
   /* ── Aviation · FAA Regulations & ATC ── */
-  { type: "fact", discipline: "Aviation", subject: "FAA Regulations & ATC",
+  { type: "fact", discipline: "Aviation", subject: "FAA Regulations & ATC", source: "FAR/AIM",
     name: "What are the day and night VFR fuel reserve requirements?",
     steps: ["Enough to reach the first point of intended landing plus 30 minutes at normal cruise for day VFR, and plus 45 minutes for night VFR."] },
-  { type: "concept", discipline: "Aviation", subject: "FAA Regulations & ATC",
+  { type: "concept", discipline: "Aviation", subject: "FAA Regulations & ATC", source: "FAR/AIM",
     name: "State the minimum safe altitudes over congested versus other areas.",
     steps: [
       "Over congested areas: 1,000 ft above the highest obstacle within a 2,000-ft horizontal radius",
       "Over other than congested areas: 500 ft above the surface",
       "Over open water or sparsely populated areas: no closer than 500 ft to any person, vessel, vehicle, or structure",
       "Anywhere: high enough for an emergency landing without undue hazard if power fails"] },
-  { type: "concept", discipline: "Aviation", subject: "FAA Regulations & ATC",
+  { type: "concept", discipline: "Aviation", subject: "FAA Regulations & ATC", source: "FAR/AIM",
     name: "State the meaning of each ATC light signal, in flight and on the surface.",
     steps: [
       "Steady green: in flight = cleared to land; on surface = cleared for takeoff",
@@ -31,24 +31,24 @@ window.CALBENCH_DEMO_SEED = [
       "Alternating red and green: general warning signal, exercise extreme caution (both in flight and on surface)"] },
 
   /* ── Aviation · Aerodynamics & Systems ── */
-  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems",
+  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems", source: "PHAK",
     name: "What defines a stall aerodynamically?",
     steps: [
       "A stall occurs when the wing exceeds its critical angle of attack",
       "It can happen at any airspeed, attitude, or power setting",
       "Beyond the critical AoA, airflow separates and lift decreases sharply",
       "Recovery is by reducing angle of attack (lowering the nose)"] },
-  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems",
+  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems", source: "PHAK",
     name: "Explain the relationship between load factor, bank, and stall speed.",
     steps: [
       "Load factor is the ratio of total lift to aircraft weight",
       "In a level turn, load factor increases as bank angle increases",
       "Higher load factor raises the stall speed (stall speed rises with the square root of load factor)",
       "Excessive load factor can exceed structural limits"] },
-  { type: "fact", discipline: "Aviation", subject: "Aerodynamics & Systems",
+  { type: "fact", discipline: "Aviation", subject: "Aerodynamics & Systems", source: "PHAK",
     name: "What conditions are most favorable to carburetor icing?",
     steps: ["Temperatures between roughly 20°F and 70°F combined with high humidity."] },
-  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems",
+  { type: "concept", discipline: "Aviation", subject: "Aerodynamics & Systems", source: "PHAK",
     name: "Describe the airspeed indicator color-coded arcs and markings.",
     steps: [
       "White arc: flap operating range, from VS0 (bottom) to VFE (top)",
@@ -58,16 +58,16 @@ window.CALBENCH_DEMO_SEED = [
       "Note: maneuvering speed (VA) is not marked on the airspeed indicator"] },
 
   /* ── Aviation · Weather & Aeromedical ── */
-  { type: "concept", discipline: "Aviation", subject: "Weather & Aeromedical",
+  { type: "concept", discipline: "Aviation", subject: "Weather & Aeromedical", source: "PHAK",
     name: "Describe the three stages of a thunderstorm's life cycle.",
     steps: [
       "Cumulus stage: strong updrafts as the cell builds",
       "Mature stage: updrafts and downdrafts coexist, heavy rain begins, and intensity is greatest",
       "Dissipating stage: downdrafts dominate and the cell rains itself out"] },
-  { type: "fact", discipline: "Aviation", subject: "Weather & Aeromedical",
+  { type: "fact", discipline: "Aviation", subject: "Weather & Aeromedical", source: "PHAK",
     name: "What is hypoxia?",
     steps: ["A state of oxygen deficiency in the body."] },
-  { type: "concept", discipline: "Aviation", subject: "Weather & Aeromedical",
+  { type: "concept", discipline: "Aviation", subject: "Weather & Aeromedical", source: "PHAK",
     name: "Name the five hazardous attitudes.",
     steps: [
       "Anti-authority ('Don't tell me')",
