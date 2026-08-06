@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account | Matt Breckenridge</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23E8B620' text-anchor='middle'%3EMB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(localStorage.getItem('mb-theme')==='light')document.documentElement.dataset.theme='light';</script>
+<style>
+  :root {
+    --bg: #080A10; --surface: #0E1118; --surface-2: #141820;
+    --border: #1E2438; --border-2: #28304A;
+    --text: #DDE0EC; --text-2: #727796; --text-3: #424660;
+    --gold: #C49A0C; --gold-lt: #E8B620;
+    --cta-bg: #C49A0C; --cta-bg-hover: #E8B620; --cta-text: #0A0800;
+    --red: #D64541; --green: #2D9966;
+    --r: 10px;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F5F1; --surface: #FFFFFF; --surface-2: #EFEDE6;
+    --border: #E0DDD2; --border-2: #CCC8B8;
+    --text: #1C1F2E; --text-2: #5B5F77; --text-3: #8F92A6;
+    --gold: #9C7A08; --gold-lt: #7E6206;
+    --red: #B7332F; --green: #1E7A4E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans);
+    font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  .wrap { width: 100%; max-width: 420px; margin: 0 auto; padding: 36px 24px 60px; flex: 1; }
+  .home { font-family: var(--mono); font-size: 12px; color: var(--text-2); text-decoration: none; }
+  .home:hover { color: var(--gold-lt); }
+  .card {
+    margin-top: 28px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 28px 26px 26px;
+  }
+  .slabel {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  }
+  h1 { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .sub { color: var(--text-2); font-size: 13.5px; margin-bottom: 22px; }
+  label {
+    display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-2); margin: 14px 0 6px;
+  }
+  input {
+    width: 100%; background: var(--surface-2); color: var(--text);
+    border: 1px solid var(--border-2); border-radius: 6px;
+    padding: 10px 12px; font-family: var(--sans); font-size: 15px;
+  }
+  input:focus { outline: none; border-color: var(--gold); }
+  button {
+    font-family: var(--sans); font-size: 15px; font-weight: 600; cursor: pointer;
+    border-radius: 6px; width: 100%; padding: 11px 12px; margin-top: 18px;
+  }
+  .btn-primary { background: var(--cta-bg); color: var(--cta-text); border: none; }
+  .btn-primary:hover { background: var(--cta-bg-hover); }
+  .btn-ghost {
+    background: transparent; color: var(--text); border: 1px solid var(--border-2);
+    margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .btn-ghost:hover { border-color: var(--gold); }
+  .divider {
+    display: flex; align-items: center; gap: 12px; margin-top: 18px;
+    color: var(--text-3); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em;
+  }
+  .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .aux { margin-top: 16px; text-align: center; font-size: 13px; }
+  .aux a { color: var(--text-2); cursor: pointer; text-decoration: underline; }
+  .aux a:hover { color: var(--gold-lt); }
+  .msg { margin-top: 16px; font-size: 13.5px; border-radius: 6px; padding: 10px 12px; display: none; }
+  .msg.err { display: block; color: var(--red); border: 1px solid var(--red); }
+  .msg.ok { display: block; color: var(--green); border: 1px solid var(--green); }
+  .who { font-family: var(--mono); font-size: 14px; color: var(--text); word-break: break-all; }
+  .tools { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .tools a {
+    display: block; padding: 10px 12px; border: 1px solid var(--border);
+    border-radius: 6px; text-decoration: none; color: var(--text); font-size: 14px;
+  }
+  .tools a:hover { border-color: var(--gold); }
+  .tools a span { color: var(--text-2); font-size: 12.5px; display: block; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="/">&larr; mattbreckenridge.com</a>
+
+  <!-- loading -->
+  <div class="card" id="view-loading">
+    <div class="slabel">Account</div>
+    <div class="sub" style="margin-bottom:0">Checking session&hellip;</div>
+  </div>
+
+  <!-- signed out: sign in -->
+  <div class="card hidden" id="view-signin">
+    <div class="slabel">Account</div>
+    <h1>Sign in</h1>
+    <div class="sub">Syncs your tool data across devices.</div>
+    <form id="signin-form">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button class="btn-primary" type="submit" id="signin-btn">Sign in</button>
+    </form>
+    <div class="divider">OR</div>
+    <button class="btn-ghost" type="button" id="google-btn">
+      <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Sign in with Google
+    </button>
+    <div class="aux"><a id="forgot-link">Forgot password?</a></div>
+    <div class="msg" id="signin-msg"></div>
+  </div>
+
+  <!-- password recovery: set a new password -->
+  <div class="card hidden" id="view-recovery">
+    <div class="slabel">Account</div>
+    <h1>Set a new password</h1>
+    <div class="sub">You followed a reset link. Choose a new password below.</div>
+    <form id="recovery-form">
+      <label for="new-password">New password</label>
+      <input id="new-password" type="password" autocomplete="new-password" minlength="8" required>
+      <button class="btn-primary" type="submit">Update password</button>
+    </form>
+    <div class="msg" id="recovery-msg"></div>
+  </div>
+
+  <!-- signed in -->
+  <div class="card hidden" id="view-account">
+    <div class="slabel">Account</div>
+    <h1>Signed in</h1>
+    <div class="who" id="who"></div>
+    <div class="tools">
+      <a href="/bench/">Calibration Bench <span>drill history &amp; library sync</span></a>
+      <a href="/flashcards/">Flashcards <span>deck progress (sync coming soon)</span></a>
+      <a href="/ppl/">PPL Tracker <span>course progress (sync coming soon)</span></a>
+    </div>
+    <button class="btn-ghost" type="button" id="signout-btn">Sign out</button>
+    <div class="msg" id="account-msg"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
+<script src="/shared/auth.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var views = ["view-loading", "view-signin", "view-recovery", "view-account"];
+  function show(id) {
+    views.forEach(function (v) { $(v).classList.toggle("hidden", v !== id); });
+  }
+  function msg(id, text, kind) {
+    var el = $(id);
+    el.textContent = text || "";
+    el.className = text ? "msg " + kind : "msg";
+  }
+
+  // Only same-origin path redirects, e.g. /account/?next=/bench/
+  function nextPath() {
+    var n = new URLSearchParams(location.search).get("next");
+    return n && /^\/[^\/]/.test(n) ? n : null;
+  }
+
+  if (!window.mbAuth) {
+    show("view-signin");
+    msg("signin-msg", "Auth failed to load. Check your connection and refresh.", "err");
+    return;
+  }
+
+  var auth = window.mbAuth;
+  var recovering = false;
+
+  auth.client.auth.onAuthStateChange(function (event) {
+    if (event === "PASSWORD_RECOVERY") { recovering = true; show("view-recovery"); }
+  });
+
+  function render(session) {
+    if (recovering) return;
+    if (session) {
+      var n = nextPath();
+      if (n) { location.replace(n); return; }
+      $("who").textContent = session.user.email;
+      show("view-account");
+    } else {
+      show("view-signin");
+    }
+  }
+  auth.onChange(render);
+
+  $("signin-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    msg("signin-msg", "", "");
+    $("signin-btn").disabled = true;
+    auth.client.auth
+      .signInWithPassword({ email: $("email").value.trim(), password: $("password").value })
+      .then(function (r) {
+        if (r.error) msg("signin-msg", r.error.message, "err");
+        // success: onChange fires and redirects/renders
+      })
+      .finally(function () { $("signin-btn").disabled = false; });
+  });
+
+  $("google-btn").addEventListener("click", function () {
+    var n = nextPath();
+    auth.client.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: location.origin + "/account/" + (n ? "?next=" + encodeURIComponent(n) : "") },
+    }).then(function (r) {
+      if (r.error) msg("signin-msg", r.error.message, "err");
+    });
+  });
+
+  $("forgot-link").addEventListener("click", function () {
+    var email = $("email").value.trim();
+    if (!email) { msg("signin-msg", "Enter your email above first, then click reset.", "err"); return; }
+    auth.client.auth
+      .resetPasswordForEmail(email, { redirectTo: location.origin + "/account/" })
+      .then(function (r) {
+        if (r.error) msg("signin-msg", r.error.message, "err");
+        else msg("signin-msg", "Reset link sent to " + email + ". Check your inbox.", "ok");
+      });
+  });
+
+  $("recovery-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    auth.client.auth.updateUser({ password: $("new-password").value }).then(function (r) {
+      if (r.error) msg("recovery-msg", r.error.message, "err");
+      else { recovering = false; msg("recovery-msg", "", ""); render(auth.session()); }
+    });
+  });
+
+  $("signout-btn").addEventListener("click", function () {
+    auth.signOut().then(function () { show("view-signin"); });
+  });
+})();
+</script>
+</body>
+</html>

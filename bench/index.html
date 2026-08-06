@@ -41,7 +41,8 @@
 <footer id="cb-footer">
   <a href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
   <span class="cb-spacer"></span>
-  <span class="cb-note">Demo: data stays in this browser</span>
+  <span class="cb-note" id="cb-sync-note">Demo: data stays in this browser</span>
+  <a id="cb-auth-link" href="/account/?next=/bench/">Sign in to sync</a>
   <button id="cb-export" type="button">Export backup</button>
   <button id="cb-reset" type="button">Reset demo data</button>
 </footer>
@@ -52,8 +53,12 @@
 <script src="https://unpkg.com/prop-types@15.8.1/prop-types.min.js" crossorigin></script>
 <script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.js" crossorigin></script>
 
-<!-- localStorage-backed window.storage + backup helpers (classic script) -->
-<script src="storage-adapter.js?v=3"></script>
+<!-- Supabase client + site auth (must load before the storage adapter) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
+<script src="/shared/auth.js"></script>
+
+<!-- window.storage + backup helpers: localStorage, mirrored to Supabase when signed in -->
+<script src="storage-adapter.js?v=4"></script>
 <!-- curated sample library, applied on first boot / demo reset -->
 <script src="demo-library.js?v=2"></script>
 
@@ -68,10 +73,31 @@
     var $ = function (id) { return document.getElementById(id); };
     $("cb-export").onclick = function () { window.exportBackup(); };
     $("cb-reset").onclick = function () {
-      if (!confirm("Reset the demo? This replaces everything here with the original sample library.")) return;
-      localStorage.removeItem("calbench:calbench-v1");
-      location.reload();
+      var signedIn = window.mbAuth && window.mbAuth.user();
+      var warning = signedIn
+        ? "Reset your synced data? This replaces it EVERYWHERE (all devices) with the original sample library."
+        : "Reset the demo? This replaces everything here with the original sample library.";
+      if (!confirm(warning)) return;
+      // window.storage.delete clears the cloud copy too when signed in;
+      // otherwise a reload would just pull the old data straight back down.
+      window.storage.delete("calbench-v1").then(function () { location.reload(); });
     };
+
+    // Footer reflects auth state once the session is known.
+    if (window.mbAuth) {
+      window.mbAuth.onChange(function (session) {
+        var note = $("cb-sync-note"), link = $("cb-auth-link");
+        if (session) {
+          note.textContent = "Synced · " + session.user.email;
+          link.textContent = "Account";
+          link.href = "/account/";
+        } else {
+          note.textContent = "Demo: data stays in this browser";
+          link.textContent = "Sign in to sync";
+          link.href = "/account/?next=/bench/";
+        }
+      });
+    }
   })();
 </script>
 <!-- Cloudflare Web Analytics (same token as the main site) -->
