@@ -608,8 +608,13 @@ function CalibrationBench() {
   const [editing, setEditing] = useState(null);
   const [filter, setFilter] = useState({ discipline: "", subject: "", source: "" });
   const [session, setSession] = useState(null); // {total, results: [{name,type,confidence,accuracy,gap}]}
+  // Signed-in users get their synced bench; visitors get the demo framing.
+  const [authUser, setAuthUser] = useState(() => (window.mbAuth && window.mbAuth.user()) || null);
 
   useEffect(() => { loadData().then(setData); }, []);
+  useEffect(() => {
+    if (window.mbAuth) window.mbAuth.onChange((s) => setAuthUser(s ? s.user : null));
+  }, []);
   const persist = useCallback((next) => { setData(next); saveData(next); }, []);
 
   if (!data)
@@ -730,7 +735,7 @@ function CalibrationBench() {
               CALIBRATION<span style={{ color: T.brass }}> BENCH</span>
               <span style={{ fontSize: 10, letterSpacing: "0.18em", color: T.green,
                 border: `1px solid ${T.green}`, borderRadius: 2, padding: "2px 7px",
-                marginLeft: 12, verticalAlign: "3px" }}>DEMO</span>
+                marginLeft: 12, verticalAlign: "3px" }}>{authUser ? "SYNCED" : "DEMO"}</span>
             </div>
             <div style={{ fontSize: 12, color: T.muted, marginTop: 2 }}>
               predict · recall · grade · read the gauge
@@ -804,15 +809,26 @@ function CalibrationBench() {
                 performance agree.
               </div>
             </Panel>
-            <Panel>
-              <Eyebrow>About this demo</Eyebrow>
-              <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
-                The bench is pre-loaded with sample items across three disciplines so you can run real
-                drills; use the Session Scope on the Bench tab to focus one discipline or subject. Anything
-                you log stays in this browser only. Restore the original samples with Reset demo data in
-                the footer. Built by <a href="https://mattbreckenridge.com" style={{ color: T.brass }}>Matt Breckenridge</a>.
-              </div>
-            </Panel>
+            {authUser ? (
+              <Panel>
+                <Eyebrow>About your bench</Eyebrow>
+                <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                  You're signed in as {authUser.email}, so your library and drill history sync across
+                  every device you sign in on. Careful with Reset demo data in the footer: it replaces
+                  your synced data everywhere with the original samples.
+                </div>
+              </Panel>
+            ) : (
+              <Panel>
+                <Eyebrow>About this demo</Eyebrow>
+                <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                  The bench is pre-loaded with sample items across three disciplines so you can run real
+                  drills; use the Session Scope on the Bench tab to focus one discipline or subject. Anything
+                  you log stays in this browser only. Restore the original samples with Reset demo data in
+                  the footer. Built by <a href="https://mattbreckenridge.com" style={{ color: T.brass }}>Matt Breckenridge</a>.
+                </div>
+              </Panel>
+            )}
           </div>
         )}
 
@@ -865,7 +881,7 @@ function CalibrationBench() {
 
         {view === "bench" && (
           <div style={{ display: "grid", gap: 16 }}>
-            <Panel style={{ borderLeft: `3px solid ${T.brass}` }}>
+            {!authUser && <Panel style={{ borderLeft: `3px solid ${T.brass}` }}>
               <Eyebrow>Live demo</Eyebrow>
               <div style={{ fontSize: 14, lineHeight: 1.7, color: T.text }}>
                 This is a working demo of <strong>Calibration Bench</strong>, a metacognition trainer that
@@ -877,7 +893,7 @@ function CalibrationBench() {
                   color: T.brass, cursor: "pointer", padding: 0, font: "inherit", textDecoration: "underline" }}>Theory
                 tab</button> explains the science; everything you log stays in this browser only.
               </div>
-            </Panel>
+            </Panel>}
             {(() => {
               const disciplineOpts = [...new Set(skills.map((s) => s.discipline).filter(Boolean))].sort();
               const subjectOpts = [...new Set(skills
