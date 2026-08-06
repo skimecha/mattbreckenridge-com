@@ -214,7 +214,7 @@
   <div id="view-plan" class="hidden"></div>
 
   <div class="savebox">
-    <b style="color:var(--text-primary)">Backup / transfer progress</b><br>
+    <b style="color:var(--text-primary)">Backup / transfer progress</b> <span id="sync-note"></span><br>
     Progress saves automatically in this browser. To move it to another device (or keep a backup), click <i>Copy progress code</i> and paste the code there with <i>Load</i>.
     <textarea id="code" spellcheck="false" placeholder="Progress code appears here…"></textarea>
     <button onclick="exportCode()">Copy progress code</button>
@@ -223,6 +223,10 @@
   </div>
 
   <div class="note"><a href="https://mattbreckenridge.com" style="color:var(--muted)">&larr; mattbreckenridge.com</a></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
+  <script src="/shared/auth.js"></script>
+  <script src="/shared/kv-sync.js"></script>
 
   <div class="note">Sections follow the Pilot Institute chapter sequence (Stages 1–7). HY = high-yield: heavily represented on the exam or a common miss. The course's Introduction chapters and the CX-3 / Sporty's E6B / ForeFlight chapters aren't testable — watch or skip as you see fit. Flight-proficiency-only tasks (maneuvers, landings) are excluded because the written doesn't test them beyond the underlying aerodynamics.</div>
 </div>
@@ -594,13 +598,24 @@ function msg(t){
   setTimeout(() => el.textContent = '', 4000);
 }
 
-// localStorage persistence (per-browser). Stored as the raw bit string;
-// length-checked on load so content changes invalidate stale state,
-// same contract as the progress code.
-const LS_KEY = 'ppl-tracker-v2';
+// localStorage persistence. Stored as the raw bit string; length-checked on
+// load so content changes invalidate stale state, same contract as the
+// progress code. Signed in, the key mirrors to Supabase (app "ppl").
+const LS_NS = 'ppl1:';
+const SYNC_KEY = 'tracker-v2';
+const LS_KEY = LS_NS + SYNC_KEY;
+try { // one-time migration from the pre-sync key
+  const old = localStorage.getItem('ppl-tracker-v2');
+  if (old !== null) {
+    if (localStorage.getItem(LS_KEY) === null) localStorage.setItem(LS_KEY, old);
+    localStorage.removeItem('ppl-tracker-v2');
+  }
+} catch(e){}
+const SYNC = window.mbKvSync.attach({ ns: LS_NS, app: 'ppl' });
 function saveState(){
   try {
     localStorage.setItem(LS_KEY, ITEMS.map(id => document.getElementById('cb-'+id).checked ? '1' : '0').join(''));
+    SYNC.pushKey(SYNC_KEY);
   } catch(e){}
 }
 function loadState(){
@@ -611,8 +626,16 @@ function loadState(){
   } catch(e){}
 }
 
-loadState();
-refresh();
+// First paint waits for the cloud reconcile (bounded by kv-sync's timeout)
+// so another device's checkmarks are in before the boxes render as unchecked.
+SYNC.ready.then(() => { loadState(); refresh(); });
+if (window.mbAuth) {
+  window.mbAuth.onChange((session) => {
+    document.getElementById('sync-note').innerHTML = session
+      ? '· Synced as ' + session.user.email.replace(/[<>&]/g, '')
+      : '· <a href="/account/?next=/ppl/" style="color:var(--muted)">Sign in to sync</a>';
+  });
+}
 </script>
 </body>
 </html>

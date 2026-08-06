@@ -724,11 +724,13 @@ function CalibrationBench() {
         .cb-home { font-family: ${T.mono}; font-size: 12px; letter-spacing: 0.08em; color: ${T.text};
           text-decoration: none; border: 1.5px solid ${T.etch}; border-radius: 3px; padding: 6px 12px; margin-left: 6px; }
         .cb-home:hover { border-color: ${T.brass}; color: ${T.brass}; }
-        @media (max-width: 640px) { .cb-home { display: none; } }
+        /* The header flex-wraps, so the nav links stay visible on mobile too. */
+        @media (max-width: 640px) { .cb-home { margin-left: 0; } }
       `}</style>
 
       <div style={{ maxWidth: 920, margin: "0 auto", padding: "28px 20px 60px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end",
+          flexWrap: "wrap", rowGap: 12,
           borderBottom: `1px solid ${T.etch}`, paddingBottom: 14, marginBottom: 22 }}>
           <div>
             <div style={{ fontFamily: T.mono, fontSize: 20, letterSpacing: "0.22em" }}>
@@ -741,7 +743,7 @@ function CalibrationBench() {
               predict · recall · grade · read the gauge
             </div>
           </div>
-          <nav style={{ display: "flex", gap: 18, alignItems: "center" }}>
+          <nav style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap", rowGap: 8 }}>
             <Tab id="bench">Bench</Tab>
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
