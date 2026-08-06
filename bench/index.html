@@ -44,7 +44,10 @@
   <span class="cb-note" id="cb-sync-note">Demo: data stays in this browser</span>
   <a id="cb-auth-link" href="/account/?next=/bench/">Sign in to sync</a>
   <button id="cb-export" type="button">Export backup</button>
+  <button id="cb-import-backup" type="button" hidden>Import backup</button>
+  <button id="cb-import-library" type="button" hidden>Import library</button>
   <button id="cb-reset" type="button">Reset demo data</button>
+  <input type="file" id="cb-import-file" accept=".json" style="display:none">
 </footer>
 
 <!-- React, ReactDOM, Recharts as UMD globals -->
@@ -56,16 +59,17 @@
 <!-- Supabase client + site auth (must load before the storage adapter) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
 <script src="/shared/auth.js"></script>
+<script src="/shared/kv-sync.js"></script>
 
-<!-- window.storage + backup helpers: localStorage, mirrored to Supabase when signed in -->
-<script src="storage-adapter.js?v=4"></script>
+<!-- window.storage + backup/import helpers: localStorage, mirrored to Supabase when signed in -->
+<script src="storage-adapter.js?v=5"></script>
 <!-- curated sample library, applied on first boot / demo reset -->
 <script src="demo-library.js?v=2"></script>
 
 <!-- In-browser JSX transpile (no build step) -->
 <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js" crossorigin></script>
 <!-- The component script ends by mounting itself into #root -->
-<script type="text/babel" data-presets="react" src="calibration-bench.jsx?v=4"></script>
+<script type="text/babel" data-presets="react" src="calibration-bench.jsx?v=5"></script>
 
 <!-- Footer backup controls (plain JS; helpers live on window via the adapter) -->
 <script>
@@ -83,10 +87,12 @@
       window.storage.delete("calbench-v1").then(function () { location.reload(); });
     };
 
-    // Footer reflects auth state once the session is known.
+    // Footer reflects auth state once the session is known; imports are signed-in only.
     if (window.mbAuth) {
       window.mbAuth.onChange(function (session) {
         var note = $("cb-sync-note"), link = $("cb-auth-link");
+        $("cb-import-backup").hidden = !session;
+        $("cb-import-library").hidden = !session;
         if (session) {
           note.textContent = "Synced · " + session.user.email;
           link.textContent = "Account";
@@ -98,6 +104,43 @@
         }
       });
     }
+
+    // Import flows: pick a file, apply, reload so the app re-reads storage.
+    var importMode = null;
+    var pickFile = function (mode) { importMode = mode; $("cb-import-file").click(); };
+    $("cb-import-backup").onclick = function () { pickFile("backup"); };
+    $("cb-import-library").onclick = function () { pickFile("library"); };
+    $("cb-import-file").onchange = function (ev) {
+      var f = ev.target.files[0];
+      ev.target.value = "";
+      if (!f) return;
+      f.text().then(function (text) {
+        if (importMode === "library") {
+          return window.importLibrary(text).then(function (r) {
+            var msg = "Library import: " + r.added + " added, " + r.duplicates + " duplicates skipped" +
+              (r.updated ? ", " + r.updated + " sources backfilled" : "") +
+              (r.invalid ? ", " + r.invalid + " invalid" : "") + ".";
+            if (r.cards) msg += "\nFlashcards: " + r.cards.added + " cards into deck(s) " + r.cards.decks.join(", ") +
+              (r.cards.duplicates ? " (" + r.cards.duplicates + " duplicates skipped)" : "") + ".";
+            alert(msg);
+            location.reload();
+          });
+        }
+        var dump = JSON.parse(text);
+        var hasBench = Object.keys(dump).some(function (k) { return k.indexOf("calbench:") === 0 && k.indexOf("calbench:__") !== 0; });
+        var hasCards = Object.keys(dump).some(function (k) { return k.indexOf("fc1:") === 0 && k.indexOf("fc1:__") !== 0; });
+        if (!hasBench && !hasCards) { alert("No bench or flashcard data found in that file."); return; }
+        var opts = {
+          bench: hasBench && confirm("Restore BENCH data from this backup? This overwrites your current library and drill history everywhere you're signed in."),
+          cards: hasCards && confirm("Restore FLASHCARD decks and progress from this backup? This overwrites current flashcard data everywhere you're signed in."),
+        };
+        if (!opts.bench && !opts.cards) return;
+        return window.importBackup(dump, opts).then(function (r) {
+          alert("Restored " + r.benchKeys + " bench key(s) and " + r.cardKeys + " flashcard key(s).");
+          location.reload();
+        });
+      }).catch(function (e) { alert("Import failed: " + e.message); });
+    };
   })();
 </script>
 <!-- Cloudflare Web Analytics (same token as the main site) -->

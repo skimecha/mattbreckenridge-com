@@ -746,6 +746,7 @@ function CalibrationBench() {
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
             <Tab id="theory">Theory</Tab>
+            {authUser && <a className="cb-home" href="/flashcards/">Cards</a>}
             <a className="cb-home" href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
           </nav>
         </div>

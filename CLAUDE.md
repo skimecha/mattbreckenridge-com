@@ -24,13 +24,19 @@ in `.claude/launch.json`, python http.server on :8765).
   React 18 + Recharts UMD + in-browser Babel. App state = one JSON blob under
   localStorage key `calbench:calbench-v1`, accessed via `window.storage`
   (bench/storage-adapter.js).
-- `/flashcards/` — unlisted spaced-repetition flashcards app. Decks are JSON
-  in `flashcards/decks/` (committed to the repo; Claude edits them on
-  request). Progress in localStorage, NOT yet synced.
+- `/flashcards/` — unlisted spaced-repetition flashcards app. File decks are
+  JSON in `flashcards/decks/` (committed; Claude edits them on request).
+  Also lists browser-stored "local decks" (ids `ld-*`, under
+  `fc1:localdecks`) fed by the bench's Import library. Progress + local
+  decks sync via `shared/kv-sync.js` when signed in (`app: "flashcards"`).
 - `/ppl/` — unlisted PPL training tracker (Pilot Institute course order).
   Progress in localStorage, NOT yet synced.
 - `/account/` — sign-in page (email/password + Google via Supabase).
 - `/shared/auth.js` — site-wide auth module, exposes `window.mbAuth`.
+- `/shared/kv-sync.js` — generic localStorage⇄kv_store sync engine
+  (`window.mbKvSync.attach({ns, app})`), used by flashcards and by the
+  bench's flashcard-routing importer. bench/storage-adapter.js predates it
+  and carries its own copy of the same LWW logic for `calbench:`.
 
 ## Auth + cross-device sync (added 2026-08-05)
 
@@ -51,27 +57,27 @@ Supabase project `rwdiveoezdvcjvwikgnw` (org Skimecha, free tier).
   testing mode, callback = `https://rwdiveoezdvcjvwikgnw.supabase.co/auth/v1/callback`.
 - Phase 2 (NOT done): port flashcards + ppl onto the shared adapter.
 
-## ⚠ TWO Calibration Bench instances — do not confuse them
+## Calibration Bench instances (split being retired, 2026-08-05)
 
-1. **This repo's `/bench/`** — public demo + Matt's synced copy when signed
-   in. No import UI. Demo seed in `bench/demo-library.js`. Signed-out
-   visitors see DEMO framing; signed-in sees SYNCED framing.
-2. **Private instance** — separate repo `skimecha/calibration-bench`, local
-   copy `C:\Users\mattb\OneDrive\Documents\Calibration-Bench`, deployed at
-   https://calibration-bench.matt-breckenridge.workers.dev (Cloudflare
-   Workers, gated by Cloudflare Access, Matt only). Full-featured: backup
-   import, library import (routes `flashcards` arrays from import JSON into
-   a merged flashcards tool at `/cards/`), Discipline/Subject/Source tier.
-   Managed by a DEDICATED Claude Code session in that folder — read its
-   `HANDOFF.md` before reasoning about it, and never push to it from here.
-   Features shipping to both instances require coordinating with Matt.
+Matt decided to converge on THIS repo's build as his daily driver. The
+public `/bench/` now has the full feature set: Supabase sync, plus the
+importer ported from the private instance (`importBackup`, `importLibrary`
+with `flashcards[]` routing into the flashcards app's local decks). Import
+buttons appear in the bench footer only when signed in; visitors still get
+the export-only DEMO framing (seed in `bench/demo-library.js`).
 
-The instances do NOT share data: different origins, and the private one has
-no Supabase sync (its sync is "deferred / someday" per its HANDOFF.md).
-Matt's import JSONs live in `...\Calibration-Bench\imports\` and follow the
-schema documented there (subjects[].items[].prompt/steps + flashcards[]).
-His source libraries are derived from copyrighted training material
-(Gleim, PHAK): never publish drill data or import files in this public repo.
+The old private instance — repo `skimecha/calibration-bench`, local copy
+`C:\Users\mattb\OneDrive\Documents\Calibration-Bench`, deployed at
+https://calibration-bench.matt-breckenridge.workers.dev behind Cloudflare
+Access — is slated for retirement once Matt migrates his data (export
+backup there → Import backup at mattbreckenridge.com/bench/). It has its
+own dedicated Claude Code session and HANDOFF.md; never push to it from
+here. Its `imports/` folder holds Matt's drill JSONs
+(subjects[].items[].prompt/steps + flashcards[]), which the public
+importer now accepts.
+
+Matt's libraries derive from copyrighted training material (Gleim, PHAK):
+never publish drill data or import files in this public repo.
 
 ## Working with Matt
 

@@ -157,10 +157,16 @@
 </head>
 <body>
 <div class="wrap" id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
+<script src="/shared/auth.js"></script>
+<script src="/shared/kv-sync.js"></script>
 <script>
 'use strict';
 /* ---------- storage ---------- */
 const LS_PREFIX = 'fc1:';
+/* Signed in, every fc1: key mirrors to Supabase (app "flashcards"); signed out
+   SYNC is inert and everything stays in this browser. */
+const SYNC = window.mbKvSync.attach({ ns: LS_PREFIX, app: 'flashcards' });
 function loadState(deckId) {
   try {
     const raw = localStorage.getItem(LS_PREFIX + deckId);
@@ -170,6 +176,21 @@ function loadState(deckId) {
 }
 function saveState(deckId, st) {
   localStorage.setItem(LS_PREFIX + deckId, JSON.stringify(st));
+  SYNC.pushKey(deckId);
+}
+/* Browser-stored decks, written by the bench's Import library (ids prefixed "ld-").
+   Ported from the private instance; they sync under the same fc1: namespace. */
+const LOCAL_DECKS_KEY = LS_PREFIX + 'localdecks';
+function localDecks() {
+  try {
+    const raw = localStorage.getItem(LOCAL_DECKS_KEY);
+    if (raw) return JSON.parse(raw) || {};
+  } catch (e) {}
+  return {};
+}
+function saveLocalDecks(decks) {
+  localStorage.setItem(LOCAL_DECKS_KEY, JSON.stringify(decks));
+  SYNC.pushKey('localdecks');
 }
 function todayKey() {
   const d = new Date();
@@ -245,6 +266,11 @@ async function getManifest() {
   return manifest;
 }
 async function getDeck(id) {
+  if (id.startsWith('ld-')) {
+    const d = localDecks()[id]; // read fresh: imports on the bench page can add cards any time
+    if (!d) throw new Error('unknown deck ' + id);
+    return d;
+  }
   if (!deckCache[id]) {
     const m = await getManifest();
     const entry = m.decks.find(d => d.id === id);
@@ -352,8 +378,13 @@ function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 
 async function renderHome() {
   const m = await getManifest();
-  let html = `<header><h1>Flashcards</h1><div class="sub">Spaced repetition. Progress is stored in this browser.</div></header>`;
-  for (const entry of m.decks) {
+  const user = window.mbAuth && window.mbAuth.user();
+  const syncNote = user
+    ? `Synced · ${esc(user.email)}`
+    : `Progress is stored in this browser · <a href="/account/?next=/flashcards/">Sign in to sync</a>`;
+  const entries = m.decks.concat(Object.values(localDecks()).map(d => ({ id: d.id, name: d.name, local: true })));
+  let html = `<header><h1>Flashcards</h1><div class="sub"><a href="/bench/">&larr; Calibration Bench</a> · Spaced repetition. ${syncNote}</div></header>`;
+  for (const entry of entries) {
     const deck = await getDeck(entry.id);
     const st = loadState(entry.id);
     const c = deckCounts(deck, st);
@@ -385,6 +416,7 @@ async function renderHome() {
           <option value="both"${st.cfg.directions === 'both' ? ' selected' : ''}>Both directions</option>
         </select></label>
         <button class="btn small" data-reset="${entry.id}">Reset progress</button>
+        ${entry.local ? `<button class="btn small danger" data-deldeck="${entry.id}">Delete deck</button>` : ''}
       </div>
     </div>`;
   }
@@ -431,16 +463,29 @@ async function renderHome() {
     render(); // counts change: the reverse side of every card is new
   });
   app.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => {
-    if (confirm('Reset all progress for this deck? This cannot be undone.')) {
+    const warn = window.mbAuth && window.mbAuth.user()
+      ? 'Reset all progress for this deck? This resets it on every synced device and cannot be undone.'
+      : 'Reset all progress for this deck? This cannot be undone.';
+    if (confirm(warn)) {
       localStorage.removeItem(LS_PREFIX + b.dataset.reset);
+      SYNC.deleteKey(b.dataset.reset);
       render();
     }
+  });
+  app.querySelectorAll('[data-deldeck]').forEach(b => b.onclick = () => {
+    if (!confirm('Delete this imported deck and its progress? If you are signed in this removes it everywhere. It cannot be undone.')) return;
+    const ld = localDecks();
+    delete ld[b.dataset.deldeck];
+    saveLocalDecks(ld);
+    localStorage.removeItem(LS_PREFIX + b.dataset.deldeck);
+    SYNC.deleteKey(b.dataset.deldeck);
+    render();
   });
   document.getElementById('export').onclick = () => {
     const out = {};
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k.startsWith(LS_PREFIX)) out[k] = JSON.parse(localStorage.getItem(k));
+      if (k.startsWith(LS_PREFIX) && !k.startsWith(LS_PREFIX + '__')) out[k] = JSON.parse(localStorage.getItem(k));
     }
     const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
     const a = document.createElement('a');
@@ -454,10 +499,13 @@ async function renderHome() {
     if (!f) return;
     f.text().then(t => {
       const obj = JSON.parse(t);
-      const keys = Object.keys(obj).filter(k => k.startsWith(LS_PREFIX));
+      const keys = Object.keys(obj).filter(k => k.startsWith(LS_PREFIX) && !k.startsWith(LS_PREFIX + '__'));
       if (!keys.length) { alert('No flashcard progress found in that file.'); return; }
       if (!confirm('Import progress for ' + keys.length + ' deck(s)? This overwrites current progress for those decks.')) return;
-      for (const k of keys) localStorage.setItem(k, JSON.stringify(obj[k]));
+      for (const k of keys) {
+        localStorage.setItem(k, JSON.stringify(obj[k]));
+        SYNC.pushKey(k.slice(LS_PREFIX.length));
+      }
       render();
     }).catch(() => alert('Could not read that file as JSON.'));
   };
@@ -574,7 +622,10 @@ document.addEventListener('keydown', (e) => {
     answer(parseInt(e.key, 10));
   }
 });
-render();
+// First paint waits for the cloud reconcile (bounded by kv-sync's timeout) so a
+// second device never studies from stale counts; auth changes refresh the header.
+SYNC.ready.then(render);
+if (window.mbAuth) window.mbAuth.onChange(() => { if ((location.hash || '#/') === '#/') render(); });
 </script>
 </body>
 </html>

@@ -205,9 +205,163 @@
     URL.revokeObjectURL(a.href);
   }
 
-  /* Demo build: the import functions (importBackup, importLibrary) live only
-     in the private personal instance. The public demo is seeded from
-     demo-library.js and exposes export only. */
+  /* ── importers (ported from the private instance, sync-aware) ──
+     Signed-in only in the UI; every write goes through storage.set /
+     the fc1 sync handle so imports replicate to all devices.
+     The fc1: namespace belongs to the flashcards app — rote pairs in
+     import documents are routed into its browser-stored decks. ── */
+  var FC = "fc1:";
+  var fcSync = window.mbKvSync
+    ? window.mbKvSync.attach({ ns: FC, app: "flashcards" })
+    : null;
+
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "deck";
+  }
+
+  function importFlashcards(fcards, defaultDeckName) {
+    var DECKS_KEY = FC + "localdecks";
+    var decks = {};
+    try { var raw = localStorage.getItem(DECKS_KEY); if (raw) decks = JSON.parse(raw) || {}; } catch (e) {}
+    var norm = function (v) { return typeof v === "string" ? v.trim() : ""; };
+    var added = 0, duplicates = 0, invalid = 0;
+    var touched = [];
+    fcards.forEach(function (c) {
+      var front = norm(c && c.front), back = norm(c && c.back);
+      if (!front || !back) { invalid++; return; }
+      var deckName = norm(c.deck) || defaultDeckName;
+      var id = "ld-" + slugify(deckName);
+      if (!decks[id]) {
+        decks[id] = {
+          id: id, name: deckName,
+          description: "Imported deck. Cards arrive here through the bench's Import library.",
+          front_label: "Prompt", back_label: "Answer", cards: [],
+        };
+      }
+      var deck = decks[id];
+      var pairKey = (front + "|" + back).toLowerCase();
+      if (deck.cards.some(function (k) { return (k.front + "|" + k.back).toLowerCase() === pairKey; })) { duplicates++; return; }
+      var cid = slugify(front), n = 2;
+      while (deck.cards.some(function (k) { return k.id === cid; })) cid = slugify(front) + "-" + n++;
+      deck.cards.push({ id: cid, front: front, back: back });
+      if (touched.indexOf(deckName) < 0) touched.push(deckName);
+      added++;
+    });
+    localStorage.setItem(DECKS_KEY, JSON.stringify(decks));
+    if (fcSync) fcSync.pushKey("localdecks");
+    return { added: added, duplicates: duplicates, invalid: invalid, decks: touched };
+  }
+
+  async function importLibrary(json) {
+    var doc = typeof json === "string" ? JSON.parse(json) : json;
+
+    // Flatten to a single item list, tagging each with its enclosing subject (shape C).
+    var items;
+    if (Array.isArray(doc)) {
+      items = doc;
+    } else if (Array.isArray(doc.items)) {
+      items = doc.items;
+    } else if (Array.isArray(doc.subjects)) {
+      items = [];
+      doc.subjects.forEach(function (g) {
+        var groupSubject = (g && typeof g.name === "string") ? g.name : "";
+        var groupSource = (g && typeof g.source === "string") ? g.source : "";
+        (Array.isArray(g.items) ? g.items : []).forEach(function (it) {
+          items.push(Object.assign({ _groupSubject: groupSubject, _groupSource: groupSource }, it));
+        });
+      });
+    }
+    if (!Array.isArray(items)) items = [];
+    var fcards = [];
+    if (Array.isArray(doc.flashcards)) {
+      fcards = doc.flashcards;
+    } else if (doc.flashcards && Array.isArray(doc.flashcards.cards)) {
+      var dn = typeof doc.flashcards.deck === "string" ? doc.flashcards.deck : "";
+      fcards = doc.flashcards.cards.map(function (c) { return Object.assign({ deck: dn }, c); });
+    }
+    if (items.length === 0 && fcards.length === 0) {
+      throw new Error("Nothing to import — expected items[], subjects[].items, or flashcards[]");
+    }
+    var defaults = {
+      discipline: (doc.discipline || "").trim(),
+      subject: (doc.subject || "").trim(),
+      source: (typeof doc.source === "string" ? doc.source : "").trim(),
+    };
+
+    var data = { skills: [] };
+    try {
+      var raw = localStorage.getItem(NS + "calbench-v1");
+      if (raw) data = JSON.parse(raw);
+    } catch (e) {}
+    data.skills = data.skills || [];
+
+    var VALID = ["fact", "concept", "procedure"];
+    var norm = function (v) { return typeof v === "string" ? v.trim() : ""; };
+    var keyOf = function (d, s, n) { return [d, s, n].join("|").toLowerCase(); };
+    var byKey = new Map(data.skills.map(function (s) {
+      return [keyOf(norm(s.discipline), norm(s.subject || s.tag), norm(s.name)), s];
+    }));
+    var midnight = new Date(); midnight.setHours(0, 0, 0, 0);
+    var uid = function () { return Math.random().toString(36).slice(2, 9) + Date.now().toString(36); };
+
+    var added = 0, duplicates = 0, updated = 0, invalid = 0;
+    items.forEach(function (it) {
+      var type = VALID.indexOf(it.type) >= 0 ? it.type : null;
+      var name = norm(it.name) || norm(it.prompt);
+      var steps = Array.isArray(it.steps) ? it.steps.map(norm).filter(Boolean) : [];
+      var stepsOk = type === "fact" ? steps.length === 1 : type === "procedure" ? steps.length >= 2 : steps.length >= 1;
+      if (!type || !name || !stepsOk) { invalid++; return; }
+      var discipline = norm(it.discipline) || defaults.discipline;
+      var subject = norm(it.subject) || norm(it._groupSubject) || defaults.subject;
+      var source = norm(it.source) || norm(it._groupSource) || defaults.source;
+      var k = keyOf(discipline, subject, name);
+      var existing = byKey.get(k);
+      if (existing) {
+        duplicates++;
+        if (source && !norm(existing.source)) { existing.source = source; updated++; }
+        return;
+      }
+      var skill = {
+        id: uid(), type: type, name: name, cue: norm(it.cue),
+        discipline: discipline, subject: subject, tag: subject, source: source,
+        steps: steps, created: Date.now(), intervalDays: 1, due: midnight.getTime(), attempts: [],
+      };
+      byKey.set(k, skill);
+      data.skills.push(skill);
+      added++;
+    });
+
+    await storage.set("calbench-v1", JSON.stringify(data));
+    var cards = fcards.length
+      ? importFlashcards(fcards, (defaults.discipline || "General") + " rote pairs")
+      : null;
+    return { added: added, duplicates: duplicates, updated: updated, invalid: invalid, total: items.length, cards: cards };
+  }
+
+  /* Full-state restore from a private-instance or public backup file.
+     opts.bench / opts.cards select which sections to apply. */
+  async function importBackup(json, opts) {
+    var dump = typeof json === "string" ? JSON.parse(json) : json;
+    opts = opts || { bench: true, cards: true };
+    var benchKeys = 0, cardKeys = 0;
+    for (var k in dump) {
+      if (!Object.prototype.hasOwnProperty.call(dump, k)) continue;
+      var v = dump[k];
+      var value = typeof v === "string" ? v : JSON.stringify(v);
+      if (opts.bench && k.indexOf(NS) === 0 && !isInternal(k.slice(NS.length))) {
+        await storage.set(k.slice(NS.length), value);
+        benchKeys++;
+      } else if (opts.cards && k.indexOf(FC) === 0 && k.slice(FC.length).indexOf("__") !== 0) {
+        localStorage.setItem(k, value);
+        if (fcSync) fcSync.pushKey(k.slice(FC.length));
+        cardKeys++;
+      }
+    }
+    return { benchKeys: benchKeys, cardKeys: cardKeys };
+  }
+
   window.storage = storage;
   window.exportBackup = exportBackup;
+  window.importBackup = importBackup;
+  window.importLibrary = importLibrary;
 })();
