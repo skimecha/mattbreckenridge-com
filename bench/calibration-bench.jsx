@@ -67,7 +67,8 @@ async function loadData() {
       const d = JSON.parse(r.value);
       // migrate v1 items (no type field) → procedure; legacy tag becomes subject
       d.skills = (d.skills || []).map((s) => {
-        const m = { type: "procedure", tag: "", discipline: "", subject: "", source: "", ...s };
+        const m = { type: "procedure", tag: "", discipline: "", subject: "", source: "",
+          section: "", pages: "", misconception: "", encodes: [], ...s };
         if (!m.subject && m.tag) m.subject = m.tag;
         return m;
       });
@@ -525,6 +526,229 @@ function Drill({ skill, onComplete, onExit, progress }) {
   );
 }
 
+/* ════════════════ ENCODE (first-pass read → recall → check) ════════════════
+   No prediction, no scheduling: this is the encoding pass run while reading a
+   chapter, with immediate correction. Results land in skill.encodes, separate
+   from drill attempts, so the scheduler and calibration stats are untouched. */
+
+function pagesRange(items) {
+  const nums = [];
+  items.forEach((s) => {
+    const re = /(\d+)-(\d+)/g; let m;
+    while ((m = re.exec(s.pages || ""))) nums.push({ label: m[0], v: (+m[1]) * 10000 + (+m[2]) });
+  });
+  if (!nums.length) { const w = items.find((s) => (s.pages || "").trim()); return w ? w.pages : ""; }
+  nums.sort((a, b) => a.v - b.v);
+  const lo = nums[0].label, hi = nums[nums.length - 1].label;
+  return lo === hi ? lo : `${lo} to ${hi}`;
+}
+
+function EncodeRunner({ items, source, section, onRecord, onExit }) {
+  const [idx, setIdx] = useState(0);
+  const [phase, setPhase] = useState("read"); // read → recall → grade → check … → summary
+  const [recall, setRecall] = useState("");
+  const [checked, setChecked] = useState([]);
+  const [factScore, setFactScore] = useState(null);
+  const [results, setResults] = useState([]);
+  const [startTs, setStartTs] = useState(Date.now());
+
+  const skill = items[idx];
+  const range = pagesRange(items);
+  const type = skill ? (skill.type || "procedure") : "concept";
+  const accuracy = type === "fact"
+    ? (factScore == null ? 0 : factScore)
+    : (skill ? checked.filter(Boolean).length / skill.steps.length : 0);
+
+  const boxStyle = {
+    width: "100%", boxSizing: "border-box", background: T.bg, color: T.text,
+    border: `1px solid ${T.etch}`, borderRadius: 3, padding: 12,
+    fontFamily: T.sans, fontSize: 14, resize: "vertical",
+  };
+
+  const logAndCheck = (score) => {
+    const acc = type === "fact" ? score : accuracy;
+    const missed = type === "fact"
+      ? (acc >= 1 ? [] : [0])
+      : skill.steps.map((_, i) => i).filter((i) => !checked[i]);
+    const enc = { ts: Date.now(), accuracy: acc, missed, secs: Math.round((Date.now() - startTs) / 1000) };
+    onRecord(skill.id, enc);
+    setResults((r) => [...r, { name: skill.name, type, accuracy: acc }]);
+    if (type === "fact") setFactScore(score);
+    setPhase("check");
+  };
+
+  const advance = () => {
+    if (idx + 1 >= items.length) { setPhase("summary"); return; }
+    setIdx(idx + 1); setPhase("recall");
+    setRecall(""); setChecked([]); setFactScore(null); setStartTs(Date.now());
+  };
+
+  return (
+    <div style={{ display: "grid", gap: 16 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+        <div>
+          <Eyebrow>Encode · {section}{phase !== "read" && phase !== "summary" ? ` · ${idx + 1} of ${items.length}` : ""}</Eyebrow>
+          {phase !== "read" && phase !== "summary" && skill && (
+            <div style={{ fontSize: 22, fontWeight: 600 }}><TypeBadge type={type} />{skill.name}</div>
+          )}
+        </div>
+        <Btn small onClick={onExit}>Exit</Btn>
+      </div>
+
+      {phase === "read" && (
+        <Panel style={{ textAlign: "center", padding: 36 }}>
+          <div style={{ fontFamily: T.mono, fontSize: 12, letterSpacing: "0.15em", color: T.muted }}>{source}</div>
+          <div style={{ fontSize: 24, fontWeight: 600, margin: "10px 0 4px" }}>{section}</div>
+          {range && <div style={{ fontFamily: T.mono, fontSize: 16, color: T.brass, marginBottom: 14 }}>pages {range}</div>}
+          <div style={{ fontSize: 14, color: T.muted, maxWidth: 460, margin: "0 auto 6px", lineHeight: 1.7 }}>
+            Read this section in your own PDF viewer, then close it. You'll explain
+            {items.length === 1 ? " 1 idea" : ` ${items.length} ideas`} from memory and check yourself
+            immediately — while the correction is one page-flip away.
+          </div>
+          <div style={{ marginTop: 16 }}>
+            <Btn primary onClick={() => { setPhase("recall"); setStartTs(Date.now()); }}>I've read it → recall</Btn>
+          </div>
+        </Panel>
+      )}
+
+      {phase === "recall" && skill && (
+        <Panel>
+          {skill.cue && <div style={{ color: T.muted, fontSize: 13, marginBottom: 8 }}>{skill.cue}</div>}
+          <div style={{ fontSize: 15, marginBottom: 10 }}>
+            {type === "fact" ? "Answer from memory — the book is closed."
+              : type === "procedure" ? "Type every step from memory, in order."
+              : "Explain this from memory. Cover the why, not just the what."}
+          </div>
+          <textarea value={recall} onChange={(e) => setRecall(e.target.value)} autoFocus
+            style={{ ...boxStyle, minHeight: type === "fact" ? 100 : 200 }}
+            placeholder={type === "procedure" ? "1. …" : "…"} />
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12, alignItems: "center" }}>
+            <div style={{ fontSize: 12, color: T.muted }}>
+              First contact — blanks and wrong turns here are exactly what this pass is for.
+            </div>
+            <Btn primary onClick={() => { setChecked(new Array(skill.steps.length).fill(false)); setPhase("grade"); }}>
+              Reveal reference
+            </Btn>
+          </div>
+        </Panel>
+      )}
+
+      {phase === "grade" && skill && type === "fact" && (
+        <Panel>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+            <div>
+              <Eyebrow>Your answer</Eyebrow>
+              <div style={{ whiteSpace: "pre-wrap", fontSize: 14 }}>{recall || <span style={{ color: T.muted }}>(nothing)</span>}</div>
+            </div>
+            <div>
+              <Eyebrow>Reference</Eyebrow>
+              <div style={{ whiteSpace: "pre-wrap", fontSize: 14 }}>{skill.steps[0]}</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 10 }}>
+            <Btn onClick={() => logAndCheck(1)}>✓ Correct</Btn>
+            <Btn onClick={() => logAndCheck(0.5)}>~ Partial</Btn>
+            <Btn danger onClick={() => logAndCheck(0)}>✗ Missed</Btn>
+          </div>
+        </Panel>
+      )}
+
+      {phase === "grade" && skill && type !== "fact" && (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <Panel>
+            <Eyebrow>Your recall</Eyebrow>
+            <div style={{ whiteSpace: "pre-wrap", fontSize: 14 }}>{recall || <span style={{ color: T.muted }}>(nothing)</span>}</div>
+          </Panel>
+          <Panel>
+            <Eyebrow>Key ideas — check each one your explanation covered</Eyebrow>
+            <div style={{ display: "grid", gap: 8 }}>
+              {skill.steps.map((s, i) => (
+                <label key={i} style={{
+                  display: "flex", gap: 10, alignItems: "flex-start", cursor: "pointer",
+                  padding: "8px 10px", borderRadius: 3,
+                  background: checked[i] ? "rgba(78,155,110,0.12)" : T.bg,
+                  border: `1px solid ${checked[i] ? T.green : T.etch}`,
+                }}>
+                  <input type="checkbox" checked={!!checked[i]}
+                    onChange={() => setChecked((c) => c.map((v, j) => (j === i ? !v : v)))}
+                    style={{ marginTop: 3, accentColor: T.green }} />
+                  <span style={{ fontSize: 14 }}>
+                    {type === "procedure" && <span style={{ fontFamily: T.mono, color: T.muted, marginRight: 8 }}>{i + 1}</span>}
+                    {s}
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontFamily: T.mono, fontSize: 13, color: T.muted }}>
+                {checked.filter(Boolean).length}/{skill.steps.length} · {Math.round(accuracy * 100)}%
+              </span>
+              <Btn primary onClick={() => logAndCheck()}>Log first contact</Btn>
+            </div>
+          </Panel>
+        </div>
+      )}
+
+      {phase === "check" && skill && (
+        <Panel>
+          <div style={{ fontFamily: T.mono, fontSize: 16, letterSpacing: "0.1em", textAlign: "center",
+            color: accuracy >= 0.85 ? T.green : accuracy >= 0.5 ? T.brass : T.needle, marginBottom: 12 }}>
+            FIRST CONTACT · {Math.round(accuracy * 100)}%
+          </div>
+          {skill.misconception && (
+            <div style={{ background: "rgba(214,69,65,0.08)", border: `1px solid ${T.needle}`,
+              borderRadius: 3, padding: "12px 14px", marginBottom: 12 }}>
+              <div style={{ fontFamily: T.mono, fontSize: 11, letterSpacing: "0.2em", color: T.needle, marginBottom: 6 }}>
+                WATCH THE TRAP
+              </div>
+              <div style={{ fontSize: 14, lineHeight: 1.6 }}>{skill.misconception}</div>
+            </div>
+          )}
+          {accuracy < 1 && (
+            <div style={{ fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 12 }}>
+              Re-read {skill.pages ? <span style={{ fontFamily: T.mono, color: T.brass }}>pages {skill.pages}</span> : "the section"} for
+              what you missed — right now, while the source is at hand. That immediate correction is the point of this pass.
+              {type !== "fact" && checked.some((v) => !v) && (
+                <ul style={{ margin: "8px 0 0", paddingLeft: 20, color: T.muted }}>
+                  {skill.steps.filter((_, i) => !checked[i]).map((s, i) => <li key={i} style={{ marginBottom: 4 }}>{s}</li>)}
+                </ul>
+              )}
+            </div>
+          )}
+          <div style={{ textAlign: "center", marginTop: 6 }}>
+            <Btn primary onClick={advance}>{idx + 1 >= items.length ? "Section summary" : "Next item"}</Btn>
+          </div>
+        </Panel>
+      )}
+
+      {phase === "summary" && (
+        <Panel>
+          <Eyebrow>Section encoded · {section}</Eyebrow>
+          <div style={{ display: "grid", gap: 8, margin: "6px 0 14px" }}>
+            {results.map((r, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
+                background: T.bg, border: `1px solid ${T.etch}`, borderRadius: 3, padding: "8px 12px" }}>
+                <div style={{ fontSize: 14 }}><TypeBadge type={r.type} />{r.name}</div>
+                <div style={{ fontFamily: T.mono, fontSize: 12, flexShrink: 0,
+                  color: r.accuracy >= 0.85 ? T.green : r.accuracy >= 0.5 ? T.brass : T.needle }}>
+                  {Math.round(r.accuracy * 100)}%{r.accuracy < 0.5 ? " · expect this to be hard at drill time" : ""}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: 13, color: T.muted, lineHeight: 1.7 }}>
+            This was encoding, not retention. These items enter the normal drill queue — drilling them
+            later today gives you a true second retrieval, and that one counts on the gauge.
+          </div>
+          <div style={{ textAlign: "center", marginTop: 14 }}>
+            <Btn primary onClick={onExit}>Back to sections</Btn>
+          </div>
+        </Panel>
+      )}
+    </div>
+  );
+}
+
 /* ════════════════ CHARTS ════════════════ */
 function CalibrationCurve({ attempts }) {
   const data = useMemo(() => {
@@ -608,6 +832,7 @@ function CalibrationBench() {
   const [editing, setEditing] = useState(null);
   const [filter, setFilter] = useState({ discipline: "", subject: "", source: "" });
   const [session, setSession] = useState(null); // {total, results: [{name,type,confidence,accuracy,gap}]}
+  const [encodeRun, setEncodeRun] = useState(null); // {source, section, ids}
   // Signed-in users get their synced bench; visitors get the demo framing.
   const [authUser, setAuthUser] = useState(() => (window.mbAuth && window.mbAuth.user()) || null);
 
@@ -674,6 +899,10 @@ function CalibrationBench() {
     } else {
       setActiveSkill(null); setView("bench");
     }
+  };
+  const recordEncode = (skillId, enc) => {
+    persist({ ...data, skills: data.skills.map((k) => k.id === skillId
+      ? { ...k, encodes: [...(k.encodes || []), enc] } : k) });
   };
   const startSession = () => {
     if (!due.length) return;
@@ -745,6 +974,7 @@ function CalibrationBench() {
           </div>
           <nav style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap", rowGap: 8 }}>
             <Tab id="bench">Bench</Tab>
+            <Tab id="encode">Encode</Tab>
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
             <Tab id="theory">Theory</Tab>
@@ -834,6 +1064,81 @@ function CalibrationBench() {
             )}
           </div>
         )}
+
+        {view === "encode" && (() => {
+          if (encodeRun) {
+            const run = encodeRun.ids.map((id) => skills.find((s) => s.id === id)).filter(Boolean);
+            return <EncodeRunner items={run} source={encodeRun.source} section={encodeRun.section}
+              onRecord={recordEncode} onExit={() => setEncodeRun(null)} />;
+          }
+          // Group section-tagged items by source → section, preserving library (import) order.
+          const bySource = [];
+          const srcIdx = {};
+          skills.forEach((s) => {
+            if (!(s.section || "").trim()) return;
+            const src = (s.source || "").trim() || "No source";
+            if (!(src in srcIdx)) { srcIdx[src] = bySource.length; bySource.push({ source: src, sections: [], secIdx: {} }); }
+            const g = bySource[srcIdx[src]];
+            const sec = s.section.trim();
+            if (!(sec in g.secIdx)) { g.secIdx[sec] = g.sections.length; g.sections.push({ section: sec, items: [] }); }
+            g.sections[g.secIdx[sec]].items.push(s);
+          });
+          if (!bySource.length)
+            return (
+              <Panel>
+                <Eyebrow>Encode — the first pass</Eyebrow>
+                <div style={{ fontSize: 14, lineHeight: 1.75, color: T.muted }}>
+                  Encode mode is the read → recall → check loop you run <em>while reading a chapter</em>, before
+                  items ever hit the drill queue: read a section in your PDF viewer, explain each idea from
+                  memory, and check yourself immediately — so misconceptions get corrected while the source is
+                  one page-flip away, instead of a week later at drill time.
+                  <br /><br />
+                  It activates when your library contains items with section anchors, which come from importing
+                  a chapter-authored library file (Import library in the footer, signed in). Items added by hand
+                  or from older imports don't carry sections yet.
+                </div>
+              </Panel>
+            );
+          return (
+            <div style={{ display: "grid", gap: 18 }}>
+              <Panel style={{ padding: "12px 16px" }}>
+                <div style={{ fontSize: 13, color: T.muted, lineHeight: 1.6 }}>
+                  Pick a section as you read the chapter. Encode results don't touch the gauge or the
+                  schedule — this is the first pass; the drill later today is the one that counts.
+                </div>
+              </Panel>
+              {bySource.map((g) => (
+                <div key={g.source}>
+                  <div style={{ fontFamily: T.mono, fontSize: 12, letterSpacing: "0.18em", color: T.muted,
+                    textTransform: "uppercase", margin: "0 0 8px 2px" }}>{g.source}</div>
+                  <div style={{ display: "grid", gap: 8 }}>
+                    {g.sections.map((sec) => {
+                      const done = sec.items.filter((s) => (s.encodes || []).length > 0).length;
+                      const range = pagesRange(sec.items);
+                      return (
+                        <div key={sec.section} style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
+                          gap: 12, background: T.bg, border: `1px solid ${T.etch}`, borderRadius: 3, padding: "10px 14px" }}>
+                          <div>
+                            <div style={{ fontSize: 15 }}>{sec.section}</div>
+                            <div style={{ fontSize: 12, color: T.muted, fontFamily: T.mono, marginTop: 2 }}>
+                              {range && `pages ${range} · `}{sec.items.length} item{sec.items.length === 1 ? "" : "s"}
+                              {done > 0 && <span style={{ color: done === sec.items.length ? T.green : T.brass }}>
+                                {" "}· encoded {done}/{sec.items.length}</span>}
+                            </div>
+                          </div>
+                          <Btn primary={done < sec.items.length} small
+                            onClick={() => setEncodeRun({ source: g.source, section: sec.section, ids: sec.items.map((s) => s.id) })}>
+                            {done === sec.items.length ? "Re-encode" : "Encode"}
+                          </Btn>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
 
         {view === "add" && <SkillForm skills={skills} onSave={addSkill} onCancel={() => setView("bench")} />}
         {view === "edit" && editing && <SkillForm skills={skills} initial={editing} onSave={updateSkill} onCancel={() => { setEditing(null); setView("library"); }} />}

@@ -79,6 +79,45 @@ importer now accepts.
 Matt's libraries derive from copyrighted training material (Gleim, PHAK):
 never publish drill data or import files in this public repo.
 
+Drill authoring pipeline (decided 2026-08-08): chapter PDFs become drill
+JSONs via Claude Code sessions in the archive folder above (its
+`.claude/skills/author-chapter/SKILL.md` codifies the importLibrary schema
+and quality rules), not via any in-app PDF feature. Authored files land in
+that folder's `imports/`; Matt imports them in the browser while signed in.
+Authored items may carry `section`, `pages`, and `misconception` fields;
+the importer ignores them today (reserved for Encode mode, see backlog).
+
+## Encode mode (bench, built 2026-08-08, uncommitted pending Matt's review)
+
+Third tab next to Bench/Library: the first-pass read-recall-check loop run
+while reading a chapter. Sections come from `section`/`pages`/`misconception`
+fields on drill items (authored via the archive folder's author-chapter
+skill). Flow: pick a section, read those pages in your own PDF viewer (no
+in-app PDF rendering), then per item: free recall, reveal the key-ideas
+checklist, self-check, misconception callout, re-read nudge on miss.
+Results append to `skill.encodes[]` (ts/accuracy/missed/secs) and do NOT
+touch attempts, the gauge, or the scheduler. storage-adapter v6 persists
+the three fields on import and backfills them onto existing dedup-matched
+items. Deferred, needs sign-off: encode results influencing drill order.
+
+## Backlog (deferred ideas, not approved)
+
+- **Calibration-aware interval growth** (bench scheduler,
+  `nextInterval` in bench/calibration-bench.jsx). Carried over from the
+  decommissioned private instance (skimecha/calibration-bench, archived
+  2026-08-06); proposed there, never approved. Today the scheduler grows
+  an item's review interval from recall accuracy, with an overconfidence
+  penalty. The idea: also reward calibration itself. When a streak of
+  attempts is both accurate AND well-calibrated (predicted recall matched
+  actual), grow the interval faster than accuracy alone would. Rationale:
+  reliably predicting what you know is evidence you need to see the item
+  less often. This is a scheduler change, so before implementing, present
+  trade-offs and a recommendation and get Matt's sign-off first (standing
+  feedback below). Open questions for that discussion: what
+  predicted-vs-actual gap counts as well-calibrated, required streak
+  length, growth multiplier, and how it interacts with the existing
+  overconfidence penalty.
+
 ## Working with Matt
 
 - Consult BEFORE architectural/infra forks: present trade-offs + a

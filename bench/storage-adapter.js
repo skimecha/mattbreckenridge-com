@@ -318,12 +318,19 @@
       var existing = byKey.get(k);
       if (existing) {
         duplicates++;
-        if (source && !norm(existing.source)) { existing.source = source; updated++; }
+        var filled = false;
+        if (source && !norm(existing.source)) { existing.source = source; filled = true; }
+        // Encode-mode anchors: backfill onto items imported before these fields existed.
+        if (norm(it.section) && !norm(existing.section)) { existing.section = norm(it.section); filled = true; }
+        if (norm(it.pages) && !norm(existing.pages)) { existing.pages = norm(it.pages); filled = true; }
+        if (norm(it.misconception) && !norm(existing.misconception)) { existing.misconception = norm(it.misconception); filled = true; }
+        if (filled) updated++;
         return;
       }
       var skill = {
         id: uid(), type: type, name: name, cue: norm(it.cue),
         discipline: discipline, subject: subject, tag: subject, source: source,
+        section: norm(it.section), pages: norm(it.pages), misconception: norm(it.misconception),
         steps: steps, created: Date.now(), intervalDays: 1, due: midnight.getTime(), attempts: [],
       };
       byKey.set(k, skill);
