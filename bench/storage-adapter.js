@@ -320,10 +320,12 @@
         duplicates++;
         var filled = false;
         if (source && !norm(existing.source)) { existing.source = source; filled = true; }
-        // Encode-mode anchors: backfill onto items imported before these fields existed.
-        if (norm(it.section) && !norm(existing.section)) { existing.section = norm(it.section); filled = true; }
-        if (norm(it.pages) && !norm(existing.pages)) { existing.pages = norm(it.pages); filled = true; }
-        if (norm(it.misconception) && !norm(existing.misconception)) { existing.misconception = norm(it.misconception); filled = true; }
+        // Encode-mode anchors: the library file is authoritative for these, so a
+        // re-import updates them on dedup match (never clears; empty stays put).
+        ["section", "pages", "misconception"].forEach(function (f) {
+          var v = norm(it[f]);
+          if (v && v !== norm(existing[f])) { existing[f] = v; filled = true; }
+        });
         if (filled) updated++;
         return;
       }
