@@ -18,8 +18,12 @@ in `.claude/launch.json`, python http.server on :8765).
 
 ## Site map
 
-- `/` — portfolio landing page (`index.html`), `resume.html`, `journal/`
-  (RTS game dev journal).
+- `/` — portfolio landing page (`index.html`), `resume.html`.
+- Black Magic (RTS) content UNPUBLISHED 2026-10-08 at Matt's request
+  ("for now", i.e. expected to return): the homepage project card and the
+  whole `journal/` section were removed in one commit. To restore, revert
+  that commit (`git log --diff-filter=D -- journal/` finds it). The
+  skimecha/black-magic GitHub repo is separate and was not touched.
 - `/bench/` — Calibration Bench PUBLIC DEMO (see two-instance warning below).
   React 18 + Recharts UMD + in-browser Babel. App state = one JSON blob under
   localStorage key `calbench:calbench-v1`, accessed via `window.storage`
