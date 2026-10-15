@@ -1,0 +1,32 @@
+name: Supabase keep-alive
+
+# Prevents Supabase from pausing the free-tier project for inactivity:
+# a scheduled REST request is real API activity, which is what their
+# pause criterion measures. The key below is the publishable key, public
+# by design (the same one shipped in shared/auth.js); RLS means this
+# anonymous read returns zero rows, but the request still counts.
+#
+# Two side benefits:
+# - A failed run emails Matt, so this doubles as a paused-project alarm.
+# - workflow_dispatch allows a manual ping after restoring a pause.
+#
+# Caveat: GitHub disables scheduled workflows after 60 days with no repo
+# activity (it emails first; any push or a one-click re-enable re-arms).
+
+on:
+  schedule:
+    - cron: '17 9 * * 1,4' # Mon + Thu, 09:17 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST API
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+            "https://rwdiveoezdvcjvwikgnw.supabase.co/rest/v1/kv_store?select=key&limit=1" \
+            -H "apikey: sb_publishable_b5bXz9e4W2WnjpK-Yjm3pA_x0BBhzvI" \
+            -H "Authorization: Bearer sb_publishable_b5bXz9e4W2WnjpK-Yjm3pA_x0BBhzvI")
+          echo "Supabase REST responded HTTP $code"
+          test "$code" = "200"

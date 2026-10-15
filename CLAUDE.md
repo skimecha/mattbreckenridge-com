@@ -60,6 +60,15 @@ Supabase project `rwdiveoezdvcjvwikgnw` (org Skimecha, free tier).
 - Google OAuth: Google Cloud project `mattbreckenridge-com`, External,
   testing mode, callback = `https://rwdiveoezdvcjvwikgnw.supabase.co/auth/v1/callback`.
 - Phase 2 (NOT done): port flashcards + ppl onto the shared adapter.
+- Keep-alive (added 2026-10-15): Supabase emailed inactivity-pause
+  warnings (free tier pauses after ~a week with no API activity).
+  `.github/workflows/supabase-keepalive.yml` pings the REST endpoint
+  Mon+Thu via cron; a failed run emails Matt and doubles as a
+  paused-project alarm. If the project ever pauses anyway: nothing on
+  the site breaks (localStorage is always the read source) — restore it
+  from the Supabase dashboard, then run the workflow manually. Matt
+  chose this over migrating (Firebase and Cloudflare Worker+KV were the
+  evaluated alternatives); revisit migration only if Supabase escalates.
 
 ## Calibration Bench instances (split being retired, 2026-08-05)
 
