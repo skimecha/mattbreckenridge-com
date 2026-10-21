@@ -60,15 +60,23 @@ Supabase project `rwdiveoezdvcjvwikgnw` (org Skimecha, free tier).
 - Google OAuth: Google Cloud project `mattbreckenridge-com`, External,
   testing mode, callback = `https://rwdiveoezdvcjvwikgnw.supabase.co/auth/v1/callback`.
 - Phase 2 (NOT done): port flashcards + ppl onto the shared adapter.
-- Keep-alive (added 2026-10-15): Supabase emailed inactivity-pause
-  warnings (free tier pauses after ~a week with no API activity).
+- Keep-alive (added 2026-10-15, escalated 2026-10-21): Supabase free
+  tier pauses projects after ~7 days without API activity.
   `.github/workflows/supabase-keepalive.yml` pings the REST endpoint
-  Mon+Thu via cron; a failed run emails Matt and doubles as a
-  paused-project alarm. If the project ever pauses anyway: nothing on
-  the site breaks (localStorage is always the read source) — restore it
-  from the Supabase dashboard, then run the workflow manually. Matt
-  chose this over migrating (Firebase and Cloudflare Worker+KV were the
-  evaluated alternatives); revisit migration only if Supabase escalates.
+  daily via cron; a failed run emails Matt and doubles as a
+  paused-project alarm (this alarm worked). HISTORY: warnings led to the
+  first keep-alive (Mon+Thu cron, added Oct 15, manual run verified 200)
+  but the project was paused anyway by Oct 19, likely because the pause
+  was already queued from pre-ping warnings. Matt restored it and chose
+  an OBSERVE CYCLE (decided 2026-10-21): daily pings from a freshly
+  restored project; if it stays up 2+ weeks (through ~Nov 7) the ping
+  works and we keep it; if it pauses AGAIN, migrate to Firebase (Auth +
+  Firestore, the designated successor) without further debate. A pause
+  never breaks the site (localStorage is always the read source);
+  restore from the Supabase dashboard within 90 days, then run the
+  workflow manually. Matt's Strength Tracker Supabase project (separate,
+  lockinstrength.com, NO localStorage fallback) was paused at the same
+  time; that app's decisions belong to the LOCKIN_STRENGTH session.
 
 ## Calibration Bench instances (split being retired, 2026-08-05)
 

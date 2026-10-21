@@ -13,9 +13,14 @@ name: Supabase keep-alive
 # Caveat: GitHub disables scheduled workflows after 60 days with no repo
 # activity (it emails first; any push or a one-click re-enable re-arms).
 
+# 2026-10-21: bumped from twice-weekly to daily after the project was
+# paused on ~Oct 19 despite a successful ping on Oct 15 (the pause was
+# likely already queued from the pre-ping inactivity warnings). This is
+# the observe cycle: from a freshly restored project, daily pings held
+# 2+ weeks = keep-alive works; paused again = migrate to Firebase.
 on:
   schedule:
-    - cron: '17 9 * * 1,4' # Mon + Thu, 09:17 UTC
+    - cron: '17 9 * * *' # daily, 09:17 UTC
   workflow_dispatch:
 
 jobs:
