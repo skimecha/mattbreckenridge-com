@@ -115,7 +115,7 @@ that folder's `imports/`; Matt imports them in the browser while signed in.
 Authored items may carry `section`, `pages`, and `misconception` fields;
 the importer ignores them today (reserved for Encode mode, see backlog).
 
-## Encode mode (bench, built 2026-08-08, uncommitted pending Matt's review)
+## Encode mode (bench; shipped 2026-08-08 in 0524e57, live on /bench/)
 
 Third tab next to Bench/Library: the first-pass read-recall-check loop run
 while reading a chapter. Sections come from `section`/`pages`/`misconception`
