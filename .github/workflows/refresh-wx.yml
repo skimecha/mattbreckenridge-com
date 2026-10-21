@@ -1,0 +1,57 @@
+name: Refresh weather report corpus
+
+# The /wx/ drill app shows real METAR, TAF and PIREP reports. The
+# aviationweather.gov API blocks browser CORS, so the site can't fetch it
+# live; instead this job pulls a fresh batch on a schedule, merges it into
+# wx/data/reports.json (capped pool, see .github/scripts/refresh-wx.py)
+# and commits the result. A push made with GITHUB_TOKEN does not trigger
+# the Pages deploy workflow, so the last step dispatches it explicitly.
+#
+# Caveat: GitHub disables scheduled workflows after 60 days with no repo
+# activity (it emails first). The weekly commit this job makes counts as
+# activity, so in practice it keeps itself (and the Supabase ping) alive.
+
+on:
+  schedule:
+    - cron: '41 10 * * 0' # Sundays, 10:41 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-wx
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch and merge reports
+        run: python3 -I .github/scripts/refresh-wx.py
+      - name: Commit if changed
+        id: commit
+        run: |
+          if git diff --quiet -- wx/data/reports.json; then
+            echo "No change to corpus"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wx/data/reports.json
+          git commit -m "Refresh weather report corpus"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Deploy the site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref main
