@@ -35,6 +35,9 @@ in `.claude/launch.json`, python http.server on :8765).
   decks sync via `shared/kv-sync.js` when signed in (`app: "flashcards"`).
 - `/ppl/` — unlisted PPL training tracker (Pilot Institute course order).
   Progress in localStorage, NOT yet synced.
+- `/wx/` — unlisted Weather Report Drills (METAR/TAF/PIREP). Vanilla JS,
+  no auth, no sync; quiz history only in localStorage `wx1:history`.
+  See "Weather Report Drills" below.
 - `/account/` — sign-in page (email/password + Google via Supabase).
 - `/shared/auth.js` — site-wide auth module, exposes `window.mbAuth`.
 - `/shared/kv-sync.js` — generic localStorage⇄kv_store sync engine
@@ -60,23 +63,27 @@ Supabase project `rwdiveoezdvcjvwikgnw` (org Skimecha, free tier).
 - Google OAuth: Google Cloud project `mattbreckenridge-com`, External,
   testing mode, callback = `https://rwdiveoezdvcjvwikgnw.supabase.co/auth/v1/callback`.
 - Phase 2 (NOT done): port flashcards + ppl onto the shared adapter.
-- Keep-alive (added 2026-10-15, escalated 2026-10-21): Supabase free
-  tier pauses projects after ~7 days without API activity.
-  `.github/workflows/supabase-keepalive.yml` pings the REST endpoint
-  daily via cron; a failed run emails Matt and doubles as a
-  paused-project alarm (this alarm worked). HISTORY: warnings led to the
-  first keep-alive (Mon+Thu cron, added Oct 15, manual run verified 200)
-  but the project was paused anyway by Oct 19, likely because the pause
-  was already queued from pre-ping warnings. Matt restored it and chose
-  an OBSERVE CYCLE (decided 2026-10-21): daily pings from a freshly
-  restored project; if it stays up 2+ weeks (through ~Nov 7) the ping
-  works and we keep it; if it pauses AGAIN, migrate to Firebase (Auth +
-  Firestore, the designated successor) without further debate. A pause
-  never breaks the site (localStorage is always the read source);
-  restore from the Supabase dashboard within 90 days, then run the
-  workflow manually. Matt's Strength Tracker Supabase project (separate,
-  lockinstrength.com, NO localStorage fallback) was paused at the same
-  time; that app's decisions belong to the LOCKIN_STRENGTH session.
+- Keep-alive + PLANNED FIREBASE MIGRATION (status as of 2026-10-21):
+  Supabase free tier pauses projects after ~7 days without API activity.
+  HISTORY: warnings led to a Mon+Thu cron ping (Oct 15, verified 200),
+  but the project was paused anyway by Oct 19, likely already queued
+  from pre-ping warnings; Matt restored it Oct 21 (restore stays
+  available until Nov 2027 per the pause screen, data safe throughout).
+  NOW: `.github/workflows/supabase-keepalive.yml` pings the REST
+  endpoint DAILY; a failed run emails Matt and is the paused-project
+  alarm (it worked). Post-restore manual run verified 200 on Oct 21,
+  which starts the observe window (through ~Nov 7). DIRECTION (Matt,
+  2026-10-21): migrate to Firebase (Auth + Firestore) in the near
+  future regardless; the observe window only sets urgency. If the
+  project pauses again before migration, migrate immediately; either
+  way don't re-litigate the backend choice. Matt suspects only real
+  user activity counts for Supabase's pause criterion (unconfirmed;
+  the daily ping is the test — he should NOT have to log in manually).
+  A pause never breaks this site (localStorage is always the read
+  source): restore from dashboard, run the workflow manually. Matt's
+  separate Strength Tracker project (lockinstrength.com, no offline
+  fallback, Matt is its only user) paused and was restored at the same
+  time; its decisions belong to the LOCKIN_STRENGTH session.
 
 ## Calibration Bench instances (split being retired, 2026-08-05)
 
@@ -120,6 +127,37 @@ Results append to `skill.encodes[]` (ts/accuracy/missed/secs) and do NOT
 touch attempts, the gauge, or the scheduler. storage-adapter v6 persists
 the three fields on import and backfills them onto existing dedup-matched
 items. Deferred, needs sign-off: encode results influencing drill order.
+
+## Weather Report Drills (`/wx/`, added 2026-10-21)
+
+Student-pilot drill app: read a raw METAR, TAF or PIREP in a segmented
+LCD-style display (DSEG14 font from jsdelivr, OFL licensed, with an
+"all segments lit then scramble" animation on every new report), reveal a
+token-by-token plain-English breakdown, or run FAA-style multiple-choice
+sets of 5/10/20 (70% pass line).
+
+Files: `wx/index.html` (UI), `wx/decode.js` (parsers; `window.wxDecode`),
+`wx/quiz.js` (question templates; `window.wxQuiz`),
+`wx/data/reports.json` (the corpus).
+
+Data pipeline: aviationweather.gov's data API blocks browser CORS (verified
+2026-10-21), so the site cannot fetch reports live. Instead
+`.github/scripts/refresh-wx.py` tiles the US into bounding boxes (the API
+caps 400 rows per call), keeps US stations (K/PA/PH), scores reports for
+teachable content, merges into a capped pool (600 METAR / 400 TAF / 400
+PIREP) and writes `reports.json`. `.github/workflows/refresh-wx.yml` runs
+it Sundays, commits if changed, then dispatches `deploy-pages.yml`
+(pushes by GITHUB_TOKEN do not trigger the Pages workflow by themselves).
+Run by hand with `py -3 .github/scripts/refresh-wx.py`. Military-format
+TAFs (metric visibility, QNH..INS, TX/TN) are excluded from the corpus
+because the FAA written tests the civilian format; the decoder still
+understands those groups if one is pasted. `index.html` carries a tiny
+built-in fallback set in case `reports.json` fails to load.
+
+Alternatives considered and not chosen: a Cloudflare Worker CORS proxy
+(new infra for a drill app that does not need real-time data) and a
+hand-written sample set (loses the "real reports at random stations"
+ask). Revisit the proxy only if Matt wants live, current-hour reports.
 
 ## Backlog (deferred ideas, not approved)
 
