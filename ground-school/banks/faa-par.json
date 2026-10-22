@@ -1,0 +1,897 @@
+{
+ "id": "faa-par",
+ "kind": "faa",
+ "immutable": true,
+ "title": "FAA Sample Exam",
+ "subtitle": "Private Pilot Airplane (PAR) sample questions, verbatim",
+ "source": {
+  "name": "FAA Private Pilot-Airplane (PAR) sample questions",
+  "date": "2021-08-10",
+  "url": "https://www.faa.gov/sites/faa.gov/files/training_testing/testing/test_questions/par_questions.pdf",
+  "supplement": "FAA-CT-8080-2H, Airman Knowledge Testing Supplement for Sport Pilot, Recreational Pilot, Remote Pilot, and Private Pilot",
+  "supplementUrl": "https://www.faa.gov/sites/faa.gov/files/training_testing/testing/supplements/sport_rec_private_akts.pdf",
+  "license": "U.S. Government work, public domain"
+ },
+ "answerKey": {
+  "source": "derived",
+  "note": "The FAA publishes these questions without an answer key. Answers here were worked from the referenced figures and FAA source material (FAR/AIM, PHAK) on 2026-10-21. Treat them as a study key, not an official one; the question text and figures are untouched.",
+  "contested": [
+   59
+  ]
+ },
+ "passPct": 70,
+ "timeLimitMin": 150,
+ "figures": {
+  "8": {
+   "file": "figures/fig-08.jpg",
+   "title": "Figure 8. Density Altitude Chart."
+  },
+  "17": {
+   "file": "figures/fig-17.jpg",
+   "title": "Figure 17. Winds and Temperatures Aloft Forecast."
+  },
+  "20": {
+   "file": "figures/fig-20.jpg",
+   "title": "Figure 20. Sectional Chart Excerpt."
+  },
+  "25": {
+   "file": "figures/fig-25.jpg",
+   "title": "Figure 25. Sectional Chart Excerpt."
+  },
+  "26": {
+   "file": "figures/fig-26.jpg",
+   "title": "Figure 26. Sectional Chart Excerpt."
+  },
+  "32": {
+   "file": "figures/fig-32.jpg",
+   "title": "Figure 32. Airplane Weight and Balance Tables."
+  },
+  "33": {
+   "file": "figures/fig-33.jpg",
+   "title": "Figure 33. Airplane Weight and Balance Tables."
+  },
+  "35": {
+   "file": "figures/fig-35.jpg",
+   "title": "Figure 35. Airplane Power Setting Table."
+  },
+  "38": {
+   "file": "figures/fig-38.jpg",
+   "title": "Figure 38. Airplane Landing Distance Table."
+  },
+  "47": {
+   "file": "figures/fig-47.jpg",
+   "title": "Figure 47. VASI Illustrations."
+  },
+  "48": {
+   "file": "figures/fig-48.jpg",
+   "title": "Figure 48. Airport Diagram."
+  },
+  "52": {
+   "file": "figures/fig-52.jpg",
+   "title": "Figure 52. Chart Supplement."
+  },
+  "64": {
+   "file": "figures/fig-64.jpg",
+   "title": "Figure 64. Airport Markings."
+  },
+  "78": {
+   "file": "figures/fig-78.jpg",
+   "title": "Figure 78. Sectional Chart Excerpt."
+  }
+ },
+ "acs": {
+  "PA.I": "Preflight Preparation",
+  "PA.II": "Preflight Procedures",
+  "PA.III": "Airport and Seaplane Base Operations",
+  "PA.IV": "Takeoffs, Landings, and Go-Arounds",
+  "PA.VI": "Navigation",
+  "PA.IX": "Emergency Operations",
+  "PA.I.A": "Pilot Qualifications",
+  "PA.I.B": "Airworthiness Requirements",
+  "PA.I.C": "Weather Information",
+  "PA.I.D": "Cross-Country Flight Planning",
+  "PA.I.E": "National Airspace System",
+  "PA.I.F": "Performance and Limitations",
+  "PA.I.G": "Operation of Systems",
+  "PA.I.H": "Human Factors",
+  "PA.II.B": "Flight Deck Management",
+  "PA.II.D": "Taxiing",
+  "PA.III.A": "Communications, Light Signals, and Runway Lighting Systems",
+  "PA.III.B": "Traffic Patterns",
+  "PA.IV.B": "Normal Approach and Landing",
+  "PA.VI.A": "Pilotage and Dead Reckoning",
+  "PA.VI.B": "Navigation Systems and Radar Services",
+  "PA.IX.B": "Emergency Approach and Landing (Simulated)",
+  "PA.IX.C": "Systems and Equipment Malfunctions"
+ },
+ "questions": [
+  {
+   "n": 1,
+   "stem": "Maintenance records show the last transponder inspection was performed on September 1, 2014. The next inspection will be due no later than",
+   "options": [
+    "September 30, 2015.",
+    "September 1, 2016.",
+    "September 30, 2016."
+   ],
+   "answer": "C",
+   "acs": "PA.I.B.K1b",
+   "chapter": "inspections-documents"
+  },
+  {
+   "n": 2,
+   "stem": "With respect to the certification of airmen, which are categories of aircraft?",
+   "options": [
+    "Gyroplane, helicopter, airship, free balloon.",
+    "Airplane, rotorcraft, glider, lighter-than-air.",
+    "Single-engine land and sea, multiengine land and sea."
+   ],
+   "answer": "B",
+   "acs": "PA.I.A.K1",
+   "chapter": "regulation"
+  },
+  {
+   "n": 3,
+   "stem": "A flashing white light signal from the control tower to a taxiing aircraft is an indication to",
+   "options": [
+    "taxi at a faster speed.",
+    "taxi only on taxiways and not cross runways.",
+    "return to the starting point on the airport."
+   ],
+   "answer": "C",
+   "acs": "PA.III.A.K3",
+   "chapter": "airport-operations"
+  },
+  {
+   "n": 4,
+   "stem": "During operations outside controlled airspace at altitudes of more than 1,200 feet AGL, but less than 10,000 feet MSL, the minimum flight visibility for day VFR flight is",
+   "options": [
+    "1 mile.",
+    "3 miles.",
+    "5 miles."
+   ],
+   "answer": "A",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace"
+  },
+  {
+   "n": 5,
+   "stem": "Unless otherwise authorized, two-way radio communications with Air Traffic Control are required for landings or takeoffs at all towered airports",
+   "options": [
+    "regardless of weather conditions.",
+    "only when weather conditions are less than VFR.",
+    "within Class D airspace only when weather conditions are less than VFR."
+   ],
+   "answer": "A",
+   "acs": "PA.III.A.K2",
+   "chapter": "airspace"
+  },
+  {
+   "n": 6,
+   "stem": "During operations outside controlled airspace at altitudes of more than 1,200 feet AGL, but less than 10,000 feet MSL, the minimum distance below clouds requirement for VFR flight at night is",
+   "options": [
+    "500 feet.",
+    "1,000 feet.",
+    "1,500 feet."
+   ],
+   "answer": "A",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace"
+  },
+  {
+   "n": 7,
+   "stem": "Two-way radio communication must be established with the Air Traffic Control facility having jurisdiction over the area prior to entering which class airspace?",
+   "options": [
+    "Class C.",
+    "Class E.",
+    "Class G."
+   ],
+   "answer": "A",
+   "acs": "PA.III.A.K2",
+   "chapter": "airspace"
+  },
+  {
+   "n": 8,
+   "stem": "Pre-takeoff briefing of passengers about the use of seat belts for a flight is the responsibility of",
+   "options": [
+    "all passengers.",
+    "the pilot in command.",
+    "the right seat pilot."
+   ],
+   "answer": "B",
+   "acs": "PA.II.B.K1",
+   "chapter": "regulation"
+  },
+  {
+   "n": 9,
+   "stem": "A 100-hour inspection was due at 3302.5 hours. The 100-hour inspection was actually done at 3309.5 hours. When is the next 100-hour inspection due?",
+   "options": [
+    "3312.5 hours.",
+    "3395.5 hours.",
+    "3402.5 hours."
+   ],
+   "answer": "C",
+   "acs": "PA.I.B.K1b",
+   "chapter": "inspections-documents"
+  },
+  {
+   "n": 10,
+   "stem": "When speaking to a flight service weather briefer, you should state",
+   "options": [
+    "the pilot in command`s full name and address.",
+    "a summary of your qualifications.",
+    "whether the flight is VFR or IFR."
+   ],
+   "answer": "C",
+   "acs": "PA.I.C.K1",
+   "chapter": "weather-services"
+  },
+  {
+   "n": 11,
+   "stem": "Why is frost considered hazardous to flight?",
+   "options": [
+    "Frost changes the basic aerodynamic shape of the airfoils, thereby increasing lift.",
+    "Frost slows the airflow over the airfoils, thereby increasing control effectiveness.",
+    "Frost spoils the smooth flow of air over the wings, thereby decreasing lifting capability."
+   ],
+   "answer": "C",
+   "acs": "PA.I.C.K3k",
+   "chapter": "aerodynamic-forces"
+  },
+  {
+   "n": 12,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 17.) What wind is forecast for STL at 12,000 feet?",
+   "options": [
+    "230° true at 56 knots.",
+    "230° true at 39 knots.",
+    "230° magnetic at 56 knots."
+   ],
+   "answer": "B",
+   "acs": "PA.I.C.K2",
+   "chapter": "weather-services",
+   "figures": [
+    "17"
+   ]
+  },
+  {
+   "n": 13,
+   "stem": "The mature stage of a thunderstorm begins with",
+   "options": [
+    "formation of the anvil top.",
+    "the start of precipitation.",
+    "continuous downdrafts."
+   ],
+   "answer": "B",
+   "acs": "PA.I.C.K3h",
+   "chapter": "weather-theory"
+  },
+  {
+   "n": 14,
+   "stem": "(Refer to FAA-CT-8080-2H, Figures 32 and 33.) Which action can adjust the airplane`s weight to maximum gross weight and the CG within limits for takeoff?\nFront seat occupants: 425 lb\nRear seat occupants: 300 lb\nFuel, main tanks: 44 gal",
+   "options": [
+    "Drain 12 gallons of fuel.",
+    "Drain 9 gallons of fuel.",
+    "Transfer 12 gallons of fuel from the main tanks to the auxiliary tanks."
+   ],
+   "answer": "B",
+   "acs": "PA.I.F.K2f",
+   "chapter": "weight-and-balance",
+   "figures": [
+    "32",
+    "33"
+   ]
+  },
+  {
+   "n": 15,
+   "stem": "What action should a pilot take when operating under VFR in a Military Operations Area (MOA)?",
+   "options": [
+    "Obtain a clearance from the controlling agency prior to entering the MOA.",
+    "Operate only on the airways that transverse the MOA.",
+    "Exercise extreme caution when military activity is being conducted."
+   ],
+   "answer": "C",
+   "acs": "PA.I.E.K3",
+   "chapter": "airspace"
+  },
+  {
+   "n": 16,
+   "stem": "Unless otherwise authorized, if flying a transponder equipped aircraft, a pilot should squawk which VFR code?",
+   "options": [
+    "1200",
+    "7600",
+    "7700"
+   ],
+   "answer": "A",
+   "acs": "PA.III.A.K4",
+   "chapter": "radio-communications"
+  },
+  {
+   "n": 17,
+   "stem": "What is one purpose of wing flaps?",
+   "options": [
+    "To enable the pilot to make steeper approaches to a landing without increasing the airspeed.",
+    "To relieve the pilot of maintaining continuous pressure on the controls.",
+    "To decrease wing area to vary the lift."
+   ],
+   "answer": "A",
+   "acs": "PA.I.G.K1b",
+   "chapter": "aircraft-structure"
+  },
+  {
+   "n": 18,
+   "stem": "With regard to carburetor ice, float-type carburetor systems in comparison to fuel injection systems are generally considered to be",
+   "options": [
+    "more susceptible to icing.",
+    "equally susceptible to icing.",
+    "less susceptible to icing."
+   ],
+   "answer": "A",
+   "acs": "PA.IX.C.K1b",
+   "chapter": "aircraft-systems"
+  },
+  {
+   "n": 19,
+   "stem": "What does the red line on an airspeed indicator represent?",
+   "options": [
+    "Maneuvering speed.",
+    "Turbulent or rough-air speed.",
+    "Never-exceed speed."
+   ],
+   "answer": "C",
+   "acs": "PA.I.F.R2",
+   "chapter": "aircraft-instruments"
+  },
+  {
+   "n": 20,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 48.) The portion of the runway identified by the letter A may be used for",
+   "options": [
+    "landing.",
+    "taxiing and takeoff.",
+    "taxiing and landing."
+   ],
+   "answer": "B",
+   "acs": "PA.II.D.K3",
+   "chapter": "airport-operations",
+   "figures": [
+    "48"
+   ]
+  },
+  {
+   "n": 21,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 47.) While on final approach to a runway equipped with a standard 2-bar VASI, the lights appear as shown by illustration D. This means that the aircraft is",
+   "options": [
+    "above the glide path.",
+    "below the glide path.",
+    "on the glide path."
+   ],
+   "answer": "B",
+   "acs": "PA.III.B.K2",
+   "chapter": "airport-operations",
+   "figures": [
+    "47"
+   ]
+  },
+  {
+   "n": 22,
+   "stem": "Who has final authority to accept or decline any land and hold short (LAHSO) clearance?",
+   "options": [
+    "Pilot in command.",
+    "Air Traffic Controller.",
+    "Second in command."
+   ],
+   "answer": "A",
+   "acs": "PA.IV.B.R3b",
+   "chapter": "airport-operations"
+  },
+  {
+   "n": 23,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 38.) Determine the approximate landing ground roll distance.\nPressure altitude: 5,000 ft\nHeadwind: Calm\nTemperature: 101°F",
+   "options": [
+    "445 feet.",
+    "545 feet.",
+    "495 feet."
+   ],
+   "answer": "B",
+   "acs": "PA.I.F.K1",
+   "chapter": "performance-limitations",
+   "figures": [
+    "38"
+   ]
+  },
+  {
+   "n": 24,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 38.) Determine the total distance required to land over a 50-foot obstacle.\nPressure altitude: 5,000 ft\nHeadwind: 8 kts\nTemperature: 41°F\nRunway: Hard surface",
+   "options": [
+    "837 feet.",
+    "956 feet.",
+    "1,076 feet."
+   ],
+   "answer": "B",
+   "acs": "PA.I.F.K1",
+   "chapter": "performance-limitations",
+   "figures": [
+    "38"
+   ]
+  },
+  {
+   "n": 25,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 35.) Determine the approximate manifold pressure setting with 2,450 RPM to achieve 65 percent maximum continuous power at 6,500 feet with a temperature of 36°F higher than standard.",
+   "options": [
+    "19.8 inches Hg.",
+    "20.8 inches Hg.",
+    "21.0 inches Hg."
+   ],
+   "answer": "C",
+   "acs": "PA.I.F.K1",
+   "chapter": "performance-limitations",
+   "figures": [
+    "35"
+   ]
+  },
+  {
+   "n": 26,
+   "stem": "The term 'angle of attack' is defined as the angle between the",
+   "options": [
+    "chord line of the wing and the relative wind.",
+    "airplane's longitudinal axis and that of the air striking the airfoil.",
+    "airplane's center line and the relative wind."
+   ],
+   "answer": "A",
+   "acs": "PA.I.F.K3",
+   "chapter": "basic-aerodynamics"
+  },
+  {
+   "n": 27,
+   "stem": "When the course deviation indicator (CDI) needle is centered using a VOR test signal (VOT), the omnibearing selector (OBS) and the TO/FROM indicator should read",
+   "options": [
+    "180° FROM, only if the pilot is due north of the VOT.",
+    "0° TO or 180° FROM, regardless of the pilot`s position from the VOT.",
+    "0° FROM or 180° TO, regardless of the pilot`s position from the VOT."
+   ],
+   "answer": "C",
+   "acs": "PA.VI.B.K1",
+   "chapter": "navigation"
+  },
+  {
+   "n": 28,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 26, area 2.) The day VFR visibility and cloud clearance requirements to operate over the town of Cooperstown, after departing and climbing out of the Cooperstown Airport at or below 700 feet AGL are",
+   "options": [
+    "1 mile and clear of clouds.",
+    "1 mile and 1,000 feet above, 500 feet below, and 2,000 feet horizontally from clouds.",
+    "3 miles and clear of clouds."
+   ],
+   "answer": "A",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace",
+   "figures": [
+    "26"
+   ]
+  },
+  {
+   "n": 29,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 52.) What is the recommended communications procedure for landing at Lincoln Municipal during the hours when the tower is not in operation?",
+   "options": [
+    "Monitor airport traffic and announce your position and intentions on 118.5 MHz.",
+    "Contact UNICOM on 122.95 MHz for traffic advisories.",
+    "Monitor ATIS for airport conditions, then announce your position on 122.95 MHz."
+   ],
+   "answer": "A",
+   "acs": "PA.III.A.K2",
+   "chapter": "charts",
+   "figures": [
+    "52"
+   ]
+  },
+  {
+   "n": 30,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 25, area 5.) The navigation facility at Dallas-Ft. Worth International (DFW) is a",
+   "options": [
+    "VOR.",
+    "VORTAC.",
+    "VOR/DME."
+   ],
+   "answer": "B",
+   "acs": "PA.I.E.K2",
+   "chapter": "charts",
+   "figures": [
+    "25"
+   ]
+  },
+  {
+   "n": 31,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 52.) Where is Loup City Municipal located in relation to the city?",
+   "options": [
+    "Northeast approximately 3 miles.",
+    "Northwest approximately 1 mile.",
+    "East approximately 7 miles."
+   ],
+   "answer": "B",
+   "acs": "PA.I.D.K1",
+   "chapter": "charts",
+   "figures": [
+    "52"
+   ]
+  },
+  {
+   "n": 32,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 52.) When approaching Lincoln Municipal from the west at noon for the purpose of landing, initial communications should be with",
+   "options": [
+    "Lincoln Approach Control on 124.0 MHz.",
+    "Minneapolis Center on 128.75 MHz.",
+    "Lincoln Tower on 118.5 MHz."
+   ],
+   "answer": "A",
+   "acs": "PA.I.D.K1",
+   "chapter": "charts",
+   "figures": [
+    "52"
+   ]
+  },
+  {
+   "n": 33,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 64.) Which marking indicates a vehicle lane?",
+   "options": [
+    "A.",
+    "C.",
+    "E."
+   ],
+   "answer": "B",
+   "acs": "PA.II.D.K3",
+   "chapter": "airport-operations",
+   "figures": [
+    "64"
+   ]
+  },
+  {
+   "n": 34,
+   "stem": "A pilot and two passengers landed on a 2,100 foot east-west gravel strip with an elevation of 1,800 feet. The temperature is warmer than expected and after computing the density altitude it is determined the takeoff distance over a 50 foot obstacle is 1,980 feet. The airplane is 75 pounds under gross weight. What would be the best choice?",
+   "options": [
+    "Taking off into the headwind will give the extra climb-out time needed.",
+    "Try a takeoff without the passengers to make sure the climb is adequate.",
+    "Wait until the temperature decreases, and recalculate the takeoff performance."
+   ],
+   "answer": "C",
+   "acs": "PA.I.H.K4",
+   "chapter": "adm"
+  },
+  {
+   "n": 35,
+   "stem": "If an aircraft is equipped with a fixed-pitch propeller and a float-type carburetor, the first indication of carburetor ice would most likely be",
+   "options": [
+    "a drop in oil temperature and cylinder head temperature.",
+    "engine roughness.",
+    "loss of RPM."
+   ],
+   "answer": "C",
+   "acs": "PA.IX.C.K1b",
+   "chapter": "aircraft-systems"
+  },
+  {
+   "n": 36,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 20, area 1.) The NALF Fentress (NFE) Airport is in what type of airspace?",
+   "options": [
+    "Class C.",
+    "Class E.",
+    "Class G."
+   ],
+   "answer": "B",
+   "acs": "PA.I.E.K2",
+   "chapter": "airspace",
+   "figures": [
+    "20"
+   ]
+  },
+  {
+   "n": 37,
+   "stem": "While on a VFR cross country and not in contact with ATC, what frequency would you use in the event of an emergency?",
+   "options": [
+    "121.5 MHz.",
+    "122.5 MHz.",
+    "128.725 MHz."
+   ],
+   "answer": "A",
+   "acs": "PA.III.A.K1",
+   "chapter": "radio-communications"
+  },
+  {
+   "n": 38,
+   "stem": "ATC advises, \"traffic 12 o'clock.\" This advisory is relative to your",
+   "options": [
+    "true course.",
+    "ground track.",
+    "magnetic heading."
+   ],
+   "answer": "B",
+   "acs": "PA.VI.B.K3",
+   "chapter": "radio-communications"
+  },
+  {
+   "n": 39,
+   "stem": "Which statement relates to Bernoulli's principle?",
+   "options": [
+    "For every action there is an equal and opposite reaction.",
+    "An additional upward force is generated as the lower surface of the airfoil deflects air downward.",
+    "Air traveling faster over the curved upper surface of an airfoil causes lower pressure on the top surface."
+   ],
+   "answer": "C",
+   "acs": "PA.I.F.K3",
+   "chapter": "basic-aerodynamics"
+  },
+  {
+   "n": 40,
+   "stem": "Deviation error of the magnetic compass is caused by",
+   "options": [
+    "a northerly turning error.",
+    "certain metals and electrical systems within the aircraft.",
+    "the difference in location of true north and magnetic north."
+   ],
+   "answer": "B",
+   "acs": "PA.VI.A.K2",
+   "chapter": "aircraft-instruments"
+  },
+  {
+   "n": 41,
+   "stem": "When executing an emergency approach to land in a single-engine airplane, it is important to maintain a constant glide speed because variations in glide speed will",
+   "options": [
+    "increase the chances of shock cooling the engine.",
+    "assure the proper descent angle is maintained until entering the flare.",
+    "nullify all attempts at accuracy in judgment of gliding distance and landing spot."
+   ],
+   "answer": "C",
+   "acs": "PA.IX.B.K4",
+   "chapter": "performance-limitations"
+  },
+  {
+   "n": 42,
+   "stem": "How far will an aircraft travel in 7.5 minutes with a ground speed of 114 knots?",
+   "options": [
+    "14.25 NM.",
+    "15.00 NM.",
+    "14.50 NM."
+   ],
+   "answer": "A",
+   "acs": "PA.I.D.K3a",
+   "chapter": "navigation"
+  },
+  {
+   "n": 43,
+   "stem": "The radius of the procedural outer area of Class C airspace is normally",
+   "options": [
+    "10 NM.",
+    "20 NM.",
+    "30 NM."
+   ],
+   "answer": "B",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace"
+  },
+  {
+   "n": 44,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 8.) What is the effect of a temperature increase from 35 to 50°F on the density altitude if the pressure altitude remains at 3,000 feet MSL?",
+   "options": [
+    "1,000-foot increase.",
+    "1,100-foot decrease.",
+    "1,300-foot increase."
+   ],
+   "answer": "A",
+   "acs": "PA.I.F.K2a",
+   "chapter": "performance-limitations",
+   "figures": [
+    "8"
+   ]
+  },
+  {
+   "n": 45,
+   "stem": "The Aeronautical Information Manual (AIM) specifically encourages pilots to turn on their landing lights when operating below 10,000 feet, day or night, and especially when operating",
+   "options": [
+    "in Class B airspace.",
+    "in conditions of reduced visibility.",
+    "within 15 miles of a towered airport."
+   ],
+   "answer": "B",
+   "acs": "PA.III.B.R1",
+   "chapter": "airport-operations"
+  },
+  {
+   "n": 46,
+   "stem": "When making routine transponder code changes, pilots should avoid inadvertent selection of which code?",
+   "options": [
+    "7200",
+    "7000",
+    "7500"
+   ],
+   "answer": "C",
+   "acs": "PA.VI.B.K4",
+   "chapter": "radio-communications"
+  },
+  {
+   "n": 47,
+   "stem": "A pilot experiencing the effects of hyperventilation should be able to restore the proper carbon dioxide level in the body by",
+   "options": [
+    "slowing the breathing rate, breathing into a paper bag, or talking aloud.",
+    "breathing spontaneously and deeply or gaining mental control of the situation.",
+    "increasing the breathing rate in order to increase lung ventilation."
+   ],
+   "answer": "A",
+   "acs": "PA.I.H.K1b",
+   "chapter": "aeromedical-factors"
+  },
+  {
+   "n": 48,
+   "stem": "This sign confirms your position on",
+   "options": [
+    "runway 22.",
+    "routing to runway 22.",
+    "taxiway 22."
+   ],
+   "answer": "A",
+   "acs": "PA.II.D.K3",
+   "chapter": "airport-operations",
+   "images": [
+    "figures/q48-sign.png"
+   ]
+  },
+  {
+   "n": 49,
+   "stem": "From the cockpit, this marking confirms the aircraft to be",
+   "options": [
+    "on a taxiway, about to enter runway zone.",
+    "on a runway, about to clear.",
+    "near an instrument approach clearance zone."
+   ],
+   "answer": "B",
+   "acs": "PA.II.D.K3",
+   "chapter": "airport-operations",
+   "images": [
+    "figures/q49-marking.png"
+   ]
+  },
+  {
+   "n": 50,
+   "stem": "(Refer to FAA-CT-8080-2H, Figure 78.) What are the basic VFR weather minima required to takeoff from the Onawa, IA (K36) airport during the day?",
+   "options": [
+    "3 statute miles visibility, 500 feet below the clouds, 1,000 feet above the clouds, and 2,000 feet horizontally from the clouds.",
+    "0 statute miles, clear of clouds.",
+    "1 statute mile, clear of clouds."
+   ],
+   "answer": "C",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace",
+   "figures": [
+    "78"
+   ]
+  },
+  {
+   "n": 51,
+   "stem": "If Receiver Autonomous Integrity Monitoring (RAIM) capability is lost in-flight,",
+   "options": [
+    "the pilot may still rely on GPS derived altitude for vertical information.",
+    "the pilot has no assurance of the accuracy of the GPS position.",
+    "GPS position is reliable provided at least 3 GPS satellites are available."
+   ],
+   "answer": "B",
+   "acs": "PA.VI.B.K2",
+   "chapter": "navigation"
+  },
+  {
+   "n": 52,
+   "stem": "You plan to phone a weather briefing facility for preflight weather information. You should",
+   "options": [
+    "provide the number of occupants on board.",
+    "identify yourself as a pilot.",
+    "begin with your route of flight."
+   ],
+   "answer": "B",
+   "acs": "PA.I.C.K1",
+   "chapter": "weather-services"
+  },
+  {
+   "n": 53,
+   "stem": "Your cousin wants you to take him flying. You must have made at least three takeoffs and three landings in your aircraft within the preceding",
+   "options": [
+    "90 days.",
+    "60 days.",
+    "30 days."
+   ],
+   "answer": "A",
+   "acs": "PA.I.A.K1",
+   "chapter": "regulation"
+  },
+  {
+   "n": 54,
+   "stem": "In what flight condition are torque effects more pronounced in a single-engine airplane?",
+   "options": [
+    "Low airspeed, high power, high angle of attack.",
+    "Low airspeed, low power, low angle of attack.",
+    "High airspeed, high power, high angle of attack."
+   ],
+   "answer": "A",
+   "acs": "PA.I.F.K3",
+   "chapter": "aerodynamic-forces"
+  },
+  {
+   "n": 55,
+   "stem": "The wind at 5,000 feet AGL is southwesterly while the surface wind is southerly. This difference in direction is primarily due to",
+   "options": [
+    "stronger pressure gradient at higher altitudes.",
+    "friction between the wind and the surface.",
+    "stronger Coriolis force at the surface."
+   ],
+   "answer": "B",
+   "acs": "PA.I.C.K3b",
+   "chapter": "weather-theory"
+  },
+  {
+   "n": 56,
+   "stem": "Eye movements during daytime collision avoidance scanning should",
+   "options": [
+    "not exceed 10 degrees and view each sector at least 1 second.",
+    "be 30 degrees and view each sector at least 3 seconds.",
+    "use peripheral vision by scanning small sectors and utilizing off-center viewing."
+   ],
+   "answer": "A",
+   "acs": "PA.I.H.K1k",
+   "chapter": "aeromedical-factors"
+  },
+  {
+   "n": 57,
+   "stem": "When there is a temperature inversion, you would expect to experience",
+   "options": [
+    "clouds with extensive vertical development above an inversion aloft.",
+    "good visibility in the lower levels of the atmosphere and poor visibility above an inversion aloft.",
+    "an increase in temperature as altitude increases."
+   ],
+   "answer": "C",
+   "acs": "PA.I.C.K3c",
+   "chapter": "weather-theory"
+  },
+  {
+   "n": 58,
+   "stem": "When warm, moist, stable air flows upslope, it",
+   "options": [
+    "produces stratus type clouds.",
+    "causes showers and thunderstorms.",
+    "develops convective turbulence."
+   ],
+   "answer": "A",
+   "acs": "PA.I.C.K3f",
+   "chapter": "weather-theory"
+  },
+  {
+   "n": 59,
+   "stem": "Each person who holds a pilot certificate or a medical certificate shall present it for inspection upon the request of any",
+   "options": [
+    "authorized representative of the Department of Transportation.",
+    "person in a position of authority.",
+    "local law enforcement officer."
+   ],
+   "answer": "A",
+   "acs": "PA.I.A.K4",
+   "chapter": "regulation",
+   "note": "Contested: 14 CFR 61.3(l) also lists any Federal, State or local law enforcement officer. The long-standing FAA key for this item is A."
+  },
+  {
+   "n": 60,
+   "stem": "The correct method of stating 5,500 feet MSL to ATC is",
+   "options": [
+    "FIVE POINT FIVE.",
+    "FIFTY-FIVE HUNDRED FEET MSL.",
+    "FIVE THOUSAND FIVE HUNDRED."
+   ],
+   "answer": "C",
+   "acs": "PA.III.A.K2",
+   "chapter": "radio-communications"
+  },
+  {
+   "n": 61,
+   "stem": "Unless otherwise authorized, which situation requires Automatic Dependent Surveillance-Broadcast (ADS-B)?",
+   "options": [
+    "Landing at an airport with an operating control tower.",
+    "Overflying Class C airspace below 10,000 feet MSL.",
+    "Flying under the shelf of Class C airspace."
+   ],
+   "answer": "B",
+   "acs": "PA.I.E.K1",
+   "chapter": "airspace"
+  }
+ ]
+}

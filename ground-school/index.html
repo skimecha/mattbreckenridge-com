@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ground School — MOCK-UP</title>
+<title>Ground School</title>
+<meta name="description" content="FAA Private Pilot ground school hub: learn, drill, review and test each chapter in course order, plus the FAA sample exam with figures.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#080A10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080A10'/%3E%3Cpath d='M16 5l2.2 8.2 8.8 2.8-8.8 2.8L16 27l-2.2-8.2L5 16l8.8-2.8z' fill='%23E8B620'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,22 +17,32 @@
     --muted: #8A93A8; --gold: #C49A0C; --gold-lt: #E8B620;
     --gold-dim: rgba(196,154,12,0.11); --gold-rim: rgba(196,154,12,0.28);
     --green: #2D9966; --green-dim: rgba(45,153,102,0.11); --green-rim: rgba(45,153,102,0.30);
-    --red: #C25050;
-    --r: 10px; --mono: 'IBM Plex Mono', monospace; --sans: 'DM Sans', sans-serif;
+    --red: #C25050; --red-dim: rgba(194,80,80,0.12); --red-rim: rgba(194,80,80,0.35);
+    --r: 10px; --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace; --sans: 'DM Sans', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.5; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 28px 16px 90px; }
-  .mockbar { position: sticky; top: 0; z-index: 9; background: var(--gold); color: #0A0800;
-    font: 600 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
-    text-align: center; padding: 6px; }
+  a { color: var(--gold-lt); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 16px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font: 500 12px var(--mono); color: var(--muted); margin-bottom: 22px; }
+  .topbar a { color: var(--muted); text-decoration: none; }
+  .topbar a:hover { color: var(--gold-lt); }
   .eyebrow { font: 600 11px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  h1 { font-size: 26px; margin: 0 0 6px; }
+  h1 { font-size: 26px; margin: 0 0 6px; line-height: 1.2; }
+  h1 .score { color: var(--green); font-size: 22px; }
+  h1 .score.fail { color: var(--red); }
   .sub { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+  .sub a { color: var(--muted); }
   .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; margin-bottom: 14px; }
+  .label { font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .big { font: 600 22px var(--mono); color: var(--gold-lt); }
   .bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
   .bar > i { display: block; height: 100%; background: var(--gold); }
   .bar > i.done { background: var(--green); }
+  .bar > i.fail { background: var(--red); }
   .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
   .stat { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; text-align: center; padding: 10px 4px; }
   .stat b { display: block; font: 600 20px var(--mono); color: var(--text); }
@@ -38,265 +51,118 @@
   .stage-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
   .chap { display: grid; grid-template-columns: 34px 1fr auto; gap: 4px 12px; align-items: center;
     background: var(--surface); border: 1px solid var(--border); border-radius: var(--r);
-    padding: 11px 14px; margin-bottom: 8px; cursor: pointer; }
-  .chap:hover { border-color: var(--gold-rim); }
+    padding: 11px 14px; margin-bottom: 8px; cursor: pointer; text-decoration: none; color: inherit; }
+  .chap:hover, .chap:focus-visible { border-color: var(--gold-rim); outline: none; }
   .chap .num { font: 600 13px var(--mono); color: var(--muted); }
   .chap .title { font-weight: 600; font-size: 14.5px; }
   .chap .meta { font: 500 11px var(--mono); color: var(--muted); }
   .chap .pct { font: 600 13px var(--mono); color: var(--gold-lt); text-align: right; }
   .chap .pct.done { color: var(--green); }
+  .chap .pct.fail { color: var(--red); }
   .chap .cbar { grid-column: 2 / 4; }
   .chips { display: flex; gap: 6px; grid-column: 2 / 4; margin-top: 2px; flex-wrap: wrap; }
   .chip { font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase;
     border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; color: var(--muted); }
   .chip.on { color: var(--gold-lt); border-color: var(--gold-rim); background: var(--gold-dim); }
   .chip.tool { color: var(--green); border-color: var(--green-rim); background: var(--green-dim); }
-  .exam-row { border-style: dashed; cursor: default; }
+  .exam-row { border-style: dashed; }
   .exam-row .title { color: var(--gold-lt); }
+  .exam-row.live { border-style: solid; border-color: var(--gold-rim); }
   .btn { font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase;
     background: var(--gold); color: #0A0800; border: none; border-radius: 6px;
-    padding: 8px 14px; cursor: pointer; }
+    padding: 8px 14px; cursor: pointer; text-decoration: none; display: inline-block; line-height: 1.4; }
+  .btn:hover { background: var(--gold-lt); }
   .btn.ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
-  .btn.ghost:hover { border-color: var(--gold-rim); color: var(--gold-lt); }
-  .back { font: 500 12px var(--mono); color: var(--muted); cursor: pointer; margin-bottom: 14px; display: inline-block; }
+  .btn.ghost:hover { border-color: var(--gold-rim); color: var(--gold-lt); background: transparent; }
+  .btn.danger { background: transparent; color: var(--red); border: 1.5px solid var(--red-rim); }
+  .btn.danger:hover { background: var(--red-dim); }
+  .btn[disabled], .btn.disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
+  .btn.small { padding: 6px 10px; font-size: 11px; }
+  .back { font: 500 12px var(--mono); color: var(--muted); cursor: pointer; margin-bottom: 14px; display: inline-block; text-decoration: none; background: none; border: none; padding: 0; }
   .back:hover { color: var(--gold-lt); }
   .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 640px) { .modes { grid-template-columns: 1fr; } .stat-row { grid-template-columns: repeat(2, 1fr); } }
-  .mode { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 15px 16px; }
-  .mode h3 { margin: 0 0 2px; font-size: 15px; display: flex; justify-content: space-between; align-items: baseline; }
-  .mode .tag { font: 600 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+  .mode { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 15px 16px; display: flex; flex-direction: column; }
+  .mode h3 { margin: 0 0 2px; font-size: 15px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .mode p { font-size: 13px; color: var(--muted); margin: 6px 0 12px; flex: 1; }
+  .mode p b { color: var(--gold-lt); font-weight: 600; }
+  .mode .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { font: 600 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
   .tag.faa { color: var(--gold-lt); background: var(--gold-dim); border: 1px solid var(--gold-rim); }
   .tag.auth { color: var(--green); background: var(--green-dim); border: 1px solid var(--green-rim); }
-  .mode p { font-size: 13px; color: var(--muted); margin: 6px 0 12px; }
-  .qhead { display: flex; justify-content: space-between; align-items: baseline; font: 500 12px var(--mono); color: var(--muted); margin-bottom: 14px; }
+  .tag.soon { color: var(--muted); background: transparent; border: 1px solid var(--border); }
+  .note { font-size: 13px; color: var(--muted); }
+  .note code { font: 500 12px var(--mono); color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; }
+  .callout { border-left: 3px solid var(--gold); }
+  /* exam runner */
+  .qhead { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; font: 500 12px var(--mono); color: var(--muted); margin-bottom: 14px; }
   .qhead b { color: var(--gold-lt); }
-  .stem { font-size: 16.5px; font-weight: 600; margin-bottom: 14px; }
-  .fig { border: 1px dashed var(--gold-rim); border-radius: 6px; background: var(--gold-dim);
-    color: var(--muted); font: 500 12px var(--mono); text-align: center; padding: 34px 10px; margin-bottom: 14px; }
-  .opt { display: flex; gap: 12px; align-items: flex-start; background: var(--bg); border: 1.5px solid var(--border);
-    border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; }
+  .qhead .timer.low { color: var(--red); }
+  .stem { font-size: 16.5px; font-weight: 600; margin-bottom: 14px; white-space: pre-line; }
+  .qnote { font-size: 12px; color: var(--muted); margin: -6px 0 12px; }
+  .fig { border: 1px solid var(--border); border-radius: 6px; background: #fff; margin-bottom: 14px; overflow: hidden; }
+  .fig img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+  .fig.zoom img { cursor: zoom-out; }
+  .fig.zoom { max-height: none; }
+  .fig .cap { display: flex; justify-content: space-between; align-items: center; gap: 8px; font: 500 11px var(--mono); color: var(--muted); background: var(--bg); padding: 6px 10px; border-top: 1px solid var(--border); }
+  .fig .cap a { color: var(--muted); }
+  .fig.inline { display: inline-block; width: auto; background: transparent; border: none; margin: 0 0 12px; }
+  .fig.inline img { width: auto; max-width: 100%; cursor: default; image-rendering: auto; height: 120px; }
+  .opt { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; font: inherit; font-size: 14.5px; color: var(--text); }
   .opt:hover { border-color: var(--gold-rim); }
   .opt.sel { border-color: var(--gold); background: var(--gold-dim); }
-  .opt b { font: 600 13px var(--mono); color: var(--gold-lt); }
-  .qnav { display: flex; justify-content: space-between; margin-top: 16px; }
-  .rv { display: flex; justify-content: space-between; align-items: center; background: var(--bg);
-    border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; font-size: 13.5px; }
-  .rv .ok { color: var(--green); font: 600 12px var(--mono); }
-  .rv .miss { color: var(--red); font: 600 12px var(--mono); }
-  .acs { display: grid; grid-template-columns: 170px 1fr 44px; gap: 10px; align-items: center; font-size: 13px; margin-bottom: 7px; }
+  .opt.right { border-color: var(--green); background: var(--green-dim); }
+  .opt.wrong { border-color: var(--red); background: var(--red-dim); }
+  .opt b { font: 600 13px var(--mono); color: var(--gold-lt); flex-shrink: 0; }
+  .opt.right b { color: var(--green); }
+  .opt.wrong b { color: var(--red); }
+  .qnav { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .qnav .grp { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn.flagged { color: var(--gold-lt); border-color: var(--gold-rim); background: var(--gold-dim); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 5px; margin-top: 10px; }
+  .grid button { font: 600 11px var(--mono); background: var(--bg); color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 6px 0; cursor: pointer; }
+  .grid button.ans { color: var(--text); border-color: var(--gold-rim); background: var(--gold-dim); }
+  .grid button.flag { box-shadow: inset 0 -3px 0 var(--gold); }
+  .grid button.cur { outline: 2px solid var(--gold-lt); outline-offset: -1px; }
+  .grid button.miss { color: var(--red); border-color: var(--red-rim); background: var(--red-dim); }
+  .grid button.hit { color: var(--green); border-color: var(--green-rim); background: var(--green-dim); }
+  /* review */
+  .acs { display: grid; grid-template-columns: minmax(150px, 220px) 1fr 56px; gap: 10px; align-items: center; font-size: 13px; margin-bottom: 7px; }
   .acs span:last-child { font: 600 12px var(--mono); color: var(--muted); text-align: right; }
-  .hidden { display: none; }
+  .rv { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; font-size: 13.5px; cursor: pointer; }
+  .rv:hover { border-color: var(--gold-rim); }
+  .rv .ok { color: var(--green); font: 600 12px var(--mono); white-space: nowrap; }
+  .rv .miss { color: var(--red); font: 600 12px var(--mono); white-space: nowrap; }
+  .rv .ch { font: 500 11px var(--mono); color: var(--muted); }
+  .hist { display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; font-size: 13px; align-items: baseline; }
+  .hist .d { font: 500 12px var(--mono); color: var(--muted); }
+  .hist .s { font: 600 13px var(--mono); }
+  .hist .s.pass { color: var(--green); } .hist .s.fail { color: var(--red); }
+  .hidden { display: none !important; }
+  @media (max-width: 640px) {
+    .modes { grid-template-columns: 1fr; } .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .acs { grid-template-columns: 1fr 56px; } .acs .bar { grid-column: 1 / 3; }
+    h1 { font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<div class="mockbar">Mock-up · local only · nothing is wired up</div>
 <div class="wrap">
-
-<!-- ════════ VIEW: HUB ════════ -->
-<div id="v-hub">
-  <div class="eyebrow">FAA Private Pilot</div>
-  <h1>Ground School</h1>
-  <p class="sub">The whole course in one place. Learn, drill, review, and test each chapter, in course order.</p>
-
-  <div class="panel">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-      <span style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Course mastery</span>
-      <span style="font:600 22px var(--mono);color:var(--gold-lt)">38%</span>
-    </div>
-    <div class="bar"><i style="width:38%"></i></div>
-    <div class="stat-row">
-      <div class="stat"><b>9/20</b><span>chapters started</span></div>
-      <div class="stat"><b>214</b><span>drills due</span></div>
-      <div class="stat"><b>86%</b><span>last stage exam</span></div>
-      <div class="stat"><b>—</b><span>FAA sample exam</span></div>
-    </div>
+  <div class="topbar">
+    <a href="/">&larr; mattbreckenridge.com</a>
+    <span id="sync-note">Progress is stored in this browser</span>
   </div>
-  <div id="hub-list"></div>
+  <div id="app"><div class="note" style="font-family:var(--mono);letter-spacing:.15em;text-transform:uppercase;font-size:12px;text-align:center;padding:60px 0">Loading course&hellip;</div></div>
 </div>
 
-<!-- ════════ VIEW: CHAPTER ════════ -->
-<div id="v-chapter" class="hidden">
-  <span class="back" onclick="show('hub')">&larr; All chapters</span>
-  <div class="eyebrow">Stage 5 · Chapter 18</div>
-  <h1>Weather Services</h1>
-  <p class="sub">18 videos · METARs, TAFs, PIREPs, AIRMETs and SIGMETs, winds aloft, briefings.
-    <a href="#" style="color:var(--muted)">OneNote section &nearr;</a></p>
-
-  <div class="panel" style="padding:12px 18px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-      <span style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Chapter mastery</span>
-      <span style="font:600 18px var(--mono);color:var(--gold-lt)">64%</span>
-    </div>
-    <div class="bar"><i style="width:64%"></i></div>
-  </div>
-
-  <div class="modes">
-    <div class="mode">
-      <h3>Learn</h3>
-      <p>Encode pass while reading. 5 of 8 sections encoded; last: Decoding TAFs, 82%.</p>
-      <button class="btn ghost">Continue encoding</button>
-    </div>
-    <div class="mode">
-      <h3>Drill</h3>
-      <p>Calibration drills scoped to this chapter. 61 items, <b style="color:var(--gold-lt)">24 due now</b>.</p>
-      <button class="btn ghost">Drill all due</button>
-    </div>
-    <div class="mode">
-      <h3>Cards</h3>
-      <p>Flashcards for this chapter. 40 cards, 12 due for review.</p>
-      <button class="btn ghost">Review cards</button>
-    </div>
-    <div class="mode">
-      <h3>Test <span class="tag auth">Authored · PHAK Ch. 13</span></h3>
-      <p>20-question chapter quiz. Best 85% · last 80% (3 attempts).</p>
-      <button class="btn" onclick="show('exam')">Start quiz</button>
-    </div>
-  </div>
-
-  <div class="panel" style="margin-top:14px">
-    <span style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Chapter tools</span>
-    <p style="font-size:13px;color:var(--muted);margin:6px 0 10px">Live METAR / TAF / PIREP decoding reps with a real-weather corpus.</p>
-    <button class="btn ghost">Open Weather Report Drills &nearr;</button>
-  </div>
-</div>
-
-<!-- ════════ VIEW: EXAM RUNNER ════════ -->
-<div id="v-exam" class="hidden">
-  <span class="back" onclick="show('chapter')">&larr; Exit (progress saved)</span>
-  <div class="panel">
-    <div class="qhead">
-      <span><b>FAA SAMPLE EXAM</b> · verbatim bank</span>
-      <span>Question <b>7</b> / 61 &nbsp;·&nbsp; 1:58:43</span>
-    </div>
-    <div class="bar" style="margin-bottom:16px"><i style="width:11%"></i></div>
-    <div class="stem">(Refer to Figure 23.) What is the floor of the Class E airspace surrounding the area of Sioux Gateway (SUX) airport?</div>
-    <div class="fig">FIGURE 23 · Sectional chart excerpt · FAA Testing Supplement (CT-8080-2H)</div>
-    <div class="opt" onclick="pick(this)"><b>A</b><span>The surface.</span></div>
-    <div class="opt sel" onclick="pick(this)"><b>B</b><span>700 feet AGL.</span></div>
-    <div class="opt" onclick="pick(this)"><b>C</b><span>1,200 feet AGL.</span></div>
-    <div class="qnav">
-      <button class="btn ghost">&larr; Previous</button>
-      <div style="display:flex;gap:8px">
-        <button class="btn ghost">Flag for review</button>
-        <button class="btn" onclick="show('review')">Next &rarr;</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════ VIEW: REVIEW / SCORE ════════ -->
-<div id="v-review" class="hidden">
-  <span class="back" onclick="show('hub')">&larr; Back to hub</span>
-  <div class="eyebrow">FAA Sample Exam · completed in 1:22:10</div>
-  <h1>54 / 61 &nbsp;<span style="color:var(--green);font-size:22px">88%</span></h1>
-  <p class="sub">Passing is 70%. Your target is 100%. Seven to chase down.</p>
-  <div class="panel">
-    <span style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">By knowledge area</span>
-    <div style="margin-top:10px">
-      <div class="acs"><span>Airspace &amp; charts</span><div class="bar"><i style="width:75%"></i></div><span>9/12</span></div>
-      <div class="acs"><span>Weather</span><div class="bar"><i class="done" style="width:100%"></i></div><span>10/10</span></div>
-      <div class="acs"><span>Performance &amp; W&amp;B</span><div class="bar"><i style="width:78%"></i></div><span>7/9</span></div>
-      <div class="acs"><span>Regulations</span><div class="bar"><i style="width:90%"></i></div><span>9/10</span></div>
-      <div class="acs"><span>Navigation</span><div class="bar"><i class="done" style="width:100%"></i></div><span>8/8</span></div>
-      <div class="acs"><span>Aerodynamics &amp; systems</span><div class="bar"><i style="width:92%"></i></div><span>11/12</span></div>
-    </div>
-  </div>
-  <div class="panel">
-    <span style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Missed questions</span>
-    <div style="margin-top:10px">
-      <div class="rv"><span>Q7 · Class E floor at SUX (Figure 23)</span><span class="miss">missed · B, was C</span></div>
-      <div class="rv"><span>Q14 · Crosswind component (Figure 36)</span><span class="miss">missed · A, was B</span></div>
-      <div class="rv"><span>Q29 · Weight shift computation</span><span class="miss">missed · C, was A</span></div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin:12px 0 0">Each miss links to its chapter: drill it, re-encode the section, or re-quiz.</p>
-  </div>
-</div>
-
-</div>
-<script>
-const SPINE = [
-  { stage: "Before the course", chapters: [
-    ["01","Introduction",14,"meta",100],
-    ["02","Introduction to Flight Training",18,"content",100],
-  ]},
-  { stage: "Stage 1 · The machine", chapters: [
-    ["03","Aircraft Structure",30,"content",100],
-    ["04","Aircraft Systems",54,"content",80],
-    ["05","Aircraft Instruments",52,"content",72],
-    ["S1","Stage 1 Practice Exam",1,"exam","86%"],
-  ]},
-  { stage: "Stage 2 · Aerodynamics and performance", chapters: [
-    ["06","Basic Aerodynamics",18,"content",64],
-    ["07","Aerodynamic Forces",32,"content",51],
-    ["08","Weight and Balance",31,"content",22],
-    ["09","Performance &amp; Limitations",20,"content",0],
-    ["S2","Stage 2 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Stage 3 · Regulations", chapters: [
-    ["10","Regulation",24,"content",34],
-    ["11","Inspections and Documents",13,"content",0],
-    ["S3","Stage 3 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Stage 4 · The pilot", chapters: [
-    ["12","Aeromedical Factors",21,"content",0],
-    ["13","Aeronautical Decision Making",13,"content",0],
-    ["S4","Stage 4 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Stage 5 · Weather", chapters: [
-    ["14","Weather Theory",34,"content",41],
-    ["15","Weather Services",18,"content",64,["wx"]],
-    ["S5","Stage 5 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Stage 6 · The airport environment", chapters: [
-    ["16","Airport Operations",40,"content",0],
-    ["17","Radio Communications",19,"content",12,["radio"]],
-    ["S6","Stage 6 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Stage 7 · Navigation and cross-country", chapters: [
-    ["18","Airspace",30,"content",0],
-    ["19","Charts",16,"content",0],
-    ["20","Navigation",26,"content",0],
-    ["21","E6B Flight Computer",15,"tool",null],
-    ["22","CX-3 Flight Computer",8,"tool",null],
-    ["23","Planning a Cross Country",22,"content",0],
-    ["S7","Stage 7 Practice Exam",1,"exam",null],
-  ]},
-  { stage: "Final", chapters: [
-    ["F","FAA Sample Exam · 61 questions, verbatim",1,"exam",null],
-  ]},
-];
-const hub = document.getElementById("hub-list");
-SPINE.forEach(g => {
-  hub.insertAdjacentHTML("beforeend", `<div class="stage-label">${g.stage}</div>`);
-  g.chapters.forEach(([num, title, vids, kind, pct, tools]) => {
-    if (kind === "exam") {
-      hub.insertAdjacentHTML("beforeend", `<div class="chap exam-row">
-        <div class="num">${num}</div>
-        <div><div class="title">${title}</div><div class="meta">checkpoint</div></div>
-        <div>${typeof pct === "string" ? `<span class="pct done">${pct}</span>` : `<button class="btn ghost" style="padding:6px 10px">Start</button>`}</div></div>`);
-      return;
-    }
-    const chips = kind === "tool"
-      ? `<span class="chip tool">Tool chapter</span>`
-      : `<span class="chip on">Learn</span><span class="chip on">Drill</span><span class="chip on">Cards</span><span class="chip ${pct ? "on" : ""}">Test</span>`
-        + (tools || []).map(t => `<span class="chip tool">${t === "wx" ? "Wx Drills" : "Radio Recall"} &nearr;</span>`).join("");
-    hub.insertAdjacentHTML("beforeend", `<div class="chap" onclick="show('chapter')">
-      <div class="num">${num}</div>
-      <div><div class="title">${title}</div><div class="meta">${vids} videos</div></div>
-      <div class="pct ${pct === 100 ? "done" : ""}">${pct === null || kind === "tool" ? "" : pct + "%"}</div>
-      <div class="cbar bar"><i class="${pct === 100 ? "done" : ""}" style="width:${pct || 0}%"></i></div>
-      <div class="chips">${chips}</div></div>`);
-  });
-});
-function show(v) {
-  ["hub","chapter","exam","review"].forEach(x =>
-    document.getElementById("v-" + x).classList.toggle("hidden", x !== v));
-  window.scrollTo(0, 0);
-}
-function pick(el) {
-  [...el.parentElement.querySelectorAll(".opt")].forEach(o => o.classList.remove("sel"));
-  el.classList.add("sel");
-}
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" crossorigin></script>
+<script src="/shared/auth.js"></script>
+<script src="/shared/kv-sync.js"></script>
+<script src="exam.js?v=1"></script>
+<script src="app.js?v=1"></script>
+<!-- Cloudflare Web Analytics (same token as the main site) -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8475807a57f4d0790b74914bf9debee"}'></script>
 </body>
 </html>

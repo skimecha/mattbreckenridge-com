@@ -826,11 +826,19 @@ function TrendChart({ attempts }) {
 
 /* ════════════════ APP ════════════════ */
 function CalibrationBench() {
+  // Scope from the URL (the Ground School hub launches the bench per chapter):
+  //   ?view=bench|encode|library|theory  ?subject=…  ?discipline=…  ?source=…  ?gs=1 (show the hub link)
+  const launch = useMemo(() => {
+    const p = new URLSearchParams(window.location.search);
+    const view = ["bench", "encode", "library", "theory"].includes(p.get("view")) ? p.get("view") : "bench";
+    return { view, gs: p.get("gs") === "1",
+      filter: { discipline: p.get("discipline") || "", subject: p.get("subject") || "", source: p.get("source") || "" } };
+  }, []);
   const [data, setData] = useState(null);
-  const [view, setView] = useState("bench");
+  const [view, setView] = useState(launch.view);
   const [activeSkill, setActiveSkill] = useState(null);
   const [editing, setEditing] = useState(null);
-  const [filter, setFilter] = useState({ discipline: "", subject: "", source: "" });
+  const [filter, setFilter] = useState(launch.filter);
   const [session, setSession] = useState(null); // {total, results: [{name,type,confidence,accuracy,gap}]}
   const [encodeRun, setEncodeRun] = useState(null); // {source, section, ids}
   // Signed-in users get their synced bench; visitors get the demo framing.
@@ -978,6 +986,7 @@ function CalibrationBench() {
             <Tab id="library">Library ({skills.length})</Tab>
             <Tab id="add">+ New</Tab>
             <Tab id="theory">Theory</Tab>
+            {launch.gs && <a className="cb-home" href="/ground-school/">&larr; Ground School</a>}
             {authUser && <a className="cb-home" href="/flashcards/">Cards</a>}
             <a className="cb-home" href="https://mattbreckenridge.com">&larr; mattbreckenridge.com</a>
           </nav>
@@ -1072,9 +1081,10 @@ function CalibrationBench() {
               onRecord={recordEncode} onExit={() => setEncodeRun(null)} />;
           }
           // Group section-tagged items by source → section, preserving library (import) order.
+          // Honors the Session Scope (the hub launches Encode per chapter subject).
           const bySource = [];
           const srcIdx = {};
-          skills.forEach((s) => {
+          skills.filter(inScope).forEach((s) => {
             if (!(s.section || "").trim()) return;
             const src = (s.source || "").trim() || "No source";
             if (!(src in srcIdx)) { srcIdx[src] = bySource.length; bySource.push({ source: src, sections: [], secIdx: {} }); }

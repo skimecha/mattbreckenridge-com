@@ -38,6 +38,9 @@ in `.claude/launch.json`, python http.server on :8765).
 - `/wx/` — unlisted Weather Report Drills (METAR/TAF/PIREP). Vanilla JS,
   no auth, no sync; quiz history only in localStorage `wx1:history`.
   See "Weather Report Drills" below.
+- `/ground-school/` — Ground School hub (unlisted, noindex until P6).
+  P0+P1 shipped 2026-10-21; see "Ground School hub" below and
+  GROUND-SCHOOL-PLAN.md (the signed-off plan, source of truth for P2+).
 - `/account/` — sign-in page (email/password + Google via Supabase).
 - `/shared/auth.js` — site-wide auth module, exposes `window.mbAuth`.
 - `/shared/kv-sync.js` — generic localStorage⇄kv_store sync engine
@@ -158,6 +161,54 @@ Alternatives considered and not chosen: a Cloudflare Worker CORS proxy
 (new infra for a drill app that does not need real-time data) and a
 hand-written sample set (loses the "real reports at random stations"
 ask). Revisit the proxy only if Matt wants live, current-hour reports.
+
+## Ground School hub (`/ground-school/`, P0+P1 shipped 2026-10-21)
+
+Plan: GROUND-SCHOOL-PLAN.md (Matt signed off 2026-10-21). P0 = course
+spine + hub shell, P1 = exam runner + FAA bank. Vanilla JS, hash routes
+(`#/`, `#/ch/<id>`, `#/exam/<bank>`, `#/result/<bank>/<id>`).
+
+Files: `index.html` (shell + CSS, the approved mock's look), `app.js`
+(hub, chapter view, routing, progress readers), `exam.js` (runner +
+score review, `window.gsExam`), `course-spine.json`,
+`banks/faa-par.json`, `banks/figures/` (14 supplement figures as JPEG
+plus the two inline images for Q48/Q49, ~4 MB).
+
+- Spine: 33 chapters in Pilot Institute order (titles, order, stage,
+  video counts only; no course content). Per chapter: `bench.subjects`
+  (bench subject names from Matt's drill imports), `decks` (flashcard
+  deck ids; `ld-*` are browser-local decks fed by the bench importer),
+  `ppl` (section id + bit offset/count into the legacy /ppl/ tracker's
+  194-bit string; MUST stay in sync with ppl/index.html SECTIONS),
+  `onenote` (section name; `onenote.baseUrl` is null until Matt supplies
+  the notebook URL, so the hub shows the name only), `tools` (wx live;
+  radio-recall has no public URL yet, shown as "not published").
+- Transition scaffolding (temporary, per plan): chapter progress = ppl
+  checkbox bits; Learn/Drill launch `/bench/?gs=1&view=encode|bench&
+  subject=…` (bench reads `view`, `subject`, `discipline`, `source`,
+  `gs=1` from the URL at boot; Encode listing honors the session scope);
+  Cards launch `/flashcards/#/study/<deckId>` (no flashcards change
+  needed). Test = disabled until P2.
+- Hub state under `gs:` via shared/kv-sync.js (`app: "groundschool"`,
+  no Supabase schema change): `gs:exam-history` (last 100 results) and
+  `gs:exam-inprogress-<bank>` (resume after exit; 150-minute countdown
+  auto-submits).
+- FAA bank: the FAA PAR sample set (dated 2021-08-10, public domain),
+  61 questions verbatim including the backtick apostrophes in the PDF.
+  THE FAA PUBLISHES NO ANSWER KEY: `answerKey.source = "derived"`; the
+  key was worked from the figures and FAR/AIM/PHAK on 2026-10-21, every
+  figure answer re-checked against the rendered figure. Q59 is flagged
+  `contested` (61.3(l) also lists law enforcement; the long-standing
+  key is A). Each question carries `acs` (FAA ACS code, used for the
+  by-task breakdown) and `chapter` (spine id, used for "each miss links
+  to its chapter"). Never edit question text; the authored bank
+  (P2, `banks/authored/<chapter>.json`) is where editing happens.
+- Figures: rendered from FAA-CT-8080-2H (176 MB, not in the repo) with
+  PyMuPDF at 170 dpi, cropped to the page's content bbox (Appendix 2
+  page "2-N" is PDF page 34+N). The source PDFs and render scripts
+  lived in the session scratchpad; re-download from faa.gov to redo.
+- Next: P2 (extend the author-chapter skill with `questions[]`, pilot
+  2-3 chapters, chapter quizzes + first stage exam). Then P3+ per plan.
 
 ## Backlog (deferred ideas, not approved)
 
