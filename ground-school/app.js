@@ -97,10 +97,11 @@
           var right = !live ? '<span class="chip">Authored bank · P2</span>' :
             (b ? '<span class="pct ' + (b.pct >= 70 ? "done" : "fail") + '">' + b.pct + '%</span>' : '') +
             ' <a class="btn ghost small" href="#/exam/' + c.bank + '">' + (ip ? "Resume" : b ? "Retake" : "Start") + '</a>';
-          html += '<a class="chap exam-row' + (live ? " live" : "") + '" href="' + (live ? "#/ch/" + c.id : "#/ch/" + c.id) + '">' +
+          // A div, not an <a>: the row holds its own Start/Resume link and anchors cannot nest.
+          html += '<div class="chap exam-row' + (live ? " live" : "") + '" data-href="#/ch/' + c.id + '" role="link" tabindex="0">' +
             '<div class="num">' + (c.stage === "final" ? "F" : "S" + c.stage) + '</div>' +
             '<div><div class="title">' + esc(c.title) + (live ? ' · 61 questions, verbatim' : '') + '</div><div class="meta">' + (live ? "FAA bank · timed · figures" : "checkpoint") + '</div></div>' +
-            '<div style="text-align:right">' + right + '</div></a>';
+            '<div style="text-align:right">' + right + '</div></div>';
           return;
         }
         var pct = pplPct(c);
@@ -125,6 +126,11 @@
     });
     html += '<p class="note" style="margin-top:22px">Chapter order and video counts follow the Pilot Institute course. The FAA sample exam is the FAA\'s published PAR question set, verbatim, with figures from the Airman Knowledge Testing Supplement. Authored chapter quizzes and stage exams arrive in the next phase.</p>';
     app.innerHTML = html;
+    app.querySelectorAll("[data-href]").forEach(function (row) {
+      var go = function (e) { if (e.target.closest("a")) return; location.hash = row.dataset.href; };
+      row.onclick = go;
+      row.onkeydown = function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(e); } };
+    });
   }
 
   /* ── chapter ── */
