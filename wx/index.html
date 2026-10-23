@@ -6,7 +6,7 @@
 <title>Weather Report Drills</title>
 <meta name="description" content="Drill METAR, TAF and PIREP decoding with real reports from US stations, then test yourself with FAA-style multiple choice questions.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#111214">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a6cf0'/%3E%3Cpath d='M9 9h14v3H9zm0 5.5h14v3H9zM9 20h14v3H9z' fill='%230b1e4a'/%3E%3C/svg%3E">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG14-Classic/DSEG14Classic-Bold.woff2">
 <style>
@@ -18,179 +18,199 @@
     font-style: normal;
     font-display: swap;
   }
+  /* 1980s terminal palette: charcoal housings, airport-sign yellow, VFD blue */
   :root {
-    color-scheme: light;
-    --surface-1: #fcfcfb;
-    --page: #f9f9f7;
-    --text-primary: #0b0b0b;
-    --text-secondary: #52514e;
-    --muted: #898781;
-    --border: rgba(11,11,11,0.10);
-    --accent: #2a78d6;
-    --accent-soft: #cde2fb;
-    --good: #0ca30c;
-    --good-soft: #d9f3d9;
-    --bad: #d6342a;
-    --bad-soft: #f9dbd8;
-    --warn: #eda100;
-    --lcd-bg-1: #2b8dff;
-    --lcd-bg-2: #0f5fe0;
-    --lcd-ink: #0a1d47;
-    --lcd-ghost: rgba(10,29,71,0.13);
-    --lcd-dot: rgba(0,0,0,0.12);
+    color-scheme: dark;
+    --page: #111214;
+    --surface-1: #1a1c20;
+    --surface-2: #202329;
+    --edge: #2c3038;
+    --edge-hi: #3a3f49;
+    --text-primary: #ece9e1;
+    --text-secondary: #b9b5aa;
+    --muted: #84878e;
+    --amber: #f4b62d;
+    --amber-dim: #a87d14;
+    --good: #4fd07a;
+    --good-soft: #15301f;
+    --bad: #f0665a;
+    --bad-soft: #3a1b18;
+    --lcd-panel: #050608;
+    --lcd-lit: #8ec9ff;
+    --lcd-glow: rgba(70, 150, 255, 0.55);
+    --lcd-ghost: #20262f;
+    --sign: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
     --mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --surface-1: #1a1a19;
-      --page: #0d0d0d;
-      --text-primary: #ffffff;
-      --text-secondary: #c3c2b7;
-      --muted: #898781;
-      --border: rgba(255,255,255,0.10);
-      --accent: #3987e5;
-      --accent-soft: #104281;
-      --good: #2fbf2f;
-      --good-soft: #143d14;
-      --bad: #f0584e;
-      --bad-soft: #4a1c19;
-      --warn: #c98500;
-    }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--page);
+    font-family: var(--sign);
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 4px),
+      linear-gradient(180deg, #15171a 0%, var(--page) 240px);
     color: var(--text-primary);
     line-height: 1.45;
   }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 80px; }
-  .top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .top a.home { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
-  .top a.home:hover { color: var(--accent); }
-  header h1 { font-size: 22px; margin: 6px 0 2px; }
-  header .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 18px 16px 70px; }
 
-  .controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-bottom: 14px; }
-  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface-1); }
+  /* Signage header */
+  .sign-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .sign-row a.home {
+    color: var(--text-secondary); text-decoration: none; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .sign-row a.home:hover { color: var(--amber); }
+  .clock { display: flex; align-items: center; gap: 8px; font-family: 'DSEG14', var(--mono); font-weight: bold; font-size: 20px; letter-spacing: .1em; color: var(--amber); text-shadow: 0 0 6px rgba(244,182,45,0.5); }
+  .clock small { font-family: var(--sign); font-size: 11px; letter-spacing: .14em; color: var(--muted); text-shadow: none; }
+  .clock .face { position: relative; display: inline-block; background: var(--lcd-panel); padding: 5px 10px; border-radius: 3px; box-shadow: inset 0 0 0 1px #000, inset 0 1px 4px rgba(0,0,0,0.9), 0 0 0 1px var(--edge-hi); line-height: 1; }
+  .clock .ghost { position: absolute; left: 10px; top: 5px; color: var(--lcd-ghost); text-shadow: none; pointer-events: none; }
+  .clock #clock { position: relative; }
+  header { margin: 14px 0 16px; padding-bottom: 12px; border-bottom: 3px solid var(--amber); }
+  header h1 {
+    margin: 0 0 4px; font-family: var(--sign); font-weight: 700; font-size: clamp(22px, 4vw, 30px); line-height: 1.1;
+    text-transform: uppercase; letter-spacing: .02em; color: var(--amber);
+  }
+  header .sub { color: var(--text-secondary); font-size: 14px; margin: 0; }
+
+  /* Controls: backlit tabs */
+  .controls { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-bottom: 14px; }
+  .ctl-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .16em; margin-right: 8px; }
+  .seg { display: inline-flex; border: 1px solid var(--edge-hi); border-radius: 3px; overflow: hidden; background: var(--surface-1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 0 #000; }
   .seg button {
     appearance: none; border: 0; background: transparent; color: var(--text-secondary);
-    font: inherit; font-size: 14px; padding: 7px 14px; cursor: pointer;
+    font: inherit; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 8px 14px; cursor: pointer;
   }
-  .seg button + button { border-left: 1px solid var(--border); }
-  .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
-  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-  .ctl-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-right: 6px; }
+  .seg button + button { border-left: 1px solid var(--edge-hi); }
+  .seg button[aria-pressed="true"] { background: var(--amber); color: #141210; font-weight: 700; }
+  .seg button:focus-visible { outline: 2px solid var(--lcd-lit); outline-offset: -2px; }
 
-  /* The segmented display */
+  /* Departures-board housing around the VFD panel */
+  .board {
+    background: linear-gradient(180deg, #2a2d33, #1d1f24);
+    border: 1px solid var(--edge-hi);
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 14px 30px rgba(0,0,0,0.45);
+  }
+  .board-head {
+    display: flex; align-items: center; gap: 14px; padding: 4px 8px 8px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber);
+  }
+  .board-head .tag { color: #141210; background: var(--amber); padding: 2px 8px; border-radius: 2px; font-weight: 700; min-width: 64px; text-align: center; }
+  .board-head .station { flex: 1; color: var(--amber); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .board-head .led { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 6px var(--good); }
+  .board-head .led.busy { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
   .lcd {
     position: relative;
-    border-radius: 14px;
-    padding: 26px 22px;
+    border-radius: 4px;
+    padding: 28px 24px;
     min-height: 150px;
-    background:
-      radial-gradient(circle at 1px 1px, var(--lcd-dot) 1.2px, transparent 1.6px) 0 0 / 22px 22px,
-      linear-gradient(135deg, var(--lcd-bg-1), var(--lcd-bg-2));
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), 0 10px 30px rgba(15,95,224,0.25);
+    background: radial-gradient(ellipse at 50% 0%, #0b0e13 0%, var(--lcd-panel) 70%);
+    box-shadow: inset 0 0 0 1px #000, inset 0 0 40px rgba(0,0,0,0.9), inset 0 2px 6px rgba(0,0,0,0.9);
     overflow: hidden;
   }
   .lcd::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(115deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.06) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 28%);
   }
   .lcd-text, .lcd-ghost {
     font-family: 'DSEG14', var(--mono);
     font-weight: bold;
-    font-size: clamp(13px, 2.55vw, 23px);
-    line-height: 1.75;
-    letter-spacing: 0.06em;
+    font-size: clamp(15px, 2.7vw, 26px);
+    line-height: 1.9;
+    letter-spacing: 0.14em;
     text-align: center;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    color: var(--lcd-ink);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.12);
     margin: 0;
     position: relative;
   }
-  .lcd-ghost { position: absolute; left: 22px; right: 22px; top: 26px; color: var(--lcd-ghost); text-shadow: none; pointer-events: none; user-select: none; }
-  .lcd.busy .lcd-text { color: #0a1d47; }
-  .lcd-meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); margin: 8px 2px 0; min-height: 20px; }
-  .lcd-meta .tag { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
-  .btn {
-    appearance: none; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary);
-    font: inherit; font-size: 15px; padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  .lcd-text {
+    color: var(--lcd-lit);
+    text-shadow: 0 0 2px rgba(190,225,255,0.9), 0 0 8px var(--lcd-glow), 0 0 18px rgba(60,130,255,0.25);
   }
-  .btn:hover { border-color: var(--accent); }
-  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .btn.primary:hover { filter: brightness(1.08); }
-  .btn[disabled] { opacity: .5; cursor: default; }
-  .hint { font-size: 12px; color: var(--muted); align-self: center; }
+  .lcd-ghost { position: absolute; left: 24px; right: 24px; top: 28px; color: var(--lcd-ghost); pointer-events: none; user-select: none; }
+  .lcd.busy .lcd-text { animation: vfd-flicker 0.09s steps(2) infinite; }
+  @keyframes vfd-flicker { from { opacity: 0.72; } to { opacity: 1; } }
+  .lcd-meta { display: none; }
 
-  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-top: 12px; }
-  .card h2 { font-size: 15px; margin: 0 0 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; align-items: center; }
+  .btn {
+    appearance: none; border: 1px solid var(--edge-hi); background: linear-gradient(180deg, var(--surface-2), var(--surface-1)); color: var(--text-primary);
+    font: inherit; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; padding: 11px 18px; border-radius: 3px; cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 0 #000;
+  }
+  .btn:hover { border-color: var(--amber-dim); color: var(--amber); }
+  .btn:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 0 #000; }
+  .btn:focus-visible { outline: 2px solid var(--lcd-lit); outline-offset: 2px; }
+  .btn.primary { background: linear-gradient(180deg, #ffc84a, var(--amber)); color: #141210; border-color: #c9951f; font-weight: 700; }
+  .btn.primary:hover { color: #000; filter: brightness(1.05); }
+  .btn[disabled] { opacity: .5; cursor: default; }
+  .hint { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+
+  .card { background: var(--surface-1); border: 1px solid var(--edge); border-radius: 6px; padding: 16px 18px; margin-top: 12px; box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset; }
+  .card h2 { font-size: 12px; margin: 0 0 12px; color: var(--amber); text-transform: uppercase; letter-spacing: .18em; font-weight: 700; }
+  .card h2::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--amber); margin-right: 10px; vertical-align: -1px; }
 
   table.breakdown { width: 100%; border-collapse: collapse; font-size: 14px; }
-  table.breakdown td { padding: 7px 8px; border-top: 1px solid var(--border); vertical-align: top; }
+  table.breakdown td { padding: 8px 8px; border-top: 1px solid var(--edge); vertical-align: top; }
   table.breakdown tr:first-child td { border-top: 0; }
-  table.breakdown td.raw { font-family: var(--mono); white-space: nowrap; color: var(--accent); width: 1%; font-weight: 600; }
-  table.breakdown td.lbl { color: var(--muted); white-space: nowrap; width: 1%; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; padding-top: 9px; }
-  table.breakdown tr.head td { background: var(--accent-soft); color: var(--text-primary); font-weight: 600; border-top: 0; }
-  table.breakdown tr.head td.raw { color: var(--text-primary); }
+  table.breakdown td.raw { font-family: var(--mono); white-space: nowrap; color: var(--lcd-lit); width: 1%; font-weight: 600; }
+  table.breakdown td.lbl { color: var(--muted); white-space: nowrap; width: 1%; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; padding-top: 10px; }
+  table.breakdown tr.head td { background: #0e1013; color: var(--amber); font-weight: 700; border-top: 0; letter-spacing: .04em; }
+  table.breakdown tr.head td.raw { color: var(--amber); }
   @media (max-width: 560px) {
     table.breakdown td.raw { white-space: normal; }
     table.breakdown td.lbl { display: none; }
   }
 
-  .plain { font-size: 15px; line-height: 1.6; margin: 0 0 12px; }
+  .plain { font-size: 15px; line-height: 1.6; margin: 0 0 12px; color: var(--text-primary); }
 
   /* quiz */
   .quiz-setup { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .progress { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
-  .bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 14px; }
-  .bar > div { height: 100%; background: var(--accent); width: 0; transition: width .25s; }
-  .stem { font-size: 17px; font-weight: 600; margin: 0 0 12px; }
+  .progress { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .bar { height: 4px; background: #0e1013; border-radius: 2px; overflow: hidden; margin-bottom: 14px; }
+  .bar > div { height: 100%; background: var(--amber); width: 0; transition: width .25s; }
+  .stem { font-size: 17px; font-weight: 700; margin: 0 0 12px; }
   .choices { display: grid; gap: 8px; }
   .choice {
-    appearance: none; text-align: left; border: 1px solid var(--border); background: var(--page); color: var(--text-primary);
-    font: inherit; font-size: 15px; padding: 11px 14px; border-radius: 8px; cursor: pointer; display: flex; gap: 12px; align-items: flex-start;
+    appearance: none; text-align: left; border: 1px solid var(--edge-hi); background: linear-gradient(180deg, var(--surface-2), var(--surface-1)); color: var(--text-primary);
+    font: inherit; font-size: 15px; padding: 11px 14px; border-radius: 3px; cursor: pointer; display: flex; gap: 12px; align-items: flex-start;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 0 #000;
   }
-  .choice .key { font-family: var(--mono); color: var(--muted); font-size: 13px; padding-top: 2px; }
-  .choice:hover:not([disabled]) { border-color: var(--accent); }
+  .choice .key { font-family: var(--mono); color: var(--amber); font-size: 13px; padding-top: 2px; min-width: 14px; }
+  .choice:hover:not([disabled]) { border-color: var(--amber-dim); }
   .choice[disabled] { cursor: default; }
   .choice.correct { border-color: var(--good); background: var(--good-soft); }
   .choice.wrong { border-color: var(--bad); background: var(--bad-soft); }
-  .feedback { margin-top: 14px; padding: 12px 14px; border-radius: 8px; font-size: 14px; line-height: 1.55; }
+  .feedback { margin-top: 14px; padding: 12px 14px; border-radius: 3px; font-size: 14px; line-height: 1.55; }
   .feedback.ok { background: var(--good-soft); border: 1px solid var(--good); }
   .feedback.no { background: var(--bad-soft); border: 1px solid var(--bad); }
   .feedback strong { display: block; margin-bottom: 4px; }
-  .score { font-size: 40px; font-weight: 700; margin: 4px 0; }
-  .score small { font-size: 16px; font-weight: 500; color: var(--text-secondary); margin-left: 8px; }
-  .pass { color: var(--good); } .fail { color: var(--bad); }
+  .score { font-family: 'DSEG14', var(--mono); font-weight: bold; font-size: 44px; margin: 4px 0 8px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .score small { font-family: var(--sign); font-size: 15px; font-weight: 500; color: var(--text-secondary); letter-spacing: .04em; }
+  .pass { color: var(--good); text-shadow: 0 0 10px rgba(79,208,122,0.5); } .fail { color: var(--bad); text-shadow: 0 0 10px rgba(240,102,90,0.5); }
   ul.missed { padding-left: 18px; margin: 8px 0 0; font-size: 14px; }
-  ul.missed li { margin-bottom: 8px; }
-  ul.missed code { font-family: var(--mono); font-size: 12px; color: var(--muted); display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
+  ul.missed li { margin-bottom: 10px; }
+  ul.missed code { font-family: var(--mono); font-size: 12px; color: var(--lcd-lit); display: block; white-space: pre-wrap; overflow-wrap: anywhere; opacity: .85; }
   .history { font-size: 13px; color: var(--muted); margin-top: 10px; }
   .hidden { display: none !important; }
-  .err { color: var(--bad); font-size: 14px; }
 
-  @media (prefers-reduced-motion: reduce) { .bar > div { transition: none; } }
+  footer.fine { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(--edge); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) { .bar > div { transition: none; } .lcd.busy .lcd-text { animation: none; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top">
-    <a class="home" href="/">mattbreckenridge.com</a>
-    <span class="hint" id="corpus-info"></span>
+  <div class="sign-row">
+    <a class="home" href="/">&larr; mattbreckenridge.com</a>
+    <div class="clock" aria-label="Current time UTC"><span class="face"><span class="ghost" aria-hidden="true">~~~~~</span><span id="clock">----Z</span></span><small>UTC</small></div>
   </div>
   <header>
     <h1>Weather Report Drills</h1>
-    <div class="sub">Read the raw code, then check yourself. Real METAR, TAF and PIREP reports from US stations.</div>
+    <p class="sub">Read the raw code, then check yourself. Real METAR, TAF and PIREP reports from US stations.</p>
   </header>
 
   <div class="controls">
@@ -212,11 +232,17 @@
     </div>
   </div>
 
-  <div class="lcd" id="lcd" aria-live="polite">
-    <pre class="lcd-ghost" id="lcd-ghost" aria-hidden="true"></pre>
-    <pre class="lcd-text" id="lcd-text">LOADING</pre>
+  <div class="board">
+    <div class="board-head">
+      <span class="tag" id="lcd-type">WX</span>
+      <span class="station" id="lcd-station"></span>
+      <span class="led" id="lcd-led" aria-hidden="true"></span>
+    </div>
+    <div class="lcd" id="lcd" aria-live="polite">
+      <pre class="lcd-ghost" id="lcd-ghost" aria-hidden="true"></pre>
+      <pre class="lcd-text" id="lcd-text">LOADING</pre>
+    </div>
   </div>
-  <div class="lcd-meta"><span id="lcd-station"></span><span class="tag" id="lcd-type"></span></div>
 
   <!-- Drill mode -->
   <section id="drill">
@@ -276,8 +302,13 @@
       </div>
     </div>
   </section>
-</div>
 
+  <footer class="fine">
+    <span>14-segment alphanumeric display &middot; data: aviationweather.gov</span>
+    <span id="corpus-info"></span>
+    <span>For study only. Not for flight planning.</span>
+  </footer>
+</div>
 <script src="decode.js?v=1"></script>
 <script src="quiz.js?v=1"></script>
 <script>
@@ -327,9 +358,11 @@
     const el = $('lcd-text'), ghost = $('lcd-ghost');
     if (animTimer) { clearInterval(animTimer); animTimer = null; }
     ghost.textContent = text.replace(/[^\s]/g, '~');
-    $('lcd-station').textContent = meta.station || '';
-    $('lcd-type').textContent = meta.tag || '';
+    $('lcd-station').textContent = (meta.station || '').toUpperCase();
+    $('lcd-type').textContent = meta.tag || 'WX';
+    const led = $('lcd-led');
     if (reduceMotion) { el.textContent = text; return; }
+    led.classList.add('busy');
     const chars = text.split('');
     const n = chars.length;
     const frames = Math.min(28, 14 + Math.round(n / 12));
@@ -348,7 +381,7 @@
         else out += CHARS[rnd(CHARS.length)];
       }
       el.textContent = out;
-      if (frame >= frames) { clearInterval(animTimer); animTimer = null; el.textContent = text; $('lcd').classList.remove('busy'); }
+      if (frame >= frames) { clearInterval(animTimer); animTimer = null; el.textContent = text; $('lcd').classList.remove('busy'); led.classList.remove('busy'); }
     }, 42);
   }
 
@@ -589,6 +622,14 @@
     } else if (state.mode === 'quiz' && (e.key === 'Enter')) { e.preventDefault(); startQuiz(); }
   });
 
+  // ----- Zulu clock in the header -----
+  function tickClock() {
+    const d = new Date();
+    $('clock').textContent = String(d.getUTCHours()).padStart(2, '0') + String(d.getUTCMinutes()).padStart(2, '0') + 'Z';
+  }
+  tickClock();
+  setInterval(tickClock, 15000);
+
   // ----- boot -----
   function boot() {
     fetch('data/reports.json?v=' + Math.floor(Date.now() / 86400000))
@@ -596,7 +637,7 @@
       .then(data => {
         state.data = data;
         const gen = data.generated ? new Date(data.generated) : null;
-        $('corpus-info').textContent = data.metars.length + ' METAR / ' + data.tafs.length + ' TAF / ' + data.pireps.length + ' PIREP' + (gen ? ', updated ' + gen.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : '');
+        $('corpus-info').textContent = data.metars.length + ' METAR / ' + data.tafs.length + ' TAF / ' + data.pireps.length + ' PIREP' + (gen ? ' / updated ' + gen.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : '');
       })
       .catch(err => {
         state.data = null;
