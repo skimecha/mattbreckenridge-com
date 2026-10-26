@@ -228,6 +228,28 @@ plus the two inline images for Q48/Q49, ~4 MB).
   length, growth multiplier, and how it interacts with the existing
   overconfidence penalty.
 
+## Backlog (GitHub Issues + Project board, added 2026-10-26)
+
+Matt runs his backlog Bob/Guppi style: he captures and decides, Claude keeps
+the record and surfaces it. The single view is the private user-level
+Project board https://github.com/users/skimecha/projects/1. Items are
+issues: this repo's work lives as issues here; anything with no codebase
+lives in the private repo `skimecha/backlog`, whose `DECISIONS.md` is the
+decision log (cite it before reopening a settled question).
+
+- Triage labels on every open item: `now` / `next` / `later` / `someday`,
+  plus additive `blocked`. The board's Priority field mirrors the label.
+- Session start: skim the board's now/next items
+  (`gh project item-list 1 --owner skimecha`).
+- When Matt defers something or says "add to the backlog": create the issue
+  with a label, `gh project item-add 1 --owner skimecha --url <url>`, and
+  set Priority. Capture never waits for triage; reorder only when asked.
+- This repo is public, so its issues are public. Private thoughts go in
+  `skimecha/backlog`.
+- The "Backlog (deferred ideas)" section above is now mirrored as issues
+  (#3, #6, #7, #8 among others); keep adding the detailed rationale there
+  only when an issue body is not enough.
+
 ## Working with Matt
 
 - Consult BEFORE architectural/infra forks: present trade-offs + a
